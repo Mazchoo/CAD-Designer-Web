@@ -12,18 +12,20 @@
   <style>
     .sidenav-right {
       transform: translateX(0);
+      top: 0;
       right: 0;
       left: auto;
-      position: fixed;
+      bottom: auto;
       width: 32%;
-      overflow: hidden;
-    }
-    .sidenav-trigger {
-      display: none;
+      z-index: 1000;
+      position: fixed;
+      overflow: initial; 
     }
     main {
       padding-right: 32%; /* Adjust based on sidenav width */
       padding-right: 0px;
+      height: 100%;
+      overflow: auto; 
     }
     tbody {
       display:block;
@@ -56,6 +58,7 @@
     input[type="checkbox"]:checked + span:not(.lever)::before {
       border-right: 2px solid #000000; /* Custom check color */
       border-bottom: 2px solid #000000; /* Custom check color */
+      display: inline-block;
     }
     .select-dropdown.dropdown-content li > span {
         color: #000000; /* Change this to black */
@@ -132,7 +135,7 @@
   </div>
 
   <!-- Sidenav -->
-  <ul id="slide-out" class="sidenav sidenav-right">
+  <ul class="sidenav sidenav-right">
     <div>
       <table>
         <thead style="height: 2vh; margin-left: 5%;">
@@ -331,6 +334,7 @@
           </table>
         </div>
       </div>
+    
       <div id="selected-entities" class="col s12" style="margin-left: 10%; margin-right: 5%; overflow:auto;">
         <div class="contatiner">
           <table>
@@ -417,12 +421,14 @@
           </table>
         </div>
       </div>
+
       <div id="json-editor" class="col s12">
         <div id="jsoneditor" style="width: 100%; height: 50vh;"></div>
         <a class="btn-floating btn-small waves-effect waves-light green" style="position: fixed; bottom: 8vh; right: 1vw;">💾</a>
       </div>
+
       <div id="global-settings" class="col s12">
-        <div class="row" style="margin-left: 5%; margin-right: 5%; height: 45vh; overflow:auto;">
+        <div class="row" style="margin-left: 5%; margin-right: 5%; height: 50vh; overflow:auto;">
           <div class="col s12">
             Size of points
             <div class="input-field inline">
