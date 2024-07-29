@@ -1,0 +1,52 @@
+{
+  "name": "cad-designer-web",
+  "version": "1.0.0",
+  "description": "An editor for cad files in  json form that uses Web GPU and Web assembly for drawing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mazchoo/CAD-Designer-Web.git"
+  },
+  "keywords": [
+    "cad",
+    "web-gpu",
+    "json"
+  ],
+  "author": "Matthew Mitchell",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Mazchoo/CAD-Designer-Web/issues"
+  },
+  "homepage": "https://github.com/Mazchoo/CAD-Designer-Web#readme",
+  "dependencies": {
+    "showdown": "^2.1.0",
+    "stats.js": "github:mrdoob/stats.js#b235d9c",
+    "wgpu-matrix": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.24.7",
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@tsconfig/recommended": "^1.0.6",
+    "@types/showdown": "^2.0.6",
+    "@types/stats.js": "^0.17.3",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@webgpu/types": "^0.1.44",
+    "chokidar": "^3.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-html": "^8.1.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "glob": "^10.4.1",
+    "prettier": "^2.8.8",
+    "rollup": "^4.18.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "servez": "^2.1.6",
+    "tslib": "^2.6.3",
+    "typescript": "^5.4.5"
+  }
+}
