@@ -1,4 +1,3 @@
-
 .sidenav-right {
   transform: translateX(0);
   top: 0;
@@ -8,40 +7,42 @@
   width: 32%;
   z-index: 1000;
   position: fixed;
-  overflow: initial; 
+  overflow: initial;
 }
 
 main {
   padding-right: 32%; /* Adjust based on sidenav width */
   padding-right: 0px;
   height: 100%;
-  overflow: auto; 
+  overflow: auto;
 }
 
 tbody {
-  display:block;
-  overflow:auto;
+  display: block;
+  overflow: auto;
 }
 
-thead, tbody tr {
-  display:table;
-  width:100%;
-  table-layout:fixed;
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 thead {
-  width: calc( 100% - 1em )
+  width: calc(100% - 1em);
 }
 
 table {
-  width:100%;
+  width: 100%;
 }
 
 .tabs .tab a {
   color: #cccccc; /* Unselected tab text color */
 }
 
-.tabs .tab a:hover, .tabs .tab a.active {
+.tabs .tab a:hover,
+.tabs .tab a.active {
   color: #000000; /* Selected tab text color */
 }
 
@@ -49,12 +50,12 @@ table {
   background-color: #000000; /* Indicator color */
 }
 
-input[type="radio"]:checked + span::after {
+input[type='radio']:checked + span::after {
   border: 2px solid #000000; /* Custom border color */
   background-color: #000000; /* Custom fill color */
 }
 
-input[type="checkbox"]:checked + span:not(.lever)::before {
+input[type='checkbox']:checked + span:not(.lever)::before {
   border-right: 2px solid #000000; /* Custom check color */
   border-bottom: 2px solid #000000; /* Custom check color */
   display: inline-block;
@@ -64,11 +65,11 @@ input[type="checkbox"]:checked + span:not(.lever)::before {
   color: #000000; /* Change this to black */
 }
 
-.input-field input[type=text]:focus + label {
+.input-field input[type='text']:focus + label {
   color: black !important; /* Change label color on focus to black */
 }
 
-.input-field input[type=text]:focus {
+.input-field input[type='text']:focus {
   border-bottom: 1px solid black !important; /* Change bottom border to black */
   box-shadow: 0 1px 0 0 black !important; /* Change box shadow to black */
 }

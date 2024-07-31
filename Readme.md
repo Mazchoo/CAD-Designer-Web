@@ -1,1 +1,1 @@
-```rustup override set nightly```
+`rustup override set nightly`

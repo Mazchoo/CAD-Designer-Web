@@ -1,184 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-  <link href="json-editor/jsoneditor.min.css" rel="stylesheet" type="text/css">
-  <link href="css/main.min.css" rel="stylesheet" type="text/css">
-  <script src="json-editor/jsoneditor.min.js"></script>
+  <head>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link href="json-editor/jsoneditor.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.min.css" rel="stylesheet" type="text/css" />
+    <script src="json-editor/jsoneditor.min.js"></script>
 
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta charset="utf-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+  </head>
 
-</head>
+  <body>
+    <div class="card-panel" style="height: 10vh">
+      <!-- Dropdown Trigger -->
+      <a
+        class="dropdown-trigger btn col waves-effect waves-green black"
+        href="#"
+        data-target="menu-dropdown"
+        style="width: 10%; height: 5vh"
+      >
+        📁 File
+      </a>
 
-<body>
-<div class="card-panel" style="height: 10vh;">
+      <!-- Dropdown Structure -->
+      <ul id="menu-dropdown" class="dropdown-content black">
+        <li><a id="new-file-button" href="#!">👘 New</a></li>
+        <li><a id="export-file-button" href="#!">🐦 Export</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a id="hot-keys-button" href="#!">🔑 Keys</a></li>
+      </ul>
 
-  <!-- Dropdown Trigger -->
-  <a class='dropdown-trigger btn col waves-effect waves-green black' href='#' data-target='menu-dropdown' style="width:10%; height:5vh">
-    📁 File
-  </a>
-  
-  <!-- Dropdown Structure -->
-  <ul id='menu-dropdown' class='dropdown-content black'>
-    <li><a id='new-file-button' href="#!">👘 New</a></li>
-    <li><a id='export-file-button' href="#!">🐦 Export</a></li>
-    <li class="divider" tabindex="-1"></li>
-    <li><a id='hot-keys-button' href="#!">🔑 Keys</a></li>
-  </ul>
+      <a
+        class="dropdown-trigger btn col waves-effect waves-green black"
+        href="#"
+        data-target="select-dropdown"
+        style="width: 10%; height: 5vh"
+      >
+        🫳 Select
+      </a>
 
-  <a class='dropdown-trigger btn col waves-effect waves-green black' href='#' data-target='select-dropdown' style="width:10%; height:5vh">
-    🫳 Select
-  </a>
-  
-  <!-- Dropdown Structure -->
-  <ul id='select-dropdown' class='dropdown-content black'>
-    <li><a id='block-select' href="#!">🐲 Block</a></li>
-    <li><a id='entity-select' href="#!">🦀 Entity</a></li>
-    <li><a id='point-select' href="#!">🐁 Point</a></li>
-    <li><a id='box-select' href="#!">📦 Box</a></li>
-    <li><a id='layer-select' href="#!">🪼 Layer</a></li>
-  </ul>
-</div>
-
-
-
-  <div style="margin-left: 10vw">
-    <img class="materialboxed" style="height: 72vh; width: 55vw;" src="images/forest.jpg">
-  
-    <form style="height: 10vh;">
-      <div class="row">
-        <div class="input-field col s1">
-          <input disabled placeholder="0" id="first_name" type="text" class="validate">
-          <label for="first_name">Nr objs</label>
-        </div>
-        <div class="input-field col s1">
-          <input placeholder="{x, y}" value= "{x,y}" id="first_name" type="text" class="validate">
-          <label for="first_name">position</label>
-        </div>
-        <div class="input-field col s1">
-          <input placeholder="angle" value= "angle" id="first_name" type="text" class="validate">
-          <label for="first_name">rotation</label>
-        </div>
-        <div class="input-field col s1">
-          <input placeholder="{x, y}" value= "{x, y}" id="first_name" type="text" class="validate">
-          <label for="first_name">center</label>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!-- Sidenav -->
-  <ul class="sidenav sidenav-right">
-    <div>
-      <table>
-        <thead style="height: 2vh; margin-left: 5%;">
-          <tr>
-            <th>Block Name</th>
-            <th>Label</th>
-            <th>Side</th>
-          </tr>
-        </thead>
-        <tbody style="height: 30vh; margin-left: 5%;">
-          <tr>
-            <td> 
-              <label>
-                <input name="block" type="radio" checked/>
-                <span>Model</span>
-              </label>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_01</span>
-              </label>
-            </td>
-            <td>FrontPanel</td>
-            <td>Left</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_02</span>
-              </label>
-            </td>
-            <td>BackPanel</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_03</span>
-              </label>
-            </td>
-            <td>Sleeve</td>
-            <td>Left</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_04</span>
-              </label>
-            </td>
-            <td>Sleeve</td>
-            <td>Right</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_05</span>
-              </label>
-            </td>
-            <td>Collar</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_06</span>
-              </label>
-            </td>
-            <td>CollarBand</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_07</span>
-              </label>
-            </td>
-            <td>Cuff</td>
-            <td>Left</td>
-          </tr>
-          <tr>
-            <td>
-              <label>
-                <input name="block" type="radio" />
-                <span>P0005_08</span>
-              </label>
-            </td>
-            <td>Cuff</td>
-            <td>Right</td>
-          </tr> 
-        </tbody>
-      </table>
+      <!-- Dropdown Structure -->
+      <ul id="select-dropdown" class="dropdown-content black">
+        <li><a id="block-select" href="#!">🐲 Block</a></li>
+        <li><a id="entity-select" href="#!">🦀 Entity</a></li>
+        <li><a id="point-select" href="#!">🐁 Point</a></li>
+        <li><a id="box-select" href="#!">📦 Box</a></li>
+        <li><a id="layer-select" href="#!">🪼 Layer</a></li>
+      </ul>
     </div>
-    <li><div class="divider"></div></li>
 
+    <div style="margin-left: 10vw">
+      <img class="materialboxed" style="height: 72vh; width: 55vw" src="images/forest.jpg" />
 
-    <ul class="tabs tabs-fixed-width tab-demo z-depth-1" style="height: 7vh;">
+      <form style="height: 10vh">
+        <div class="row">
+          <div class="input-field col s1">
+            <input disabled placeholder="0" id="first_name" type="text" class="validate" />
+            <label for="first_name">Nr objs</label>
+          </div>
+          <div class="input-field col s1">
+            <input placeholder="{x, y}" value="{x,y}" id="first_name" type="text" class="validate" />
+            <label for="first_name">position</label>
+          </div>
+          <div class="input-field col s1">
+            <input placeholder="angle" value="angle" id="first_name" type="text" class="validate" />
+            <label for="first_name">rotation</label>
+          </div>
+          <div class="input-field col s1">
+            <input placeholder="{x, y}" value="{x, y}" id="first_name" type="text" class="validate" />
+            <label for="first_name">center</label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Sidenav -->
+    <ul class="sidenav sidenav-right">
+      <div>
+        <table>
+          <thead style="height: 2vh; margin-left: 5%">
+            <tr>
+              <th>Block Name</th>
+              <th>Label</th>
+              <th>Side</th>
+            </tr>
+          </thead>
+          <tbody style="height: 30vh; margin-left: 5%">
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" checked />
+                  <span>Model</span>
+                </label>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_01</span>
+                </label>
+              </td>
+              <td>FrontPanel</td>
+              <td>Left</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_02</span>
+                </label>
+              </td>
+              <td>BackPanel</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_03</span>
+                </label>
+              </td>
+              <td>Sleeve</td>
+              <td>Left</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_04</span>
+                </label>
+              </td>
+              <td>Sleeve</td>
+              <td>Right</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_05</span>
+                </label>
+              </td>
+              <td>Collar</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_06</span>
+                </label>
+              </td>
+              <td>CollarBand</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_07</span>
+                </label>
+              </td>
+              <td>Cuff</td>
+              <td>Left</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="block" type="radio" />
+                  <span>P0005_08</span>
+                </label>
+              </td>
+              <td>Cuff</td>
+              <td>Right</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <li><div class="divider"></div></li>
+
+      <ul class="tabs tabs-fixed-width tab-demo z-depth-1" style="height: 7vh">
         <li class="tab"><a class="active" href="#layers">Layers</a></li>
         <li class="tab"><a href="#selected-entities">Selected</a></li>
         <li class="tab"><a href="#json-editor">Json</a></li>
@@ -193,7 +198,7 @@
                 <th>Color</th>
               </tr>
             </thead>
-            <tbody style="height: 45vh;">
+            <tbody style="height: 45vh">
               <tr>
                 <td>
                   <label>
@@ -270,8 +275,8 @@
           </table>
         </div>
       </div>
-    
-      <div id="selected-entities" class="col s12" style="margin-left: 10%; margin-right: 5%; overflow:auto;">
+
+      <div id="selected-entities" class="col s12" style="margin-left: 10%; margin-right: 5%; overflow: auto">
         <div class="contatiner">
           <table>
             <thead>
@@ -280,7 +285,7 @@
                 <th>Name</th>
               </tr>
             </thead>
-            <tbody style="height: 45vh;">
+            <tbody style="height: 45vh">
               <tr>
                 <td>
                   <label>
@@ -359,16 +364,20 @@
       </div>
 
       <div id="json-editor" class="col s12">
-        <div id="jsoneditor" style="width: 100%; height: 50vh;"></div>
-        <a class="btn-floating btn-small waves-effect waves-light green" style="position: fixed; bottom: 8vh; right: 1vw;">💾</a>
+        <div id="jsoneditor" style="width: 100%; height: 50vh"></div>
+        <a
+          class="btn-floating btn-small waves-effect waves-light green"
+          style="position: fixed; bottom: 8vh; right: 1vw"
+          >💾</a
+        >
       </div>
 
       <div id="global-settings" class="col s12">
-        <div class="row" style="margin-left: 5%; margin-right: 5%; height: 50vh; overflow:auto;">
+        <div class="row" style="margin-left: 5%; margin-right: 5%; height: 50vh; overflow: auto">
           <div class="col s12">
             Size of points
             <div class="input-field inline">
-              <input class="center-align"  id="point-size-input" value="2" type="text">
+              <input class="center-align" id="point-size-input" value="2" type="text" />
             </div>
           </div>
           <div class="col s12">
@@ -380,76 +389,76 @@
           <div class="col s12">
             Point select distance
             <div class="input-field inline">
-              <input class="center-align"  id="point-size-input" value="3" type="text">
+              <input class="center-align" id="point-size-input" value="3" type="text" />
             </div>
           </div>
           <div class="col s12">
             Size of points drawn on canvas
             <div class="input-field inline">
-              <input class="center-align"  id="point-size-input" value="5" type="text">
+              <input class="center-align" id="point-size-input" value="5" type="text" />
             </div>
           </div>
           <div class="col s12">
             Size of points drawn on canvas
             <div class="input-field inline">
-              <input class="center-align"  id="point-size-input" value="5" type="text">
+              <input class="center-align" id="point-size-input" value="5" type="text" />
             </div>
           </div>
           <div class="col s12">
             Size of points drawn on canvas
             <div class="input-field inline">
-              <input class="center-align"  id="point-size-input" value="5" type="text">
+              <input class="center-align" id="point-size-input" value="5" type="text" />
             </div>
           </div>
           <div class="col s12">
             Size of points drawn on canvas
             <div class="input-field inline">
-              <input class="center-align"  id="point-size-input" value="5" type="text">
+              <input class="center-align" id="point-size-input" value="5" type="text" />
             </div>
           </div>
         </div>
       </div>
-  </ul>
+    </ul>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>   
-      document.addEventListener('DOMContentLoaded', function() {
-          var elems = document.querySelectorAll('.dropdown-trigger');
-          var instances = M.Dropdown.init(elems);
-        });
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems);
+      });
 
-        document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.tabs');
         var instance = M.Tabs.init(elems);
       });
 
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
       });
     </script>
 
     <script>
-        // create the editor
-        const container = document.getElementById("jsoneditor")
-        const options = {css_framework: 'materialize', icon_library: 'materialize'}
-        const editor = new JSONEditor(container, options)
-        editor.setMode('code');
+      // create the editor
+      const container = document.getElementById('jsoneditor');
+      const options = { css_framework: 'materialize', icon_library: 'materialize' };
+      const editor = new JSONEditor(container, options);
+      editor.setMode('code');
 
-        // set json
-        const initialJson = {
-            "Array": [1, 2, 3],
-            "Boolean": true,
-            "Null": null,
-            "Number": 123,
-            "Object": {"a": "b", "c": "d"},
-            "String": "Hello World"
-        }
-        editor.set(initialJson)
+      // set json
+      const initialJson = {
+        Array: [1, 2, 3],
+        Boolean: true,
+        Null: null,
+        Number: 123,
+        Object: { a: 'b', c: 'd' },
+        String: 'Hello World',
+      };
+      editor.set(initialJson);
 
-        // get json
-        const updatedJson = editor.get()
+      // get json
+      const updatedJson = editor.get();
     </script>
   </body>
 </html>
