@@ -142,7 +142,7 @@ const uniformBuffer = device.createBuffer({
 // Fetch the image and upload it into a GPUTexture.
 let cubeTexture: GPUTexture;
 {
-  const response = await fetch('../../assets/img/Di-3d.png');
+  const response = await fetch('../images/gnome.png');
   const imageBitmap = await createImageBitmap(await response.blob());
 
   cubeTexture = device.createTexture({

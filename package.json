@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "prettier-check": "prettier . --config ./.prettierrc.json --check",
-    "prettier-write": "prettier . --config ./.prettierrc.json --write"
+    "prettier-write": "prettier . --config ./.prettierrc.json --write",
+    "server": "servez --port=23592 ."
   },
   "repository": {
     "type": "git",

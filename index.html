@@ -1,11 +1,14 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="icon" type="image/x-icon" href="/staff.ico"/>
+
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link href="json-editor/jsoneditor.min.css" rel="stylesheet" type="text/css" />
+    <!--Import internal css-->
     <link href="css/main.min.css" rel="stylesheet" type="text/css" />
-    <script src="json-editor/jsoneditor.min.js"></script>
+    <!--Import json editor css-->
+    <link href="json-editor/jsoneditor.min.css" rel="stylesheet" type="text/css" />
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -420,7 +423,10 @@
       </div>
     </ul>
 
-    <!--JavaScript at end of body for optimized loading-->
+    <!--JavaScript for json editor-->
+    <script src="json-editor/jsoneditor.min.js"></script>
+
+    <!--JavaScript for materialize-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -442,8 +448,7 @@
     <script>
       // create the editor
       const container = document.getElementById('jsoneditor');
-      const options = { css_framework: 'materialize', icon_library: 'materialize' };
-      const editor = new JSONEditor(container, options);
+      const editor = new JSONEditor(container, {});
       editor.setMode('code');
 
       // set json
@@ -460,5 +465,7 @@
       // get json
       const updatedJson = editor.get();
     </script>
+    <script defer src="./dist/bundle.js" type="module"></script>
+    <script defer type="module" src="./js/iframe-helper.js"></script>
   </body>
 </html>
