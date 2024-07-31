@@ -261,7 +261,7 @@ function _classCallCheck(instance, Constructor) {
     return cash(
       slice.call(collection).filter(function (item, index, self) {
         return self.indexOf(item) === index;
-      }),
+      })
     );
   }
 
@@ -509,7 +509,7 @@ function _classCallCheck(instance, Constructor) {
       return cash(
         filter.call(this, function (e) {
           return comparator(e, selector);
-        }),
+        })
       );
     },
 
@@ -843,7 +843,7 @@ function _classCallCheck(instance, Constructor) {
           }
         : function (v, i) {
             return insertElement(v, i === 0 ? child : child.cloneNode(true), prepend);
-          },
+          }
     );
   }
 
@@ -872,7 +872,7 @@ function _classCallCheck(instance, Constructor) {
       return cash(
         this.map(function (v) {
           return v.cloneNode(true);
-        }),
+        })
       );
     },
 
@@ -1680,7 +1680,7 @@ $jscomp.polyfill(
         };
   },
   'es6-impl',
-  'es3',
+  'es3'
 );
 var $jscomp$this = this;
 (function (r) {
@@ -1855,7 +1855,7 @@ var $jscomp$this = this;
       case 'line':
         return F(
           { x: a.getAttribute('x1'), y: a.getAttribute('y1') },
-          { x: a.getAttribute('x2'), y: a.getAttribute('y2') },
+          { x: a.getAttribute('x2'), y: a.getAttribute('y2') }
         );
       case 'polyline':
         return M(a);
@@ -1987,11 +1987,11 @@ var $jscomp$this = this;
             } else b = void 0;
             return b;
           });
-        }),
+        })
       ),
       function (a) {
         return !h.und(a);
-      },
+      }
     );
   }
   function R(a, c, d, b) {
@@ -2001,7 +2001,7 @@ var $jscomp$this = this;
           Math,
           c.map(function (b) {
             return b[a];
-          }),
+          })
         )
       : f
         ? b.delay
@@ -2187,7 +2187,7 @@ var $jscomp$this = this;
     S = { duration: 1e3, delay: 0, easing: 'easeOutElastic', elasticity: 500, round: 0 },
     W =
       'translateX translateY translateZ rotate rotateX rotateY rotateZ scale scaleX scaleY scaleZ skewX skewY perspective'.split(
-        ' ',
+        ' '
       ),
     H,
     h = {
@@ -2328,7 +2328,7 @@ var $jscomp$this = this;
               return function (d, f) {
                 b['ease' + a.type + c[f]] = h.fnc(d) ? d : A.apply($jscomp$this, d);
               };
-            })(f),
+            })(f)
           ),
           (f = { type: f.type });
       }
@@ -2462,7 +2462,7 @@ var $jscomp$this = this;
 
       var _this3 = _possibleConstructorReturn(
         this,
-        (Collapsible.__proto__ || Object.getPrototypeOf(Collapsible)).call(this, Collapsible, el, options),
+        (Collapsible.__proto__ || Object.getPrototypeOf(Collapsible)).call(this, Collapsible, el, options)
       );
 
       _this3.el.M_Collapsible = _this3;
@@ -2740,7 +2740,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -2761,7 +2761,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Collapsible;
@@ -2805,7 +2805,7 @@ var $jscomp$this = this;
 
       var _this9 = _possibleConstructorReturn(
         this,
-        (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call(this, Dropdown, el, options),
+        (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call(this, Dropdown, el, options)
       );
 
       _this9.el.M_Dropdown = _this9;
@@ -3202,7 +3202,7 @@ var $jscomp$this = this;
               this.el,
               closestOverflowParent,
               dropdownBounds,
-              this.options.coverTrigger ? 0 : triggerBRect.height,
+              this.options.coverTrigger ? 0 : triggerBRect.height
             );
 
             var verticalAlignment = 'top';
@@ -3431,7 +3431,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -3452,7 +3452,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Dropdown;
@@ -3507,7 +3507,7 @@ var $jscomp$this = this;
 
       var _this13 = _possibleConstructorReturn(
         this,
-        (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, Modal, el, options),
+        (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, Modal, el, options)
       );
 
       _this13.el.M_Modal = _this13;
@@ -3895,7 +3895,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Modal;
@@ -3951,7 +3951,7 @@ var $jscomp$this = this;
 
       var _this16 = _possibleConstructorReturn(
         this,
-        (Materialbox.__proto__ || Object.getPrototypeOf(Materialbox)).call(this, Materialbox, el, options),
+        (Materialbox.__proto__ || Object.getPrototypeOf(Materialbox)).call(this, Materialbox, el, options)
       );
 
       _this16.el.M_Materialbox = _this16;
@@ -4410,7 +4410,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -4431,7 +4431,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Materialbox;
@@ -4458,7 +4458,7 @@ var $jscomp$this = this;
 
       var _this21 = _possibleConstructorReturn(
         this,
-        (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).call(this, Parallax, el, options),
+        (Parallax.__proto__ || Object.getPrototypeOf(Parallax)).call(this, Parallax, el, options)
       );
 
       _this21.el.M_Parallax = _this21;
@@ -4570,7 +4570,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -4609,7 +4609,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Parallax;
@@ -4657,7 +4657,7 @@ var $jscomp$this = this;
 
       var _this22 = _possibleConstructorReturn(
         this,
-        (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, Tabs, el, options),
+        (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, Tabs, el, options)
       );
 
       _this22.el.M_Tabs = _this22;
@@ -5094,7 +5094,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Tabs;
@@ -5139,7 +5139,7 @@ var $jscomp$this = this;
 
       var _this26 = _possibleConstructorReturn(
         this,
-        (Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).call(this, Tooltip, el, options),
+        (Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).call(this, Tooltip, el, options)
       );
 
       _this26.el.M_Tooltip = _this26;
@@ -5445,7 +5445,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -5466,7 +5466,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Tooltip;
@@ -5808,7 +5808,7 @@ var $jscomp$this = this;
     function () {
       Waves.displayEffect();
     },
-    false,
+    false
   );
 })(window);
 (function ($, anim) {
@@ -6144,7 +6144,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Toast;
@@ -6209,7 +6209,7 @@ var $jscomp$this = this;
 
       var _this31 = _possibleConstructorReturn(
         this,
-        (Sidenav.__proto__ || Object.getPrototypeOf(Sidenav)).call(this, Sidenav, el, options),
+        (Sidenav.__proto__ || Object.getPrototypeOf(Sidenav)).call(this, Sidenav, el, options)
       );
 
       _this31.el.M_Sidenav = _this31;
@@ -6815,7 +6815,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -6836,7 +6836,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Sidenav;
@@ -6887,7 +6887,7 @@ var $jscomp$this = this;
 
       var _this35 = _possibleConstructorReturn(
         this,
-        (ScrollSpy.__proto__ || Object.getPrototypeOf(ScrollSpy)).call(this, ScrollSpy, el, options),
+        (ScrollSpy.__proto__ || Object.getPrototypeOf(ScrollSpy)).call(this, ScrollSpy, el, options)
       );
 
       _this35.el.M_ScrollSpy = _this35;
@@ -7051,7 +7051,7 @@ var $jscomp$this = this;
 
             if (ScrollSpy._visibleElements[0]) {
               $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(
-                this.options.activeClass,
+                this.options.activeClass
               );
               if (
                 ScrollSpy._visibleElements[0][0].M_ScrollSpy &&
@@ -7066,7 +7066,7 @@ var $jscomp$this = this;
             }
 
             $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(
-              this.options.activeClass,
+              this.options.activeClass
             );
           },
         },
@@ -7081,7 +7081,7 @@ var $jscomp$this = this;
 
             if (ScrollSpy._visibleElements[0]) {
               $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).removeClass(
-                this.options.activeClass,
+                this.options.activeClass
               );
 
               ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter(function (el) {
@@ -7090,7 +7090,7 @@ var $jscomp$this = this;
               if (ScrollSpy._visibleElements[0]) {
                 // Check if empty
                 $(this.options.getActiveElement(ScrollSpy._visibleElements[0].attr('id'))).addClass(
-                  this.options.activeClass,
+                  this.options.activeClass
                 );
               }
             }
@@ -7105,7 +7105,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -7150,7 +7150,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return ScrollSpy;
@@ -7235,7 +7235,7 @@ var $jscomp$this = this;
 
       var _this37 = _possibleConstructorReturn(
         this,
-        (Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete)).call(this, Autocomplete, el, options),
+        (Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete)).call(this, Autocomplete, el, options)
       );
 
       _this37.el.M_Autocomplete = _this37;
@@ -7508,7 +7508,7 @@ var $jscomp$this = this;
               matchText = $el.text().slice(matchStart, matchEnd + 1),
               afterMatch = $el.text().slice(matchEnd + 1);
             $el.html(
-              '<span>' + beforeMatch + "<span class='highlight'>" + matchText + '</span>' + afterMatch + '</span>',
+              '<span>' + beforeMatch + "<span class='highlight'>" + matchText + '</span>' + afterMatch + '</span>'
             );
             if (img.length) {
               $el.prepend(img);
@@ -7607,7 +7607,7 @@ var $jscomp$this = this;
               var $autocompleteOption = $('<li></li>');
               if (!!_entry.data) {
                 $autocompleteOption.append(
-                  '<img src="' + _entry.data + '" class="right circle"><span>' + _entry.key + '</span>',
+                  '<img src="' + _entry.data + '" class="right circle"><span>' + _entry.key + '</span>'
                 );
               } else {
                 $autocompleteOption.append('<span>' + _entry.key + '</span>');
@@ -7678,7 +7678,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -7699,7 +7699,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Autocomplete;
@@ -7906,7 +7906,7 @@ var $jscomp$this = this;
           $(e.target).siblings('label, .prefix').addClass('active');
         }
       },
-      true,
+      true
     );
 
     /**
@@ -7931,7 +7931,7 @@ var $jscomp$this = this;
           M.validate_field($inputElement);
         }
       },
-      true,
+      true
     );
 
     // Radio and Checkbox focus class
@@ -8010,7 +8010,7 @@ var $jscomp$this = this;
 
       var _this40 = _possibleConstructorReturn(
         this,
-        (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, Slider, el, options),
+        (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, Slider, el, options)
       );
 
       _this40.el.M_Slider = _this40;
@@ -8400,7 +8400,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Slider;
@@ -8485,7 +8485,7 @@ var $jscomp$this = this;
 
       var _this45 = _possibleConstructorReturn(
         this,
-        (Chips.__proto__ || Object.getPrototypeOf(Chips)).call(this, Chips, el, options),
+        (Chips.__proto__ || Object.getPrototypeOf(Chips)).call(this, Chips, el, options)
       );
 
       _this45.el.M_Chips = _this45;
@@ -8980,7 +8980,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Chips;
@@ -9039,7 +9039,7 @@ var $jscomp$this = this;
 
       var _this47 = _possibleConstructorReturn(
         this,
-        (Pushpin.__proto__ || Object.getPrototypeOf(Pushpin)).call(this, Pushpin, el, options),
+        (Pushpin.__proto__ || Object.getPrototypeOf(Pushpin)).call(this, Pushpin, el, options)
       );
 
       _this47.el.M_Pushpin = _this47;
@@ -9151,7 +9151,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -9181,7 +9181,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Pushpin;
@@ -9234,8 +9234,8 @@ var $jscomp$this = this;
           this,
           FloatingActionButton,
           el,
-          options,
-        ),
+          options
+        )
       );
 
       _this48.el.M_FloatingActionButton = _this48;
@@ -9586,7 +9586,7 @@ var $jscomp$this = this;
             return _get(
               FloatingActionButton.__proto__ || Object.getPrototypeOf(FloatingActionButton),
               'init',
-              this,
+              this
             ).call(this, this, els, options);
           },
 
@@ -9607,7 +9607,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return FloatingActionButton;
@@ -9732,7 +9732,7 @@ var $jscomp$this = this;
 
       var _this53 = _possibleConstructorReturn(
         this,
-        (Datepicker.__proto__ || Object.getPrototypeOf(Datepicker)).call(this, Datepicker, el, options),
+        (Datepicker.__proto__ || Object.getPrototypeOf(Datepicker)).call(this, Datepicker, el, options)
       );
 
       _this53.el.M_Datepicker = _this53;
@@ -9937,7 +9937,7 @@ var $jscomp$this = this;
                 lastVisibleDate = new Date(
                   this.calendars[this.calendars.length - 1].year,
                   this.calendars[this.calendars.length - 1].month,
-                  1,
+                  1
                 ),
                 visibleDate = date.getTime();
               // get the end of the month
@@ -10171,7 +10171,7 @@ var $jscomp$this = this;
                   this.renderDayName(opts, i) +
                   '">' +
                   this.renderDayName(opts, i, true) +
-                  '</abbr></th>',
+                  '</abbr></th>'
               );
             }
             return '<thead><tr>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tr></thead>';
@@ -10207,7 +10207,7 @@ var $jscomp$this = this;
                   ((isMinYear && i < opts.minMonth) || (isMaxYear && i > opts.maxMonth) ? 'disabled="disabled"' : '') +
                   '>' +
                   opts.i18n.months[i] +
-                  '</option>',
+                  '</option>'
               );
             }
 
@@ -10225,7 +10225,7 @@ var $jscomp$this = this;
             for (arr = []; i < j && i <= opts.maxYear; i++) {
               if (i >= opts.minYear) {
                 arr.push(
-                  '<option value="' + i + '" ' + (i === year ? 'selected="selected"' : '') + '>' + i + '</option>',
+                  '<option value="' + i + '" ' + (i === year ? 'selected="selected"' : '') + '>' + i + '</option>'
                 );
               }
             }
@@ -10312,7 +10312,7 @@ var $jscomp$this = this;
                   this.calendars[c].year,
                   this.calendars[c].month,
                   this.calendars[0].year,
-                  randId,
+                  randId
                 ) + this.render(this.calendars[c].year, this.calendars[c].month, randId);
             }
 
@@ -10469,8 +10469,8 @@ var $jscomp$this = this;
                   new Date(
                     e.target.getAttribute('data-year'),
                     e.target.getAttribute('data-month'),
-                    e.target.getAttribute('data-day'),
-                  ),
+                    e.target.getAttribute('data-day')
+                  )
                 );
                 if (this.options.autoClose) {
                   this._finishSelection();
@@ -10618,7 +10618,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
         },
@@ -10684,7 +10684,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Datepicker;
@@ -10763,7 +10763,7 @@ var $jscomp$this = this;
 
       var _this57 = _possibleConstructorReturn(
         this,
-        (Timepicker.__proto__ || Object.getPrototypeOf(Timepicker)).call(this, Timepicker, el, options),
+        (Timepicker.__proto__ || Object.getPrototypeOf(Timepicker)).call(this, Timepicker, el, options)
       );
 
       _this57.el.M_Timepicker = _this57;
@@ -10971,7 +10971,7 @@ var $jscomp$this = this;
                 (this.options.twelveHour ? '3' : '1') +
                 '">' +
                 this.options.i18n.clear +
-                '</button>',
+                '</button>'
             )
               .appendTo(this.footer)
               .on('click', this.clear.bind(this));
@@ -10985,7 +10985,7 @@ var $jscomp$this = this;
                 (this.options.twelveHour ? '3' : '1') +
                 '">' +
                 this.options.i18n.cancel +
-                '</button>',
+                '</button>'
             )
               .appendTo(confirmationBtnsContainer)
               .on('click', this.close.bind(this));
@@ -10994,7 +10994,7 @@ var $jscomp$this = this;
                 (this.options.twelveHour ? '3' : '1') +
                 '">' +
                 this.options.i18n.done +
-                '</button>',
+                '</button>'
             )
               .appendTo(confirmationBtnsContainer)
               .on('click', this.done.bind(this));
@@ -11359,7 +11359,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
         },
@@ -11415,7 +11415,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Timepicker;
@@ -11482,8 +11482,8 @@ var $jscomp$this = this;
           this,
           CharacterCounter,
           el,
-          options,
-        ),
+          options
+        )
       );
 
       _this61.el.M_CharacterCounter = _this61;
@@ -11612,7 +11612,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -11633,7 +11633,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return CharacterCounter;
@@ -11679,7 +11679,7 @@ var $jscomp$this = this;
 
       var _this62 = _possibleConstructorReturn(
         this,
-        (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, Carousel, el, options),
+        (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, Carousel, el, options)
       );
 
       _this62.el.M_Carousel = _this62;
@@ -12445,7 +12445,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -12466,7 +12466,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Carousel;
@@ -12505,7 +12505,7 @@ var $jscomp$this = this;
 
       var _this67 = _possibleConstructorReturn(
         this,
-        (TapTarget.__proto__ || Object.getPrototypeOf(TapTarget)).call(this, TapTarget, el, options),
+        (TapTarget.__proto__ || Object.getPrototypeOf(TapTarget)).call(this, TapTarget, el, options)
       );
 
       _this67.el.M_TapTarget = _this67;
@@ -12817,7 +12817,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -12838,7 +12838,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return TapTarget;
@@ -12878,7 +12878,7 @@ var $jscomp$this = this;
       // Don't init if browser default version
       var _this68 = _possibleConstructorReturn(
         this,
-        (FormSelect.__proto__ || Object.getPrototypeOf(FormSelect)).call(this, FormSelect, el, options),
+        (FormSelect.__proto__ || Object.getPrototypeOf(FormSelect)).call(this, FormSelect, el, options)
       );
 
       if (_this68.$el.hasClass('browser-default')) {
@@ -13047,7 +13047,7 @@ var $jscomp$this = this;
             this.dropdownOptions = document.createElement('ul');
             this.dropdownOptions.id = 'select-options-' + M.guid();
             $(this.dropdownOptions).addClass(
-              'dropdown-content select-dropdown ' + (this.isMultiple ? 'multiple-select-dropdown' : ''),
+              'dropdown-content select-dropdown ' + (this.isMultiple ? 'multiple-select-dropdown' : '')
             );
 
             // Create dropdown structure.
@@ -13067,7 +13067,7 @@ var $jscomp$this = this;
                   // Optgroup.
                   var selectOptions = $(el).children('option');
                   $(_this71.dropdownOptions).append(
-                    $('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0],
+                    $('<li class="optgroup"><span>' + el.getAttribute('label') + '</span></li>')[0]
                   );
 
                   selectOptions.each(function (el) {
@@ -13095,7 +13095,7 @@ var $jscomp$this = this;
 
             // Add caret
             var dropdownIcon = $(
-              '<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>',
+              '<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'
             );
             this.$el.before(dropdownIcon[0]);
 
@@ -13323,7 +13323,7 @@ var $jscomp$this = this;
               this,
               this,
               els,
-              options,
+              options
             );
           },
 
@@ -13344,7 +13344,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return FormSelect;
@@ -13380,7 +13380,7 @@ var $jscomp$this = this;
 
       var _this72 = _possibleConstructorReturn(
         this,
-        (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, Range, el, options),
+        (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, Range, el, options)
       );
 
       _this72.el.M_Range = _this72;
@@ -13659,7 +13659,7 @@ var $jscomp$this = this;
             return _defaults;
           },
         },
-      ],
+      ]
     );
 
     return Range;

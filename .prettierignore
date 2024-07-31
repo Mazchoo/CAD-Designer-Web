@@ -1,3 +1,7 @@
 *.min.js
 *.min.css
 node_modules
+dist
+.gitignore
+.prettierignore
+.prettierrc.js

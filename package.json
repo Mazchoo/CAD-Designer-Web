@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "An editor for cad files in  json form that uses Web GPU and Web assembly for drawing.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier-check": "prettier . --config ./.prettierrc.js --check",
-    "prettier-write": "prettier . --config ./.prettierrc.js --write"
+    "build": "rollup -c",
+    "prettier-check": "prettier . --config ./.prettierrc.json --check",
+    "prettier-write": "prettier . --config ./.prettierrc.json --write"
   },
   "repository": {
     "type": "git",
@@ -33,12 +35,12 @@
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-terser": "^0.4.4",
     "@tsconfig/recommended": "^1.0.6",
     "@types/showdown": "^2.0.6",
     "@types/stats.js": "^0.17.3",
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@webgpu/types": "^0.1.44",
-    "chokidar": "^3.6.0",
     "glob": "^11.0.0",
     "prettier": "^3.3.3",
     "rollup": "^4.18.0",
