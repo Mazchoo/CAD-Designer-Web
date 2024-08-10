@@ -7,9 +7,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
+    "build-debug": "rollup -c -n debug",
     "prettier-check": "prettier . --config ./.prettierrc.json --check",
     "prettier-write": "prettier . --config ./.prettierrc.json --write",
-    "server": "servez --port=23592 ."
+    "server-release": "rollup -c && servez --port=23592 .",
+    "server-debug": "rollup -c -n debug && servez --port=23592 ."
   },
   "repository": {
     "type": "git",
@@ -35,12 +37,12 @@
     "@babel/runtime": "^7.24.7",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@tsconfig/recommended": "^1.0.6",
     "@types/showdown": "^2.0.6",
     "@types/stats.js": "^0.17.3",
-    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@webgpu/types": "^0.1.44",
     "glob": "^11.0.0",
     "prettier": "^3.3.3",
@@ -48,6 +50,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "servez": "^2.1.6",
     "tslib": "^2.6.3",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "webgpu": "^0.1.16"
   }
 }

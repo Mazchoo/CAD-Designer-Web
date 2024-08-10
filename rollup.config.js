@@ -3,19 +3,23 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 
-const outPath = 'dist';
+const OUT_PATH = 'dist';
+const ARGS = process.argv.slice(2);
+const DEBUG_MODE = ARGS.includes('-n') && ARGS[ARGS.indexOf('-n') + 1] === 'debug';
 
 export default [
   {
     input: './src/main.ts',
     output: [
       {
-        file: `${outPath}/bundle.js`,
+        file: `${OUT_PATH}/bundle.js`,
         format: 'esm',
         sourcemap: true,
       },
     ],
-    plugins: [nodeResolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
+    plugins: DEBUG_MODE
+      ? [nodeResolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' })]
+      : [nodeResolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
     watch: {
       clearScreen: false,
     },

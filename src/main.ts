@@ -4,6 +4,7 @@ import { ArcballCamera, WASDCamera } from './camera';
 import { createInputHandler } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
 
+// ToDo make a mock canvas when debugging locally
 const canvas = document.querySelector('canvas') as HTMLCanvasElement;
 
 const cubeWGSL = `
