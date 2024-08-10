@@ -1,45 +1,25 @@
 import { mat4, vec3 } from 'wgpu-matrix';
-import { cubeVertexArray, cubeVertexSize, cubeUVOffset, cubePositionOffset, cubeVertexCount } from './meshes/cube';
-import { ArcballCamera, WASDCamera } from './camera';
+import {
+  squareVertexSize,
+  squarePositionOffset,
+  squareColorOffset,
+  squareVertexArray,
+  squareVertexCount,
+} from './meshes/square';
+import { WASDCamera } from './camera';
 import { createInputHandler } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
+import { program as squareWGSL } from './shaders/square';
+// ToDo make a helper program that copies shaders into ts files
 
 // ToDo make a mock canvas when debugging locally
 const canvas = document.querySelector('canvas') as HTMLCanvasElement;
-
-const cubeWGSL = `
-struct Uniforms {
-  modelViewProjectionMatrix : mat4x4f,
-}
-
-@group(0) @binding(0) var<uniform> uniforms : Uniforms;
-@group(0) @binding(1) var mySampler: sampler;
-@group(0) @binding(2) var myTexture: texture_2d<f32>;
-
-struct VertexOutput {
-  @builtin(position) Position : vec4f,
-  @location(0) fragUV : vec2f,
-}
-
-@vertex
-fn vertex_main(
-  @location(0) position : vec4f,
-  @location(1) uv : vec2f
-) -> VertexOutput {
-  return VertexOutput(uniforms.modelViewProjectionMatrix * position, uv);
-}
-
-@fragment
-fn fragment_main(@location(0) fragUV: vec2f) -> @location(0) vec4f {
-  return textureSample(myTexture, mySampler, fragUV);
-}
-`;
 
 // The input handler
 const inputHandler = createInputHandler(window, canvas);
 
 // The camera types
-const initialCameraPosition = vec3.create(3, 2, 5);
+const initialCameraPosition = vec3.create(0, 0, 2);
 const camera = new WASDCamera({ position: initialCameraPosition });
 
 const adapter = await navigator.gpu?.requestAdapter();
@@ -60,43 +40,38 @@ context.configure({
 
 // Create a vertex buffer from the cube data.
 const verticesBuffer = device.createBuffer({
-  size: cubeVertexArray.byteLength,
+  size: squareVertexArray.byteLength,
   usage: GPUBufferUsage.VERTEX,
   mappedAtCreation: true,
 });
-new Float32Array(verticesBuffer.getMappedRange()).set(cubeVertexArray);
+new Float32Array(verticesBuffer.getMappedRange()).set(squareVertexArray);
 verticesBuffer.unmap();
+const compiledShader = device.createShaderModule({ code: squareWGSL });
 
 const pipeline = device.createRenderPipeline({
   layout: 'auto',
   vertex: {
-    module: device.createShaderModule({
-      code: cubeWGSL,
-    }),
+    module: compiledShader,
     buffers: [
       {
-        arrayStride: cubeVertexSize,
+        arrayStride: squareVertexSize,
         attributes: [
           {
-            // position
             shaderLocation: 0,
-            offset: cubePositionOffset,
-            format: 'float32x4',
+            offset: squarePositionOffset,
+            format: 'float32x2',
           },
           {
-            // uv
             shaderLocation: 1,
-            offset: cubeUVOffset,
-            format: 'float32x2',
+            offset: squareColorOffset,
+            format: 'float32x4',
           },
         ],
       },
     ],
   },
   fragment: {
-    module: device.createShaderModule({
-      code: cubeWGSL,
-    }),
+    module: compiledShader,
     targets: [
       {
         format: presentationFormat,
@@ -104,49 +79,16 @@ const pipeline = device.createRenderPipeline({
     ],
   },
   primitive: {
-    topology: 'triangle-list',
-    cullMode: 'back',
+    topology: 'line-strip',
+    stripIndexFormat: 'uint32',
+    cullMode: 'none',
   },
-  depthStencil: {
-    depthWriteEnabled: true,
-    depthCompare: 'less',
-    format: 'depth24plus',
-  },
-});
-
-const depthTexture = device.createTexture({
-  size: [canvas.width, canvas.height],
-  format: 'depth24plus',
-  usage: GPUTextureUsage.RENDER_ATTACHMENT,
 });
 
 const uniformBufferSize = 4 * 16; // 4x4 matrix
 const uniformBuffer = device.createBuffer({
   size: uniformBufferSize,
   usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
-});
-
-// Fetch the image and upload it into a GPUTexture.
-let cubeTexture: GPUTexture;
-{
-  const response = await fetch('../images/gnome.png');
-  const imageBitmap = await createImageBitmap(await response.blob());
-
-  cubeTexture = device.createTexture({
-    size: [imageBitmap.width, imageBitmap.height, 1],
-    format: 'rgba8unorm',
-    usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST | GPUTextureUsage.RENDER_ATTACHMENT,
-  });
-  device.queue.copyExternalImageToTexture({ source: imageBitmap }, { texture: cubeTexture }, [
-    imageBitmap.width,
-    imageBitmap.height,
-  ]);
-}
-
-// Create a sampler with linear filtering for smooth interpolation.
-const sampler = device.createSampler({
-  magFilter: 'linear',
-  minFilter: 'linear',
 });
 
 const uniformBindGroup = device.createBindGroup({
@@ -158,14 +100,6 @@ const uniformBindGroup = device.createBindGroup({
         buffer: uniformBuffer,
       },
     },
-    {
-      binding: 1,
-      resource: sampler,
-    },
-    {
-      binding: 2,
-      resource: cubeTexture.createView(),
-    },
   ],
 });
 
@@ -174,22 +108,15 @@ const renderPassDescriptor = {
     {
       view: undefined, // Assigned later
 
-      clearValue: [0.5, 0.5, 0.5, 1.0],
+      clearValue: [0.9, 0.9, 0.9, 1.0],
       loadOp: 'clear',
       storeOp: 'store',
     },
   ],
-  depthStencilAttachment: {
-    view: depthTexture.createView(),
-
-    depthClearValue: 1.0,
-    depthLoadOp: 'clear',
-    depthStoreOp: 'store',
-  },
 } as GPURenderPassDescriptor;
 
 const aspect = canvas.width / canvas.height;
-const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 1, 100.0);
+const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 0.1, 100.0);
 const modelViewProjectionMatrix = mat4.create();
 
 function getModelViewProjectionMatrix(deltaTime: number) {
@@ -222,7 +149,7 @@ function frame() {
   passEncoder.setPipeline(pipeline);
   passEncoder.setBindGroup(0, uniformBindGroup);
   passEncoder.setVertexBuffer(0, verticesBuffer);
-  passEncoder.draw(cubeVertexCount);
+  passEncoder.draw(squareVertexCount);
   passEncoder.end();
   device.queue.submit([commandEncoder.finish()]);
 

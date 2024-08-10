@@ -60,18 +60,6 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
         e.preventDefault();
         e.stopPropagation();
         break;
-      case 'Space':
-        digital.up = value;
-        e.preventDefault();
-        e.stopPropagation();
-        break;
-      case 'ShiftLeft':
-      case 'ControlLeft':
-      case 'KeyC':
-        digital.down = value;
-        e.preventDefault();
-        e.stopPropagation();
-        break;
     }
   };
 

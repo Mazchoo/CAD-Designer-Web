@@ -93,7 +93,6 @@ class CameraBase {
 
 // WASDCamera is a camera implementation that behaves similar to first-person-shooter PC games.
 export class WASDCamera extends CameraBase implements Camera {
-
   // The movement veloicty
   private readonly velocity_ = vec3.create();
 
@@ -155,7 +154,7 @@ export class WASDCamera extends CameraBase implements Camera {
     // Calculate the new target velocity
     const digital = input.digital;
 
-    const targetZoom = vec3.create()
+    const targetZoom = vec3.create();
     if (input.analog.zoom !== 0) {
       targetZoom[2] = input.analog.zoom * this.zoomSpeed;
     }
@@ -170,14 +169,15 @@ export class WASDCamera extends CameraBase implements Camera {
     vec3.addScaled(targetVelocity, this.right, input.analog.x, targetVelocity);
     vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
     vec3.normalize(targetVelocity, targetVelocity);
-    const targetSpeed = (input.analog.zoom !== 0) ? this.zoomSpeed: this.movementSpeed;
+    const targetSpeed = input.analog.zoom !== 0 ? this.zoomSpeed : this.movementSpeed;
     vec3.mulScalar(targetVelocity, targetSpeed, targetVelocity);
 
     // Mix new target velocity
     this.velocity = lerp(targetVelocity, this.velocity, Math.pow(1 - this.frictionCoefficient, deltaTime));
 
     // Integrate velocity to calculate new position
-    this.position = vec3.addScaled(position, this.velocity, deltaTime);;
+    this.position = vec3.addScaled(position, this.velocity, deltaTime);
+    this.position[2] = Math.max(this.position[2], 0.1);
 
     // Invert the camera matrix to build the view matrix
     this.view = mat4.invert(this.matrix);
