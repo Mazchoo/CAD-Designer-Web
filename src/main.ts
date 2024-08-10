@@ -40,21 +40,7 @@ const inputHandler = createInputHandler(window, canvas);
 
 // The camera types
 const initialCameraPosition = vec3.create(3, 2, 5);
-const cameras = {
-  arcball: new ArcballCamera({ position: initialCameraPosition }),
-  WASD: new WASDCamera({ position: initialCameraPosition }),
-};
-
-// GUI parameters
-const params: { type: 'arcball' | 'WASD' } = {
-  type: 'WASD',
-};
-
-// Callback handler for camera mode
-let oldCameraType = params.type;
-const newCameraType = params.type;
-cameras[newCameraType].matrix = cameras[oldCameraType].matrix;
-oldCameraType = newCameraType;
+const camera = new WASDCamera({ position: initialCameraPosition });
 
 const adapter = await navigator.gpu?.requestAdapter();
 const device = (await adapter?.requestDevice()) as GPUDevice;
@@ -207,7 +193,6 @@ const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 1, 100.0);
 const modelViewProjectionMatrix = mat4.create();
 
 function getModelViewProjectionMatrix(deltaTime: number) {
-  const camera = cameras[params.type];
   const viewMatrix = camera.update(deltaTime, inputHandler());
   mat4.multiply(projectionMatrix, viewMatrix, modelViewProjectionMatrix);
   return modelViewProjectionMatrix;

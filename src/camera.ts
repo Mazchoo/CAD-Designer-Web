@@ -93,10 +93,6 @@ class CameraBase {
 
 // WASDCamera is a camera implementation that behaves similar to first-person-shooter PC games.
 export class WASDCamera extends CameraBase implements Camera {
-  // The camera absolute pitch angle
-  private pitch = 0;
-  // The camera absolute yaw angle
-  private yaw = 0;
 
   // The movement veloicty
   private readonly velocity_ = vec3.create();
@@ -106,6 +102,9 @@ export class WASDCamera extends CameraBase implements Camera {
 
   // Speed multiplier for camera rotation
   rotationSpeed = 1;
+
+  // Speed multiplier for scrolling
+  zoomSpeed = 50;
 
   // Movement velocity drag coeffient [0 .. 1]
   // 0: Continues forever
@@ -133,7 +132,6 @@ export class WASDCamera extends CameraBase implements Camera {
       const position = options.position ?? vec3.create(0, 0, -5);
       const target = options.target ?? vec3.create(0, 0, 0);
       const back = vec3.normalize(vec3.sub(position, target));
-      this.recalculateAngles(back);
       this.position = position;
     }
   }
@@ -146,190 +144,45 @@ export class WASDCamera extends CameraBase implements Camera {
   // Assigns `mat` to the camera matrix, and recalcuates the camera angles
   set matrix(mat: Mat4) {
     super.matrix = mat;
-    this.recalculateAngles(this.back);
   }
 
   update(deltaTime: number, input: Input): Mat4 {
     const sign = (positive: boolean, negative: boolean) => (positive ? 1 : 0) - (negative ? 1 : 0);
 
-    // Apply the delta rotation to the pitch and yaw angles
-    this.yaw -= input.analog.x * deltaTime * this.rotationSpeed;
-    this.pitch -= input.analog.y * deltaTime * this.rotationSpeed;
-
-    // Wrap yaw between [0° .. 360°], just to prevent large accumulation.
-    this.yaw = mod(this.yaw, Math.PI * 2);
-    // Clamp pitch between [-90° .. +90°] to prevent somersaults.
-    this.pitch = clamp(this.pitch, -Math.PI / 2, Math.PI / 2);
-
     // Save the current position, as we're about to rebuild the camera matrix.
     const position = vec3.copy(this.position);
 
-    // Reconstruct the camera's rotation, and store into the camera matrix.
-    super.matrix = mat4.rotateX(mat4.rotationY(this.yaw), this.pitch);
-
     // Calculate the new target velocity
     const digital = input.digital;
+
+    const targetZoom = vec3.create()
+    if (input.analog.zoom !== 0) {
+      targetZoom[2] = input.analog.zoom * this.zoomSpeed;
+    }
+
     const deltaRight = sign(digital.right, digital.left);
     const deltaUp = sign(digital.up, digital.down);
     const targetVelocity = vec3.create();
-    const deltaBack = sign(digital.backward, digital.forward);
+    const deltaBack = input.analog.zoom * this.zoomSpeed;
     vec3.addScaled(targetVelocity, this.right, deltaRight, targetVelocity);
     vec3.addScaled(targetVelocity, this.up, deltaUp, targetVelocity);
     vec3.addScaled(targetVelocity, this.back, deltaBack, targetVelocity);
+    vec3.addScaled(targetVelocity, this.right, input.analog.x, targetVelocity);
+    vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
     vec3.normalize(targetVelocity, targetVelocity);
-    vec3.mulScalar(targetVelocity, this.movementSpeed, targetVelocity);
+    const targetSpeed = (input.analog.zoom !== 0) ? this.zoomSpeed: this.movementSpeed;
+    vec3.mulScalar(targetVelocity, targetSpeed, targetVelocity);
 
     // Mix new target velocity
     this.velocity = lerp(targetVelocity, this.velocity, Math.pow(1 - this.frictionCoefficient, deltaTime));
 
     // Integrate velocity to calculate new position
-    this.position = vec3.addScaled(position, this.velocity, deltaTime);
+    this.position = vec3.addScaled(position, this.velocity, deltaTime);;
 
     // Invert the camera matrix to build the view matrix
     this.view = mat4.invert(this.matrix);
     return this.view;
   }
-
-  // Recalculates the yaw and pitch values from a directional vector
-  recalculateAngles(dir: Vec3) {
-    this.yaw = Math.atan2(dir[0], dir[2]);
-    this.pitch = -Math.asin(dir[1]);
-  }
-}
-
-// ArcballCamera implements a basic orbiting camera around the world origin
-export class ArcballCamera extends CameraBase implements Camera {
-  // The camera distance from the target
-  private distance = 0;
-
-  // The current angular velocity
-  private angularVelocity = 0;
-
-  // The current rotation axis
-  private axis_ = vec3.create();
-
-  // Returns the rotation axis
-  get axis() {
-    return this.axis_;
-  }
-  // Assigns `vec` to the rotation axis
-  set axis(vec: Vec3) {
-    vec3.copy(vec, this.axis_);
-  }
-
-  // Speed multiplier for camera rotation
-  rotationSpeed = 1;
-
-  // Speed multiplier for camera zoom
-  zoomSpeed = 0.1;
-
-  // Rotation velocity drag coeffient [0 .. 1]
-  // 0: Spins forever
-  // 1: Instantly stops spinning
-  frictionCoefficient = 0.999;
-
-  // Construtor
-  constructor(options?: {
-    // The initial position of the camera
-    position?: Vec3;
-  }) {
-    super();
-    if (options && options.position) {
-      this.position = options.position;
-      this.distance = vec3.len(this.position);
-      this.back = vec3.normalize(this.position);
-      this.recalcuateRight();
-      this.recalcuateUp();
-    }
-  }
-
-  // Returns the camera matrix
-  get matrix() {
-    return super.matrix;
-  }
-
-  // Assigns `mat` to the camera matrix, and recalcuates the distance
-  set matrix(mat: Mat4) {
-    super.matrix = mat;
-    this.distance = vec3.len(this.position);
-  }
-
-  update(deltaTime: number, input: Input): Mat4 {
-    const epsilon = 0.0000001;
-
-    if (input.analog.touching) {
-      // Currently being dragged.
-      this.angularVelocity = 0;
-    } else {
-      // Dampen any existing angular velocity
-      this.angularVelocity *= Math.pow(1 - this.frictionCoefficient, deltaTime);
-    }
-
-    // Calculate the movement vector
-    const movement = vec3.create();
-    vec3.addScaled(movement, this.right, input.analog.x, movement);
-    vec3.addScaled(movement, this.up, -input.analog.y, movement);
-
-    // Cross the movement vector with the view direction to calculate the rotation axis x magnitude
-    const crossProduct = vec3.cross(movement, this.back);
-
-    // Calculate the magnitude of the drag
-    const magnitude = vec3.len(crossProduct);
-
-    if (magnitude > epsilon) {
-      // Normalize the crossProduct to get the rotation axis
-      this.axis = vec3.scale(crossProduct, 1 / magnitude);
-
-      // Remember the current angular velocity. This is used when the touch is released for a fling.
-      this.angularVelocity = magnitude * this.rotationSpeed;
-    }
-
-    // The rotation around this.axis to apply to the camera matrix this update
-    const rotationAngle = this.angularVelocity * deltaTime;
-    if (rotationAngle > epsilon) {
-      // Rotate the matrix around axis
-      // Note: The rotation is not done as a matrix-matrix multiply as the repeated multiplications
-      // will quickly introduce substantial error into the matrix.
-      this.back = vec3.normalize(rotate(this.back, this.axis, rotationAngle));
-      this.recalcuateRight();
-      this.recalcuateUp();
-    }
-
-    // recalculate `this.position` from `this.back` considering zoom
-    if (input.analog.zoom !== 0) {
-      this.distance *= 1 + input.analog.zoom * this.zoomSpeed;
-    }
-    this.position = vec3.scale(this.back, this.distance);
-
-    // Invert the camera matrix to build the view matrix
-    this.view = mat4.invert(this.matrix);
-    return this.view;
-  }
-
-  // Assigns `this.right` with the cross product of `this.up` and `this.back`
-  recalcuateRight() {
-    this.right = vec3.normalize(vec3.cross(this.up, this.back));
-  }
-
-  // Assigns `this.up` with the cross product of `this.back` and `this.right`
-  recalcuateUp() {
-    this.up = vec3.normalize(vec3.cross(this.back, this.right));
-  }
-}
-
-// Returns `x` clamped between [`min` .. `max`]
-function clamp(x: number, min: number, max: number): number {
-  return Math.min(Math.max(x, min), max);
-}
-
-// Returns `x` float-modulo `div`
-function mod(x: number, div: number): number {
-  return x - Math.floor(Math.abs(x) / div) * div * Math.sign(x);
-}
-
-// Returns `vec` rotated `angle` radians around `axis`
-function rotate(vec: Vec3, axis: Vec3, angle: number): Vec3 {
-  return vec3.transformMat4Upper3x3(vec, mat4.rotation(axis, angle));
 }
 
 // Returns the linear interpolation between 'a' and 'b' using 's'

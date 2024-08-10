@@ -40,22 +40,22 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
 
   const setDigital = (e: KeyboardEvent, value: boolean) => {
     switch (e.code) {
-      case 'KeyW':
-        digital.forward = value;
+      case 'ArrowUp':
+        digital.up = value;
         e.preventDefault();
         e.stopPropagation();
         break;
-      case 'KeyS':
-        digital.backward = value;
+      case 'ArrowDown':
+        digital.down = value;
         e.preventDefault();
         e.stopPropagation();
         break;
-      case 'KeyA':
+      case 'ArrowLeft':
         digital.left = value;
         e.preventDefault();
         e.stopPropagation();
         break;
-      case 'KeyD':
+      case 'ArrowRight':
         digital.right = value;
         e.preventDefault();
         e.stopPropagation();
@@ -95,14 +95,12 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
   canvas.addEventListener(
     'wheel',
     (e) => {
-      mouseDown = (e.buttons & 1) !== 0;
-      if (mouseDown) {
-        // The scroll value varies substantially between user agents / browsers.
-        // Just use the sign.
-        analog.zoom += Math.sign(e.deltaY);
-        e.preventDefault();
-        e.stopPropagation();
-      }
+      // mouseDown = (e.buttons & 1) !== 0;
+      // The scroll value varies substantially between user agents / browsers.
+      // Just use the sign.
+      analog.zoom += Math.sign(e.deltaY);
+      e.preventDefault();
+      e.stopPropagation();
     },
     { passive: false }
   );
