@@ -3,13 +3,14 @@ import {
   squareVertexSize,
   squarePositionOffset,
   squareColorOffset,
+  linesIndexArray,
   squareVertexArray,
-  squareVertexCount,
+  pointsIndexArray,
 } from './meshes/square';
 import { WASDCamera } from './camera';
 import { createInputHandler } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
-import { program as squareWGSL } from './shaders/square';
+import { program as linesWGSL } from './shaders/lines';
 // ToDo make a helper program that copies shaders into ts files
 
 // ToDo make a mock canvas when debugging locally
@@ -38,20 +39,39 @@ context.configure({
   alphaMode: 'premultiplied',
 });
 
-// Create a vertex buffer from the cube data.
-const verticesBuffer = device.createBuffer({
+// Create a vertex buffer for the design data
+const linesVerticesBuffer = device.createBuffer({
   size: squareVertexArray.byteLength,
   usage: GPUBufferUsage.VERTEX,
   mappedAtCreation: true,
 });
-new Float32Array(verticesBuffer.getMappedRange()).set(squareVertexArray);
-verticesBuffer.unmap();
-const compiledShader = device.createShaderModule({ code: squareWGSL });
+new Float32Array(linesVerticesBuffer.getMappedRange()).set(squareVertexArray);
+linesVerticesBuffer.unmap();
 
-const pipeline = device.createRenderPipeline({
-  layout: 'auto',
+const linesCompiledShader = device.createShaderModule({ code: linesWGSL });
+
+const linesIndexBuffer = device.createBuffer({
+  size: linesIndexArray.byteLength,
+  usage: GPUBufferUsage.INDEX,
+  mappedAtCreation: true,
+});
+new Uint16Array(linesIndexBuffer.getMappedRange()).set(linesIndexArray);
+linesIndexBuffer.unmap();
+
+const bindGroupLayout = device.createBindGroupLayout({
+  entries: [
+      {
+          binding: 0, // Binding index 0 for the uniform buffer
+          visibility: GPUShaderStage.VERTEX,
+          buffer: { type: 'uniform' },
+      },
+  ],
+});
+
+const linePipeline = device.createRenderPipeline({
+  layout: device.createPipelineLayout({bindGroupLayouts: [bindGroupLayout]}),
   vertex: {
-    module: compiledShader,
+    module: linesCompiledShader,
     buffers: [
       {
         arrayStride: squareVertexSize,
@@ -71,7 +91,7 @@ const pipeline = device.createRenderPipeline({
     ],
   },
   fragment: {
-    module: compiledShader,
+    module: linesCompiledShader,
     targets: [
       {
         format: presentationFormat,
@@ -80,9 +100,57 @@ const pipeline = device.createRenderPipeline({
   },
   primitive: {
     topology: 'line-strip',
-    stripIndexFormat: 'uint32',
+    stripIndexFormat: 'uint16',
     cullMode: 'none',
   },
+});
+
+const pointsIndexBuffer = device.createBuffer({
+  size: pointsIndexArray.byteLength,
+  usage: GPUBufferUsage.INDEX,
+  mappedAtCreation: true,
+});
+new Uint16Array(pointsIndexBuffer.getMappedRange()).set(pointsIndexArray);
+pointsIndexBuffer.unmap();
+
+
+const pointPipeline = device.createRenderPipeline({
+  layout: device.createPipelineLayout({bindGroupLayouts: [bindGroupLayout]}),
+  vertex: {
+    module: linesCompiledShader,
+    buffers: [
+      {
+        arrayStride: squareVertexSize,
+        attributes: [
+          {
+            shaderLocation: 0,
+            offset: squarePositionOffset,
+            format: 'float32x2',
+          },
+          {
+            shaderLocation: 1,
+            offset: squareColorOffset,
+            format: 'float32x4',
+          },
+        ],
+      }
+    ],
+  },
+  fragment: {
+    module: linesCompiledShader,
+    targets: [
+      {
+        format: presentationFormat,
+      },
+    ],
+  },
+  primitive: {
+    topology: 'triangle-list',
+    cullMode: 'none',
+  },
+  multisample: {
+    count: 1,
+  }
 });
 
 const uniformBufferSize = 4 * 16; // 4x4 matrix
@@ -91,8 +159,8 @@ const uniformBuffer = device.createBuffer({
   usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
 });
 
-const uniformBindGroup = device.createBindGroup({
-  layout: pipeline.getBindGroupLayout(0),
+const uniformBindGroupLines = device.createBindGroup({
+  layout: linePipeline.getBindGroupLayout(0),
   entries: [
     {
       binding: 0,
@@ -146,10 +214,19 @@ function frame() {
 
   const commandEncoder = device.createCommandEncoder();
   const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
-  passEncoder.setPipeline(pipeline);
-  passEncoder.setBindGroup(0, uniformBindGroup);
-  passEncoder.setVertexBuffer(0, verticesBuffer);
-  passEncoder.draw(squareVertexCount);
+
+  passEncoder.setBindGroup(0, uniformBindGroupLines);
+
+  passEncoder.setPipeline(linePipeline);
+  passEncoder.setVertexBuffer(0, linesVerticesBuffer);
+  passEncoder.setIndexBuffer(linesIndexBuffer, 'uint16');
+  passEncoder.drawIndexed(linesIndexArray.length, 1, 0, 0, 0);
+
+  passEncoder.setPipeline(pointPipeline);
+  passEncoder.setVertexBuffer(0, linesVerticesBuffer);
+  passEncoder.setIndexBuffer(pointsIndexBuffer, 'uint16');
+  passEncoder.drawIndexed(pointsIndexArray.length, 1, 0, 0, 0);
+
   passEncoder.end();
   device.queue.submit([commandEncoder.finish()]);
 
