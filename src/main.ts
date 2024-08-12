@@ -3,9 +3,8 @@ import {
   squareVertexSize,
   squarePositionOffset,
   squareColorOffset,
-  linesIndexArray,
+  indexArray,
   squareVertexArray,
-  pointsIndexArray,
 } from './meshes/square';
 import { WASDCamera } from './camera';
 import { createInputHandler } from './input';
@@ -40,36 +39,36 @@ context.configure({
 });
 
 // Create a vertex buffer for the design data
-const linesVerticesBuffer = device.createBuffer({
+const verticesBuffer = device.createBuffer({
   size: squareVertexArray.byteLength,
   usage: GPUBufferUsage.VERTEX,
   mappedAtCreation: true,
 });
-new Float32Array(linesVerticesBuffer.getMappedRange()).set(squareVertexArray);
-linesVerticesBuffer.unmap();
+new Float32Array(verticesBuffer.getMappedRange()).set(squareVertexArray);
+verticesBuffer.unmap();
 
 const linesCompiledShader = device.createShaderModule({ code: linesWGSL });
 
-const linesIndexBuffer = device.createBuffer({
-  size: linesIndexArray.byteLength,
+const indexBuffer = device.createBuffer({
+  size: indexArray.byteLength,
   usage: GPUBufferUsage.INDEX,
   mappedAtCreation: true,
 });
-new Uint16Array(linesIndexBuffer.getMappedRange()).set(linesIndexArray);
-linesIndexBuffer.unmap();
+new Uint32Array(indexBuffer.getMappedRange()).set(indexArray);
+indexBuffer.unmap();
 
 const bindGroupLayout = device.createBindGroupLayout({
   entries: [
-      {
-          binding: 0, // Binding index 0 for the uniform buffer
-          visibility: GPUShaderStage.VERTEX,
-          buffer: { type: 'uniform' },
-      },
+    {
+      binding: 0, // Binding index 0 for the uniform buffer
+      visibility: GPUShaderStage.VERTEX,
+      buffer: { type: 'uniform' },
+    },
   ],
 });
 
 const linePipeline = device.createRenderPipeline({
-  layout: device.createPipelineLayout({bindGroupLayouts: [bindGroupLayout]}),
+  layout: device.createPipelineLayout({ bindGroupLayouts: [bindGroupLayout] }),
   vertex: {
     module: linesCompiledShader,
     buffers: [
@@ -100,57 +99,9 @@ const linePipeline = device.createRenderPipeline({
   },
   primitive: {
     topology: 'line-strip',
-    stripIndexFormat: 'uint16',
+    stripIndexFormat: 'uint32',
     cullMode: 'none',
   },
-});
-
-const pointsIndexBuffer = device.createBuffer({
-  size: pointsIndexArray.byteLength,
-  usage: GPUBufferUsage.INDEX,
-  mappedAtCreation: true,
-});
-new Uint16Array(pointsIndexBuffer.getMappedRange()).set(pointsIndexArray);
-pointsIndexBuffer.unmap();
-
-
-const pointPipeline = device.createRenderPipeline({
-  layout: device.createPipelineLayout({bindGroupLayouts: [bindGroupLayout]}),
-  vertex: {
-    module: linesCompiledShader,
-    buffers: [
-      {
-        arrayStride: squareVertexSize,
-        attributes: [
-          {
-            shaderLocation: 0,
-            offset: squarePositionOffset,
-            format: 'float32x2',
-          },
-          {
-            shaderLocation: 1,
-            offset: squareColorOffset,
-            format: 'float32x4',
-          },
-        ],
-      }
-    ],
-  },
-  fragment: {
-    module: linesCompiledShader,
-    targets: [
-      {
-        format: presentationFormat,
-      },
-    ],
-  },
-  primitive: {
-    topology: 'triangle-list',
-    cullMode: 'none',
-  },
-  multisample: {
-    count: 1,
-  }
 });
 
 const uniformBufferSize = 4 * 16; // 4x4 matrix
@@ -216,17 +167,10 @@ function frame() {
   const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
 
   passEncoder.setBindGroup(0, uniformBindGroupLines);
-
   passEncoder.setPipeline(linePipeline);
-  passEncoder.setVertexBuffer(0, linesVerticesBuffer);
-  passEncoder.setIndexBuffer(linesIndexBuffer, 'uint16');
-  passEncoder.drawIndexed(linesIndexArray.length, 1, 0, 0, 0);
-
-  passEncoder.setPipeline(pointPipeline);
-  passEncoder.setVertexBuffer(0, linesVerticesBuffer);
-  passEncoder.setIndexBuffer(pointsIndexBuffer, 'uint16');
-  passEncoder.drawIndexed(pointsIndexArray.length, 1, 0, 0, 0);
-
+  passEncoder.setVertexBuffer(0, verticesBuffer);
+  passEncoder.setIndexBuffer(indexBuffer, 'uint32');
+  passEncoder.drawIndexed(indexArray.length, 1, 0, 0, 0);
   passEncoder.end();
   device.queue.submit([commandEncoder.finish()]);
 

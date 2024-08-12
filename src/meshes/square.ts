@@ -21,6 +21,6 @@ export const squareVertexArray = new Float32Array([
 -0.6, -0.4, 0.05, 0.05, 0.05, 1.,
 ]);
 
-export const linesIndexArray = new Uint16Array([0, 1, 2, 3, 4, 0xFFFF, 5, 6, 7, 8, 9, 0xFFFF]); // Needs even length
-export const pointsIndexArray = new Uint16Array([10, 11, 12, 13, 10, 12]);
-
+export const indexArray = new Uint32Array([
+  0, 1, 2, 3, 4, 0xffffffff, 5, 6, 7, 8, 9, 0xffffffff, 10, 12, 0xffffffff, 11, 13,
+]);
