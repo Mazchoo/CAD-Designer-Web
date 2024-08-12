@@ -97,7 +97,7 @@ export class WASDCamera extends CameraBase implements Camera {
   private readonly velocity_ = vec3.create();
 
   // Speed multiplier for camera movement
-  movementSpeed = 10;
+  movementSpeed = 5;
 
   // Speed multiplier for camera rotation
   rotationSpeed = 1;
@@ -169,7 +169,7 @@ export class WASDCamera extends CameraBase implements Camera {
     vec3.addScaled(targetVelocity, this.right, input.analog.x, targetVelocity);
     vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
     vec3.normalize(targetVelocity, targetVelocity);
-    const targetSpeed = input.analog.zoom !== 0 ? this.zoomSpeed : this.movementSpeed;
+    const targetSpeed = input.analog.zoom !== 0 ? this.zoomSpeed : this.movementSpeed * this.position[2];
     vec3.mulScalar(targetVelocity, targetSpeed, targetVelocity);
 
     // Mix new target velocity
