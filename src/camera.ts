@@ -162,13 +162,22 @@ export class WASDCamera extends CameraBase implements Camera {
     const deltaRight = sign(digital.right, digital.left);
     const deltaUp = sign(digital.up, digital.down);
     const targetVelocity = vec3.create();
-    const deltaBack = input.analog.zoom * this.zoomSpeed;
+    const deltaBack = input.analog.zoom;
     vec3.addScaled(targetVelocity, this.right, deltaRight, targetVelocity);
     vec3.addScaled(targetVelocity, this.up, deltaUp, targetVelocity);
     vec3.addScaled(targetVelocity, this.back, deltaBack, targetVelocity);
     vec3.addScaled(targetVelocity, this.right, input.analog.x, targetVelocity);
     vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
+
+    // Add specific behaviour when zooming
+    if (input.analog.zoom !== 0) {
+      const multiplier = -Math.sign(input.analog.zoom);
+      vec3.addScaled(targetVelocity, this.right, multiplier * input.analog.mouseX, targetVelocity);
+      vec3.addScaled(targetVelocity, this.up, multiplier * -input.analog.mouseY, targetVelocity);
+    }
+
     vec3.normalize(targetVelocity, targetVelocity);
+    // If zooming, use constant else use zoom to determine speed
     const targetSpeed = input.analog.zoom !== 0 ? this.zoomSpeed : this.movementSpeed * this.position[2];
     vec3.mulScalar(targetVelocity, targetSpeed, targetVelocity);
 
