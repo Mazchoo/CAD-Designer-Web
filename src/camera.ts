@@ -105,6 +105,12 @@ export class WASDCamera extends CameraBase implements Camera {
   // Speed multiplier for scrolling
   zoomSpeed = 50;
 
+  // Controls zoom
+  miniminalDistance = 0.1;
+
+  // Controls stopping panning on zoom if this ratio above min distance
+  minPanRatio = 4.;
+
   // Movement velocity drag coeffient [0 .. 1]
   // 0: Continues forever
   // 1: Instantly stops moving
@@ -170,7 +176,7 @@ export class WASDCamera extends CameraBase implements Camera {
     vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
 
     // Add specific behaviour when zooming
-    if (input.analog.zoom !== 0) {
+    if (input.analog.zoom !== 0 && this.position[2] > this.miniminalDistance * this.minPanRatio) {
       const multiplier = -Math.sign(input.analog.zoom);
       vec3.addScaled(targetVelocity, this.right, multiplier * input.analog.mouseX, targetVelocity);
       vec3.addScaled(targetVelocity, this.up, multiplier * -input.analog.mouseY, targetVelocity);
@@ -186,7 +192,7 @@ export class WASDCamera extends CameraBase implements Camera {
 
     // Integrate velocity to calculate new position
     this.position = vec3.addScaled(position, this.velocity, deltaTime);
-    this.position[2] = Math.max(this.position[2], 0.1);
+    this.position[2] = Math.max(this.position[2], this.miniminalDistance);
 
     // Invert the camera matrix to build the view matrix
     this.view = mat4.invert(this.matrix);
