@@ -60,20 +60,20 @@
       <form style="height: 10vh">
         <div class="row">
           <div class="input-field col s1">
-            <input disabled placeholder="0" id="first_name" type="text" class="validate" />
-            <label for="first_name">Nr objs</label>
+            <input disabled placeholder="0" id="nr_objects" type="text" class="validate" />
+            <label for="nr_objects">Nr objs</label>
           </div>
           <div class="input-field col s1">
-            <input placeholder="{x, y}" value="{x,y}" id="first_name" type="text" class="validate" />
-            <label for="first_name">position</label>
+            <input placeholder="{x, y}" value="{x,y}" id="position_selected" type="text" class="validate" />
+            <label for="position_selected">position</label>
           </div>
           <div class="input-field col s1">
-            <input placeholder="angle" value="angle" id="first_name" type="text" class="validate" />
-            <label for="first_name">rotation</label>
+            <input placeholder="angle" value="angle" id="rotation_selected" type="text" class="validate" />
+            <label for="rotation_selected">rotation</label>
           </div>
           <div class="input-field col s1">
-            <input placeholder="{x, y}" value="{x, y}" id="first_name" type="text" class="validate" />
-            <label for="first_name">center</label>
+            <input placeholder="{x, y}" value="{x, y}" id="centroid_selected" type="text" class="validate" />
+            <label for="centroid_selected">center</label>
           </div>
         </div>
       </form>
@@ -378,9 +378,9 @@
       <div id="global-settings" class="col s12">
         <div class="row" style="margin-left: 5%; margin-right: 5%; height: 50vh; overflow: auto">
           <div class="col s12">
-            Size of points
+            Size of crosses
             <div class="input-field inline">
-              <input class="center-align" id="point-size-input" value="2" type="text" />
+              <input class="center-align" id="cross-size-input" value="2" type="text" />
             </div>
           </div>
           <div class="col s12">
@@ -392,31 +392,7 @@
           <div class="col s12">
             Point select distance
             <div class="input-field inline">
-              <input class="center-align" id="point-size-input" value="3" type="text" />
-            </div>
-          </div>
-          <div class="col s12">
-            Size of points drawn on canvas
-            <div class="input-field inline">
-              <input class="center-align" id="point-size-input" value="5" type="text" />
-            </div>
-          </div>
-          <div class="col s12">
-            Size of points drawn on canvas
-            <div class="input-field inline">
-              <input class="center-align" id="point-size-input" value="5" type="text" />
-            </div>
-          </div>
-          <div class="col s12">
-            Size of points drawn on canvas
-            <div class="input-field inline">
-              <input class="center-align" id="point-size-input" value="5" type="text" />
-            </div>
-          </div>
-          <div class="col s12">
-            Size of points drawn on canvas
-            <div class="input-field inline">
-              <input class="center-align" id="point-size-input" value="5" type="text" />
+              <input class="center-align" id="point-distance-input" value="3" type="text" />
             </div>
           </div>
         </div>
