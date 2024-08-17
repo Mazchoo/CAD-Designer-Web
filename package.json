@@ -11,7 +11,8 @@
     "prettier-check": "prettier . --config ./.prettierrc.json --check",
     "prettier-write": "prettier . --config ./.prettierrc.json --write",
     "server-release": "rollup -c && servez --port=23592 .",
-    "server-debug": "rollup -c -n debug && servez --port=23592 ."
+    "server-debug": "rollup -c -n debug && servez --port=23592 .",
+    "build-rust": "cd ./leptos-controller && wasm-pack build --target web && move ./pkg ../dist/pkg"
   },
   "repository": {
     "type": "git",
