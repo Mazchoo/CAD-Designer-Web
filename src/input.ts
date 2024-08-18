@@ -38,7 +38,7 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
     y: 0,
     zoom: 0,
     mouseX: 0,
-    mouseY: 0
+    mouseY: 0,
   };
   let mouseDown = false;
 
@@ -84,8 +84,8 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
     const rect = canvas.getBoundingClientRect();
     const centerX = (rect.left + rect.right) / 2;
     const centerY = (rect.top + rect.bottom) / 2;
-    analog.mouseX = (mouseX - centerX) / (rect.right - rect.left) * 2;
-    analog.mouseY = (mouseY - centerY) / (rect.bottom - rect.top) * 2;
+    analog.mouseX = ((mouseX - centerX) / (rect.right - rect.left)) * 2;
+    analog.mouseY = ((mouseY - centerY) / (rect.bottom - rect.top)) * 2;
 
     mouseDown = e.pointerType == 'mouse' ? (e.buttons & 1) !== 0 : true;
     if (mouseDown) {

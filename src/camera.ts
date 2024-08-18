@@ -109,7 +109,7 @@ export class WASDCamera extends CameraBase implements Camera {
   miniminalDistance = 0.1;
 
   // Controls stopping panning on zoom if this ratio above min distance
-  minPanRatio = 4.;
+  minPanRatio = 4;
 
   // Movement velocity drag coeffient [0 .. 1]
   // 0: Continues forever
