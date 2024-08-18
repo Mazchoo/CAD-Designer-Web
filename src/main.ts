@@ -142,7 +142,8 @@ let lastFrameMS = Date.now();
 function frame() {
   const now = Date.now();
   const deltaTime = (now - lastFrameMS) / 1000;
-  lastFrameMS = now; 
+  lastFrameMS = now;
+  // console.log(deltaTime * 1000);
 
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime);
   device.queue.writeBuffer(
