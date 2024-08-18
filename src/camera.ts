@@ -103,10 +103,11 @@ export class WASDCamera extends CameraBase implements Camera {
   rotationSpeed = 1;
 
   // Speed multiplier for scrolling
-  zoomSpeed = 50;
+  zoomSpeed = 1200;
 
   // Controls zoom
   miniminalDistance = 0.1;
+  maximumDistance = 10000.0;
 
   // Controls stopping panning on zoom if this ratio above min distance
   minPanRatio = 4;
@@ -176,7 +177,11 @@ export class WASDCamera extends CameraBase implements Camera {
     vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
 
     // Add specific behaviour when zooming
-    if (input.analog.zoom !== 0 && this.position[2] > this.miniminalDistance * this.minPanRatio) {
+    if (
+      input.analog.zoom !== 0 &&
+      this.position[2] > this.miniminalDistance * this.minPanRatio &&
+      this.position[2] < this.maximumDistance
+    ) {
       const multiplier = -Math.sign(input.analog.zoom);
       vec3.addScaled(targetVelocity, this.right, multiplier * input.analog.mouseX, targetVelocity);
       vec3.addScaled(targetVelocity, this.up, multiplier * -input.analog.mouseY, targetVelocity);

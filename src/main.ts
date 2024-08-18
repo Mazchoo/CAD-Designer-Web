@@ -10,6 +10,13 @@ import { WASDCamera } from './camera';
 import { createInputHandler } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
+import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
+
+import { uploadJSON, readJSON } from './parseJson';
+
+(window as any).uploadJSON = uploadJSON;
+(window as any).readJSON = readJSON;
+
 // ToDo make a helper program that copies shaders into ts files
 
 // ToDo make a mock canvas when debugging locally
@@ -19,7 +26,7 @@ const canvas = document.querySelector('canvas') as HTMLCanvasElement;
 const inputHandler = createInputHandler(window, canvas);
 
 // The camera types
-const initialCameraPosition = vec3.create(0, 0, 2);
+const initialCameraPosition = vec3.create(0, 0, 100);
 const camera = new WASDCamera({ position: initialCameraPosition });
 
 const adapter = await navigator.gpu?.requestAdapter();
@@ -38,24 +45,10 @@ context.configure({
   alphaMode: 'premultiplied',
 });
 
-// Create a vertex buffer for the design data
-const verticesBuffer = device.createBuffer({
-  size: squareVertexArray.byteLength,
-  usage: GPUBufferUsage.VERTEX,
-  mappedAtCreation: true,
-});
-new Float32Array(verticesBuffer.getMappedRange()).set(squareVertexArray);
-verticesBuffer.unmap();
+setDevice(device);
+mapBuffersToDevice(squareVertexArray, indexArray);
 
 const linesCompiledShader = device.createShaderModule({ code: linesWGSL });
-
-const indexBuffer = device.createBuffer({
-  size: indexArray.byteLength,
-  usage: GPUBufferUsage.INDEX,
-  mappedAtCreation: true,
-});
-new Uint32Array(indexBuffer.getMappedRange()).set(indexArray);
-indexBuffer.unmap();
 
 const bindGroupLayout = device.createBindGroupLayout({
   entries: [
@@ -104,7 +97,7 @@ const linePipeline = device.createRenderPipeline({
   },
 });
 
-const uniformBufferSize = 4 * 16; // 4x4 matrix
+const uniformBufferSize = 32 * 16; // 4x4 matrix
 const uniformBuffer = device.createBuffer({
   size: uniformBufferSize,
   usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
@@ -135,7 +128,7 @@ const renderPassDescriptor = {
 } as GPURenderPassDescriptor;
 
 const aspect = canvas.width / canvas.height;
-const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 0.1, 100.0);
+const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 0.1, 10000.0);
 const modelViewProjectionMatrix = mat4.create();
 
 function getModelViewProjectionMatrix(deltaTime: number) {
@@ -149,7 +142,7 @@ let lastFrameMS = Date.now();
 function frame() {
   const now = Date.now();
   const deltaTime = (now - lastFrameMS) / 1000;
-  lastFrameMS = now;
+  lastFrameMS = now; 
 
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime);
   device.queue.writeBuffer(
@@ -166,13 +159,18 @@ function frame() {
   const commandEncoder = device.createCommandEncoder();
   const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
 
-  passEncoder.setBindGroup(0, uniformBindGroupLines);
-  passEncoder.setPipeline(linePipeline);
-  passEncoder.setVertexBuffer(0, verticesBuffer);
-  passEncoder.setIndexBuffer(indexBuffer, 'uint32');
-  passEncoder.drawIndexed(indexArray.length, 1, 0, 0, 0);
-  passEncoder.end();
-  device.queue.submit([commandEncoder.finish()]);
+  const buffers = getBuffers();
+  if (buffers !== undefined) {
+    const [verticesBuffer, indexBuffer, nrIndices] = buffers;
+
+    passEncoder.setBindGroup(0, uniformBindGroupLines);
+    passEncoder.setPipeline(linePipeline);
+    passEncoder.setVertexBuffer(0, verticesBuffer);
+    passEncoder.setIndexBuffer(indexBuffer, 'uint32');
+    passEncoder.drawIndexed(nrIndices, 1, 0, 0, 0);
+    passEncoder.end();
+    device.queue.submit([commandEncoder.finish()]);
+  }
 
   requestAnimationFrame(frame);
 }

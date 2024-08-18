@@ -29,7 +29,8 @@
 
       <!-- Dropdown Structure -->
       <ul id="menu-dropdown" class="dropdown-content black">
-        <li><a id="new-file-button" href="#!">👘 New</a></li>
+        <input type="file" id="fileInput" onchange="readJSON()" accept=".json" style="display:none;">
+        <li><a id="new-file-button" onclick="uploadJSON()" href="#!">👘 New</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a id="export-file-button" href="#!">🐦 Export</a></li>
       </ul>
