@@ -1,4 +1,3 @@
 node_modules/
 leptos-controller/target/
 dist/
-example_input/
