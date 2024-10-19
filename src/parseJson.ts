@@ -26,8 +26,10 @@ export interface IMinBlock {
 }
 
 export interface IInsertEntity {
+  type: string;
   name: string;
   position: IVertex;
+  layer: string;
 }
 
 export interface IMinPatternJson {

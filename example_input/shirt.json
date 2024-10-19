@@ -5213,12 +5213,12 @@
     "entities": [
       {
         "type": "INSERT",
+        "name": "L-1",
         "layer": "1",
         "position": {
           "x": -58.73511,
           "y": 11.009780000000001
-        },
-        "6ALayer": "seam"
+        }
       },
       {
         "type": "INSERT",
@@ -5227,8 +5227,7 @@
         "position": {
           "x": -59.27187499680076,
           "y": 78.82570998423114
-        },
-        "6ALayer": "seam"
+        }
       },
       {
         "type": "INSERT",
@@ -5237,96 +5236,7 @@
         "position": {
           "x": 13.17179,
           "y": 30.447840000000003
-        },
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 3.5
-        },
-        "textHeight": 0.4,
-        "text": "Style Name:MCS1071",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 3
-        },
-        "textHeight": 0.4,
-        "text": "Creation Date:7/29/2021",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 2.5
-        },
-        "textHeight": 0.4,
-        "text": "Creation Time:10:5:20",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 2
-        },
-        "textHeight": 0.4,
-        "text": "Author: DOCAD Information Technology",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 1.5
-        },
-        "textHeight": 0.4,
-        "text": "Sample Size:L",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 1
-        },
-        "textHeight": 0.4,
-        "text": "Grade Rule Table:1071",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 0.5
-        },
-        "textHeight": 0.4,
-        "text": "Units:Metric",
-        "6ALayer": "seam"
-      },
-      {
-        "type": "TEXT",
-        "layer": "1",
-        "startPoint": {
-          "x": 0,
-          "y": 0
-        },
-        "textHeight": 0.4,
-        "text": "Tolerance: 0.01",
-        "6ALayer": "seam"
+        }
       }
     ],
     "originalUnit": "mm"
