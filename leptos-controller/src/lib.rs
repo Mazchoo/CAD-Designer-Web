@@ -2,13 +2,19 @@ use wasm_bindgen::prelude::*;
 use leptos::*;
 
 pub mod parse_pattern;
+pub mod block;
+pub mod insert;
+pub mod entity;
+pub mod pattern;
 
 #[wasm_bindgen]
-pub fn read_pattern(json_payload: &str) {
+pub fn read_pattern(json_payload: &str) -> bool {
     if let Ok(_pattern) = parse_pattern::parse_pattern(json_payload) {
         logging::log!("Parsed the pattern");
+        return true;
     } else {
         logging::log!("Parsing failed");
+        return false;
     }
 }
 

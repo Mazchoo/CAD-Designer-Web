@@ -41,9 +41,6 @@ export default [
         ],
     watch: {
       clearScreen: false,
-    },
-    experiments: {
-      asyncWebAssembly: true,
-    },
+    }
   },
 ];

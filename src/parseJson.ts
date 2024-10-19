@@ -1,4 +1,5 @@
 import { mapBuffersToDevice } from './buffers';
+import { intilizePattern } from './pattern';
 
 const crossSize = 0.3;
 const vertexStride = 6;
@@ -14,9 +15,9 @@ export interface IMinEntity {
   shape?: boolean;
   vertices?: IVertex[];
   position?: IVertex;
-  entityIndex?: string;
-  startPoint?: IVertex;
-  textHeight?: number;
+  entity_index?: string;
+  start_point?: IVertex;
+  text_height?: number;
   text?: string;
 }
 
@@ -168,12 +169,7 @@ export function readJsonToWasm() {
 
     reader.onload = (e: ProgressEvent<FileReader>) => {
       console.log('Uploading json');
-      try {
-        const jsonData = JSON.parse(e.target?.result as string);
-        console.log(jsonData);
-      } catch (err) {
-        console.error('Error parsing JSON:', err);
-      }
+      console.log(intilizePattern(e.target?.result as string));
     };
 
     reader.readAsText(file);

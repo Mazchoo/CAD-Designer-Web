@@ -21,7 +21,7 @@
               }
             ],
             "layer": "7",
-            "entityIndex": "5fa8d9ac-b69a-42dd-860a-204680c8dd2b"
+            "entity_index": "5fa8d9ac-b69a-42dd-860a-204680c8dd2b"
           },
           {
             "entity_type": "POINT",
@@ -30,18 +30,18 @@
               "x": -24.936300000000003,
               "y": 15.25
             },
-            "entityIndex": "547a676f-f635-49b8-bb96-f70a0c9f519e"
+            "entity_index": "547a676f-f635-49b8-bb96-f70a0c9f519e"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -24.936300000000003,
               "y": 15.25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#1",
-            "entityIndex": "622a5a7e-e7ed-4384-b23e-d4b11a6408c0"
+            "entity_index": "622a5a7e-e7ed-4384-b23e-d4b11a6408c0"
           },
           {
             "entity_type": "POINT",
@@ -50,18 +50,18 @@
               "x": 22.81554,
               "y": 15.25
             },
-            "entityIndex": "a0ec5536-60f2-4392-a5aa-9ae8bfcf1e2d"
+            "entity_index": "a0ec5536-60f2-4392-a5aa-9ae8bfcf1e2d"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 22.81554,
               "y": 15.25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#2",
-            "entityIndex": "821acc38-d4f5-4b81-aec6-8fe76d9c7880"
+            "entity_index": "821acc38-d4f5-4b81-aec6-8fe76d9c7880"
           },
           {
             "entity_type": "LWPOLYLINE",
@@ -489,8 +489,7 @@
             ],
             "layer": "1",
             "shape": true,
-            "hasContinuousLinetypePattern": false,
-            "entityIndex": "1cbccb9b-1ca2-4675-87dc-0b6e280ba8c3"
+            "entity_index": "1cbccb9b-1ca2-4675-87dc-0b6e280ba8c3"
           },
           {
             "entity_type": "POINT",
@@ -499,18 +498,18 @@
               "x": -38.87427,
               "y": 30.87623
             },
-            "entityIndex": "ca6a7aa3-7dd3-4957-9c08-542e6c152e52"
+            "entity_index": "ca6a7aa3-7dd3-4957-9c08-542e6c152e52"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -38.87427,
               "y": 30.87623
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#3",
-            "entityIndex": "fa872c56-7381-46e4-9ca0-5f63085b0e2f"
+            "entity_index": "fa872c56-7381-46e4-9ca0-5f63085b0e2f"
           },
           {
             "entity_type": "POINT",
@@ -519,18 +518,18 @@
               "x": 5.519220000000001,
               "y": 31.40533
             },
-            "entityIndex": "213a5e92-3609-4f6e-a2f7-7bc138adaf53"
+            "entity_index": "213a5e92-3609-4f6e-a2f7-7bc138adaf53"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 5.519220000000001,
               "y": 31.40533
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#4",
-            "entityIndex": "d53da1e7-866f-4fd9-8391-9ec365b91d64"
+            "entity_index": "d53da1e7-866f-4fd9-8391-9ec365b91d64"
           },
           {
             "entity_type": "POINT",
@@ -539,18 +538,18 @@
               "x": 7.7770600000000005,
               "y": 28.7489
             },
-            "entityIndex": "36d51596-b00e-4bf6-99b4-fb18f3e2f074"
+            "entity_index": "36d51596-b00e-4bf6-99b4-fb18f3e2f074"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.7770600000000005,
               "y": 28.7489
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#5",
-            "entityIndex": "70dadb45-a1ac-4045-a94e-2aceec8a0263"
+            "entity_index": "70dadb45-a1ac-4045-a94e-2aceec8a0263"
           },
           {
             "entity_type": "POINT",
@@ -559,18 +558,18 @@
               "x": 11.849250000000001,
               "y": 26.68914
             },
-            "entityIndex": "1df82ded-b1fe-487a-9890-235637c23b59"
+            "entity_index": "1df82ded-b1fe-487a-9890-235637c23b59"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.849250000000001,
               "y": 26.68914
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#6",
-            "entityIndex": "1dff6026-959f-4baa-8a06-fea2c3afcb70"
+            "entity_index": "1dff6026-959f-4baa-8a06-fea2c3afcb70"
           },
           {
             "entity_type": "POINT",
@@ -579,18 +578,18 @@
               "x": 17.28286,
               "y": 25.877940000000002
             },
-            "entityIndex": "553d33c4-bca8-448c-b99b-a24e7ea27f83"
+            "entity_index": "553d33c4-bca8-448c-b99b-a24e7ea27f83"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.28286,
               "y": 25.877940000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#7",
-            "entityIndex": "79e4c92d-b596-4086-adb2-dc238c2b876a"
+            "entity_index": "79e4c92d-b596-4086-adb2-dc238c2b876a"
           },
           {
             "entity_type": "POINT",
@@ -599,18 +598,18 @@
               "x": 24.92218,
               "y": 25.599800000000002
             },
-            "entityIndex": "e5084be4-be80-4054-a257-b86c7ea80da7"
+            "entity_index": "e5084be4-be80-4054-a257-b86c7ea80da7"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.92218,
               "y": 25.599800000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#8",
-            "entityIndex": "778fcf75-724d-4669-a218-b0505561a358"
+            "entity_index": "778fcf75-724d-4669-a218-b0505561a358"
           },
           {
             "entity_type": "POINT",
@@ -619,18 +618,18 @@
               "x": 32.91162,
               "y": 25.94059
             },
-            "entityIndex": "762b8e9b-b64b-4a13-b616-27ce38497554"
+            "entity_index": "762b8e9b-b64b-4a13-b616-27ce38497554"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.91162,
               "y": 25.94059
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#9",
-            "entityIndex": "e905ded8-8de2-41d4-8eaf-9e514fa57472"
+            "entity_index": "e905ded8-8de2-41d4-8eaf-9e514fa57472"
           },
           {
             "entity_type": "POINT",
@@ -639,18 +638,18 @@
               "x": 36.43784,
               "y": 12.339480000000002
             },
-            "entityIndex": "9d22f72a-1aea-4bc0-ada9-8505bfb603f6"
+            "entity_index": "9d22f72a-1aea-4bc0-ada9-8505bfb603f6"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 36.43784,
               "y": 12.339480000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#10",
-            "entityIndex": "daf2aaac-16d4-4210-9010-e39fea7d115b"
+            "entity_index": "daf2aaac-16d4-4210-9010-e39fea7d115b"
           },
           {
             "entity_type": "POINT",
@@ -659,18 +658,18 @@
               "x": 38.87426,
               "y": 12.11996
             },
-            "entityIndex": "2c47c246-18e6-4f16-91c4-cf23f23919e8"
+            "entity_index": "2c47c246-18e6-4f16-91c4-cf23f23919e8"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 38.87427,
               "y": 12.11996
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#11",
-            "entityIndex": "e72e0ff0-beed-4fec-b1e5-1bcef974c1b1"
+            "entity_index": "e72e0ff0-beed-4fec-b1e5-1bcef974c1b1"
           },
           {
             "entity_type": "POINT",
@@ -679,18 +678,18 @@
               "x": 35.61202,
               "y": 8.053360000000001
             },
-            "entityIndex": "204515e7-45f7-454d-94f7-b5aa3d6f3fa8"
+            "entity_index": "204515e7-45f7-454d-94f7-b5aa3d6f3fa8"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 35.61202,
               "y": 8.053360000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#12",
-            "entityIndex": "f0c8c641-6a78-43fc-b5de-472e9f7526a5"
+            "entity_index": "f0c8c641-6a78-43fc-b5de-472e9f7526a5"
           },
           {
             "entity_type": "POINT",
@@ -699,18 +698,18 @@
               "x": 34.550380000000004,
               "y": 5.0124200000000005
             },
-            "entityIndex": "d2391a87-ece0-43fa-9453-625df405cd06"
+            "entity_index": "d2391a87-ece0-43fa-9453-625df405cd06"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 34.550380000000004,
               "y": 5.0124200000000005
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#13",
-            "entityIndex": "9e4532e8-a104-459f-946c-31f9f26066f1"
+            "entity_index": "9e4532e8-a104-459f-946c-31f9f26066f1"
           },
           {
             "entity_type": "POINT",
@@ -719,18 +718,18 @@
               "x": 34.22581,
               "y": -0.00004
             },
-            "entityIndex": "54a16162-ff34-4a40-9fe4-87f78a27359d"
+            "entity_index": "54a16162-ff34-4a40-9fe4-87f78a27359d"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 34.22581,
               "y": -0.00004
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#14",
-            "entityIndex": "e5775dc6-8f26-4f41-83fd-90fb61ef37a2"
+            "entity_index": "e5775dc6-8f26-4f41-83fd-90fb61ef37a2"
           },
           {
             "entity_type": "POINT",
@@ -739,18 +738,18 @@
               "x": 34.55037,
               "y": -5.0124
             },
-            "entityIndex": "cd0a8109-94be-4dce-95d8-e9f112c2ee77"
+            "entity_index": "cd0a8109-94be-4dce-95d8-e9f112c2ee77"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 34.55037,
               "y": -5.0124
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#15",
-            "entityIndex": "d1a05410-3548-4758-9189-a6acf181c6aa"
+            "entity_index": "d1a05410-3548-4758-9189-a6acf181c6aa"
           },
           {
             "entity_type": "POINT",
@@ -759,18 +758,18 @@
               "x": 35.61202,
               "y": -8.05335
             },
-            "entityIndex": "452e6a9b-12f1-46ba-89d4-14a6be0525ad"
+            "entity_index": "452e6a9b-12f1-46ba-89d4-14a6be0525ad"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 35.61202,
               "y": -8.05335
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#16",
-            "entityIndex": "e9c8e1c8-7e8c-4157-8037-0f62bd23e2b4"
+            "entity_index": "e9c8e1c8-7e8c-4157-8037-0f62bd23e2b4"
           },
           {
             "entity_type": "POINT",
@@ -779,18 +778,18 @@
               "x": 38.87427,
               "y": -12.119970000000002
             },
-            "entityIndex": "8fcbb78d-21ed-4433-b85d-87792c1dadbf"
+            "entity_index": "8fcbb78d-21ed-4433-b85d-87792c1dadbf"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 38.87427,
               "y": -12.119970000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#17",
-            "entityIndex": "4de22264-5ebb-4a96-b96b-3fc2ada222bc"
+            "entity_index": "4de22264-5ebb-4a96-b96b-3fc2ada222bc"
           },
           {
             "entity_type": "POINT",
@@ -799,18 +798,18 @@
               "x": 36.43784,
               "y": -12.339490000000001
             },
-            "entityIndex": "a8cbd8e6-e0ef-4977-bdb1-0a10a52f0885"
+            "entity_index": "a8cbd8e6-e0ef-4977-bdb1-0a10a52f0885"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 36.43784,
               "y": -12.339490000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#18",
-            "entityIndex": "cf2cf241-095e-49c2-b0a1-ef5bfdf48367"
+            "entity_index": "cf2cf241-095e-49c2-b0a1-ef5bfdf48367"
           },
           {
             "entity_type": "POINT",
@@ -819,18 +818,18 @@
               "x": 32.91162,
               "y": -25.940600000000003
             },
-            "entityIndex": "0e1a8632-9e4f-4789-b330-e6679000a2cb"
+            "entity_index": "0e1a8632-9e4f-4789-b330-e6679000a2cb"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.91162,
               "y": -25.940600000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#19",
-            "entityIndex": "5f000ada-4fb8-4971-bc1c-20f153da5698"
+            "entity_index": "5f000ada-4fb8-4971-bc1c-20f153da5698"
           },
           {
             "entity_type": "POINT",
@@ -839,18 +838,18 @@
               "x": 24.922210000000003,
               "y": -25.599800000000002
             },
-            "entityIndex": "bd77a061-c066-4a02-b291-23d263c8c952"
+            "entity_index": "bd77a061-c066-4a02-b291-23d263c8c952"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.922210000000003,
               "y": -25.599800000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#20",
-            "entityIndex": "2438d451-ef49-489d-ab27-ae19a51fdb5f"
+            "entity_index": "2438d451-ef49-489d-ab27-ae19a51fdb5f"
           },
           {
             "entity_type": "POINT",
@@ -859,18 +858,18 @@
               "x": 17.282610000000002,
               "y": -25.87796
             },
-            "entityIndex": "70804518-9fe1-41d8-a8be-55e06abdf1af"
+            "entity_index": "70804518-9fe1-41d8-a8be-55e06abdf1af"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.282610000000002,
               "y": -25.87796
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#21",
-            "entityIndex": "5f276a03-1bf0-4998-9f7f-7e1ce5a0eddd"
+            "entity_index": "5f276a03-1bf0-4998-9f7f-7e1ce5a0eddd"
           },
           {
             "entity_type": "POINT",
@@ -879,18 +878,18 @@
               "x": 11.849240000000002,
               "y": -26.68914
             },
-            "entityIndex": "92e60b7a-376a-4bba-8ae7-0c0e107bf347"
+            "entity_index": "92e60b7a-376a-4bba-8ae7-0c0e107bf347"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.849240000000002,
               "y": -26.68914
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#22",
-            "entityIndex": "01dc7a95-787f-4500-b365-defd98f0f78d"
+            "entity_index": "01dc7a95-787f-4500-b365-defd98f0f78d"
           },
           {
             "entity_type": "POINT",
@@ -899,18 +898,18 @@
               "x": 7.7770600000000005,
               "y": -28.7489
             },
-            "entityIndex": "7b937fab-667e-4d24-9704-2ae1def37571"
+            "entity_index": "7b937fab-667e-4d24-9704-2ae1def37571"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.7770600000000005,
               "y": -28.7489
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#23",
-            "entityIndex": "054e0ab3-4ed1-4edb-b9ad-e277f8bf8b43"
+            "entity_index": "054e0ab3-4ed1-4edb-b9ad-e277f8bf8b43"
           },
           {
             "entity_type": "POINT",
@@ -919,18 +918,18 @@
               "x": 5.51923,
               "y": -31.40533
             },
-            "entityIndex": "f2205d1e-79fe-45d8-94cc-05e730f72c71"
+            "entity_index": "f2205d1e-79fe-45d8-94cc-05e730f72c71"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 5.51923,
               "y": -31.40533
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#24",
-            "entityIndex": "c7b11913-b6ab-4855-9490-8495387b65d1"
+            "entity_index": "c7b11913-b6ab-4855-9490-8495387b65d1"
           },
           {
             "entity_type": "POINT",
@@ -939,18 +938,18 @@
               "x": -38.87427,
               "y": -30.87623
             },
-            "entityIndex": "0b6a7105-c76f-4b47-a4ca-e8c9bed5fd53"
+            "entity_index": "0b6a7105-c76f-4b47-a4ca-e8c9bed5fd53"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -38.87427,
               "y": -30.87623
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#25",
-            "entityIndex": "2923cfb3-ce4c-41a2-899f-5c1e25ba3b4e"
+            "entity_index": "2923cfb3-ce4c-41a2-899f-5c1e25ba3b4e"
           },
           {
             "entity_type": "POINT",
@@ -959,18 +958,18 @@
               "x": -38.87427,
               "y": 0
             },
-            "entityIndex": "4f4be86b-9e38-463b-9495-4d164327485a"
+            "entity_index": "4f4be86b-9e38-463b-9495-4d164327485a"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -38.87427,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#26",
-            "entityIndex": "07301e62-de91-4167-aa8a-ecb412a0cb5b"
+            "entity_index": "07301e62-de91-4167-aa8a-ecb412a0cb5b"
           },
           {
             "entity_type": "POINT",
@@ -979,18 +978,18 @@
               "x": -38.87427,
               "y": 30.87623
             },
-            "entityIndex": "c480f81d-cfc1-4c26-adc5-a961235822fb"
+            "entity_index": "c480f81d-cfc1-4c26-adc5-a961235822fb"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -38.87427,
               "y": 30.87623
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#27",
-            "entityIndex": "fed628d2-3140-47b1-ba81-97e0b3d7fb1b"
+            "entity_index": "fed628d2-3140-47b1-ba81-97e0b3d7fb1b"
           },
           {
             "entity_type": "LWPOLYLINE",
@@ -1410,9 +1409,8 @@
             ],
             "layer": "14",
             "shape": true,
-            "hasContinuousLinetypePattern": false,
             "hasCurvePoint": true,
-            "entityIndex": "5de8fed7-712c-4523-adda-6eb55f6e3b37"
+            "entity_index": "5de8fed7-712c-4523-adda-6eb55f6e3b37"
           },
           {
             "entity_type": "POINT",
@@ -1421,18 +1419,18 @@
               "x": -36.87427,
               "y": 30
             },
-            "entityIndex": "21ddf3aa-df95-4361-bed5-c4cd4030fd00"
+            "entity_index": "21ddf3aa-df95-4361-bed5-c4cd4030fd00"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -36.87427,
               "y": 30
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#28",
-            "entityIndex": "fe38f77d-f6d6-4a78-a6f9-a55d07cecbe6"
+            "entity_index": "fe38f77d-f6d6-4a78-a6f9-a55d07cecbe6"
           },
           {
             "entity_type": "POINT",
@@ -1441,18 +1439,18 @@
               "x": 5.07725,
               "y": 30.5
             },
-            "entityIndex": "b8a7433d-9b59-42e6-b9bf-bfcaa3130307"
+            "entity_index": "b8a7433d-9b59-42e6-b9bf-bfcaa3130307"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 5.07725,
               "y": 30.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#29",
-            "entityIndex": "2154af90-9906-44d0-90f7-24d6de9e4384"
+            "entity_index": "2154af90-9906-44d0-90f7-24d6de9e4384"
           },
           {
             "entity_type": "POINT",
@@ -1461,18 +1459,18 @@
               "x": 7.188140000000001,
               "y": 28.06733
             },
-            "entityIndex": "6a3d7a74-4e82-4b53-b846-58ebbb19a368"
+            "entity_index": "6a3d7a74-4e82-4b53-b846-58ebbb19a368"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.188140000000001,
               "y": 28.06733
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#30",
-            "entityIndex": "a3fb192b-b045-4a21-b013-755fc89b6be3"
+            "entity_index": "a3fb192b-b045-4a21-b013-755fc89b6be3"
           },
           {
             "entity_type": "POINT",
@@ -1481,18 +1479,18 @@
               "x": 11.605960000000001,
               "y": 25.822300000000002
             },
-            "entityIndex": "4e7514fe-f8a1-4533-8abf-fcdc932b3278"
+            "entity_index": "4e7514fe-f8a1-4533-8abf-fcdc932b3278"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.605960000000001,
               "y": 25.822300000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#31",
-            "entityIndex": "6a6ed30c-a007-448f-a2bb-2fcee4cb7717"
+            "entity_index": "6a6ed30c-a007-448f-a2bb-2fcee4cb7717"
           },
           {
             "entity_type": "POINT",
@@ -1501,18 +1499,18 @@
               "x": 17.2159,
               "y": 24.980420000000002
             },
-            "entityIndex": "8bb078ff-06ec-4ec7-9333-10b48c1d2e4d"
+            "entity_index": "8bb078ff-06ec-4ec7-9333-10b48c1d2e4d"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.2159,
               "y": 24.980420000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#32",
-            "entityIndex": "42824cd9-70e2-4f41-883d-c9b7a9af457d"
+            "entity_index": "42824cd9-70e2-4f41-883d-c9b7a9af457d"
           },
           {
             "entity_type": "POINT",
@@ -1521,18 +1519,18 @@
               "x": 24.929570000000002,
               "y": 24.6998
             },
-            "entityIndex": "c6b77fef-b63f-449d-886f-5625839c0d0b"
+            "entity_index": "c6b77fef-b63f-449d-886f-5625839c0d0b"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.929570000000002,
               "y": 24.6998
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#33",
-            "entityIndex": "1756cd46-9412-41e8-8032-165fd8e69a93"
+            "entity_index": "1756cd46-9412-41e8-8032-165fd8e69a93"
           },
           {
             "entity_type": "POINT",
@@ -1541,18 +1539,18 @@
               "x": 32.22573,
               "y": 25
             },
-            "entityIndex": "5f8c2107-8fac-4c84-944b-8fb5743c224d"
+            "entity_index": "5f8c2107-8fac-4c84-944b-8fb5743c224d"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.22573,
               "y": 25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#34",
-            "entityIndex": "f255e418-17ef-45ed-960b-3e4c81501b90"
+            "entity_index": "f255e418-17ef-45ed-960b-3e4c81501b90"
           },
           {
             "entity_type": "POINT",
@@ -1561,18 +1559,18 @@
               "x": 35.72573,
               "y": 11.5
             },
-            "entityIndex": "ef17abf2-97a7-4ac1-be65-c5ea8af457aa"
+            "entity_index": "ef17abf2-97a7-4ac1-be65-c5ea8af457aa"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 35.72573,
               "y": 11.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#35",
-            "entityIndex": "de7e8a9d-1f2e-476a-a713-60c2b7257790"
+            "entity_index": "de7e8a9d-1f2e-476a-a713-60c2b7257790"
           },
           {
             "entity_type": "POINT",
@@ -1581,18 +1579,18 @@
               "x": 33.87956,
               "y": 9.054730000000001
             },
-            "entityIndex": "aeb804c8-14f5-47e1-8840-34c044f8fe31"
+            "entity_index": "aeb804c8-14f5-47e1-8840-34c044f8fe31"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 33.87955,
               "y": 9.054730000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#36",
-            "entityIndex": "0a26c767-be90-4eb2-9735-db01b1ee56a1"
+            "entity_index": "0a26c767-be90-4eb2-9735-db01b1ee56a1"
           },
           {
             "entity_type": "POINT",
@@ -1601,18 +1599,18 @@
               "x": 32.582260000000005,
               "y": 5.3714900000000005
             },
-            "entityIndex": "90312b73-9921-44fa-b2c8-a5181895f407"
+            "entity_index": "90312b73-9921-44fa-b2c8-a5181895f407"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 32.582260000000005,
               "y": 5.3714900000000005
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#37",
-            "entityIndex": "5000b9e3-f25a-4527-832c-668619278b76"
+            "entity_index": "5000b9e3-f25a-4527-832c-668619278b76"
           },
           {
             "entity_type": "POINT",
@@ -1621,18 +1619,18 @@
               "x": 32.22573,
               "y": 0
             },
-            "entityIndex": "95300c15-56cd-4d28-bb6c-50f14a50bcee"
+            "entity_index": "95300c15-56cd-4d28-bb6c-50f14a50bcee"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.22573,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#38",
-            "entityIndex": "a0013f54-2261-421a-a02d-cf73e4fc4bb2"
+            "entity_index": "a0013f54-2261-421a-a02d-cf73e4fc4bb2"
           },
           {
             "entity_type": "POINT",
@@ -1641,18 +1639,18 @@
               "x": 32.582260000000005,
               "y": -5.3714900000000005
             },
-            "entityIndex": "8d36e455-7c40-4333-9243-cadc7efd875d"
+            "entity_index": "8d36e455-7c40-4333-9243-cadc7efd875d"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 32.582260000000005,
               "y": -5.3714900000000005
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#39",
-            "entityIndex": "e47e0c7c-9b1b-4fd3-b765-e7336fd68380"
+            "entity_index": "e47e0c7c-9b1b-4fd3-b765-e7336fd68380"
           },
           {
             "entity_type": "POINT",
@@ -1661,18 +1659,18 @@
               "x": 33.87956,
               "y": -9.054730000000001
             },
-            "entityIndex": "959b9b59-3c1b-4fc0-a561-e6031410d2f0"
+            "entity_index": "959b9b59-3c1b-4fc0-a561-e6031410d2f0"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 33.87955,
               "y": -9.054730000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#40",
-            "entityIndex": "093e3322-95d6-48a2-b67b-6ee6b0aca47f"
+            "entity_index": "093e3322-95d6-48a2-b67b-6ee6b0aca47f"
           },
           {
             "entity_type": "POINT",
@@ -1681,18 +1679,18 @@
               "x": 35.72573,
               "y": -11.5
             },
-            "entityIndex": "001b0643-058d-4156-ac62-0493fd670e13"
+            "entity_index": "001b0643-058d-4156-ac62-0493fd670e13"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 35.72573,
               "y": -11.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#41",
-            "entityIndex": "fa3bd02f-defa-4f51-9c11-36e1c776df31"
+            "entity_index": "fa3bd02f-defa-4f51-9c11-36e1c776df31"
           },
           {
             "entity_type": "POINT",
@@ -1701,18 +1699,18 @@
               "x": 32.22573,
               "y": -25
             },
-            "entityIndex": "b84e97d4-165b-48fb-bd06-fe6971c22bf7"
+            "entity_index": "b84e97d4-165b-48fb-bd06-fe6971c22bf7"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.22573,
               "y": -25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#42",
-            "entityIndex": "ae4e37c7-4a4a-4748-ad64-a4ef77b1e276"
+            "entity_index": "ae4e37c7-4a4a-4748-ad64-a4ef77b1e276"
           },
           {
             "entity_type": "POINT",
@@ -1721,18 +1719,18 @@
               "x": 24.929570000000002,
               "y": -24.6998
             },
-            "entityIndex": "bb174a8a-313a-41d3-ae4f-fb2f0d86041f"
+            "entity_index": "bb174a8a-313a-41d3-ae4f-fb2f0d86041f"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.929570000000002,
               "y": -24.6998
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#43",
-            "entityIndex": "69494947-8f24-471c-8c2b-3f32e7966fc3"
+            "entity_index": "69494947-8f24-471c-8c2b-3f32e7966fc3"
           },
           {
             "entity_type": "POINT",
@@ -1741,18 +1739,18 @@
               "x": 17.2159,
               "y": -24.980430000000002
             },
-            "entityIndex": "0bb42315-fed5-450c-b1b1-6e4bfa9d3986"
+            "entity_index": "0bb42315-fed5-450c-b1b1-6e4bfa9d3986"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.2159,
               "y": -24.980430000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#44",
-            "entityIndex": "174561ab-42c4-4436-ab08-0d28fb4a932e"
+            "entity_index": "174561ab-42c4-4436-ab08-0d28fb4a932e"
           },
           {
             "entity_type": "POINT",
@@ -1761,18 +1759,18 @@
               "x": 11.605960000000001,
               "y": -25.82231
             },
-            "entityIndex": "ec838b8e-9028-464e-b68e-9f455c469220"
+            "entity_index": "ec838b8e-9028-464e-b68e-9f455c469220"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.605960000000001,
               "y": -25.822300000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#45",
-            "entityIndex": "49784b7e-281b-452a-990d-94d5bc865aa8"
+            "entity_index": "49784b7e-281b-452a-990d-94d5bc865aa8"
           },
           {
             "entity_type": "POINT",
@@ -1781,18 +1779,18 @@
               "x": 7.188140000000001,
               "y": -28.06733
             },
-            "entityIndex": "66e660a3-1ecd-4c68-a3c6-9bb9c307fa6e"
+            "entity_index": "66e660a3-1ecd-4c68-a3c6-9bb9c307fa6e"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.188140000000001,
               "y": -28.06733
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#46",
-            "entityIndex": "b80d4950-2815-4226-99cb-7f54a869585d"
+            "entity_index": "b80d4950-2815-4226-99cb-7f54a869585d"
           },
           {
             "entity_type": "POINT",
@@ -1801,18 +1799,18 @@
               "x": 5.07725,
               "y": -30.5
             },
-            "entityIndex": "5158014e-2f89-41ce-b96f-5ecf108a453a"
+            "entity_index": "5158014e-2f89-41ce-b96f-5ecf108a453a"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 5.07725,
               "y": -30.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#47",
-            "entityIndex": "2d6b19d6-4cf7-4908-8608-3e38e11ae275"
+            "entity_index": "2d6b19d6-4cf7-4908-8608-3e38e11ae275"
           },
           {
             "entity_type": "POINT",
@@ -1821,18 +1819,18 @@
               "x": -36.87427,
               "y": -30
             },
-            "entityIndex": "33805c10-779f-43f2-82c7-dd41fc0247dc"
+            "entity_index": "33805c10-779f-43f2-82c7-dd41fc0247dc"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -36.87427,
               "y": -30
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#48",
-            "entityIndex": "73fd43c4-131f-42b2-812b-85171cebd4ed"
+            "entity_index": "73fd43c4-131f-42b2-812b-85171cebd4ed"
           },
           {
             "entity_type": "POINT",
@@ -1841,18 +1839,18 @@
               "x": -36.87427,
               "y": 0
             },
-            "entityIndex": "1d81d9c5-d010-4a94-a756-04d6125e58d4"
+            "entity_index": "1d81d9c5-d010-4a94-a756-04d6125e58d4"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -36.87427,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#49",
-            "entityIndex": "440775f8-f0c9-4ffe-b042-15303dd0d827"
+            "entity_index": "440775f8-f0c9-4ffe-b042-15303dd0d827"
           },
           {
             "entity_type": "POINT",
@@ -1861,18 +1859,18 @@
               "x": -36.87427,
               "y": 30
             },
-            "entityIndex": "f18cfb34-343c-4800-9882-f50d3d86f9cc"
+            "entity_index": "f18cfb34-343c-4800-9882-f50d3d86f9cc"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -36.87427,
               "y": 30
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#50",
-            "entityIndex": "802e833e-6e38-4c55-829d-f652734c73ee"
+            "entity_index": "802e833e-6e38-4c55-829d-f652734c73ee"
           },
           {
             "entity_type": "LINE",
@@ -1887,7 +1885,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "747f1357-35b8-452d-bb6b-c17f93bef62a"
+            "entity_index": "747f1357-35b8-452d-bb6b-c17f93bef62a"
           },
           {
             "entity_type": "POINT",
@@ -1896,73 +1894,73 @@
               "x": 32.22573,
               "y": 0
             },
-            "entityIndex": "66cebd55-d697-4971-9640-efc975a88c7e"
+            "entity_index": "66cebd55-d697-4971-9640-efc975a88c7e"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.22573,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#51",
-            "entityIndex": "6d030c21-787e-46e0-af10-2a6840c67457"
+            "entity_index": "6d030c21-787e-46e0-af10-2a6840c67457"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -36.87427,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#52",
-            "entityIndex": "1c29f01d-d6ac-4354-aaa4-6e5a59eaf41f"
+            "entity_index": "1c29f01d-d6ac-4354-aaa4-6e5a59eaf41f"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": -0.6000000000000001,
               "y": 0
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Piece Name:L-1",
-            "entityIndex": "5a517932-8d1c-4fa8-a856-69c08d5d7313"
+            "entity_index": "5a517932-8d1c-4fa8-a856-69c08d5d7313"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": -0.6000000000000001,
               "y": -1.2000000000000002
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Annotation:Ç°*1",
-            "entityIndex": "a3512475-8dd6-47ec-a845-439948e94347"
+            "entity_index": "a3512475-8dd6-47ec-a845-439948e94347"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": 0,
               "y": -0.5
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Quantity:1",
-            "entityIndex": "f1c9a2b6-22f0-4e5a-97af-593a9f3f49a6"
+            "entity_index": "f1c9a2b6-22f0-4e5a-97af-593a9f3f49a6"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": 0,
               "y": -1.5
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Size:L",
-            "entityIndex": "a4d4582d-43cb-4e03-b869-aa7c4887ad69"
+            "entity_index": "a4d4582d-43cb-4e03-b869-aa7c4887ad69"
           },
           {
             "entity_type": "LINE",
@@ -1977,7 +1975,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "893aca25-9af2-47f3-9e76-29accf4f0f45"
+            "entity_index": "893aca25-9af2-47f3-9e76-29accf4f0f45"
           },
           {
             "entity_type": "LINE",
@@ -1992,7 +1990,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "b8a2c1be-bd93-4e59-946a-afffc12d161e"
+            "entity_index": "b8a2c1be-bd93-4e59-946a-afffc12d161e"
           },
           {
             "entity_type": "LINE",
@@ -2007,7 +2005,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "008e8ba3-59b7-4932-9027-069eda6d49d8"
+            "entity_index": "008e8ba3-59b7-4932-9027-069eda6d49d8"
           },
           {
             "entity_type": "LINE",
@@ -2022,7 +2020,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "12cd9773-4e19-460c-a268-2e7c2539fc69"
+            "entity_index": "12cd9773-4e19-460c-a268-2e7c2539fc69"
           },
           {
             "entity_type": "LINE",
@@ -2037,7 +2035,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "4677b132-a441-42ca-9fc2-e52f108fd0de"
+            "entity_index": "4677b132-a441-42ca-9fc2-e52f108fd0de"
           },
           {
             "entity_type": "POINT",
@@ -2046,7 +2044,7 @@
               "x": -36.94375870310245,
               "y": 30.118936201298734
             },
-            "entityIndex": "715a29d8-85ed-4403-ae05-d61e48e5ef2e"
+            "entity_index": "715a29d8-85ed-4403-ae05-d61e48e5ef2e"
           },
           {
             "entity_type": "POINT",
@@ -2055,7 +2053,7 @@
               "x": -46.024454709595965,
               "y": 13.385968279220812
             },
-            "entityIndex": "91a3cd37-1517-455f-b933-5ae994cb9729"
+            "entity_index": "91a3cd37-1517-455f-b933-5ae994cb9729"
           },
           {
             "entity_type": "POINT",
@@ -2064,7 +2062,7 @@
               "x": -12.05477327426713,
               "y": 13.385968279220812
             },
-            "entityIndex": "5796c094-b57a-4674-8436-f794b5aaddf6"
+            "entity_index": "5796c094-b57a-4674-8436-f794b5aaddf6"
           },
           {
             "entity_type": "POINT",
@@ -2073,7 +2071,7 @@
               "x": 21.91490816106171,
               "y": 13.385968279220812
             },
-            "entityIndex": "eba18609-2cd4-4180-b965-fbf91305b4b2"
+            "entity_index": "eba18609-2cd4-4180-b965-fbf91305b4b2"
           },
           {
             "entity_type": "POINT",
@@ -2082,7 +2080,7 @@
               "x": 55.88458959639054,
               "y": 13.385968279220812
             },
-            "entityIndex": "53c5f52c-a399-4e51-a58b-593394a8de4f"
+            "entity_index": "53c5f52c-a399-4e51-a58b-593394a8de4f"
           },
           {
             "entity_type": "POINT",
@@ -2091,7 +2089,7 @@
               "x": 89.85427103171938,
               "y": 13.385968279220812
             },
-            "entityIndex": "56c432c5-2c10-4295-a40e-e7b6bbac8167"
+            "entity_index": "56c432c5-2c10-4295-a40e-e7b6bbac8167"
           }
         ],
         "centroid": {
@@ -2115,7 +2113,7 @@
               }
             ],
             "layer": "7",
-            "entityIndex": "57b80006-a18d-47b3-b72a-8b117d25777e"
+            "entity_index": "57b80006-a18d-47b3-b72a-8b117d25777e"
           },
           {
             "entity_type": "POINT",
@@ -2124,18 +2122,18 @@
               "x": -25.06312,
               "y": 15.25
             },
-            "entityIndex": "52da8c0c-fdc3-4590-8b1f-79d7c4e16d56"
+            "entity_index": "52da8c0c-fdc3-4590-8b1f-79d7c4e16d56"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -25.06312,
               "y": 15.25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#53",
-            "entityIndex": "a4b88b48-271c-4dab-80e0-b1562fda73f6"
+            "entity_index": "a4b88b48-271c-4dab-80e0-b1562fda73f6"
           },
           {
             "entity_type": "POINT",
@@ -2144,18 +2142,18 @@
               "x": 22.688720000000004,
               "y": 15.25
             },
-            "entityIndex": "7f4e9d80-4828-458e-80f4-ce3854243f34"
+            "entity_index": "7f4e9d80-4828-458e-80f4-ce3854243f34"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 22.688720000000004,
               "y": 15.25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#54",
-            "entityIndex": "92697ae0-3b76-4a6b-b448-8673ac97ddfa"
+            "entity_index": "92697ae0-3b76-4a6b-b448-8673ac97ddfa"
           },
           {
             "entity_type": "LWPOLYLINE",
@@ -2535,8 +2533,7 @@
             ],
             "layer": "1",
             "shape": true,
-            "hasContinuousLinetypePattern": false,
-            "entityIndex": "89b7e582-1bd2-40d6-9835-9c8a3d2e8acf"
+            "entity_index": "89b7e582-1bd2-40d6-9835-9c8a3d2e8acf"
           },
           {
             "entity_type": "POINT",
@@ -2545,18 +2542,18 @@
               "x": -39.001090000000005,
               "y": 30.87623
             },
-            "entityIndex": "486aabef-3cae-4c07-aa2b-3c56232c5ee7"
+            "entity_index": "486aabef-3cae-4c07-aa2b-3c56232c5ee7"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -39.001090000000005,
               "y": 30.87623
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#55",
-            "entityIndex": "736c21de-8eb3-4984-b9b5-583233f2114b"
+            "entity_index": "736c21de-8eb3-4984-b9b5-583233f2114b"
           },
           {
             "entity_type": "POINT",
@@ -2565,18 +2562,18 @@
               "x": 5.3924,
               "y": 31.40533
             },
-            "entityIndex": "ca29386d-59c6-4cac-8d89-be99dd118fad"
+            "entity_index": "ca29386d-59c6-4cac-8d89-be99dd118fad"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 5.3924,
               "y": 31.40533
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#56",
-            "entityIndex": "8d24486a-22b6-46df-93dc-659452675e32"
+            "entity_index": "8d24486a-22b6-46df-93dc-659452675e32"
           },
           {
             "entity_type": "POINT",
@@ -2585,18 +2582,18 @@
               "x": 7.65024,
               "y": 28.748890000000003
             },
-            "entityIndex": "66ef03fa-374d-416f-8819-99830f342f9f"
+            "entity_index": "66ef03fa-374d-416f-8819-99830f342f9f"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.65024,
               "y": 28.748890000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#57",
-            "entityIndex": "e5024d3e-1335-4179-a8ef-8ba23fbcb55b"
+            "entity_index": "e5024d3e-1335-4179-a8ef-8ba23fbcb55b"
           },
           {
             "entity_type": "POINT",
@@ -2605,18 +2602,18 @@
               "x": 11.722430000000001,
               "y": 26.68914
             },
-            "entityIndex": "70e6ba8d-6fe7-42b4-9e6a-a8e07e890288"
+            "entity_index": "70e6ba8d-6fe7-42b4-9e6a-a8e07e890288"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.722430000000001,
               "y": 26.68914
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#58",
-            "entityIndex": "40f871ae-b9b8-4c7f-b8aa-ab0a4455b52b"
+            "entity_index": "40f871ae-b9b8-4c7f-b8aa-ab0a4455b52b"
           },
           {
             "entity_type": "POINT",
@@ -2625,18 +2622,18 @@
               "x": 17.15604,
               "y": 25.877940000000002
             },
-            "entityIndex": "55ae0b64-5263-4f93-ae33-c48f8ea30703"
+            "entity_index": "55ae0b64-5263-4f93-ae33-c48f8ea30703"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.15604,
               "y": 25.877940000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#59",
-            "entityIndex": "38130cb4-4927-4866-9903-abd511507e88"
+            "entity_index": "38130cb4-4927-4866-9903-abd511507e88"
           },
           {
             "entity_type": "POINT",
@@ -2645,18 +2642,18 @@
               "x": 24.795360000000002,
               "y": 25.59979
             },
-            "entityIndex": "88852a27-19b3-47b5-ac91-4659c1309908"
+            "entity_index": "88852a27-19b3-47b5-ac91-4659c1309908"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.795360000000002,
               "y": 25.59979
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#60",
-            "entityIndex": "583c991e-3400-496c-a0eb-d78bd1caa0bf"
+            "entity_index": "583c991e-3400-496c-a0eb-d78bd1caa0bf"
           },
           {
             "entity_type": "POINT",
@@ -2665,18 +2662,18 @@
               "x": 32.78481,
               "y": 25.94059
             },
-            "entityIndex": "93636acc-f361-4016-958a-e2cab11acb2f"
+            "entity_index": "93636acc-f361-4016-958a-e2cab11acb2f"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.78481,
               "y": 25.94059
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#61",
-            "entityIndex": "a70dbd89-761e-4bc4-bfb8-ea6482783a39"
+            "entity_index": "a70dbd89-761e-4bc4-bfb8-ea6482783a39"
           },
           {
             "entity_type": "POINT",
@@ -2685,18 +2682,18 @@
               "x": 36.12774,
               "y": 13.046410000000002
             },
-            "entityIndex": "e42ec09d-b881-4b91-9253-a69f6daea1ca"
+            "entity_index": "e42ec09d-b881-4b91-9253-a69f6daea1ca"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 36.12774,
               "y": 13.046410000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#62",
-            "entityIndex": "2b50c5f8-0492-430a-b9cc-3251ba6d82b7"
+            "entity_index": "2b50c5f8-0492-430a-b9cc-3251ba6d82b7"
           },
           {
             "entity_type": "POINT",
@@ -2705,18 +2702,18 @@
               "x": 39.001090000000005,
               "y": 15.267710000000001
             },
-            "entityIndex": "736ba978-e2fd-430e-9cb2-7d6d4b125caf"
+            "entity_index": "736ba978-e2fd-430e-9cb2-7d6d4b125caf"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 39.001090000000005,
               "y": 15.267710000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#63",
-            "entityIndex": "51a90167-c15a-4681-9d2e-cf4bf38faf43"
+            "entity_index": "51a90167-c15a-4681-9d2e-cf4bf38faf43"
           },
           {
             "entity_type": "POINT",
@@ -2725,18 +2722,18 @@
               "x": 36.06834,
               "y": 6.0129
             },
-            "entityIndex": "30d1cc50-4169-49f9-ad42-89d7916f36f4"
+            "entity_index": "30d1cc50-4169-49f9-ad42-89d7916f36f4"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 36.068329999999996,
               "y": 6.0129
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#64",
-            "entityIndex": "0f0d9626-c23e-4344-8e11-177ba7de92c5"
+            "entity_index": "0f0d9626-c23e-4344-8e11-177ba7de92c5"
           },
           {
             "entity_type": "POINT",
@@ -2745,18 +2742,18 @@
               "x": 35.59953,
               "y": -0.00002
             },
-            "entityIndex": "c2e54ae2-aec0-499f-a809-7c2811edbde6"
+            "entity_index": "c2e54ae2-aec0-499f-a809-7c2811edbde6"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 35.599520000000005,
               "y": -0.00002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#65",
-            "entityIndex": "1f894ad5-b98f-479f-a8ba-1a3f5cd532a1"
+            "entity_index": "1f894ad5-b98f-479f-a8ba-1a3f5cd532a1"
           },
           {
             "entity_type": "POINT",
@@ -2765,18 +2762,18 @@
               "x": 36.06834,
               "y": -6.01292
             },
-            "entityIndex": "c0be9c20-30c4-46fd-9afd-cb7c265756f3"
+            "entity_index": "c0be9c20-30c4-46fd-9afd-cb7c265756f3"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 36.06834,
               "y": -6.01292
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#66",
-            "entityIndex": "f5c9121d-f6ee-434f-bf2d-8fa8d4b6f184"
+            "entity_index": "f5c9121d-f6ee-434f-bf2d-8fa8d4b6f184"
           },
           {
             "entity_type": "POINT",
@@ -2785,18 +2782,18 @@
               "x": 39.001090000000005,
               "y": -15.267710000000001
             },
-            "entityIndex": "76dc54ff-0ac2-4ff7-8fa6-95414e5ac195"
+            "entity_index": "76dc54ff-0ac2-4ff7-8fa6-95414e5ac195"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 39.001090000000005,
               "y": -15.267710000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#67",
-            "entityIndex": "3556f827-a9c3-4ca0-ad4d-728b967ca243"
+            "entity_index": "3556f827-a9c3-4ca0-ad4d-728b967ca243"
           },
           {
             "entity_type": "POINT",
@@ -2805,18 +2802,18 @@
               "x": 36.12774,
               "y": -13.046410000000002
             },
-            "entityIndex": "fd9de86f-9ea8-48b1-afa3-8baccd3ed57a"
+            "entity_index": "fd9de86f-9ea8-48b1-afa3-8baccd3ed57a"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 36.12774,
               "y": -13.046410000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#68",
-            "entityIndex": "aa039e87-ac6d-4ef0-8b43-658a6f974f73"
+            "entity_index": "aa039e87-ac6d-4ef0-8b43-658a6f974f73"
           },
           {
             "entity_type": "POINT",
@@ -2825,18 +2822,18 @@
               "x": 32.78481,
               "y": -25.94059
             },
-            "entityIndex": "2f6e9a8a-6a29-42e8-9f09-f52f367179db"
+            "entity_index": "2f6e9a8a-6a29-42e8-9f09-f52f367179db"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.78481,
               "y": -25.94059
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#69",
-            "entityIndex": "0fb50181-1381-4e83-a89e-97c02d07fe9d"
+            "entity_index": "0fb50181-1381-4e83-a89e-97c02d07fe9d"
           },
           {
             "entity_type": "POINT",
@@ -2845,18 +2842,18 @@
               "x": 24.79547,
               "y": -25.599800000000002
             },
-            "entityIndex": "cccabd93-e8d6-4499-aef8-435099e589d7"
+            "entity_index": "cccabd93-e8d6-4499-aef8-435099e589d7"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.79547,
               "y": -25.599800000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#70",
-            "entityIndex": "da98c27f-4a58-442c-9c6d-a9ffcabb998d"
+            "entity_index": "da98c27f-4a58-442c-9c6d-a9ffcabb998d"
           },
           {
             "entity_type": "POINT",
@@ -2865,18 +2862,18 @@
               "x": 17.15579,
               "y": -25.87796
             },
-            "entityIndex": "c399ab74-8799-45eb-865d-a8887e14c38c"
+            "entity_index": "c399ab74-8799-45eb-865d-a8887e14c38c"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.15579,
               "y": -25.87796
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#71",
-            "entityIndex": "1225a3a9-c1cf-4809-8b75-e78dfc2e976c"
+            "entity_index": "1225a3a9-c1cf-4809-8b75-e78dfc2e976c"
           },
           {
             "entity_type": "POINT",
@@ -2885,18 +2882,18 @@
               "x": 11.722430000000001,
               "y": -26.68914
             },
-            "entityIndex": "baf14dfc-e7c3-4eae-b54f-f398bdaf0dcc"
+            "entity_index": "baf14dfc-e7c3-4eae-b54f-f398bdaf0dcc"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.722430000000001,
               "y": -26.68914
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#72",
-            "entityIndex": "47c5d42f-436a-4961-8114-4a516227d0ad"
+            "entity_index": "47c5d42f-436a-4961-8114-4a516227d0ad"
           },
           {
             "entity_type": "POINT",
@@ -2905,18 +2902,18 @@
               "x": 7.65026,
               "y": -28.748880000000003
             },
-            "entityIndex": "ad32d268-689d-4cb6-8cc0-41676dce4160"
+            "entity_index": "ad32d268-689d-4cb6-8cc0-41676dce4160"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.65026,
               "y": -28.748880000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#73",
-            "entityIndex": "197c6452-69fe-43a8-bcaa-3c0ce15c6d8a"
+            "entity_index": "197c6452-69fe-43a8-bcaa-3c0ce15c6d8a"
           },
           {
             "entity_type": "POINT",
@@ -2925,18 +2922,18 @@
               "x": 5.3924,
               "y": -31.40533
             },
-            "entityIndex": "7de22e0e-d5e3-48bd-bbfd-30516d65e1f8"
+            "entity_index": "7de22e0e-d5e3-48bd-bbfd-30516d65e1f8"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 5.3924,
               "y": -31.40533
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#74",
-            "entityIndex": "03ed625e-cb45-4e9f-a616-2c1ba1baa610"
+            "entity_index": "03ed625e-cb45-4e9f-a616-2c1ba1baa610"
           },
           {
             "entity_type": "POINT",
@@ -2945,18 +2942,18 @@
               "x": -39.00110000000001,
               "y": -30.87623
             },
-            "entityIndex": "12b588e4-ef5b-49ec-b15f-35341943d4f7"
+            "entity_index": "12b588e4-ef5b-49ec-b15f-35341943d4f7"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -39.00110000000001,
               "y": -30.87623
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#75",
-            "entityIndex": "28f4e04b-a040-44f4-ade4-befb7399fcd6"
+            "entity_index": "28f4e04b-a040-44f4-ade4-befb7399fcd6"
           },
           {
             "entity_type": "POINT",
@@ -2965,18 +2962,18 @@
               "x": -39.001090000000005,
               "y": 0
             },
-            "entityIndex": "fe94841f-2207-4cde-8adc-b3ecf71eb1d5"
+            "entity_index": "fe94841f-2207-4cde-8adc-b3ecf71eb1d5"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -39.001090000000005,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#76",
-            "entityIndex": "a377c5b6-1fd5-4b72-9292-4b9df43c7a04"
+            "entity_index": "a377c5b6-1fd5-4b72-9292-4b9df43c7a04"
           },
           {
             "entity_type": "POINT",
@@ -2985,18 +2982,18 @@
               "x": -39.001090000000005,
               "y": 30.87623
             },
-            "entityIndex": "662a77a0-1654-4876-a392-13a59020f8fa"
+            "entity_index": "662a77a0-1654-4876-a392-13a59020f8fa"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -39.001090000000005,
               "y": 30.87623
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#77",
-            "entityIndex": "5f3a0dd6-bb3e-42bd-8c4b-f48813d3f970"
+            "entity_index": "5f3a0dd6-bb3e-42bd-8c4b-f48813d3f970"
           },
           {
             "entity_type": "LWPOLYLINE",
@@ -3368,9 +3365,8 @@
             ],
             "layer": "14",
             "shape": true,
-            "hasContinuousLinetypePattern": false,
             "hasCurvePoint": true,
-            "entityIndex": "0717719c-3133-4c03-a9dc-2a5f376dfd1c"
+            "entity_index": "0717719c-3133-4c03-a9dc-2a5f376dfd1c"
           },
           {
             "entity_type": "POINT",
@@ -3379,18 +3375,18 @@
               "x": -37.00109,
               "y": 30
             },
-            "entityIndex": "12bc258c-54d8-4836-be3b-9def015efabb"
+            "entity_index": "12bc258c-54d8-4836-be3b-9def015efabb"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -37.00109,
               "y": 30
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#78",
-            "entityIndex": "0fdc38a7-2717-4ef2-8baf-d0e0ba414ba7"
+            "entity_index": "0fdc38a7-2717-4ef2-8baf-d0e0ba414ba7"
           },
           {
             "entity_type": "POINT",
@@ -3399,18 +3395,18 @@
               "x": 4.950430000000001,
               "y": 30.5
             },
-            "entityIndex": "b4a7292e-7e53-44d7-8471-d996e23719e2"
+            "entity_index": "b4a7292e-7e53-44d7-8471-d996e23719e2"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 4.950430000000001,
               "y": 30.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#79",
-            "entityIndex": "40968dcf-e7f1-4e61-adf2-41ac3374bda3"
+            "entity_index": "40968dcf-e7f1-4e61-adf2-41ac3374bda3"
           },
           {
             "entity_type": "POINT",
@@ -3419,18 +3415,18 @@
               "x": 7.061320000000001,
               "y": 28.06733
             },
-            "entityIndex": "1f68dc24-a0a6-4aaf-9d9b-17d4c99e3ecd"
+            "entity_index": "1f68dc24-a0a6-4aaf-9d9b-17d4c99e3ecd"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.061320000000001,
               "y": 28.06733
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#80",
-            "entityIndex": "a0fde773-aada-43b8-a323-08bf04ccf943"
+            "entity_index": "a0fde773-aada-43b8-a323-08bf04ccf943"
           },
           {
             "entity_type": "POINT",
@@ -3439,18 +3435,18 @@
               "x": 11.47915,
               "y": 25.822300000000002
             },
-            "entityIndex": "649019c5-d738-4309-85ab-f0fc26a077ee"
+            "entity_index": "649019c5-d738-4309-85ab-f0fc26a077ee"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.47915,
               "y": 25.822300000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#81",
-            "entityIndex": "f7277d68-3ae7-42e9-8b95-506282f808ec"
+            "entity_index": "f7277d68-3ae7-42e9-8b95-506282f808ec"
           },
           {
             "entity_type": "POINT",
@@ -3459,18 +3455,18 @@
               "x": 17.089080000000003,
               "y": 24.980420000000002
             },
-            "entityIndex": "7172bbf6-6855-42be-9ef6-6f900e3b67eb"
+            "entity_index": "7172bbf6-6855-42be-9ef6-6f900e3b67eb"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.089080000000003,
               "y": 24.980420000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#82",
-            "entityIndex": "f9430b3e-f515-498e-a42b-ce3a98e30874"
+            "entity_index": "f9430b3e-f515-498e-a42b-ce3a98e30874"
           },
           {
             "entity_type": "POINT",
@@ -3479,18 +3475,18 @@
               "x": 24.802750000000003,
               "y": 24.69979
             },
-            "entityIndex": "56e63f41-17cb-4f57-9cb1-aa8280a3a4ca"
+            "entity_index": "56e63f41-17cb-4f57-9cb1-aa8280a3a4ca"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.802750000000003,
               "y": 24.69979
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#83",
-            "entityIndex": "24a74d35-f69e-4e7a-8483-ec645e149279"
+            "entity_index": "24a74d35-f69e-4e7a-8483-ec645e149279"
           },
           {
             "entity_type": "POINT",
@@ -3499,18 +3495,18 @@
               "x": 37.33439723412698,
               "y": 28.419097079365084
             },
-            "entityIndex": "492c1b9d-7024-4e43-99f9-7f82e97fabdf"
+            "entity_index": "492c1b9d-7024-4e43-99f9-7f82e97fabdf"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.098910000000004,
               "y": 25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#84",
-            "entityIndex": "0128fd05-e00c-45ab-8b4c-f6c5d99f3a67"
+            "entity_index": "0128fd05-e00c-45ab-8b4c-f6c5d99f3a67"
           },
           {
             "entity_type": "POINT",
@@ -3519,18 +3515,18 @@
               "x": 35.598910000000004,
               "y": 11.5
             },
-            "entityIndex": "a489fd44-e077-438f-95ee-19783809f8d6"
+            "entity_index": "a489fd44-e077-438f-95ee-19783809f8d6"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 35.598910000000004,
               "y": 11.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#85",
-            "entityIndex": "f37dc65d-cc59-49f4-b940-151c6fcba040"
+            "entity_index": "f37dc65d-cc59-49f4-b940-151c6fcba040"
           },
           {
             "entity_type": "POINT",
@@ -3539,18 +3535,18 @@
               "x": 34.103370000000005,
               "y": 6.38876
             },
-            "entityIndex": "bb0049d2-3703-4cd1-bc6e-e2c2f045a010"
+            "entity_index": "bb0049d2-3703-4cd1-bc6e-e2c2f045a010"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 34.103370000000005,
               "y": 6.38876
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#86",
-            "entityIndex": "902256eb-8b0f-4c09-8e2e-2e7550befdd3"
+            "entity_index": "902256eb-8b0f-4c09-8e2e-2e7550befdd3"
           },
           {
             "entity_type": "POINT",
@@ -3559,18 +3555,18 @@
               "x": 33.598910000000004,
               "y": 0
             },
-            "entityIndex": "c81382bd-7a48-40f0-afe6-45ad67924446"
+            "entity_index": "c81382bd-7a48-40f0-afe6-45ad67924446"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 33.598910000000004,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#87",
-            "entityIndex": "f519ec9b-6909-43e1-9aec-6da8d5591f54"
+            "entity_index": "f519ec9b-6909-43e1-9aec-6da8d5591f54"
           },
           {
             "entity_type": "POINT",
@@ -3579,18 +3575,18 @@
               "x": 34.103370000000005,
               "y": -6.38876
             },
-            "entityIndex": "bed03054-dcec-4099-90aa-24f1b9287bf2"
+            "entity_index": "bed03054-dcec-4099-90aa-24f1b9287bf2"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 34.103370000000005,
               "y": -6.38876
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#88",
-            "entityIndex": "c15a19b6-bcf9-4725-abc6-81e99d9326de"
+            "entity_index": "c15a19b6-bcf9-4725-abc6-81e99d9326de"
           },
           {
             "entity_type": "POINT",
@@ -3599,18 +3595,18 @@
               "x": 35.598910000000004,
               "y": -11.5
             },
-            "entityIndex": "d08d14c3-9b31-4815-87e1-ff192f3b8ca9"
+            "entity_index": "d08d14c3-9b31-4815-87e1-ff192f3b8ca9"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 35.598910000000004,
               "y": -11.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#89",
-            "entityIndex": "5888696c-d672-4f20-ab97-2979abeeb772"
+            "entity_index": "5888696c-d672-4f20-ab97-2979abeeb772"
           },
           {
             "entity_type": "POINT",
@@ -3619,18 +3615,18 @@
               "x": 32.098910000000004,
               "y": -25
             },
-            "entityIndex": "bc0e9ca6-7b83-4292-aa76-bc771b525cfb"
+            "entity_index": "bc0e9ca6-7b83-4292-aa76-bc771b525cfb"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 32.098910000000004,
               "y": -25
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#90",
-            "entityIndex": "f1ef30ed-9690-4eef-a9ba-5bd98229264f"
+            "entity_index": "f1ef30ed-9690-4eef-a9ba-5bd98229264f"
           },
           {
             "entity_type": "POINT",
@@ -3639,18 +3635,18 @@
               "x": 24.802750000000003,
               "y": -24.6998
             },
-            "entityIndex": "f1c4ccb7-a167-4932-b30a-0701a26fa4bf"
+            "entity_index": "f1c4ccb7-a167-4932-b30a-0701a26fa4bf"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 24.802750000000003,
               "y": -24.6998
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#91",
-            "entityIndex": "0965e6a2-92ed-4c7f-a5ce-cb60de9cd425"
+            "entity_index": "0965e6a2-92ed-4c7f-a5ce-cb60de9cd425"
           },
           {
             "entity_type": "POINT",
@@ -3659,18 +3655,18 @@
               "x": 17.089080000000003,
               "y": -24.980420000000002
             },
-            "entityIndex": "bf9b8434-6135-45bf-b5f1-0db361f70a7c"
+            "entity_index": "bf9b8434-6135-45bf-b5f1-0db361f70a7c"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 17.089080000000003,
               "y": -24.980420000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#92",
-            "entityIndex": "10e1e87c-431f-462f-899d-be86ff47de60"
+            "entity_index": "10e1e87c-431f-462f-899d-be86ff47de60"
           },
           {
             "entity_type": "POINT",
@@ -3679,18 +3675,18 @@
               "x": 11.47915,
               "y": -25.822300000000002
             },
-            "entityIndex": "94d86030-35ae-43ff-993a-862d98ded381"
+            "entity_index": "94d86030-35ae-43ff-993a-862d98ded381"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 11.47915,
               "y": -25.822300000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#93",
-            "entityIndex": "e50c9e16-7d95-46f0-87a0-f87b9cb1414e"
+            "entity_index": "e50c9e16-7d95-46f0-87a0-f87b9cb1414e"
           },
           {
             "entity_type": "POINT",
@@ -3699,18 +3695,18 @@
               "x": 7.061320000000001,
               "y": -28.06733
             },
-            "entityIndex": "0dd45466-f5e7-4619-b25d-285fc74da7d3"
+            "entity_index": "0dd45466-f5e7-4619-b25d-285fc74da7d3"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 7.061320000000001,
               "y": -28.06733
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#94",
-            "entityIndex": "e2f0bdd3-080b-412c-bbcd-3c4c20313562"
+            "entity_index": "e2f0bdd3-080b-412c-bbcd-3c4c20313562"
           },
           {
             "entity_type": "POINT",
@@ -3719,18 +3715,18 @@
               "x": 4.950430000000001,
               "y": -30.5
             },
-            "entityIndex": "8518dbe7-1791-4469-a111-569384947979"
+            "entity_index": "8518dbe7-1791-4469-a111-569384947979"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 4.950430000000001,
               "y": -30.5
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#95",
-            "entityIndex": "b4138cf1-7feb-48e4-a0db-4e0aea7a420a"
+            "entity_index": "b4138cf1-7feb-48e4-a0db-4e0aea7a420a"
           },
           {
             "entity_type": "POINT",
@@ -3739,18 +3735,18 @@
               "x": -37.00109,
               "y": -30
             },
-            "entityIndex": "c9d77bdc-212f-47f5-9b2d-94c816f2f36c"
+            "entity_index": "c9d77bdc-212f-47f5-9b2d-94c816f2f36c"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -37.00109,
               "y": -30
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#96",
-            "entityIndex": "c0d0159e-cd3f-476f-83e0-46d5f248d0d8"
+            "entity_index": "c0d0159e-cd3f-476f-83e0-46d5f248d0d8"
           },
           {
             "entity_type": "POINT",
@@ -3759,18 +3755,18 @@
               "x": -37.00109,
               "y": 0
             },
-            "entityIndex": "7b174938-9bba-444e-93be-cf25116cfb2f"
+            "entity_index": "7b174938-9bba-444e-93be-cf25116cfb2f"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -37.00109,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#97",
-            "entityIndex": "9dd4256a-663a-41b0-9df4-d86b61e0cebd"
+            "entity_index": "9dd4256a-663a-41b0-9df4-d86b61e0cebd"
           },
           {
             "entity_type": "POINT",
@@ -3779,18 +3775,18 @@
               "x": -37.00109,
               "y": 30
             },
-            "entityIndex": "846f8b1b-2709-485a-a28b-df73bcb7b4b9"
+            "entity_index": "846f8b1b-2709-485a-a28b-df73bcb7b4b9"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -37.00109,
               "y": 30
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#98",
-            "entityIndex": "4d43b25e-52df-46bc-83ea-34fd3ccd3ee8"
+            "entity_index": "4d43b25e-52df-46bc-83ea-34fd3ccd3ee8"
           },
           {
             "entity_type": "LINE",
@@ -3805,7 +3801,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "465fe4ce-e05a-41cc-ba79-c5ad5b2f8ee0"
+            "entity_index": "465fe4ce-e05a-41cc-ba79-c5ad5b2f8ee0"
           },
           {
             "entity_type": "POINT",
@@ -3814,73 +3810,73 @@
               "x": 33.598910000000004,
               "y": 0
             },
-            "entityIndex": "ad824392-e5f6-4b57-a174-7dc98de3b0d7"
+            "entity_index": "ad824392-e5f6-4b57-a174-7dc98de3b0d7"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 33.598910000000004,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#99",
-            "entityIndex": "2963da19-abdb-4903-ae4c-203dc570284d"
+            "entity_index": "2963da19-abdb-4903-ae4c-203dc570284d"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -37.00109,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#100",
-            "entityIndex": "092dde39-edf2-4cfe-b8ec-e6296d7dd15e"
+            "entity_index": "092dde39-edf2-4cfe-b8ec-e6296d7dd15e"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": -0.6000000000000001,
               "y": 0
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Piece Name:L-2",
-            "entityIndex": "6331493d-484a-4a6f-9ec2-bd541055e65e"
+            "entity_index": "6331493d-484a-4a6f-9ec2-bd541055e65e"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": -0.6000000000000001,
               "y": -1.2000000000000002
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Annotation:ÂºÃ³*1",
-            "entityIndex": "7761c261-782e-4f4b-832d-0879556f9ce9"
+            "entity_index": "7761c261-782e-4f4b-832d-0879556f9ce9"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": 0,
               "y": -0.5
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Quantity:1",
-            "entityIndex": "43408d18-e8b7-48fb-98f6-ba4e2f315a7c"
+            "entity_index": "43408d18-e8b7-48fb-98f6-ba4e2f315a7c"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": 0,
               "y": -1.5
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Size:L",
-            "entityIndex": "78188e7c-1bb8-467f-abf0-6b863b4f61df"
+            "entity_index": "78188e7c-1bb8-467f-abf0-6b863b4f61df"
           },
           {
             "entity_type": "LINE",
@@ -3895,7 +3891,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "76919df8-9ba2-4e20-bf6f-5fd41cfd23d9"
+            "entity_index": "76919df8-9ba2-4e20-bf6f-5fd41cfd23d9"
           },
           {
             "entity_type": "LINE",
@@ -3910,7 +3906,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "e0c94a2f-ef63-4bd4-ac52-117e9586a938"
+            "entity_index": "e0c94a2f-ef63-4bd4-ac52-117e9586a938"
           },
           {
             "entity_type": "LINE",
@@ -3925,7 +3921,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "a9a5f247-4d87-4292-9ebc-07d73a890767"
+            "entity_index": "a9a5f247-4d87-4292-9ebc-07d73a890767"
           },
           {
             "entity_type": "LINE",
@@ -3940,7 +3936,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "1dafd2c4-b718-4614-bedc-b405da28bc25"
+            "entity_index": "1dafd2c4-b718-4614-bedc-b405da28bc25"
           },
           {
             "entity_type": "LINE",
@@ -3955,7 +3951,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "0657e7c5-7b9d-4df2-8dfa-b5c0fd191887"
+            "entity_index": "0657e7c5-7b9d-4df2-8dfa-b5c0fd191887"
           }
         ],
         "centroid": {
@@ -3979,7 +3975,7 @@
               }
             ],
             "layer": "7",
-            "entityIndex": "6af5f6e9-02f5-438d-b6b5-c4e24398e056"
+            "entity_index": "6af5f6e9-02f5-438d-b6b5-c4e24398e056"
           },
           {
             "entity_type": "POINT",
@@ -3988,18 +3984,18 @@
               "x": -14.040090000000001,
               "y": 13.350000000000001
             },
-            "entityIndex": "4ed937ec-64d0-4ce4-8e6c-2f3d19ef5875"
+            "entity_index": "4ed937ec-64d0-4ce4-8e6c-2f3d19ef5875"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -14.040090000000001,
               "y": 13.350000000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#101",
-            "entityIndex": "aa7a5a7e-781e-4b14-871f-cb8ead2cb68f"
+            "entity_index": "aa7a5a7e-781e-4b14-871f-cb8ead2cb68f"
           },
           {
             "entity_type": "POINT",
@@ -4008,18 +4004,18 @@
               "x": 18.04543,
               "y": 13.350000000000001
             },
-            "entityIndex": "69349750-2b1f-4e1f-91f5-2f1337ea494a"
+            "entity_index": "69349750-2b1f-4e1f-91f5-2f1337ea494a"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 18.04543,
               "y": 13.350000000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#102",
-            "entityIndex": "cddaaec1-f991-46bb-8f48-a2d909b39b7f"
+            "entity_index": "cddaaec1-f991-46bb-8f48-a2d909b39b7f"
           },
           {
             "entity_type": "LWPOLYLINE",
@@ -4247,8 +4243,7 @@
             ],
             "layer": "1",
             "shape": true,
-            "hasContinuousLinetypePattern": false,
-            "entityIndex": "1098c27d-3502-4873-a75d-bea2e7588ff5"
+            "entity_index": "1098c27d-3502-4873-a75d-bea2e7588ff5"
           },
           {
             "entity_type": "POINT",
@@ -4257,18 +4252,18 @@
               "x": -31.700380000000003,
               "y": 12.556890000000001
             },
-            "entityIndex": "74702394-8cec-4e3a-a5ca-2840e9786c9f"
+            "entity_index": "74702394-8cec-4e3a-a5ca-2840e9786c9f"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -31.700380000000003,
               "y": 12.556890000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#103",
-            "entityIndex": "324219b8-0ff9-4d8c-8953-be17e5bd633d"
+            "entity_index": "324219b8-0ff9-4d8c-8953-be17e5bd633d"
           },
           {
             "entity_type": "POINT",
@@ -4277,18 +4272,18 @@
               "x": -29.700380000000003,
               "y": 11.941630000000002
             },
-            "entityIndex": "e0c9d9f1-0a27-4bce-822e-cfbacff0521e"
+            "entity_index": "e0c9d9f1-0a27-4bce-822e-cfbacff0521e"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": 11.941630000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#104",
-            "entityIndex": "c2e77d12-d233-458b-beaa-d59edc674d00"
+            "entity_index": "c2e77d12-d233-458b-beaa-d59edc674d00"
           },
           {
             "entity_type": "POINT",
@@ -4297,18 +4292,18 @@
               "x": 21.97773,
               "y": 27.83967
             },
-            "entityIndex": "707913ff-20f8-4136-b3a4-c636ee95f9a1"
+            "entity_index": "707913ff-20f8-4136-b3a4-c636ee95f9a1"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 21.97773,
               "y": 27.83967
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#105",
-            "entityIndex": "b5b3faba-84b6-41e1-954a-9adf33effe70"
+            "entity_index": "b5b3faba-84b6-41e1-954a-9adf33effe70"
           },
           {
             "entity_type": "POINT",
@@ -4317,18 +4312,18 @@
               "x": 23.67917,
               "y": 21.881510000000002
             },
-            "entityIndex": "7499cf41-fb7b-4837-8c44-1c4f9bcc16f6"
+            "entity_index": "7499cf41-fb7b-4837-8c44-1c4f9bcc16f6"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 23.67917,
               "y": 21.881510000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#106",
-            "entityIndex": "f258d28e-f4df-49af-831e-63f939ca03c0"
+            "entity_index": "f258d28e-f4df-49af-831e-63f939ca03c0"
           },
           {
             "entity_type": "POINT",
@@ -4337,18 +4332,18 @@
               "x": 26.99324,
               "y": 15.529589999999999
             },
-            "entityIndex": "bba38a77-6af9-4b4b-adbe-02b024757ac0"
+            "entity_index": "bba38a77-6af9-4b4b-adbe-02b024757ac0"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 26.99324,
               "y": 15.529589999999999
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#107",
-            "entityIndex": "eb735792-f7c1-48e0-a96a-400e569474c6"
+            "entity_index": "eb735792-f7c1-48e0-a96a-400e569474c6"
           },
           {
             "entity_type": "POINT",
@@ -4357,18 +4352,18 @@
               "x": 31.084500000000006,
               "y": 6.25845
             },
-            "entityIndex": "31dbe93b-0a09-4640-9779-7edb91827b5f"
+            "entity_index": "31dbe93b-0a09-4640-9779-7edb91827b5f"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 31.084500000000006,
               "y": 6.25845
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#108",
-            "entityIndex": "26e7af89-8334-4f04-ae67-df6046bbfae0"
+            "entity_index": "26e7af89-8334-4f04-ae67-df6046bbfae0"
           },
           {
             "entity_type": "POINT",
@@ -4377,18 +4372,18 @@
               "x": 31.700380000000003,
               "y": -0.00001
             },
-            "entityIndex": "44db9954-b9ab-4499-ae4b-c22550e7e8ae"
+            "entity_index": "44db9954-b9ab-4499-ae4b-c22550e7e8ae"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 31.700380000000003,
               "y": -0.00001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#109",
-            "entityIndex": "e7a46860-ab4a-47b0-93ca-35d0d3027cfe"
+            "entity_index": "e7a46860-ab4a-47b0-93ca-35d0d3027cfe"
           },
           {
             "entity_type": "POINT",
@@ -4397,18 +4392,18 @@
               "x": 31.084500000000006,
               "y": -6.258420000000001
             },
-            "entityIndex": "32eb3a0a-379e-46ea-a8fa-69bdae63fdb9"
+            "entity_index": "32eb3a0a-379e-46ea-a8fa-69bdae63fdb9"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 31.084500000000006,
               "y": -6.258420000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#110",
-            "entityIndex": "ef56c21b-8396-4aef-af27-0403f67a6ac8"
+            "entity_index": "ef56c21b-8396-4aef-af27-0403f67a6ac8"
           },
           {
             "entity_type": "POINT",
@@ -4417,18 +4412,18 @@
               "x": 26.993700000000004,
               "y": -15.52879
             },
-            "entityIndex": "e098467e-bf02-4521-8956-3155d2a4322c"
+            "entity_index": "e098467e-bf02-4521-8956-3155d2a4322c"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 26.993700000000004,
               "y": -15.52879
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#111",
-            "entityIndex": "63142928-60f0-47c1-918a-047e6389f61d"
+            "entity_index": "63142928-60f0-47c1-918a-047e6389f61d"
           },
           {
             "entity_type": "POINT",
@@ -4437,18 +4432,18 @@
               "x": 23.679190000000002,
               "y": -21.88143
             },
-            "entityIndex": "bd90781c-bfdd-448b-8272-ea5ffdd87a4c"
+            "entity_index": "bd90781c-bfdd-448b-8272-ea5ffdd87a4c"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 23.679190000000002,
               "y": -21.881420000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#112",
-            "entityIndex": "fdb7b0ad-7cfe-49a8-8639-eccbe3db4502"
+            "entity_index": "fdb7b0ad-7cfe-49a8-8639-eccbe3db4502"
           },
           {
             "entity_type": "POINT",
@@ -4457,18 +4452,18 @@
               "x": 21.97773,
               "y": -27.83966
             },
-            "entityIndex": "8079f43a-4438-4ec0-bfd7-6f9b912c4ee5"
+            "entity_index": "8079f43a-4438-4ec0-bfd7-6f9b912c4ee5"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 21.97773,
               "y": -27.83966
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#113",
-            "entityIndex": "13172e70-3eca-4e7d-9994-e16aeb464862"
+            "entity_index": "13172e70-3eca-4e7d-9994-e16aeb464862"
           },
           {
             "entity_type": "POINT",
@@ -4477,18 +4472,18 @@
               "x": -29.700380000000003,
               "y": -11.94162
             },
-            "entityIndex": "753a13f8-bc7e-4bc2-96bc-5ea99fc0d94e"
+            "entity_index": "753a13f8-bc7e-4bc2-96bc-5ea99fc0d94e"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": -11.94162
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#114",
-            "entityIndex": "ee65948e-ae29-4bd9-91f9-24ecf321de46"
+            "entity_index": "ee65948e-ae29-4bd9-91f9-24ecf321de46"
           },
           {
             "entity_type": "POINT",
@@ -4497,18 +4492,18 @@
               "x": -31.700380000000003,
               "y": -12.556890000000001
             },
-            "entityIndex": "569334b2-4971-42b6-8f12-ab05eb0a04c7"
+            "entity_index": "569334b2-4971-42b6-8f12-ab05eb0a04c7"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -31.700380000000003,
               "y": -12.556890000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#115",
-            "entityIndex": "3f7f4a58-d7b0-4e5a-ac68-f3d2794bd59f"
+            "entity_index": "3f7f4a58-d7b0-4e5a-ac68-f3d2794bd59f"
           },
           {
             "entity_type": "POINT",
@@ -4517,18 +4512,18 @@
               "x": -31.700380000000003,
               "y": 0
             },
-            "entityIndex": "f664241f-3390-4296-8838-f2f473a70516"
+            "entity_index": "f664241f-3390-4296-8838-f2f473a70516"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -31.700380000000003,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#116",
-            "entityIndex": "4ecf36e5-80c1-4e10-ba9a-4c20bcf0a1e1"
+            "entity_index": "4ecf36e5-80c1-4e10-ba9a-4c20bcf0a1e1"
           },
           {
             "entity_type": "POINT",
@@ -4537,18 +4532,18 @@
               "x": -31.700380000000003,
               "y": 12.556890000000001
             },
-            "entityIndex": "dfbd5a91-21d3-4b67-9ada-a71aa9c1dfbe"
+            "entity_index": "dfbd5a91-21d3-4b67-9ada-a71aa9c1dfbe"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -31.700380000000003,
               "y": 12.556890000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#117",
-            "entityIndex": "099c3c3f-43cd-4120-8a74-4455c806a203"
+            "entity_index": "099c3c3f-43cd-4120-8a74-4455c806a203"
           },
           {
             "entity_type": "LWPOLYLINE",
@@ -4768,9 +4763,8 @@
             ],
             "layer": "14",
             "shape": true,
-            "hasContinuousLinetypePattern": false,
             "hasCurvePoint": true,
-            "entityIndex": "8cd1b413-c427-4f10-9167-770ee10f7b9b"
+            "entity_index": "8cd1b413-c427-4f10-9167-770ee10f7b9b"
           },
           {
             "entity_type": "POINT",
@@ -4779,18 +4773,18 @@
               "x": -29.700380000000003,
               "y": 11
             },
-            "entityIndex": "0cdfa206-7dce-4269-b68f-e64cb8fc221b"
+            "entity_index": "0cdfa206-7dce-4269-b68f-e64cb8fc221b"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": 11
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#118",
-            "entityIndex": "9db4094a-a85a-42a9-9f22-a384ef963d79"
+            "entity_index": "9db4094a-a85a-42a9-9f22-a384ef963d79"
           },
           {
             "entity_type": "POINT",
@@ -4799,18 +4793,18 @@
               "x": 21.33399,
               "y": 26.700000000000003
             },
-            "entityIndex": "6d39b4ef-9caf-412a-b7ea-844443ae6ce3"
+            "entity_index": "6d39b4ef-9caf-412a-b7ea-844443ae6ce3"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 21.33399,
               "y": 26.700000000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#119",
-            "entityIndex": "3ad77b3e-26a1-4b0b-a281-c24744387c6c"
+            "entity_index": "3ad77b3e-26a1-4b0b-a281-c24744387c6c"
           },
           {
             "entity_type": "POINT",
@@ -4819,18 +4813,18 @@
               "x": 22.841,
               "y": 21.552950000000003
             },
-            "entityIndex": "7384f65b-854c-424b-885d-484329422fc8"
+            "entity_index": "7384f65b-854c-424b-885d-484329422fc8"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 22.841,
               "y": 21.552950000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#120",
-            "entityIndex": "6ff9dbf0-4e1c-4669-908e-0a7159895a37"
+            "entity_index": "6ff9dbf0-4e1c-4669-908e-0a7159895a37"
           },
           {
             "entity_type": "POINT",
@@ -4839,18 +4833,18 @@
               "x": 26.21407,
               "y": 15.079140000000002
             },
-            "entityIndex": "e33e6873-a365-4f62-bb7c-23791f01fd3a"
+            "entity_index": "e33e6873-a365-4f62-bb7c-23791f01fd3a"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 26.21407,
               "y": 15.079140000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#121",
-            "entityIndex": "b51cd569-3ec4-4fa1-92f0-53b0b097385f"
+            "entity_index": "b51cd569-3ec4-4fa1-92f0-53b0b097385f"
           },
           {
             "entity_type": "POINT",
@@ -4859,18 +4853,18 @@
               "x": 30.206670000000003,
               "y": 6.057130000000001
             },
-            "entityIndex": "15686856-f438-40fb-ad78-5024e6dc8d8d"
+            "entity_index": "15686856-f438-40fb-ad78-5024e6dc8d8d"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 30.206670000000003,
               "y": 6.057130000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#122",
-            "entityIndex": "7db2f4a8-44cf-46a5-9aaf-07226a8a810a"
+            "entity_index": "7db2f4a8-44cf-46a5-9aaf-07226a8a810a"
           },
           {
             "entity_type": "POINT",
@@ -4879,18 +4873,18 @@
               "x": 30.79962,
               "y": 0
             },
-            "entityIndex": "7fb07357-aef9-43f5-88de-49edda891496"
+            "entity_index": "7fb07357-aef9-43f5-88de-49edda891496"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 30.79962,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#123",
-            "entityIndex": "dc7236ce-1710-489a-85b7-aa3faaf360da"
+            "entity_index": "dc7236ce-1710-489a-85b7-aa3faaf360da"
           },
           {
             "entity_type": "POINT",
@@ -4899,18 +4893,18 @@
               "x": 30.206670000000003,
               "y": -6.057130000000001
             },
-            "entityIndex": "6c2689a6-edc7-4bba-95c1-508bd505ea84"
+            "entity_index": "6c2689a6-edc7-4bba-95c1-508bd505ea84"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 30.206670000000003,
               "y": -6.057130000000001
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#124",
-            "entityIndex": "13fb4c5f-f478-4f85-afb6-285460b8ca7e"
+            "entity_index": "13fb4c5f-f478-4f85-afb6-285460b8ca7e"
           },
           {
             "entity_type": "POINT",
@@ -4919,18 +4913,18 @@
               "x": 26.21407,
               "y": -15.079140000000002
             },
-            "entityIndex": "437fa54b-9274-49bb-abdf-77ed1a288eb9"
+            "entity_index": "437fa54b-9274-49bb-abdf-77ed1a288eb9"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 26.21407,
               "y": -15.079140000000002
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#125",
-            "entityIndex": "83c98f1f-5714-4832-9c11-cd3e6fd31d25"
+            "entity_index": "83c98f1f-5714-4832-9c11-cd3e6fd31d25"
           },
           {
             "entity_type": "POINT",
@@ -4939,18 +4933,18 @@
               "x": 22.841,
               "y": -21.552950000000003
             },
-            "entityIndex": "8eba6f69-0b7a-43af-8900-f73fd1831f6f"
+            "entity_index": "8eba6f69-0b7a-43af-8900-f73fd1831f6f"
           },
           {
             "entity_type": "TEXT",
             "layer": "3",
-            "startPoint": {
+            "start_point": {
               "x": 22.841,
               "y": -21.552950000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#126",
-            "entityIndex": "902674ab-6918-43aa-bb34-fd34b000975c"
+            "entity_index": "902674ab-6918-43aa-bb34-fd34b000975c"
           },
           {
             "entity_type": "POINT",
@@ -4959,18 +4953,18 @@
               "x": 21.33399,
               "y": -26.700000000000003
             },
-            "entityIndex": "d4ec42e3-87ed-4d09-b347-1f5ad47c32d1"
+            "entity_index": "d4ec42e3-87ed-4d09-b347-1f5ad47c32d1"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 21.33399,
               "y": -26.700000000000003
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#127",
-            "entityIndex": "050d6350-4376-416b-8d0b-729ece180cf4"
+            "entity_index": "050d6350-4376-416b-8d0b-729ece180cf4"
           },
           {
             "entity_type": "POINT",
@@ -4979,18 +4973,18 @@
               "x": -29.700380000000003,
               "y": -11
             },
-            "entityIndex": "1239bd25-b3cc-43d5-b143-7ccce58ad81f"
+            "entity_index": "1239bd25-b3cc-43d5-b143-7ccce58ad81f"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": -11
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#128",
-            "entityIndex": "796ccbdc-cdc7-40d3-970f-7760df0f31b3"
+            "entity_index": "796ccbdc-cdc7-40d3-970f-7760df0f31b3"
           },
           {
             "entity_type": "POINT",
@@ -4999,18 +4993,18 @@
               "x": -29.700380000000003,
               "y": 0
             },
-            "entityIndex": "d675e6ab-ad75-44ac-8b24-81f45de65a64"
+            "entity_index": "d675e6ab-ad75-44ac-8b24-81f45de65a64"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#129",
-            "entityIndex": "497b1552-5b6f-46dd-9780-b1c0cc191184"
+            "entity_index": "497b1552-5b6f-46dd-9780-b1c0cc191184"
           },
           {
             "entity_type": "POINT",
@@ -5019,18 +5013,18 @@
               "x": -29.700380000000003,
               "y": 11
             },
-            "entityIndex": "8b0ed534-57de-4dea-b336-579b1a60976b"
+            "entity_index": "8b0ed534-57de-4dea-b336-579b1a60976b"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": 11
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#130",
-            "entityIndex": "56f522a0-7b50-4a9d-9905-9f8a7ac297b9"
+            "entity_index": "56f522a0-7b50-4a9d-9905-9f8a7ac297b9"
           },
           {
             "entity_type": "POINT",
@@ -5040,18 +5034,18 @@
               "y": 0
             },
             "notchDepth": 0.5,
-            "entityIndex": "6aacf31e-c566-46f3-be96-722200505acc"
+            "entity_index": "6aacf31e-c566-46f3-be96-722200505acc"
           },
           {
             "entity_type": "TEXT",
             "layer": "4",
-            "startPoint": {
+            "start_point": {
               "x": 31.700380000000003,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#131",
-            "entityIndex": "dbf05da8-298f-42f8-a3cf-0be3eebe3147"
+            "entity_index": "dbf05da8-298f-42f8-a3cf-0be3eebe3147"
           },
           {
             "entity_type": "LINE",
@@ -5066,7 +5060,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "36cdc067-438d-4796-a50b-4d3f5cbcb2be"
+            "entity_index": "36cdc067-438d-4796-a50b-4d3f5cbcb2be"
           },
           {
             "entity_type": "POINT",
@@ -5075,73 +5069,73 @@
               "x": 30.79962,
               "y": 0
             },
-            "entityIndex": "7e13a776-f6ac-4406-837c-2d374e95bfb2"
+            "entity_index": "7e13a776-f6ac-4406-837c-2d374e95bfb2"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": 30.79962,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#132",
-            "entityIndex": "bb42d5c0-53a3-4bd6-bcdd-fc63de4fab40"
+            "entity_index": "bb42d5c0-53a3-4bd6-bcdd-fc63de4fab40"
           },
           {
             "entity_type": "TEXT",
             "layer": "2",
-            "startPoint": {
+            "start_point": {
               "x": -29.700380000000003,
               "y": 0
             },
-            "textHeight": 0.4,
+            "text_height": 0.4,
             "text": "#133",
-            "entityIndex": "b16a9978-f5b9-486d-ba56-aba205021467"
+            "entity_index": "b16a9978-f5b9-486d-ba56-aba205021467"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": -0.6000000000000001,
               "y": 0
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Piece Name:L-3",
-            "entityIndex": "5fec5e3f-04a6-4015-a5f3-e0feff633974"
+            "entity_index": "5fec5e3f-04a6-4015-a5f3-e0feff633974"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": -0.6000000000000001,
               "y": -1.2000000000000002
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Annotation:ÃÃ¤*2",
-            "entityIndex": "76542baf-07ec-415a-878e-2a2f5a74fea2"
+            "entity_index": "76542baf-07ec-415a-878e-2a2f5a74fea2"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": 0,
               "y": -0.5
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Quantity:1,1",
-            "entityIndex": "814aded6-6fc7-4de3-817c-36500c036b57"
+            "entity_index": "814aded6-6fc7-4de3-817c-36500c036b57"
           },
           {
             "entity_type": "TEXT",
             "layer": "1",
-            "startPoint": {
+            "start_point": {
               "x": 0,
               "y": -1.5
             },
-            "textHeight": 0.6,
+            "text_height": 0.6,
             "text": "Size:L",
-            "entityIndex": "f7f63adc-bc47-4903-8e2d-35528f896430"
+            "entity_index": "f7f63adc-bc47-4903-8e2d-35528f896430"
           },
           {
             "entity_type": "LINE",
@@ -5156,7 +5150,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "91f20daa-e6d5-436e-9522-d6a0b72efca2"
+            "entity_index": "91f20daa-e6d5-436e-9522-d6a0b72efca2"
           },
           {
             "entity_type": "LINE",
@@ -5171,7 +5165,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "2c1bbb74-3bac-4e9e-8f6b-5bcce6b3b70c"
+            "entity_index": "2c1bbb74-3bac-4e9e-8f6b-5bcce6b3b70c"
           },
           {
             "entity_type": "LINE",
@@ -5186,7 +5180,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "d9ebaeb0-bcc4-4bc7-8c84-f944ebbfcb18"
+            "entity_index": "d9ebaeb0-bcc4-4bc7-8c84-f944ebbfcb18"
           },
           {
             "entity_type": "LINE",
@@ -5201,7 +5195,7 @@
               }
             ],
             "layer": "8",
-            "entityIndex": "dbad0df0-0722-4171-b9e7-465b9c20b254"
+            "entity_index": "dbad0df0-0722-4171-b9e7-465b9c20b254"
           }
         ],
         "centroid": {
@@ -5238,7 +5232,6 @@
           "y": 30.447840000000003
         }
       }
-    ],
-    "originalUnit": "mm"
+    ]
   }
 }
