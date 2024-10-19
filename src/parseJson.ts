@@ -131,7 +131,6 @@ export function readJSON() {
   const fileInput = document.getElementById('fileInput') as HTMLInputElement;
 
   const file = fileInput.files?.[0];
-  console.log(file);
 
   if (file) {
     const reader = new FileReader();
@@ -140,7 +139,7 @@ export function readJSON() {
       console.log('Uploading json');
       try {
         const jsonData = JSON.parse(e.target?.result as string);
-        const newArrays = parseJson(jsonData.patternJson as IMinPatternJson);
+        const newArrays = parseJson(jsonData.pattern_json as IMinPatternJson);
 
         if (newArrays) {
           mapBuffersToDevice(newArrays.vertexArray, newArrays.indexArray);

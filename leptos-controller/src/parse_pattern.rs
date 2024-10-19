@@ -52,7 +52,7 @@ struct ParsePattern {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ParseDocument {
-    patternJson: ParsePattern,
+    pattern_json: ParsePattern,
 }
 
 // Function to parse a JSON string into the Person struct.
