@@ -4,11 +4,10 @@ let nrIndices: number | undefined;
 let currentDevice: GPUDevice | undefined;
 
 export function setDevice(device: GPUDevice) {
-    currentDevice = device;
+  currentDevice = device;
 }
 
 export function mapBuffersToDevice(vertexArray: Float32Array, indexArray: Uint32Array) {
-
   if (currentDevice === undefined) {
     console.error('No device has been set');
     return;

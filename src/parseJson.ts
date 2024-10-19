@@ -17,7 +17,7 @@ export interface IMinEntity {
   entityIndex?: string;
   startPoint?: IVertex;
   textHeight?: number;
-  text?: string,
+  text?: string;
 }
 
 export interface IMinBlock {
@@ -90,7 +90,7 @@ const parseJson = (pattern: IMinPatternJson | undefined): IGPUArray | undefined 
         }
 
         indexOutput.push(0xffffffff);
-      } else if (entity.position && entity.entity_type === "POINT") {
+      } else if (entity.position && entity.entity_type === 'POINT') {
         const newVertexStartInd = vertexOutput.length / vertexStride;
         const outVertex = offsetVertex(entity.position, currentOffset);
         const newX = outVertex.x;
@@ -171,7 +171,6 @@ export function readJsonToWasm() {
       try {
         const jsonData = JSON.parse(e.target?.result as string);
         console.log(jsonData);
-
       } catch (err) {
         console.error('Error parsing JSON:', err);
       }
