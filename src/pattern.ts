@@ -1,4 +1,4 @@
-import init, { greet, get_buffer_udpate, read_pattern } from '../leptos-controller/pkg/cad_pattern_editor.js';
+import init, { greet, Pattern } from '../leptos-controller/pkg/cad_pattern_editor.js';
 
 let PATTERN_WASM_HANDLE: any = undefined;
 let wasmStarted: boolean = false;
@@ -6,7 +6,9 @@ let wasmStarted: boolean = false;
 
 export function intilizePattern(payload: string): boolean {
   if (!wasmStarted) return false;
-  return read_pattern(payload);
+  PATTERN_WASM_HANDLE = new Pattern(payload);
+  console.log(PATTERN_WASM_HANDLE.get_number_entities())
+  return true;
 }
 
 export async function startUpWasm() {
