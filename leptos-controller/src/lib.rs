@@ -1,6 +1,17 @@
 use wasm_bindgen::prelude::*;
 use leptos::*;
 
+pub mod parse_pattern;
+
+#[wasm_bindgen]
+pub fn read_pattern(json_payload: &str) {
+    if let Ok(_pattern) = parse_pattern::parse_pattern(json_payload) {
+        logging::log!("Parsed the pattern");
+    } else {
+        logging::log!("Parsing failed");
+    }
+}
+
 #[wasm_bindgen]
 pub fn greet(name: &str) {
     logging::log!("Hello to the console {}", name);

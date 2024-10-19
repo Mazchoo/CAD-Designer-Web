@@ -12,7 +12,7 @@ struct Vertex {
 #[derive(Serialize, Deserialize, Debug)]
 struct ParseEntity {
     #[serde(skip_serializing_if = "Option::is_none")]
-    entity_type: Option<String>,  // 'type' is a reserved keyword in Rust
+    entity_type: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     shape: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -24,7 +24,7 @@ struct ParseEntity {
     #[serde(skip_serializing_if = "Option::is_none")]
     start_point: Option<Vertex>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    text_height: Option<f64>,  // Assuming textHeight can be a float
+    text_height: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     text: Option<String>,
 }
@@ -50,8 +50,13 @@ struct ParsePattern {
     entities: Vec<ParseInsertEntity>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ParseDocument {
+    patternJson: ParsePattern,
+}
+
 // Function to parse a JSON string into the Person struct.
-fn parse_pattern(json_str: &str) -> Result<ParsePattern> {
-    let parsed_pattern: ParsePattern = serde_json::from_str(json_str)?;
-    Ok(person)
+pub fn parse_pattern(json_str: &str) -> Result<ParseDocument> {
+    let parsed_pattern: ParseDocument = serde_json::from_str(json_str)?;
+    Ok(parsed_pattern)
 }
