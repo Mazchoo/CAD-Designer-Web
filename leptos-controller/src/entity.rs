@@ -13,11 +13,11 @@ pub enum EntityTypes {
 
 #[derive(Debug)]
 pub struct Entity {
-    entity_type: EntityTypes,
-    layer: i32,
-    shape: bool,
-    vertices: Array2<f64>,
-    text_height: f32,
-    entity_index: [u8; 32],
-    text: String
+    pub entity_type: EntityTypes,
+    pub layer: i32,
+    pub shape: bool,
+    pub vertices: Array2<f32>,
+    pub text_height: f32,
+    pub entity_index: [u8; 32],
+    pub text: String,
 }

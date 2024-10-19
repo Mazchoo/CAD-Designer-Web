@@ -11,8 +11,9 @@ pub struct Vertex {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ParseEntity {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub entity_type: Option<String>,
+    pub entity_type: String,
+    pub layer: String,
+    pub entity_index: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub shape: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -20,11 +21,9 @@ pub struct ParseEntity {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<Vertex>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub entity_index: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_point: Option<Vertex>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub text_height: Option<f64>,
+    pub text_height: Option<f32>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<String>,
 }

@@ -1,10 +1,10 @@
-use wasm_bindgen::prelude::*;
 use leptos::*;
+use wasm_bindgen::prelude::*;
 
-pub mod parse_pattern;
 pub mod block;
-pub mod insert;
 pub mod entity;
+pub mod insert;
+pub mod parse_pattern;
 pub mod pattern;
 
 #[wasm_bindgen]
@@ -45,15 +45,17 @@ fn App() -> impl IntoView {
 
 #[wasm_bindgen]
 pub fn get_buffer_udpate() -> Vec<f32> {
-    return vec![1., 1. , 1., 10.];
+    return vec![1., 1., 1., 10.];
 }
 
 #[wasm_bindgen]
 pub fn do_more_stuff() {
     logging::log!("Hello to the console");
     console_error_panic_hook::set_once();
-    mount_to_body(|| view!{ 
-        <App/>
-        <p> "Hello there, you noob!"</p>
+    mount_to_body(|| {
+        view! {
+            <App/>
+            <p> "Hello there, you noob!"</p>
+        }
     });
 }
