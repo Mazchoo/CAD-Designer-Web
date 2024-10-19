@@ -11,15 +11,19 @@ import { createInputHandler } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
+import { startUpWasm } from './pattern';
 
 import { uploadJSON, readJSON } from './parseJson';
 
+// Assign these two functions to the global scope
 (window as any).uploadJSON = uploadJSON;
 (window as any).readJSON = readJSON;
 
+let patternHandle = await startUpWasm();
+(window as any).patternHandle = patternHandle;
+
 // ToDo make a helper program that copies shaders into ts files
 
-// ToDo make a mock canvas when debugging locally
 const canvas = document.querySelector('canvas') as HTMLCanvasElement;
 
 // The input handler

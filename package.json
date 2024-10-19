@@ -12,7 +12,7 @@
     "prettier-write": "prettier . --config ./.prettierrc.json --write",
     "server-release": "rollup -c && servez --port=23592 .",
     "server-debug": "rollup -c -n debug && servez --port=23592 .",
-    "build-rust": "cd ./leptos-controller && wasm-pack build --target web && move ./pkg ../dist/pkg"
+    "build-rust": "cd ./leptos-controller && wasm-pack build --target web"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-wasm": "^6.2.2",
     "@tsconfig/recommended": "^1.0.6",
     "@types/showdown": "^2.0.6",
     "@types/stats.js": "^0.17.3",
@@ -51,7 +52,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "servez": "^2.1.6",
     "tslib": "^2.6.3",
-    "typescript": "^5.4.5",
+    "typescript": "^5.6.3",
     "webgpu": "^0.1.16"
   }
 }

@@ -443,15 +443,5 @@
     </script>
     <script defer src="./dist/bundle.js" type="module"></script>
     <script defer type="module" src="./js/iframe-helper.js"></script>
-
-    <script defer type="module">
-      import init, { greet, get_buffer_udpate } from './dist/pkg/leptos_controller.js';
-
-      await init();
-      console.log('Started wasm');
-      greet('Newb');
-      const buffetUpdate = get_buffer_udpate();
-      console.log(buffetUpdate);
-    </script>
   </body>
 </html>
