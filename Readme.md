@@ -1,6 +1,9 @@
+
+![image](https://github.com/user-attachments/assets/953a28d0-7d6e-44d3-95b3-62b93d5b23db)
+
 # About
 
-This is a PoC for running cad software in the browser using Web GPU and Wasm to do some numeric computations in the browser in lower level languages.
+This is a Proof of Concept for running cad software in the browser using Web GPU and Wasm in order to take advantage of numeric computations in the browser in lower level languages. Rendering of the dxf is done on the GPU and more customised object manipulation can be done with Rust Bindings.
 
 # GPU Requirements
 
