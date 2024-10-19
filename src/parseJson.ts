@@ -13,10 +13,16 @@ export interface IMinEntity {
   shape?: boolean;
   vertices?: IVertex[];
   position?: IVertex;
+  entityIndex?: string;
+  startPoint?: IVertex;
+  textHeight?: number;
+  text?: string,
 }
 
 export interface IMinBlock {
   entities: IMinEntity[];
+  centroid: IVertex;
+  layer: string;
 }
 
 export interface IInsertEntity {
