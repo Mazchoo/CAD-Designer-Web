@@ -9,7 +9,7 @@
         },
         "entities": [
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -24.936300000000003,
@@ -24,7 +24,7 @@
             "entityIndex": "5fa8d9ac-b69a-42dd-860a-204680c8dd2b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -24.936300000000003,
@@ -33,7 +33,7 @@
             "entityIndex": "547a676f-f635-49b8-bb96-f70a0c9f519e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -24.936300000000003,
@@ -44,7 +44,7 @@
             "entityIndex": "622a5a7e-e7ed-4384-b23e-d4b11a6408c0"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 22.81554,
@@ -53,7 +53,7 @@
             "entityIndex": "a0ec5536-60f2-4392-a5aa-9ae8bfcf1e2d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 22.81554,
@@ -64,7 +64,7 @@
             "entityIndex": "821acc38-d4f5-4b81-aec6-8fe76d9c7880"
           },
           {
-            "type": "LWPOLYLINE",
+            "entity_type": "LWPOLYLINE",
             "vertices": [
               {
                 "x": -38.87427,
@@ -493,7 +493,7 @@
             "entityIndex": "1cbccb9b-1ca2-4675-87dc-0b6e280ba8c3"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -38.87427,
@@ -502,7 +502,7 @@
             "entityIndex": "ca6a7aa3-7dd3-4957-9c08-542e6c152e52"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -38.87427,
@@ -513,7 +513,7 @@
             "entityIndex": "fa872c56-7381-46e4-9ca0-5f63085b0e2f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 5.519220000000001,
@@ -522,7 +522,7 @@
             "entityIndex": "213a5e92-3609-4f6e-a2f7-7bc138adaf53"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 5.519220000000001,
@@ -533,7 +533,7 @@
             "entityIndex": "d53da1e7-866f-4fd9-8391-9ec365b91d64"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.7770600000000005,
@@ -542,7 +542,7 @@
             "entityIndex": "36d51596-b00e-4bf6-99b4-fb18f3e2f074"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.7770600000000005,
@@ -553,7 +553,7 @@
             "entityIndex": "70dadb45-a1ac-4045-a94e-2aceec8a0263"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.849250000000001,
@@ -562,7 +562,7 @@
             "entityIndex": "1df82ded-b1fe-487a-9890-235637c23b59"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.849250000000001,
@@ -573,7 +573,7 @@
             "entityIndex": "1dff6026-959f-4baa-8a06-fea2c3afcb70"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.28286,
@@ -582,7 +582,7 @@
             "entityIndex": "553d33c4-bca8-448c-b99b-a24e7ea27f83"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.28286,
@@ -593,7 +593,7 @@
             "entityIndex": "79e4c92d-b596-4086-adb2-dc238c2b876a"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.92218,
@@ -602,7 +602,7 @@
             "entityIndex": "e5084be4-be80-4054-a257-b86c7ea80da7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.92218,
@@ -613,7 +613,7 @@
             "entityIndex": "778fcf75-724d-4669-a218-b0505561a358"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.91162,
@@ -622,7 +622,7 @@
             "entityIndex": "762b8e9b-b64b-4a13-b616-27ce38497554"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.91162,
@@ -633,7 +633,7 @@
             "entityIndex": "e905ded8-8de2-41d4-8eaf-9e514fa57472"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 36.43784,
@@ -642,7 +642,7 @@
             "entityIndex": "9d22f72a-1aea-4bc0-ada9-8505bfb603f6"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 36.43784,
@@ -653,7 +653,7 @@
             "entityIndex": "daf2aaac-16d4-4210-9010-e39fea7d115b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 38.87426,
@@ -662,7 +662,7 @@
             "entityIndex": "2c47c246-18e6-4f16-91c4-cf23f23919e8"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 38.87427,
@@ -673,7 +673,7 @@
             "entityIndex": "e72e0ff0-beed-4fec-b1e5-1bcef974c1b1"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 35.61202,
@@ -682,7 +682,7 @@
             "entityIndex": "204515e7-45f7-454d-94f7-b5aa3d6f3fa8"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 35.61202,
@@ -693,7 +693,7 @@
             "entityIndex": "f0c8c641-6a78-43fc-b5de-472e9f7526a5"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 34.550380000000004,
@@ -702,7 +702,7 @@
             "entityIndex": "d2391a87-ece0-43fa-9453-625df405cd06"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 34.550380000000004,
@@ -713,7 +713,7 @@
             "entityIndex": "9e4532e8-a104-459f-946c-31f9f26066f1"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 34.22581,
@@ -722,7 +722,7 @@
             "entityIndex": "54a16162-ff34-4a40-9fe4-87f78a27359d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 34.22581,
@@ -733,7 +733,7 @@
             "entityIndex": "e5775dc6-8f26-4f41-83fd-90fb61ef37a2"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 34.55037,
@@ -742,7 +742,7 @@
             "entityIndex": "cd0a8109-94be-4dce-95d8-e9f112c2ee77"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 34.55037,
@@ -753,7 +753,7 @@
             "entityIndex": "d1a05410-3548-4758-9189-a6acf181c6aa"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 35.61202,
@@ -762,7 +762,7 @@
             "entityIndex": "452e6a9b-12f1-46ba-89d4-14a6be0525ad"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 35.61202,
@@ -773,7 +773,7 @@
             "entityIndex": "e9c8e1c8-7e8c-4157-8037-0f62bd23e2b4"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 38.87427,
@@ -782,7 +782,7 @@
             "entityIndex": "8fcbb78d-21ed-4433-b85d-87792c1dadbf"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 38.87427,
@@ -793,7 +793,7 @@
             "entityIndex": "4de22264-5ebb-4a96-b96b-3fc2ada222bc"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 36.43784,
@@ -802,7 +802,7 @@
             "entityIndex": "a8cbd8e6-e0ef-4977-bdb1-0a10a52f0885"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 36.43784,
@@ -813,7 +813,7 @@
             "entityIndex": "cf2cf241-095e-49c2-b0a1-ef5bfdf48367"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.91162,
@@ -822,7 +822,7 @@
             "entityIndex": "0e1a8632-9e4f-4789-b330-e6679000a2cb"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.91162,
@@ -833,7 +833,7 @@
             "entityIndex": "5f000ada-4fb8-4971-bc1c-20f153da5698"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.922210000000003,
@@ -842,7 +842,7 @@
             "entityIndex": "bd77a061-c066-4a02-b291-23d263c8c952"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.922210000000003,
@@ -853,7 +853,7 @@
             "entityIndex": "2438d451-ef49-489d-ab27-ae19a51fdb5f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.282610000000002,
@@ -862,7 +862,7 @@
             "entityIndex": "70804518-9fe1-41d8-a8be-55e06abdf1af"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.282610000000002,
@@ -873,7 +873,7 @@
             "entityIndex": "5f276a03-1bf0-4998-9f7f-7e1ce5a0eddd"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.849240000000002,
@@ -882,7 +882,7 @@
             "entityIndex": "92e60b7a-376a-4bba-8ae7-0c0e107bf347"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.849240000000002,
@@ -893,7 +893,7 @@
             "entityIndex": "01dc7a95-787f-4500-b365-defd98f0f78d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.7770600000000005,
@@ -902,7 +902,7 @@
             "entityIndex": "7b937fab-667e-4d24-9704-2ae1def37571"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.7770600000000005,
@@ -913,7 +913,7 @@
             "entityIndex": "054e0ab3-4ed1-4edb-b9ad-e277f8bf8b43"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 5.51923,
@@ -922,7 +922,7 @@
             "entityIndex": "f2205d1e-79fe-45d8-94cc-05e730f72c71"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 5.51923,
@@ -933,7 +933,7 @@
             "entityIndex": "c7b11913-b6ab-4855-9490-8495387b65d1"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -38.87427,
@@ -942,7 +942,7 @@
             "entityIndex": "0b6a7105-c76f-4b47-a4ca-e8c9bed5fd53"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -38.87427,
@@ -953,7 +953,7 @@
             "entityIndex": "2923cfb3-ce4c-41a2-899f-5c1e25ba3b4e"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -38.87427,
@@ -962,7 +962,7 @@
             "entityIndex": "4f4be86b-9e38-463b-9495-4d164327485a"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -38.87427,
@@ -973,7 +973,7 @@
             "entityIndex": "07301e62-de91-4167-aa8a-ecb412a0cb5b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -38.87427,
@@ -982,7 +982,7 @@
             "entityIndex": "c480f81d-cfc1-4c26-adc5-a961235822fb"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -38.87427,
@@ -993,7 +993,7 @@
             "entityIndex": "fed628d2-3140-47b1-ba81-97e0b3d7fb1b"
           },
           {
-            "type": "LWPOLYLINE",
+            "entity_type": "LWPOLYLINE",
             "vertices": [
               {
                 "x": -36.87427,
@@ -1415,7 +1415,7 @@
             "entityIndex": "5de8fed7-712c-4523-adda-6eb55f6e3b37"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -36.87427,
@@ -1424,7 +1424,7 @@
             "entityIndex": "21ddf3aa-df95-4361-bed5-c4cd4030fd00"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -36.87427,
@@ -1435,7 +1435,7 @@
             "entityIndex": "fe38f77d-f6d6-4a78-a6f9-a55d07cecbe6"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 5.07725,
@@ -1444,7 +1444,7 @@
             "entityIndex": "b8a7433d-9b59-42e6-b9bf-bfcaa3130307"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 5.07725,
@@ -1455,7 +1455,7 @@
             "entityIndex": "2154af90-9906-44d0-90f7-24d6de9e4384"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.188140000000001,
@@ -1464,7 +1464,7 @@
             "entityIndex": "6a3d7a74-4e82-4b53-b846-58ebbb19a368"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.188140000000001,
@@ -1475,7 +1475,7 @@
             "entityIndex": "a3fb192b-b045-4a21-b013-755fc89b6be3"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.605960000000001,
@@ -1484,7 +1484,7 @@
             "entityIndex": "4e7514fe-f8a1-4533-8abf-fcdc932b3278"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.605960000000001,
@@ -1495,7 +1495,7 @@
             "entityIndex": "6a6ed30c-a007-448f-a2bb-2fcee4cb7717"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.2159,
@@ -1504,7 +1504,7 @@
             "entityIndex": "8bb078ff-06ec-4ec7-9333-10b48c1d2e4d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.2159,
@@ -1515,7 +1515,7 @@
             "entityIndex": "42824cd9-70e2-4f41-883d-c9b7a9af457d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.929570000000002,
@@ -1524,7 +1524,7 @@
             "entityIndex": "c6b77fef-b63f-449d-886f-5625839c0d0b"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.929570000000002,
@@ -1535,7 +1535,7 @@
             "entityIndex": "1756cd46-9412-41e8-8032-165fd8e69a93"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.22573,
@@ -1544,7 +1544,7 @@
             "entityIndex": "5f8c2107-8fac-4c84-944b-8fb5743c224d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.22573,
@@ -1555,7 +1555,7 @@
             "entityIndex": "f255e418-17ef-45ed-960b-3e4c81501b90"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 35.72573,
@@ -1564,7 +1564,7 @@
             "entityIndex": "ef17abf2-97a7-4ac1-be65-c5ea8af457aa"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 35.72573,
@@ -1575,7 +1575,7 @@
             "entityIndex": "de7e8a9d-1f2e-476a-a713-60c2b7257790"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 33.87956,
@@ -1584,7 +1584,7 @@
             "entityIndex": "aeb804c8-14f5-47e1-8840-34c044f8fe31"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 33.87955,
@@ -1595,7 +1595,7 @@
             "entityIndex": "0a26c767-be90-4eb2-9735-db01b1ee56a1"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 32.582260000000005,
@@ -1604,7 +1604,7 @@
             "entityIndex": "90312b73-9921-44fa-b2c8-a5181895f407"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 32.582260000000005,
@@ -1615,7 +1615,7 @@
             "entityIndex": "5000b9e3-f25a-4527-832c-668619278b76"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.22573,
@@ -1624,7 +1624,7 @@
             "entityIndex": "95300c15-56cd-4d28-bb6c-50f14a50bcee"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.22573,
@@ -1635,7 +1635,7 @@
             "entityIndex": "a0013f54-2261-421a-a02d-cf73e4fc4bb2"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 32.582260000000005,
@@ -1644,7 +1644,7 @@
             "entityIndex": "8d36e455-7c40-4333-9243-cadc7efd875d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 32.582260000000005,
@@ -1655,7 +1655,7 @@
             "entityIndex": "e47e0c7c-9b1b-4fd3-b765-e7336fd68380"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 33.87956,
@@ -1664,7 +1664,7 @@
             "entityIndex": "959b9b59-3c1b-4fc0-a561-e6031410d2f0"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 33.87955,
@@ -1675,7 +1675,7 @@
             "entityIndex": "093e3322-95d6-48a2-b67b-6ee6b0aca47f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 35.72573,
@@ -1684,7 +1684,7 @@
             "entityIndex": "001b0643-058d-4156-ac62-0493fd670e13"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 35.72573,
@@ -1695,7 +1695,7 @@
             "entityIndex": "fa3bd02f-defa-4f51-9c11-36e1c776df31"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.22573,
@@ -1704,7 +1704,7 @@
             "entityIndex": "b84e97d4-165b-48fb-bd06-fe6971c22bf7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.22573,
@@ -1715,7 +1715,7 @@
             "entityIndex": "ae4e37c7-4a4a-4748-ad64-a4ef77b1e276"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.929570000000002,
@@ -1724,7 +1724,7 @@
             "entityIndex": "bb174a8a-313a-41d3-ae4f-fb2f0d86041f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.929570000000002,
@@ -1735,7 +1735,7 @@
             "entityIndex": "69494947-8f24-471c-8c2b-3f32e7966fc3"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.2159,
@@ -1744,7 +1744,7 @@
             "entityIndex": "0bb42315-fed5-450c-b1b1-6e4bfa9d3986"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.2159,
@@ -1755,7 +1755,7 @@
             "entityIndex": "174561ab-42c4-4436-ab08-0d28fb4a932e"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.605960000000001,
@@ -1764,7 +1764,7 @@
             "entityIndex": "ec838b8e-9028-464e-b68e-9f455c469220"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.605960000000001,
@@ -1775,7 +1775,7 @@
             "entityIndex": "49784b7e-281b-452a-990d-94d5bc865aa8"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.188140000000001,
@@ -1784,7 +1784,7 @@
             "entityIndex": "66e660a3-1ecd-4c68-a3c6-9bb9c307fa6e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.188140000000001,
@@ -1795,7 +1795,7 @@
             "entityIndex": "b80d4950-2815-4226-99cb-7f54a869585d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 5.07725,
@@ -1804,7 +1804,7 @@
             "entityIndex": "5158014e-2f89-41ce-b96f-5ecf108a453a"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 5.07725,
@@ -1815,7 +1815,7 @@
             "entityIndex": "2d6b19d6-4cf7-4908-8608-3e38e11ae275"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -36.87427,
@@ -1824,7 +1824,7 @@
             "entityIndex": "33805c10-779f-43f2-82c7-dd41fc0247dc"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -36.87427,
@@ -1835,7 +1835,7 @@
             "entityIndex": "73fd43c4-131f-42b2-812b-85171cebd4ed"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -36.87427,
@@ -1844,7 +1844,7 @@
             "entityIndex": "1d81d9c5-d010-4a94-a756-04d6125e58d4"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -36.87427,
@@ -1855,7 +1855,7 @@
             "entityIndex": "440775f8-f0c9-4ffe-b042-15303dd0d827"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -36.87427,
@@ -1864,7 +1864,7 @@
             "entityIndex": "f18cfb34-343c-4800-9882-f50d3d86f9cc"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -36.87427,
@@ -1875,7 +1875,7 @@
             "entityIndex": "802e833e-6e38-4c55-829d-f652734c73ee"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 32.22573,
@@ -1890,7 +1890,7 @@
             "entityIndex": "747f1357-35b8-452d-bb6b-c17f93bef62a"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.22573,
@@ -1899,7 +1899,7 @@
             "entityIndex": "66cebd55-d697-4971-9640-efc975a88c7e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.22573,
@@ -1910,7 +1910,7 @@
             "entityIndex": "6d030c21-787e-46e0-af10-2a6840c67457"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -36.87427,
@@ -1921,7 +1921,7 @@
             "entityIndex": "1c29f01d-d6ac-4354-aaa4-6e5a59eaf41f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": -0.6000000000000001,
@@ -1932,7 +1932,7 @@
             "entityIndex": "5a517932-8d1c-4fa8-a856-69c08d5d7313"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": -0.6000000000000001,
@@ -1943,7 +1943,7 @@
             "entityIndex": "a3512475-8dd6-47ec-a845-439948e94347"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": 0,
@@ -1954,7 +1954,7 @@
             "entityIndex": "f1c9a2b6-22f0-4e5a-97af-593a9f3f49a6"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": 0,
@@ -1965,7 +1965,7 @@
             "entityIndex": "a4d4582d-43cb-4e03-b869-aa7c4887ad69"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 21.109610329667102,
@@ -1980,7 +1980,7 @@
             "entityIndex": "893aca25-9af2-47f3-9e76-29accf4f0f45"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 18.45682269474646,
@@ -1995,7 +1995,7 @@
             "entityIndex": "b8a2c1be-bd93-4e59-946a-afffc12d161e"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -25.92635504334878,
@@ -2010,7 +2010,7 @@
             "entityIndex": "008e8ba3-59b7-4932-9027-069eda6d49d8"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -26.028385336999584,
@@ -2025,7 +2025,7 @@
             "entityIndex": "12cd9773-4e19-460c-a268-2e7c2539fc69"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 21.72179209157186,
@@ -2040,7 +2040,7 @@
             "entityIndex": "4677b132-a441-42ca-9fc2-e52f108fd0de"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "0",
             "position": {
               "x": -36.94375870310245,
@@ -2049,7 +2049,7 @@
             "entityIndex": "715a29d8-85ed-4403-ae05-d61e48e5ef2e"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "0",
             "position": {
               "x": -46.024454709595965,
@@ -2058,7 +2058,7 @@
             "entityIndex": "91a3cd37-1517-455f-b933-5ae994cb9729"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "0",
             "position": {
               "x": -12.05477327426713,
@@ -2067,7 +2067,7 @@
             "entityIndex": "5796c094-b57a-4674-8436-f794b5aaddf6"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "0",
             "position": {
               "x": 21.91490816106171,
@@ -2076,7 +2076,7 @@
             "entityIndex": "eba18609-2cd4-4180-b965-fbf91305b4b2"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "0",
             "position": {
               "x": 55.88458959639054,
@@ -2085,7 +2085,7 @@
             "entityIndex": "53c5f52c-a399-4e51-a58b-593394a8de4f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "0",
             "position": {
               "x": 89.85427103171938,
@@ -2103,7 +2103,7 @@
         "layer": "0",
         "entities": [
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -25.06312,
@@ -2118,7 +2118,7 @@
             "entityIndex": "57b80006-a18d-47b3-b72a-8b117d25777e"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -25.06312,
@@ -2127,7 +2127,7 @@
             "entityIndex": "52da8c0c-fdc3-4590-8b1f-79d7c4e16d56"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -25.06312,
@@ -2138,7 +2138,7 @@
             "entityIndex": "a4b88b48-271c-4dab-80e0-b1562fda73f6"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 22.688720000000004,
@@ -2147,7 +2147,7 @@
             "entityIndex": "7f4e9d80-4828-458e-80f4-ce3854243f34"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 22.688720000000004,
@@ -2158,7 +2158,7 @@
             "entityIndex": "92697ae0-3b76-4a6b-b448-8673ac97ddfa"
           },
           {
-            "type": "LWPOLYLINE",
+            "entity_type": "LWPOLYLINE",
             "vertices": [
               {
                 "x": -39.001090000000005,
@@ -2539,7 +2539,7 @@
             "entityIndex": "89b7e582-1bd2-40d6-9835-9c8a3d2e8acf"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -39.001090000000005,
@@ -2548,7 +2548,7 @@
             "entityIndex": "486aabef-3cae-4c07-aa2b-3c56232c5ee7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -39.001090000000005,
@@ -2559,7 +2559,7 @@
             "entityIndex": "736c21de-8eb3-4984-b9b5-583233f2114b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 5.3924,
@@ -2568,7 +2568,7 @@
             "entityIndex": "ca29386d-59c6-4cac-8d89-be99dd118fad"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 5.3924,
@@ -2579,7 +2579,7 @@
             "entityIndex": "8d24486a-22b6-46df-93dc-659452675e32"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.65024,
@@ -2588,7 +2588,7 @@
             "entityIndex": "66ef03fa-374d-416f-8819-99830f342f9f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.65024,
@@ -2599,7 +2599,7 @@
             "entityIndex": "e5024d3e-1335-4179-a8ef-8ba23fbcb55b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.722430000000001,
@@ -2608,7 +2608,7 @@
             "entityIndex": "70e6ba8d-6fe7-42b4-9e6a-a8e07e890288"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.722430000000001,
@@ -2619,7 +2619,7 @@
             "entityIndex": "40f871ae-b9b8-4c7f-b8aa-ab0a4455b52b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.15604,
@@ -2628,7 +2628,7 @@
             "entityIndex": "55ae0b64-5263-4f93-ae33-c48f8ea30703"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.15604,
@@ -2639,7 +2639,7 @@
             "entityIndex": "38130cb4-4927-4866-9903-abd511507e88"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.795360000000002,
@@ -2648,7 +2648,7 @@
             "entityIndex": "88852a27-19b3-47b5-ac91-4659c1309908"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.795360000000002,
@@ -2659,7 +2659,7 @@
             "entityIndex": "583c991e-3400-496c-a0eb-d78bd1caa0bf"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.78481,
@@ -2668,7 +2668,7 @@
             "entityIndex": "93636acc-f361-4016-958a-e2cab11acb2f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.78481,
@@ -2679,7 +2679,7 @@
             "entityIndex": "a70dbd89-761e-4bc4-bfb8-ea6482783a39"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 36.12774,
@@ -2688,7 +2688,7 @@
             "entityIndex": "e42ec09d-b881-4b91-9253-a69f6daea1ca"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 36.12774,
@@ -2699,7 +2699,7 @@
             "entityIndex": "2b50c5f8-0492-430a-b9cc-3251ba6d82b7"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 39.001090000000005,
@@ -2708,7 +2708,7 @@
             "entityIndex": "736ba978-e2fd-430e-9cb2-7d6d4b125caf"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 39.001090000000005,
@@ -2719,7 +2719,7 @@
             "entityIndex": "51a90167-c15a-4681-9d2e-cf4bf38faf43"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 36.06834,
@@ -2728,7 +2728,7 @@
             "entityIndex": "30d1cc50-4169-49f9-ad42-89d7916f36f4"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 36.068329999999996,
@@ -2739,7 +2739,7 @@
             "entityIndex": "0f0d9626-c23e-4344-8e11-177ba7de92c5"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 35.59953,
@@ -2748,7 +2748,7 @@
             "entityIndex": "c2e54ae2-aec0-499f-a809-7c2811edbde6"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 35.599520000000005,
@@ -2759,7 +2759,7 @@
             "entityIndex": "1f894ad5-b98f-479f-a8ba-1a3f5cd532a1"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 36.06834,
@@ -2768,7 +2768,7 @@
             "entityIndex": "c0be9c20-30c4-46fd-9afd-cb7c265756f3"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 36.06834,
@@ -2779,7 +2779,7 @@
             "entityIndex": "f5c9121d-f6ee-434f-bf2d-8fa8d4b6f184"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 39.001090000000005,
@@ -2788,7 +2788,7 @@
             "entityIndex": "76dc54ff-0ac2-4ff7-8fa6-95414e5ac195"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 39.001090000000005,
@@ -2799,7 +2799,7 @@
             "entityIndex": "3556f827-a9c3-4ca0-ad4d-728b967ca243"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 36.12774,
@@ -2808,7 +2808,7 @@
             "entityIndex": "fd9de86f-9ea8-48b1-afa3-8baccd3ed57a"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 36.12774,
@@ -2819,7 +2819,7 @@
             "entityIndex": "aa039e87-ac6d-4ef0-8b43-658a6f974f73"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.78481,
@@ -2828,7 +2828,7 @@
             "entityIndex": "2f6e9a8a-6a29-42e8-9f09-f52f367179db"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.78481,
@@ -2839,7 +2839,7 @@
             "entityIndex": "0fb50181-1381-4e83-a89e-97c02d07fe9d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.79547,
@@ -2848,7 +2848,7 @@
             "entityIndex": "cccabd93-e8d6-4499-aef8-435099e589d7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.79547,
@@ -2859,7 +2859,7 @@
             "entityIndex": "da98c27f-4a58-442c-9c6d-a9ffcabb998d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.15579,
@@ -2868,7 +2868,7 @@
             "entityIndex": "c399ab74-8799-45eb-865d-a8887e14c38c"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.15579,
@@ -2879,7 +2879,7 @@
             "entityIndex": "1225a3a9-c1cf-4809-8b75-e78dfc2e976c"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.722430000000001,
@@ -2888,7 +2888,7 @@
             "entityIndex": "baf14dfc-e7c3-4eae-b54f-f398bdaf0dcc"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.722430000000001,
@@ -2899,7 +2899,7 @@
             "entityIndex": "47c5d42f-436a-4961-8114-4a516227d0ad"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.65026,
@@ -2908,7 +2908,7 @@
             "entityIndex": "ad32d268-689d-4cb6-8cc0-41676dce4160"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.65026,
@@ -2919,7 +2919,7 @@
             "entityIndex": "197c6452-69fe-43a8-bcaa-3c0ce15c6d8a"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 5.3924,
@@ -2928,7 +2928,7 @@
             "entityIndex": "7de22e0e-d5e3-48bd-bbfd-30516d65e1f8"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 5.3924,
@@ -2939,7 +2939,7 @@
             "entityIndex": "03ed625e-cb45-4e9f-a616-2c1ba1baa610"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -39.00110000000001,
@@ -2948,7 +2948,7 @@
             "entityIndex": "12b588e4-ef5b-49ec-b15f-35341943d4f7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -39.00110000000001,
@@ -2959,7 +2959,7 @@
             "entityIndex": "28f4e04b-a040-44f4-ade4-befb7399fcd6"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -39.001090000000005,
@@ -2968,7 +2968,7 @@
             "entityIndex": "fe94841f-2207-4cde-8adc-b3ecf71eb1d5"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -39.001090000000005,
@@ -2979,7 +2979,7 @@
             "entityIndex": "a377c5b6-1fd5-4b72-9292-4b9df43c7a04"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -39.001090000000005,
@@ -2988,7 +2988,7 @@
             "entityIndex": "662a77a0-1654-4876-a392-13a59020f8fa"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -39.001090000000005,
@@ -2999,7 +2999,7 @@
             "entityIndex": "5f3a0dd6-bb3e-42bd-8c4b-f48813d3f970"
           },
           {
-            "type": "LWPOLYLINE",
+            "entity_type": "LWPOLYLINE",
             "vertices": [
               {
                 "x": -37.00109,
@@ -3373,7 +3373,7 @@
             "entityIndex": "0717719c-3133-4c03-a9dc-2a5f376dfd1c"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -37.00109,
@@ -3382,7 +3382,7 @@
             "entityIndex": "12bc258c-54d8-4836-be3b-9def015efabb"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -37.00109,
@@ -3393,7 +3393,7 @@
             "entityIndex": "0fdc38a7-2717-4ef2-8baf-d0e0ba414ba7"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 4.950430000000001,
@@ -3402,7 +3402,7 @@
             "entityIndex": "b4a7292e-7e53-44d7-8471-d996e23719e2"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 4.950430000000001,
@@ -3413,7 +3413,7 @@
             "entityIndex": "40968dcf-e7f1-4e61-adf2-41ac3374bda3"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.061320000000001,
@@ -3422,7 +3422,7 @@
             "entityIndex": "1f68dc24-a0a6-4aaf-9d9b-17d4c99e3ecd"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.061320000000001,
@@ -3433,7 +3433,7 @@
             "entityIndex": "a0fde773-aada-43b8-a323-08bf04ccf943"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.47915,
@@ -3442,7 +3442,7 @@
             "entityIndex": "649019c5-d738-4309-85ab-f0fc26a077ee"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.47915,
@@ -3453,7 +3453,7 @@
             "entityIndex": "f7277d68-3ae7-42e9-8b95-506282f808ec"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.089080000000003,
@@ -3462,7 +3462,7 @@
             "entityIndex": "7172bbf6-6855-42be-9ef6-6f900e3b67eb"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.089080000000003,
@@ -3473,7 +3473,7 @@
             "entityIndex": "f9430b3e-f515-498e-a42b-ce3a98e30874"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.802750000000003,
@@ -3482,7 +3482,7 @@
             "entityIndex": "56e63f41-17cb-4f57-9cb1-aa8280a3a4ca"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.802750000000003,
@@ -3493,7 +3493,7 @@
             "entityIndex": "24a74d35-f69e-4e7a-8483-ec645e149279"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 37.33439723412698,
@@ -3502,7 +3502,7 @@
             "entityIndex": "492c1b9d-7024-4e43-99f9-7f82e97fabdf"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.098910000000004,
@@ -3513,7 +3513,7 @@
             "entityIndex": "0128fd05-e00c-45ab-8b4c-f6c5d99f3a67"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 35.598910000000004,
@@ -3522,7 +3522,7 @@
             "entityIndex": "a489fd44-e077-438f-95ee-19783809f8d6"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 35.598910000000004,
@@ -3533,7 +3533,7 @@
             "entityIndex": "f37dc65d-cc59-49f4-b940-151c6fcba040"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 34.103370000000005,
@@ -3542,7 +3542,7 @@
             "entityIndex": "bb0049d2-3703-4cd1-bc6e-e2c2f045a010"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 34.103370000000005,
@@ -3553,7 +3553,7 @@
             "entityIndex": "902256eb-8b0f-4c09-8e2e-2e7550befdd3"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 33.598910000000004,
@@ -3562,7 +3562,7 @@
             "entityIndex": "c81382bd-7a48-40f0-afe6-45ad67924446"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 33.598910000000004,
@@ -3573,7 +3573,7 @@
             "entityIndex": "f519ec9b-6909-43e1-9aec-6da8d5591f54"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 34.103370000000005,
@@ -3582,7 +3582,7 @@
             "entityIndex": "bed03054-dcec-4099-90aa-24f1b9287bf2"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 34.103370000000005,
@@ -3593,7 +3593,7 @@
             "entityIndex": "c15a19b6-bcf9-4725-abc6-81e99d9326de"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 35.598910000000004,
@@ -3602,7 +3602,7 @@
             "entityIndex": "d08d14c3-9b31-4815-87e1-ff192f3b8ca9"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 35.598910000000004,
@@ -3613,7 +3613,7 @@
             "entityIndex": "5888696c-d672-4f20-ab97-2979abeeb772"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 32.098910000000004,
@@ -3622,7 +3622,7 @@
             "entityIndex": "bc0e9ca6-7b83-4292-aa76-bc771b525cfb"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 32.098910000000004,
@@ -3633,7 +3633,7 @@
             "entityIndex": "f1ef30ed-9690-4eef-a9ba-5bd98229264f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 24.802750000000003,
@@ -3642,7 +3642,7 @@
             "entityIndex": "f1c4ccb7-a167-4932-b30a-0701a26fa4bf"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 24.802750000000003,
@@ -3653,7 +3653,7 @@
             "entityIndex": "0965e6a2-92ed-4c7f-a5ce-cb60de9cd425"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 17.089080000000003,
@@ -3662,7 +3662,7 @@
             "entityIndex": "bf9b8434-6135-45bf-b5f1-0db361f70a7c"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 17.089080000000003,
@@ -3673,7 +3673,7 @@
             "entityIndex": "10e1e87c-431f-462f-899d-be86ff47de60"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 11.47915,
@@ -3682,7 +3682,7 @@
             "entityIndex": "94d86030-35ae-43ff-993a-862d98ded381"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 11.47915,
@@ -3693,7 +3693,7 @@
             "entityIndex": "e50c9e16-7d95-46f0-87a0-f87b9cb1414e"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 7.061320000000001,
@@ -3702,7 +3702,7 @@
             "entityIndex": "0dd45466-f5e7-4619-b25d-285fc74da7d3"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 7.061320000000001,
@@ -3713,7 +3713,7 @@
             "entityIndex": "e2f0bdd3-080b-412c-bbcd-3c4c20313562"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 4.950430000000001,
@@ -3722,7 +3722,7 @@
             "entityIndex": "8518dbe7-1791-4469-a111-569384947979"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 4.950430000000001,
@@ -3733,7 +3733,7 @@
             "entityIndex": "b4138cf1-7feb-48e4-a0db-4e0aea7a420a"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -37.00109,
@@ -3742,7 +3742,7 @@
             "entityIndex": "c9d77bdc-212f-47f5-9b2d-94c816f2f36c"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -37.00109,
@@ -3753,7 +3753,7 @@
             "entityIndex": "c0d0159e-cd3f-476f-83e0-46d5f248d0d8"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -37.00109,
@@ -3762,7 +3762,7 @@
             "entityIndex": "7b174938-9bba-444e-93be-cf25116cfb2f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -37.00109,
@@ -3773,7 +3773,7 @@
             "entityIndex": "9dd4256a-663a-41b0-9df4-d86b61e0cebd"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -37.00109,
@@ -3782,7 +3782,7 @@
             "entityIndex": "846f8b1b-2709-485a-a28b-df73bcb7b4b9"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -37.00109,
@@ -3793,7 +3793,7 @@
             "entityIndex": "4d43b25e-52df-46bc-83ea-34fd3ccd3ee8"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 33.598910000000004,
@@ -3808,7 +3808,7 @@
             "entityIndex": "465fe4ce-e05a-41cc-ba79-c5ad5b2f8ee0"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 33.598910000000004,
@@ -3817,7 +3817,7 @@
             "entityIndex": "ad824392-e5f6-4b57-a174-7dc98de3b0d7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 33.598910000000004,
@@ -3828,7 +3828,7 @@
             "entityIndex": "2963da19-abdb-4903-ae4c-203dc570284d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -37.00109,
@@ -3839,7 +3839,7 @@
             "entityIndex": "092dde39-edf2-4cfe-b8ec-e6296d7dd15e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": -0.6000000000000001,
@@ -3850,7 +3850,7 @@
             "entityIndex": "6331493d-484a-4a6f-9ec2-bd541055e65e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": -0.6000000000000001,
@@ -3861,7 +3861,7 @@
             "entityIndex": "7761c261-782e-4f4b-832d-0879556f9ce9"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": 0,
@@ -3872,7 +3872,7 @@
             "entityIndex": "43408d18-e8b7-48fb-98f6-ba4e2f315a7c"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": 0,
@@ -3883,7 +3883,7 @@
             "entityIndex": "78188e7c-1bb8-467f-abf0-6b863b4f61df"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 21.42200818650794,
@@ -3898,7 +3898,7 @@
             "entityIndex": "76919df8-9ba2-4e20-bf6f-5fd41cfd23d9"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 18.769220551587303,
@@ -3913,7 +3913,7 @@
             "entityIndex": "e0c94a2f-ef63-4bd4-ac52-117e9586a938"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -25.613957186507943,
@@ -3928,7 +3928,7 @@
             "entityIndex": "a9a5f247-4d87-4292-9ebc-07d73a890767"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -25.715987480158745,
@@ -3943,7 +3943,7 @@
             "entityIndex": "1dafd2c4-b718-4614-bedc-b405da28bc25"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 22.034189948412703,
@@ -3967,7 +3967,7 @@
         "layer": "0",
         "entities": [
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -14.040090000000001,
@@ -3982,7 +3982,7 @@
             "entityIndex": "6af5f6e9-02f5-438d-b6b5-c4e24398e056"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -14.040090000000001,
@@ -3991,7 +3991,7 @@
             "entityIndex": "4ed937ec-64d0-4ce4-8e6c-2f3d19ef5875"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -14.040090000000001,
@@ -4002,7 +4002,7 @@
             "entityIndex": "aa7a5a7e-781e-4b14-871f-cb8ead2cb68f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 18.04543,
@@ -4011,7 +4011,7 @@
             "entityIndex": "69349750-2b1f-4e1f-91f5-2f1337ea494a"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 18.04543,
@@ -4022,7 +4022,7 @@
             "entityIndex": "cddaaec1-f991-46bb-8f48-a2d909b39b7f"
           },
           {
-            "type": "LWPOLYLINE",
+            "entity_type": "LWPOLYLINE",
             "vertices": [
               {
                 "x": -31.700380000000003,
@@ -4251,7 +4251,7 @@
             "entityIndex": "1098c27d-3502-4873-a75d-bea2e7588ff5"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -31.700380000000003,
@@ -4260,7 +4260,7 @@
             "entityIndex": "74702394-8cec-4e3a-a5ca-2840e9786c9f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -31.700380000000003,
@@ -4271,7 +4271,7 @@
             "entityIndex": "324219b8-0ff9-4d8c-8953-be17e5bd633d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -29.700380000000003,
@@ -4280,7 +4280,7 @@
             "entityIndex": "e0c9d9f1-0a27-4bce-822e-cfbacff0521e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -4291,7 +4291,7 @@
             "entityIndex": "c2e77d12-d233-458b-beaa-d59edc674d00"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 21.97773,
@@ -4300,7 +4300,7 @@
             "entityIndex": "707913ff-20f8-4136-b3a4-c636ee95f9a1"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 21.97773,
@@ -4311,7 +4311,7 @@
             "entityIndex": "b5b3faba-84b6-41e1-954a-9adf33effe70"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 23.67917,
@@ -4320,7 +4320,7 @@
             "entityIndex": "7499cf41-fb7b-4837-8c44-1c4f9bcc16f6"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 23.67917,
@@ -4331,7 +4331,7 @@
             "entityIndex": "f258d28e-f4df-49af-831e-63f939ca03c0"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 26.99324,
@@ -4340,7 +4340,7 @@
             "entityIndex": "bba38a77-6af9-4b4b-adbe-02b024757ac0"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 26.99324,
@@ -4351,7 +4351,7 @@
             "entityIndex": "eb735792-f7c1-48e0-a96a-400e569474c6"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 31.084500000000006,
@@ -4360,7 +4360,7 @@
             "entityIndex": "31dbe93b-0a09-4640-9779-7edb91827b5f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 31.084500000000006,
@@ -4371,7 +4371,7 @@
             "entityIndex": "26e7af89-8334-4f04-ae67-df6046bbfae0"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 31.700380000000003,
@@ -4380,7 +4380,7 @@
             "entityIndex": "44db9954-b9ab-4499-ae4b-c22550e7e8ae"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 31.700380000000003,
@@ -4391,7 +4391,7 @@
             "entityIndex": "e7a46860-ab4a-47b0-93ca-35d0d3027cfe"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 31.084500000000006,
@@ -4400,7 +4400,7 @@
             "entityIndex": "32eb3a0a-379e-46ea-a8fa-69bdae63fdb9"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 31.084500000000006,
@@ -4411,7 +4411,7 @@
             "entityIndex": "ef56c21b-8396-4aef-af27-0403f67a6ac8"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 26.993700000000004,
@@ -4420,7 +4420,7 @@
             "entityIndex": "e098467e-bf02-4521-8956-3155d2a4322c"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 26.993700000000004,
@@ -4431,7 +4431,7 @@
             "entityIndex": "63142928-60f0-47c1-918a-047e6389f61d"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 23.679190000000002,
@@ -4440,7 +4440,7 @@
             "entityIndex": "bd90781c-bfdd-448b-8272-ea5ffdd87a4c"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 23.679190000000002,
@@ -4451,7 +4451,7 @@
             "entityIndex": "fdb7b0ad-7cfe-49a8-8639-eccbe3db4502"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 21.97773,
@@ -4460,7 +4460,7 @@
             "entityIndex": "8079f43a-4438-4ec0-bfd7-6f9b912c4ee5"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 21.97773,
@@ -4471,7 +4471,7 @@
             "entityIndex": "13172e70-3eca-4e7d-9994-e16aeb464862"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -29.700380000000003,
@@ -4480,7 +4480,7 @@
             "entityIndex": "753a13f8-bc7e-4bc2-96bc-5ea99fc0d94e"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -4491,7 +4491,7 @@
             "entityIndex": "ee65948e-ae29-4bd9-91f9-24ecf321de46"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -31.700380000000003,
@@ -4500,7 +4500,7 @@
             "entityIndex": "569334b2-4971-42b6-8f12-ab05eb0a04c7"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -31.700380000000003,
@@ -4511,7 +4511,7 @@
             "entityIndex": "3f7f4a58-d7b0-4e5a-ac68-f3d2794bd59f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -31.700380000000003,
@@ -4520,7 +4520,7 @@
             "entityIndex": "f664241f-3390-4296-8838-f2f473a70516"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -31.700380000000003,
@@ -4531,7 +4531,7 @@
             "entityIndex": "4ecf36e5-80c1-4e10-ba9a-4c20bcf0a1e1"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -31.700380000000003,
@@ -4540,7 +4540,7 @@
             "entityIndex": "dfbd5a91-21d3-4b67-9ada-a71aa9c1dfbe"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -31.700380000000003,
@@ -4551,7 +4551,7 @@
             "entityIndex": "099c3c3f-43cd-4120-8a74-4455c806a203"
           },
           {
-            "type": "LWPOLYLINE",
+            "entity_type": "LWPOLYLINE",
             "vertices": [
               {
                 "x": -29.700380000000003,
@@ -4773,7 +4773,7 @@
             "entityIndex": "8cd1b413-c427-4f10-9167-770ee10f7b9b"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -29.700380000000003,
@@ -4782,7 +4782,7 @@
             "entityIndex": "0cdfa206-7dce-4269-b68f-e64cb8fc221b"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -4793,7 +4793,7 @@
             "entityIndex": "9db4094a-a85a-42a9-9f22-a384ef963d79"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 21.33399,
@@ -4802,7 +4802,7 @@
             "entityIndex": "6d39b4ef-9caf-412a-b7ea-844443ae6ce3"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 21.33399,
@@ -4813,7 +4813,7 @@
             "entityIndex": "3ad77b3e-26a1-4b0b-a281-c24744387c6c"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 22.841,
@@ -4822,7 +4822,7 @@
             "entityIndex": "7384f65b-854c-424b-885d-484329422fc8"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 22.841,
@@ -4833,7 +4833,7 @@
             "entityIndex": "6ff9dbf0-4e1c-4669-908e-0a7159895a37"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 26.21407,
@@ -4842,7 +4842,7 @@
             "entityIndex": "e33e6873-a365-4f62-bb7c-23791f01fd3a"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 26.21407,
@@ -4853,7 +4853,7 @@
             "entityIndex": "b51cd569-3ec4-4fa1-92f0-53b0b097385f"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 30.206670000000003,
@@ -4862,7 +4862,7 @@
             "entityIndex": "15686856-f438-40fb-ad78-5024e6dc8d8d"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 30.206670000000003,
@@ -4873,7 +4873,7 @@
             "entityIndex": "7db2f4a8-44cf-46a5-9aaf-07226a8a810a"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 30.79962,
@@ -4882,7 +4882,7 @@
             "entityIndex": "7fb07357-aef9-43f5-88de-49edda891496"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 30.79962,
@@ -4893,7 +4893,7 @@
             "entityIndex": "dc7236ce-1710-489a-85b7-aa3faaf360da"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 30.206670000000003,
@@ -4902,7 +4902,7 @@
             "entityIndex": "6c2689a6-edc7-4bba-95c1-508bd505ea84"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 30.206670000000003,
@@ -4913,7 +4913,7 @@
             "entityIndex": "13fb4c5f-f478-4f85-afb6-285460b8ca7e"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 26.21407,
@@ -4922,7 +4922,7 @@
             "entityIndex": "437fa54b-9274-49bb-abdf-77ed1a288eb9"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 26.21407,
@@ -4933,7 +4933,7 @@
             "entityIndex": "83c98f1f-5714-4832-9c11-cd3e6fd31d25"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "3",
             "position": {
               "x": 22.841,
@@ -4942,7 +4942,7 @@
             "entityIndex": "8eba6f69-0b7a-43af-8900-f73fd1831f6f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "3",
             "startPoint": {
               "x": 22.841,
@@ -4953,7 +4953,7 @@
             "entityIndex": "902674ab-6918-43aa-bb34-fd34b000975c"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 21.33399,
@@ -4962,7 +4962,7 @@
             "entityIndex": "d4ec42e3-87ed-4d09-b347-1f5ad47c32d1"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 21.33399,
@@ -4973,7 +4973,7 @@
             "entityIndex": "050d6350-4376-416b-8d0b-729ece180cf4"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -29.700380000000003,
@@ -4982,7 +4982,7 @@
             "entityIndex": "1239bd25-b3cc-43d5-b143-7ccce58ad81f"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -4993,7 +4993,7 @@
             "entityIndex": "796ccbdc-cdc7-40d3-970f-7760df0f31b3"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -29.700380000000003,
@@ -5002,7 +5002,7 @@
             "entityIndex": "d675e6ab-ad75-44ac-8b24-81f45de65a64"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -5013,7 +5013,7 @@
             "entityIndex": "497b1552-5b6f-46dd-9780-b1c0cc191184"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": -29.700380000000003,
@@ -5022,7 +5022,7 @@
             "entityIndex": "8b0ed534-57de-4dea-b336-579b1a60976b"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -5033,7 +5033,7 @@
             "entityIndex": "56f522a0-7b50-4a9d-9905-9f8a7ac297b9"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "4",
             "position": {
               "x": 31.700380000000003,
@@ -5043,7 +5043,7 @@
             "entityIndex": "6aacf31e-c566-46f3-be96-722200505acc"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "4",
             "startPoint": {
               "x": 31.700380000000003,
@@ -5054,7 +5054,7 @@
             "entityIndex": "dbf05da8-298f-42f8-a3cf-0be3eebe3147"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 30.79962,
@@ -5069,7 +5069,7 @@
             "entityIndex": "36cdc067-438d-4796-a50b-4d3f5cbcb2be"
           },
           {
-            "type": "POINT",
+            "entity_type": "POINT",
             "layer": "2",
             "position": {
               "x": 30.79962,
@@ -5078,7 +5078,7 @@
             "entityIndex": "7e13a776-f6ac-4406-837c-2d374e95bfb2"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": 30.79962,
@@ -5089,7 +5089,7 @@
             "entityIndex": "bb42d5c0-53a3-4bd6-bcdd-fc63de4fab40"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "2",
             "startPoint": {
               "x": -29.700380000000003,
@@ -5100,7 +5100,7 @@
             "entityIndex": "b16a9978-f5b9-486d-ba56-aba205021467"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": -0.6000000000000001,
@@ -5111,7 +5111,7 @@
             "entityIndex": "5fec5e3f-04a6-4015-a5f3-e0feff633974"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": -0.6000000000000001,
@@ -5122,7 +5122,7 @@
             "entityIndex": "76542baf-07ec-415a-878e-2a2f5a74fea2"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": 0,
@@ -5133,7 +5133,7 @@
             "entityIndex": "814aded6-6fc7-4de3-817c-36500c036b57"
           },
           {
-            "type": "TEXT",
+            "entity_type": "TEXT",
             "layer": "1",
             "startPoint": {
               "x": 0,
@@ -5144,7 +5144,7 @@
             "entityIndex": "f7f63adc-bc47-4903-8e2d-35528f896430"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -5.5958588265386995,
@@ -5159,7 +5159,7 @@
             "entityIndex": "91f20daa-e6d5-436e-9522-d6a0b72efca2"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": -16.92786874387115,
@@ -5174,7 +5174,7 @@
             "entityIndex": "2c1bbb74-3bac-4e9e-8f6b-5bcce6b3b70c"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 20.584991672125902,
@@ -5189,7 +5189,7 @@
             "entityIndex": "d9ebaeb0-bcc4-4bc7-8c84-f944ebbfcb18"
           },
           {
-            "type": "LINE",
+            "entity_type": "LINE",
             "vertices": [
               {
                 "x": 20.71524465968146,
@@ -5212,7 +5212,7 @@
     },
     "entities": [
       {
-        "type": "INSERT",
+        "entity_type": "INSERT",
         "name": "L-1",
         "layer": "1",
         "position": {
@@ -5221,7 +5221,7 @@
         }
       },
       {
-        "type": "INSERT",
+        "entity_type": "INSERT",
         "layer": "1",
         "name": "L-2",
         "position": {
@@ -5230,7 +5230,7 @@
         }
       },
       {
-        "type": "INSERT",
+        "entity_type": "INSERT",
         "layer": "1",
         "name": "L-3",
         "position": {

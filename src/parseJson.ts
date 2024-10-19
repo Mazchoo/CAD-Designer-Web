@@ -9,7 +9,8 @@ export interface IVertex {
 }
 
 export interface IMinEntity {
-  type?: string;
+  entity_type: string;
+  layer: string;
   shape?: boolean;
   vertices?: IVertex[];
   position?: IVertex;
@@ -26,7 +27,7 @@ export interface IMinBlock {
 }
 
 export interface IInsertEntity {
-  type: string;
+  entity_type: string;
   name: string;
   position: IVertex;
   layer: string;
@@ -89,7 +90,7 @@ const parseJson = (pattern: IMinPatternJson | undefined): IGPUArray | undefined 
         }
 
         indexOutput.push(0xffffffff);
-      } else if (entity.position && entity.type === "POINT") {
+      } else if (entity.position && entity.entity_type === "POINT") {
         const newVertexStartInd = vertexOutput.length / vertexStride;
         const outVertex = offsetVertex(entity.position, currentOffset);
         const newX = outVertex.x;
@@ -128,7 +129,37 @@ export function uploadJSON() {
 
 export function readJSON() {
   const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-  fileInput.click();
+
+  const file = fileInput.files?.[0];
+  console.log(file);
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      console.log('Uploading json');
+      try {
+        const jsonData = JSON.parse(e.target?.result as string);
+        const newArrays = parseJson(jsonData.patternJson as IMinPatternJson);
+
+        if (newArrays) {
+          mapBuffersToDevice(newArrays.vertexArray, newArrays.indexArray);
+        }
+      } catch (err) {
+        console.error('Error parsing JSON:', err);
+      }
+    };
+
+    reader.readAsText(file);
+  } else {
+    console.error('No file selected.');
+  }
+
+  readJsonToWasm();
+}
+
+export function readJsonToWasm() {
+  const fileInput = document.getElementById('fileInput') as HTMLInputElement;
 
   const file = fileInput.files?.[0];
   console.log(file);
@@ -142,13 +173,6 @@ export function readJSON() {
         const jsonData = JSON.parse(e.target?.result as string);
         console.log(jsonData);
 
-        const newArrays = parseJson(jsonData.patternJson as IMinPatternJson);
-        console.log('Parsed arrays');
-        console.log(newArrays);
-
-        if (newArrays) {
-          mapBuffersToDevice(newArrays.vertexArray, newArrays.indexArray);
-        }
       } catch (err) {
         console.error('Error parsing JSON:', err);
       }
