@@ -15,10 +15,6 @@ Use `npm run build-rust` to update the wasm package. This does not happen automa
 
 Use `npm run server-debug` to run the server on local host.
 
-In order to get Leptos working, currently the nightly version of rustup has to be used.
-
-`rustup override set nightly`
-
 Search user settings in the command pallette with Ctrl + Shift + P
 Then add the following entry to the settings
 "rust-analyzer.procMacro.ignored": {
@@ -31,5 +27,5 @@ Then add the following entry to the settings
 
 ### Rust General Usability notes
 
-- Creating tests is the best way to debug a feature in isolation.
+- Creating tests is the best way to debug a feature in isolation. Tests compile separately to the release wasm.
 - Currently wasm binding classes have to have all private variables (this is good practice any way) as making them public will mean that wasm will expect those classes to be convertible to a js equivalent.

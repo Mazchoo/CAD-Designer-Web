@@ -13,7 +13,8 @@
     "server-release": "rollup -c && servez --port=23592 .",
     "server-debug": "rollup -c -n debug && servez --port=23592 .",
     "build-rust": "cd ./wasm-controller && wasm-pack build --target web",
-    "format-rust": "cd ./wasm-controller && cargo fmt -v"
+    "format-rust": "cd ./wasm-controller && cargo fmt -v",
+    "test-rust": "cd ./wasm-controller && cargo test"
   },
   "repository": {
     "type": "git",
