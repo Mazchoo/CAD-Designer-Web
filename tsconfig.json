@@ -9,6 +9,6 @@
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@webgpu/types", "node_modules/@types"]
   },
-  "include": ["src/**/*.ts", "leptos-controller/pkg"],
+  "include": ["src/**/*.ts", "wasm-controller/pkg"],
   "exclude": ["dist"]
 }

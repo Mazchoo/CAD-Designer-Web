@@ -12,7 +12,8 @@
     "prettier-write": "prettier . --config ./.prettierrc.json --write",
     "server-release": "rollup -c && servez --port=23592 .",
     "server-debug": "rollup -c -n debug && servez --port=23592 .",
-    "build-rust": "cd ./leptos-controller && wasm-pack build --target web"
+    "build-rust": "cd ./wasm-controller && wasm-pack build --target web",
+    "format-rust": "cd ./wasm-controller && cargo fmt -v"
   },
   "repository": {
     "type": "git",
