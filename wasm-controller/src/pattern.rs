@@ -1,5 +1,5 @@
-use web_sys::console;
 use wasm_bindgen::prelude::*;
+use web_sys::console;
 
 use crate::block;
 use crate::insert;
@@ -69,7 +69,9 @@ impl Pattern {
 
                         if e.entity_type == "POINT" {
                             if e.position.is_none() {
-                                console::log_1(&format!("No position defined {}", e.entity_index).into());
+                                console::log_1(
+                                    &format!("No position defined {}", e.entity_index).into(),
+                                );
                                 continue;
                             }
                             new_block.add_point(
@@ -79,14 +81,18 @@ impl Pattern {
                             );
                         } else if e.entity_type == "LINE" || e.entity_type == "LWLINE" {
                             if e.vertices.is_none() || e.vertices.as_ref().unwrap().len() != 2 {
-                                console::log_1(&format!("Invalid line vertices {}", e.entity_index).into());
+                                console::log_1(
+                                    &format!("Invalid line vertices {}", e.entity_index).into(),
+                                );
                                 continue;
                             }
                             let vertices = e.vertices.as_ref().unwrap();
                             new_block.add_line(parse_layer(&e.layer), vertices, entity_id.unwrap());
                         } else if e.entity_type == "POLYLINE" || e.entity_type == "LWPOLYLINE" {
                             if e.vertices.is_none() || e.vertices.as_ref().unwrap().len() == 0 {
-                                console::log_1(&format!("Invalid polyline vertices {}", e.entity_index).into());
+                                console::log_1(
+                                    &format!("Invalid polyline vertices {}", e.entity_index).into(),
+                                );
                                 continue;
                             }
 
@@ -106,7 +112,9 @@ impl Pattern {
                                 || e.text_height.is_none()
                                 || e.text.is_none()
                             {
-                                console::log_1(&format!("Invalid text entity {}", e.entity_index).into());
+                                console::log_1(
+                                    &format!("Invalid text entity {}", e.entity_index).into(),
+                                );
                                 continue;
                             }
                             new_block.add_text(
@@ -117,10 +125,13 @@ impl Pattern {
                                 e.text.clone().unwrap(),
                             )
                         } else {
-                            console::log_1(&format!("Invalid entity type {}", e.entity_type).into());
+                            console::log_1(
+                                &format!("Invalid entity type {}", e.entity_type).into(),
+                            );
                         }
                     }
 
+                    new_block.update_bounding_box();
                     pattern.blocks.push(new_block);
                 } else {
                     console::log_1(&format!("Invalid layer {}", b.layer).into());
@@ -142,4 +153,6 @@ impl Pattern {
     pub fn get_number_entities(&self) -> usize {
         return self.blocks.iter().map(|b| b.get_number_entities()).sum();
     }
+
+    pub fn get_draw_sequence(&self) {}
 }

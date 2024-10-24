@@ -1,11 +1,12 @@
-use web_sys::console;
 use wasm_bindgen::prelude::*;
+use web_sys::console;
 
 pub mod block;
 pub mod entity;
 pub mod insert;
 pub mod parse_pattern;
 pub mod pattern;
+pub mod utils;
 
 #[wasm_bindgen]
 pub fn read_pattern(json_payload: &str) -> bool {
