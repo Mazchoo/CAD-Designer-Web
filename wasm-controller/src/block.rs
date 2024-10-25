@@ -178,4 +178,16 @@ impl Block {
             entity.reset_selection();
         }
     }
+
+    pub fn get_all_layers(&self, layers: &mut Vec<i32>) {
+        if !layers.contains(&self.layer) {
+            layers.push(self.layer);
+        }
+    
+        for entity in self.entities.iter() {
+            if !layers.contains(&entity.layer) {
+                layers.push(entity.layer);
+            }
+        }
+    }
 }

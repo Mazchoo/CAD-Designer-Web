@@ -60,6 +60,10 @@
       <form style="height: 10vh">
         <div class="row">
           <div class="input-field col s1">
+            <input disabled placeholder="-" id="current_action" type="text" class="validate" />
+            <label for="current_action">Current Action</label>
+          </div>
+          <div class="input-field col s1">
             <input disabled placeholder="0" id="nr_objects" type="text" class="validate" />
             <label for="nr_objects">Nr objs</label>
           </div>
@@ -74,6 +78,10 @@
           <div class="input-field col s1">
             <input placeholder="{x, y}" value="{x, y}" id="centroid_selected" type="text" class="validate" />
             <label for="centroid_selected">center</label>
+          </div>
+          <div class="input-field col s2">
+            <input placeholder="" value="" id="entity_text" type="text" class="validate" />
+            <label for="entity_text">text</label>
           </div>
         </div>
       </form>
@@ -201,78 +209,15 @@
                 <th>Color</th>
               </tr>
             </thead>
-            <tbody style="height: 45vh">
+            <tbody id="layer-options" style="height: 45vh">
               <tr>
                 <td>
                   <label>
                     <input type="checkbox" checked="checked" />
-                    <span>Seam</span>
+                    <span>Unknown</span>
                   </label>
                 </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Stitch</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Markup</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Notch</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Turnpoint</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Validation</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Sewing</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
-              </tr>
-              <tr>
-                <td>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Cut</span>
-                  </label>
-                </td>
-                <td><a class="btn-small white"></a></td>
+                <td><a class="btn-small black"></a></td>
               </tr>
             </tbody>
           </table>

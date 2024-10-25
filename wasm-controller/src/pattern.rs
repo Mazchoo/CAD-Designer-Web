@@ -195,4 +195,15 @@ impl Pattern {
             block.reset_selection();
         }
     }
+
+    pub fn get_all_layers(&self) -> Vec<i32> {
+        let mut output: Vec<i32> = vec![];
+
+        for block in self.blocks.iter() {
+            block.get_all_layers(&mut output);
+        }
+        output.sort();
+
+        return output;
+    }
 }

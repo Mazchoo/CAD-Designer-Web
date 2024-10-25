@@ -42,4 +42,8 @@ impl Handle {
     pub fn get_draw_sequence(&self) -> JsValue {
         return to_value(&self.pattern.get_draw_sequence(&self.settings)).unwrap();
     }
+
+    pub fn get_all_layers(&self) -> Vec<i32> {
+        return self.pattern.get_all_layers();
+    }
 }
