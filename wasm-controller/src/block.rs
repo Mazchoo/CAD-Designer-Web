@@ -1,4 +1,5 @@
 use ndarray::{array, Array2};
+use std::collections::HashMap;
 
 use crate::entity;
 use crate::parse_pattern;
@@ -6,10 +7,10 @@ use crate::utils::bounding_box;
 
 #[derive(Debug)]
 pub struct Block {
+    pub name: String,
     centroid: Array2<f32>,
     layer: i32,
     entities: Vec<entity::Entity>,
-    name: String,
     // Cached variables
     bounding_box: ((f32, f32), (f32, f32)),
 }
@@ -140,5 +141,41 @@ impl Block {
         return bounding_box::point_in_bounding_box(&self.bounding_box, point, padding);
     }
 
-    pub fn get_draw_sequence(&self) {}
+    pub fn get_draw_sequence(
+        &self,
+        offset: &Array2<f32>,
+        cross_size: &f32,
+        layer_colors: &HashMap<i32, (f32, f32, f32, f32)>,
+        default_color: &(f32, f32, f32, f32),
+        last_index: &mut u32,
+        vertex_buffer: &mut Vec<f32>,
+        index_buffer: &mut Vec<u32>,
+    ) {
+        let block_color: &(f32, f32, f32, f32) = if layer_colors.contains_key(&self.layer) {
+            &layer_colors[&self.layer]
+        } else {
+            default_color
+        };
+        for entity in self.entities.iter() {
+            let entity_color: &(f32, f32, f32, f32) = if layer_colors.contains_key(&entity.layer) {
+                &layer_colors[&entity.layer]
+            } else {
+                block_color
+            };
+            entity.get_draw_sequence(
+                &entity_color,
+                offset,
+                cross_size,
+                last_index,
+                vertex_buffer,
+                index_buffer,
+            );
+        }
+    }
+
+    pub fn reset_selection(&mut self) {
+        for entity in self.entities.iter_mut() {
+            entity.reset_selection();
+        }
+    }
 }

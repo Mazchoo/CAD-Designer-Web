@@ -1,9 +1,11 @@
+use ndarray::Array2;
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
 use crate::block;
 use crate::insert;
 use crate::parse_pattern;
+use crate::user_settings;
 
 #[wasm_bindgen]
 #[derive(Debug)]
@@ -32,7 +34,6 @@ fn parse_layer(layer: &str) -> i32 {
 #[wasm_bindgen]
 impl Pattern {
     // Constructor to initialize the struct
-    #[wasm_bindgen(constructor)]
     pub fn new(json_payload: String) -> Pattern {
         let mut pattern = Pattern {
             blocks: vec![],
@@ -154,5 +155,44 @@ impl Pattern {
         return self.blocks.iter().map(|b| b.get_number_entities()).sum();
     }
 
-    pub fn get_draw_sequence(&self) {}
+    pub(crate) fn get_offset_for_block(&self, block_key: &String) -> Array2<f32> {
+        for insert in self.entities.iter() {
+            if &insert.name == block_key {
+                return insert.position.clone();
+            };
+        }
+
+        console::log_1(&format!("Block key {} not in inserts", block_key).into());
+        return Array2::zeros((0, 0));
+    }
+
+    pub(crate) fn get_draw_sequence(
+        &self,
+        settings: &user_settings::Settings,
+    ) -> (Vec<f32>, Vec<u32>) {
+        let mut vertex_buffer: Vec<f32> = vec![];
+        let mut index_buffer: Vec<u32> = vec![];
+        let mut last_index: u32 = 0;
+
+        for block in self.blocks.iter() {
+            let offset = self.get_offset_for_block(&block.name);
+            block.get_draw_sequence(
+                &offset,
+                &settings.cross_size,
+                &settings.layer_colors,
+                &settings.default_color,
+                &mut last_index,
+                &mut vertex_buffer,
+                &mut index_buffer,
+            )
+        }
+
+        return (vertex_buffer, index_buffer);
+    }
+
+    pub fn reset_selection(&mut self) {
+        for block in self.blocks.iter_mut() {
+            block.reset_selection();
+        }
+    }
 }

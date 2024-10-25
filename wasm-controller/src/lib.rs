@@ -1,11 +1,14 @@
+use serde_wasm_bindgen::to_value;
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
 pub mod block;
 pub mod entity;
+pub mod handle;
 pub mod insert;
 pub mod parse_pattern;
 pub mod pattern;
+pub mod user_settings;
 pub mod utils;
 
 #[wasm_bindgen]
@@ -25,6 +28,6 @@ pub fn greet(name: &str) {
 }
 
 #[wasm_bindgen]
-pub fn get_buffer_udpate() -> Vec<f32> {
-    return vec![1., 1., 1., 10.];
+pub fn get_buffer_udpate() -> JsValue {
+    return to_value(&vec![1., 1., 1., 10.]).unwrap();
 }

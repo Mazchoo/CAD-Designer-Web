@@ -23,7 +23,11 @@ pub fn calculate_bounding_box(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)
     return ((min_x, max_x), (min_y, max_y));
 }
 
-pub fn point_in_bounding_box(bbox: &((f32, f32), (f32, f32)), p: &(f32, f32), padding: f32) -> bool {
+pub fn point_in_bounding_box(
+    bbox: &((f32, f32), (f32, f32)),
+    p: &(f32, f32),
+    padding: f32,
+) -> bool {
     let ((min_x, max_x), (min_y, max_y)) = bbox;
     return p.0 >= min_x - padding
         && p.0 <= max_x + padding

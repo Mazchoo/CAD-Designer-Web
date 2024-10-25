@@ -11,13 +11,13 @@ import { createInputHandler } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
-import { startUpWasm } from './pattern';
+import { startUpWasm } from './patternHandle';
 
-import { uploadJSON, readJSON } from './parseJson';
+import { uploadJSON, readJsonToWasm } from './parseJson';
 
 // Assign these two functions to the global scope
 (window as any).uploadJSON = uploadJSON;
-(window as any).readJSON = readJSON;
+(window as any).readJsonToWasm = readJsonToWasm;
 
 let patternHandle = await startUpWasm();
 (window as any).patternHandle = patternHandle;

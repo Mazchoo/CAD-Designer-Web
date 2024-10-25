@@ -17,6 +17,7 @@ pub enum EntityTypes {
 
 #[derive(Debug)]
 pub struct Entity {
+    // Design Settings
     pub entity_type: EntityTypes,
     pub layer: i32,
     pub shape: bool,
@@ -24,8 +25,13 @@ pub struct Entity {
     pub text_height: f32,
     pub entity_index: [u8; 32],
     pub text: String,
+
     // Cached variables
     pub bounding_box: ((f32, f32), (f32, f32)),
+
+    // Display settings
+    selected: bool,
+    hightlighted: bool,
 }
 
 impl Entity {
@@ -48,7 +54,87 @@ impl Entity {
             entity_index: entity_index,
             text: text,
             bounding_box: bounding_box,
+            selected: false,
+            hightlighted: false,
         };
+    }
+
+    pub fn get_draw_sequence(
+        &self,
+        color: &(f32, f32, f32, f32),
+        offset: &Array2<f32>,
+        cross_size: &f32,
+        last_index: &mut u32,
+        vertex_buffer: &mut Vec<f32>,
+        index_buffer: &mut Vec<u32>,
+    ) {
+        if self.vertices.len() == 0 {
+            return;
+        }
+
+        let offset_vertices = self.vertices.clone() + offset;
+        let num_rows = self.vertices.shape()[0];
+        if num_rows == 1 {
+           let x = offset_vertices[(0, 0)];
+           let y = offset_vertices[(0, 1)];
+            // draw a cross using vertex data format x, y, r, g, b, a
+            vertex_buffer.extend([
+                x - cross_size,
+                y - cross_size,
+                color.0 - 0.05,
+                color.1 - 0.05,
+                color.2 - 0.05,
+                color.3,
+                x + cross_size,
+                y + cross_size,
+                color.0 + 0.05,
+                color.1 + 0.05,
+                color.2 + 0.05,
+                color.3,
+                x + cross_size,
+                y - cross_size,
+                color.0,
+                color.1,
+                color.2,
+                color.3,
+                x - cross_size,
+                y + cross_size,
+                color.0,
+                color.1,
+                color.2,
+                color.3,
+            ]);
+
+            index_buffer.extend([
+                *last_index,
+                *last_index + 1,
+                u32::MAX,
+                *last_index + 2,
+                *last_index + 3,
+                u32::MAX,
+            ]);
+
+            *last_index += 4;
+        } else {
+            for v in offset_vertices.rows().into_iter() {
+                vertex_buffer.extend([v[0], v[1], color.0, color.1, color.2, color.3]);
+                index_buffer.push(*last_index);
+                *last_index += 1;
+            }
+
+            // Close loop for display if closed
+            if self.shape {
+                index_buffer.push(*last_index + 1 - (num_rows as u32));
+            }
+
+            // i32::MAX denotes end of line
+            index_buffer.push(u32::MAX);
+        }
+    }
+
+    pub fn reset_selection(&mut self) {
+        self.selected = false;
+        self.hightlighted = false;
     }
 
     pub fn get_closest_point_on_entity(&self) {}
@@ -58,34 +144,4 @@ impl Entity {
     pub fn get_closest_defined_point_on_entity(&self) {}
 
     pub fn has_defined_point_within_threshold(&self, threshold: f32) {}
-
-    pub fn get_draw_sequence(&self, color: &(f32, f32, f32, f32), offset: &Array2<f32>, cross_size: &f32,
-                             last_index: &mut i32, vertex_buffer: &mut Vec<f32>, index_buffer: &mut Vec<i32>) {
-        if self.vertices.len() == 0 { return; }
-
-        let offset_vertices = self.vertices.clone() + offset;
-        if self.vertices.len() == 1 {
-            let (x, y) = (offset_vertices[(0, 0)], offset_vertices[(0, 1)]);
-            vertex_buffer.extend([
-                x - cross_size, y - cross_size, color.0 - 0.05, color.1 - 0.05, color.2 - 0.05, color.3,
-                x + cross_size, y + cross_size, color.0 + 0.05, color.1 + 0.05, color.2 + 0.05, color.3,
-                x + cross_size, y - cross_size, color.0, color.1, color.2, color.3,
-                x - cross_size, y + cross_size, color.0, color.1, color.2, color.3,
-            ]);
-
-            index_buffer.extend([
-                *last_index, *last_index + 1, i32::MAX,
-                *last_index + 2, *last_index + 3, i32::MAX
-            ]);
-
-            *last_index += 4;
-        } else {
-            for v in offset_vertices.rows().into_iter() {
-                vertex_buffer.extend([v[0], v[1], color.0 , color.1, color.2, color.3]);
-                index_buffer.push(*last_index);
-                *last_index += 1;
-            }
-            index_buffer.push(i32::MAX);
-        }
-    }
 }

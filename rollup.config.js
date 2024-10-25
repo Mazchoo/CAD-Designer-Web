@@ -41,6 +41,6 @@ export default [
         ],
     watch: {
       clearScreen: false,
-    }
+    },
   },
 ];

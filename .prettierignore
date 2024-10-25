@@ -2,6 +2,7 @@
 *.min.css
 node_modules
 dist
+wasm-controller/pkg
 .gitignore
 .prettierignore
 .prettierrc.js

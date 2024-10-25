@@ -6,9 +6,9 @@ use crate::parse_pattern;
 #[derive(Debug)]
 pub struct Insert {
     entity_type: entity::EntityTypes,
-    layer: i32,
-    name: String,
-    position: Array2<f32>,
+    pub layer: i32,
+    pub name: String,
+    pub position: Array2<f32>,
 }
 
 impl Insert {
