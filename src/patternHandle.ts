@@ -2,8 +2,9 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
+import { ACTION_TYPES } from './action_types';
 
-let PATTERN_WASM_HANDLE: any = undefined;
+let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
 
 export async function startUpWasm() {
@@ -71,4 +72,8 @@ export function intilizePattern(payload: string): [number[], number[]] | undefin
   addViewCallbacksToViews(PATTERN_WASM_HANDLE);
 
   updateCanvasData(PATTERN_WASM_HANDLE);
+}
+
+export function performAction(action: ACTION_TYPES, point: [number, number]) {
+  return;  // ToDo
 }
