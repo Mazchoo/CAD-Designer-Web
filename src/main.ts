@@ -19,8 +19,7 @@ import { uploadJSON, readJsonToWasm } from './parseJson';
 (window as any).uploadJSON = uploadJSON;
 (window as any).readJsonToWasm = readJsonToWasm;
 
-let patternHandle = await startUpWasm();
-(window as any).patternHandle = patternHandle;
+const wasmStarted = startUpWasm();
 
 // ToDo make a helper program that copies shaders into ts files
 
@@ -179,4 +178,7 @@ function frame() {
 
   requestAnimationFrame(frame);
 }
+
+// Start app
+await wasmStarted;
 requestAnimationFrame(frame);

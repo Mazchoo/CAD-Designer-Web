@@ -206,4 +206,15 @@ impl Pattern {
 
         return output;
     }
+
+    pub fn get_all_block_names(&self) -> Vec<String> {
+        let mut output: Vec<String> = vec![];
+
+        for block in self.blocks.iter() {
+            output.push(block.name.clone());
+        }
+        output.sort();
+
+        return output;
+    }
 }

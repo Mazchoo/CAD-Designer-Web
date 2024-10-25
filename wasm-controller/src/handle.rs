@@ -46,4 +46,8 @@ impl Handle {
     pub fn get_all_layers(&self) -> Vec<i32> {
         return self.pattern.get_all_layers();
     }
+
+    pub fn get_all_block_names(&self) -> Vec<String> {
+        return self.pattern.get_all_block_names();
+    }
 }

@@ -60,28 +60,28 @@
       <form style="height: 10vh">
         <div class="row">
           <div class="input-field col s1">
-            <input disabled placeholder="-" id="current_action" type="text" class="validate" />
-            <label for="current_action">Current Action</label>
+            <input disabled placeholder="None" value="None" id="current-action" type="text" class="validate" />
+            <label for="current-action">Current Action</label>
           </div>
           <div class="input-field col s1">
-            <input disabled placeholder="0" id="nr_objects" type="text" class="validate" />
-            <label for="nr_objects">Nr objs</label>
+            <input disabled placeholder="0" value="0" id="nr-objects" type="text" class="validate" />
+            <label for="nr-objects">Nr objs</label>
           </div>
           <div class="input-field col s1">
-            <input placeholder="{x, y}" value="{x,y}" id="position_selected" type="text" class="validate" />
-            <label for="position_selected">position</label>
+            <input placeholder="{x, y}" value="{x,y}" id="position-selected" type="text" class="validate" />
+            <label for="position-selected">position</label>
           </div>
           <div class="input-field col s1">
-            <input placeholder="angle" value="angle" id="rotation_selected" type="text" class="validate" />
-            <label for="rotation_selected">rotation</label>
+            <input placeholder="angle" value="angle" id="rotation-selected" type="text" class="validate" />
+            <label for="rotation-selected">rotation</label>
           </div>
           <div class="input-field col s1">
-            <input placeholder="{x, y}" value="{x, y}" id="centroid_selected" type="text" class="validate" />
-            <label for="centroid_selected">center</label>
+            <input placeholder="{x, y}" value="{x, y}" id="centroid-selected" type="text" class="validate" />
+            <label for="centroid-selected">center</label>
           </div>
           <div class="input-field col s2">
-            <input placeholder="" value="" id="entity_text" type="text" class="validate" />
-            <label for="entity_text">text</label>
+            <input placeholder="" value="" id="entity-text" type="text" class="validate" />
+            <label for="entity-text">text</label>
           </div>
         </div>
       </form>
@@ -98,7 +98,7 @@
               <th>Side</th>
             </tr>
           </thead>
-          <tbody style="height: 30vh; margin-left: 5%">
+          <tbody id="block-view-options" style="height: 30vh; margin-left: 5%">
             <tr>
               <td>
                 <label>
@@ -108,86 +108,6 @@
               </td>
               <td></td>
               <td></td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_01</span>
-                </label>
-              </td>
-              <td>FrontPanel</td>
-              <td>Left</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_02</span>
-                </label>
-              </td>
-              <td>BackPanel</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_03</span>
-                </label>
-              </td>
-              <td>Sleeve</td>
-              <td>Left</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_04</span>
-                </label>
-              </td>
-              <td>Sleeve</td>
-              <td>Right</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_05</span>
-                </label>
-              </td>
-              <td>Collar</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_06</span>
-                </label>
-              </td>
-              <td>CollarBand</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_07</span>
-                </label>
-              </td>
-              <td>Cuff</td>
-              <td>Left</td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <input name="block" type="radio" />
-                  <span>P0005_08</span>
-                </label>
-              </td>
-              <td>Cuff</td>
-              <td>Right</td>
             </tr>
           </tbody>
         </table>
