@@ -4,6 +4,7 @@ use web_sys::console;
 
 use crate::pattern;
 use crate::user_settings;
+use crate::utils::color;
 
 #[wasm_bindgen]
 pub struct Handle {
@@ -53,5 +54,11 @@ impl Handle {
 
     pub fn set_view(&mut self, name: String) {
         self.settings.view = name;
+    }
+
+    pub fn set_layer_color(&mut self, layer: i32, color_hex: String) {
+        if let Ok(col_array) = color::hex_to_rgba(&color_hex) {
+            self.settings.layer_colors.insert(layer, col_array);
+        }
     }
 }

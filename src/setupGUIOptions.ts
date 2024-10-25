@@ -1,16 +1,16 @@
 import { Handle } from '../wasm-controller/pkg/cad_pattern_editor.js';
 import { LAYER_TO_NAME } from './settings.js';
 
-export function getLayerOptionEntry(name: string): string {
+export function getLayerOptionEntry(name: string, layerKey: number): string {
   return `
   <tr>
     <td>
       <label>
-        <input type="checkbox" checked="checked" />
+        <input id="Layer=>${layerKey}" type="checkbox" checked="checked" />
         <span>${name}</span>
       </label>
     </td>
-    <td><a class="btn-small black"></a></td>
+    <td><a id="LayerColor=>${layerKey}" class="btn-small black"></a></td>
   </tr>
   `;
 }
@@ -24,9 +24,9 @@ export function updateAvailableLayers(handle: Handle) {
   let htmlString = '';
   for (const layer of layers) {
     if (layer in LAYER_TO_NAME) {
-      htmlString += getLayerOptionEntry(LAYER_TO_NAME[layer]);
+      htmlString += getLayerOptionEntry(LAYER_TO_NAME[layer], layer);
     } else {
-      htmlString += getLayerOptionEntry(String(layer));
+      htmlString += getLayerOptionEntry(String(layer), layer);
     }
   }
 
@@ -38,7 +38,7 @@ export function getBlockViewEntry(name: string, checked: boolean): string {
   <tr>
     <td>
       <label>
-        <input id="${(checked) ? 'View=>' : 'Block=>'}${name}" name="block" type="radio" ${(checked) ? 'checked' : ''} />
+        <input id="${checked ? 'View=>' : 'Block=>'}${name}" name="block" type="radio" ${checked ? 'checked' : ''} />
         <span>${name}</span>
       </label>
     </td>
