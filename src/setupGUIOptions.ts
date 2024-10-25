@@ -38,7 +38,7 @@ export function getBlockViewEntry(name: string, checked: boolean): string {
   <tr>
     <td>
       <label>
-        <input name="block" type="radio" ${(checked) ? 'checked' : ''} />
+        <input id="${(checked) ? 'View=>' : 'Block=>'}${name}" name="block" type="radio" ${(checked) ? 'checked' : ''} />
         <span>${name}</span>
       </label>
     </td>

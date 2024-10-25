@@ -13,16 +13,39 @@ export async function startUpWasm() {
   wasmStarted = true;
 }
 
+const updateCanvasData = (handle: Handle) => {
+  const drawArrays = handle.get_draw_sequence();
+  mapBuffersToDevice(new Float32Array(drawArrays[0]), new Uint32Array(drawArrays[1]));
+}
+
+const addViewCallbacksToViews = (handle: Handle) => {
+  const modelCheckOption = document.getElementById(`View=>Model`) as HTMLInputElement;
+  modelCheckOption.addEventListener("click", () => {
+    if (handle === undefined) { return; }
+    handle.set_view("Model");
+    updateCanvasData(handle);
+  });
+
+  for (const name of handle.get_all_block_names()) {
+    const blockCheckOption = document.getElementById(`Block=>${name}`) as HTMLInputElement;
+    const viewName = `Block=>${name}`;
+    blockCheckOption.addEventListener("click", () => {
+      if (handle === undefined) { return; }
+      handle.set_view(viewName);
+      updateCanvasData(handle);
+    });
+  }
+}
+
 export function intilizePattern(payload: string): [number[], number[]] | undefined {
   if (!wasmStarted) return;
 
   PATTERN_WASM_HANDLE = new Handle(payload, getSettingsPayload());
   console.log(PATTERN_WASM_HANDLE.get_number_entities(), 'entities have been parsed');
-  console.log(PATTERN_WASM_HANDLE.get_settings());
 
   updateAvailableLayers(PATTERN_WASM_HANDLE);
   updateAvailableBlocks(PATTERN_WASM_HANDLE);
+  addViewCallbacksToViews(PATTERN_WASM_HANDLE);
 
-  const drawArrays = PATTERN_WASM_HANDLE.get_draw_sequence();
-  mapBuffersToDevice(new Float32Array(drawArrays[0]), new Uint32Array(drawArrays[1]));
+  updateCanvasData(PATTERN_WASM_HANDLE);
 }

@@ -163,13 +163,10 @@ impl Pattern {
         }
 
         console::log_1(&format!("Block key {} not in inserts", block_key).into());
-        return Array2::zeros((0, 0));
+        return Array2::zeros((1, 2));
     }
 
-    pub(crate) fn get_draw_sequence(
-        &self,
-        settings: &user_settings::Settings,
-    ) -> (Vec<f32>, Vec<u32>) {
+    fn get_draw_sequence_model(&self, settings: &user_settings::Settings) -> (Vec<f32>, Vec<u32>) {
         let mut vertex_buffer: Vec<f32> = vec![];
         let mut index_buffer: Vec<u32> = vec![];
         let mut last_index: u32 = 0;
@@ -188,6 +185,57 @@ impl Pattern {
         }
 
         return (vertex_buffer, index_buffer);
+    }
+
+    fn get_draw_sequence_block(
+        &self,
+        settings: &user_settings::Settings,
+        block_name: &String,
+    ) -> (Vec<f32>, Vec<u32>) {
+        let mut vertex_buffer: Vec<f32> = vec![];
+        let mut index_buffer: Vec<u32> = vec![];
+        let mut last_index: u32 = 0;
+
+        if let Some(block) = self.block_in_pattern(&block_name) {
+            let offset = Array2::zeros((1, 2));
+            block.get_draw_sequence(
+                &offset,
+                &settings.cross_size,
+                &settings.layer_colors,
+                &settings.default_color,
+                &mut last_index,
+                &mut vertex_buffer,
+                &mut index_buffer,
+            )
+        }
+
+        return (vertex_buffer, index_buffer);
+    }
+
+    pub(crate) fn get_draw_sequence(
+        &self,
+        settings: &user_settings::Settings,
+    ) -> (Vec<f32>, Vec<u32>) {
+        // View with name Block=>L-1 will attempt to draw L-1
+        if settings.view.split("=>").next() == Some("Block") {
+            if let Some(ind) = settings.view.find("=>") {
+                let key = settings.view[(ind + "=>".len())..].to_string();
+                console::log_1(&format!("Switching view to {}", key).into());
+                return self.get_draw_sequence_block(settings, &key);
+            }
+        }
+
+        return self.get_draw_sequence_model(settings);
+    }
+
+    pub(crate) fn block_in_pattern(&self, block_name: &String) -> Option<&block::Block> {
+        for block in self.blocks.iter() {
+            if &block.name == block_name {
+                return Some(block);
+            }
+        }
+        console::log_1(&format!("Block key {} not in pattern", block_name).into());
+        return None;
     }
 
     pub fn reset_selection(&mut self) {

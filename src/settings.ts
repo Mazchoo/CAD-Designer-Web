@@ -6,6 +6,7 @@ let SETTINGS = {
     layer_colors: {},
     point_threshold: 1.,
     cross_size: 0.3,
+    view: "Model"
 }
 
 export const LAYER_TO_NAME: {[layer: number]: string} = {

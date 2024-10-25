@@ -75,8 +75,8 @@ impl Entity {
         let offset_vertices = self.vertices.clone() + offset;
         let num_rows = self.vertices.shape()[0];
         if num_rows == 1 {
-           let x = offset_vertices[(0, 0)];
-           let y = offset_vertices[(0, 1)];
+            let x = offset_vertices[(0, 0)];
+            let y = offset_vertices[(0, 1)];
             // draw a cross using vertex data format x, y, r, g, b, a
             vertex_buffer.extend([
                 x - cross_size,

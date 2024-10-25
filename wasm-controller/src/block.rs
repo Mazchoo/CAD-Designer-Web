@@ -1,5 +1,6 @@
 use ndarray::{array, Array2};
 use std::collections::HashMap;
+use web_sys::console;
 
 use crate::entity;
 use crate::parse_pattern;
@@ -183,7 +184,7 @@ impl Block {
         if !layers.contains(&self.layer) {
             layers.push(self.layer);
         }
-    
+
         for entity in self.entities.iter() {
             if !layers.contains(&entity.layer) {
                 layers.push(entity.layer);

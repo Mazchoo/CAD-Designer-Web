@@ -50,4 +50,8 @@ impl Handle {
     pub fn get_all_block_names(&self) -> Vec<String> {
         return self.pattern.get_all_block_names();
     }
+
+    pub fn set_view(&mut self, name: String) {
+        self.settings.view = name;
+    }
 }

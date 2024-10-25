@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use wasm_bindgen::prelude::*;
 
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
@@ -12,6 +11,7 @@ pub struct Settings {
     pub layer_colors: HashMap<i32, (f32, f32, f32, f32)>,
     pub point_threshold: f32,
     pub cross_size: f32,
+    pub view: String,
 }
 
 impl Default for Settings {
@@ -23,6 +23,7 @@ impl Default for Settings {
             layer_colors: HashMap::new(),
             point_threshold: 1.,
             cross_size: 0.3,
+            view: "Model".to_string(),
         }
     }
 }
