@@ -19,41 +19,38 @@ import { uploadJSON, readJsonToWasm } from './parseJson';
 (window as any).uploadJSON = uploadJSON;
 (window as any).readJsonToWasm = readJsonToWasm;
 
-const wasmStarted = startUpWasm();
+const WASAM_INIT = startUpWasm();
 
 // ToDo make a helper program that copies shaders into ts files
 
-const canvas = document.querySelector('canvas') as HTMLCanvasElement;
+const CANVAS = document.querySelector('canvas') as HTMLCanvasElement;
 
 // The input handler
-const inputHandler = createInputHandler(window, canvas);
+const INPUT_HANDLER = createInputHandler(window, CANVAS);
 
 // The camera types
-const initialCameraPosition = vec3.create(0, 0, 100);
-const camera = new WASDCamera({ position: initialCameraPosition });
+const INIT_CAMERA_POSITION = vec3.create(0, 0, 100);
+const CAMERA = new WASDCamera({ position: INIT_CAMERA_POSITION });
 
-const adapter = await navigator.gpu?.requestAdapter();
-const device = (await adapter?.requestDevice()) as GPUDevice;
-quitIfWebGPUNotAvailable(adapter, device);
-const context = canvas.getContext('webgpu') as GPUCanvasContext;
+const ADAPTER = await navigator.gpu?.requestAdapter();
+const DEVICE = (await ADAPTER?.requestDevice()) as GPUDevice;
+quitIfWebGPUNotAvailable(ADAPTER, DEVICE);
+const CONTEXT = CANVAS.getContext('webgpu') as GPUCanvasContext;
 
-const devicePixelRatio = window.devicePixelRatio;
-canvas.width = canvas.clientWidth * devicePixelRatio;
-canvas.height = canvas.clientHeight * devicePixelRatio;
-const presentationFormat = navigator.gpu.getPreferredCanvasFormat();
+const PRESENTATION_FORMAT = navigator.gpu.getPreferredCanvasFormat();
 
-context.configure({
-  device,
-  format: presentationFormat,
+CONTEXT.configure({
+  device: DEVICE,
+  format: PRESENTATION_FORMAT,
   alphaMode: 'premultiplied',
 });
 
-setDevice(device);
+setDevice(DEVICE);
 mapBuffersToDevice(squareVertexArray, indexArray);
 
-const linesCompiledShader = device.createShaderModule({ code: linesWGSL });
+const LINES_COMPILED_SHADER = DEVICE.createShaderModule({ code: linesWGSL });
 
-const bindGroupLayout = device.createBindGroupLayout({
+const bindGroupLayout = DEVICE.createBindGroupLayout({
   entries: [
     {
       binding: 0, // Binding index 0 for the uniform buffer
@@ -63,10 +60,10 @@ const bindGroupLayout = device.createBindGroupLayout({
   ],
 });
 
-const linePipeline = device.createRenderPipeline({
-  layout: device.createPipelineLayout({ bindGroupLayouts: [bindGroupLayout] }),
+const LINE_DRAW_PIPELINE = DEVICE.createRenderPipeline({
+  layout: DEVICE.createPipelineLayout({ bindGroupLayouts: [bindGroupLayout] }),
   vertex: {
-    module: linesCompiledShader,
+    module: LINES_COMPILED_SHADER,
     buffers: [
       {
         arrayStride: squareVertexSize,
@@ -86,10 +83,10 @@ const linePipeline = device.createRenderPipeline({
     ],
   },
   fragment: {
-    module: linesCompiledShader,
+    module: LINES_COMPILED_SHADER,
     targets: [
       {
-        format: presentationFormat,
+        format: PRESENTATION_FORMAT,
       },
     ],
   },
@@ -100,25 +97,25 @@ const linePipeline = device.createRenderPipeline({
   },
 });
 
-const uniformBufferSize = 32 * 16; // 4x4 matrix
-const uniformBuffer = device.createBuffer({
-  size: uniformBufferSize,
+const UNIFORM_BUFFER_SIZE = 32 * 16; // 4x4 matrix
+const UNIFORM_BUFFER = DEVICE.createBuffer({
+  size: UNIFORM_BUFFER_SIZE,
   usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
 });
 
-const uniformBindGroupLines = device.createBindGroup({
-  layout: linePipeline.getBindGroupLayout(0),
+const UNIFORM_BIND_GROUP = DEVICE.createBindGroup({
+  layout: LINE_DRAW_PIPELINE.getBindGroupLayout(0),
   entries: [
     {
       binding: 0,
       resource: {
-        buffer: uniformBuffer,
+        buffer: UNIFORM_BUFFER,
       },
     },
   ],
 });
 
-const renderPassDescriptor = {
+const RENDER_PASS_DESCRIPTOR = {
   colorAttachments: [
     {
       view: undefined, // Assigned later
@@ -130,68 +127,82 @@ const renderPassDescriptor = {
   ],
 } as GPURenderPassDescriptor;
 
-const aspect = canvas.width / canvas.height;
-const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 0.1, 10000.0);
-const sinFieldOfView = Math.sin((2 * Math.PI) / 5); // Cached for efficiency
-const modelViewProjectionMatrix = mat4.create();
+const FIELD_OF_VIEW_RAD = (2 * Math.PI) / 5;
+const SIN_FIELD_OF_VIEW = Math.sin(FIELD_OF_VIEW_RAD); // Cached for efficiency
+let PROJECTION_MATRIX = mat4.create();
+function updateProjectionMatrix() {
+  const devicePixelRatio = window.devicePixelRatio;
+  CANVAS.width = CANVAS.clientWidth * devicePixelRatio;
+  CANVAS.height = CANVAS.clientHeight * devicePixelRatio;
+  const aspect = CANVAS.width / CANVAS.height;
+  PROJECTION_MATRIX = mat4.perspective(FIELD_OF_VIEW_RAD, aspect, 0.1, 10000.0);
+  return PROJECTION_MATRIX;
+}
+updateProjectionMatrix();
 
+const MODEL_VIEW_PROJECTION_MATRIX = mat4.create();
 function getModelViewProjectionMatrix(deltaTime: number) {
-  const viewMatrix = camera.update(deltaTime, inputHandler());
-  mat4.multiply(projectionMatrix, viewMatrix, modelViewProjectionMatrix);
-  return modelViewProjectionMatrix;
+  const viewMatrix = CAMERA.update(deltaTime, INPUT_HANDLER());
+  mat4.multiply(PROJECTION_MATRIX, viewMatrix, MODEL_VIEW_PROJECTION_MATRIX);
+  return MODEL_VIEW_PROJECTION_MATRIX;
 }
 
-let lastFrameMS = Date.now();
+let LAST_FRAME_MS = Date.now();
 
 function frame() {
   const now = Date.now();
-  const deltaTime = (now - lastFrameMS) / 1000;
-  lastFrameMS = now;
+  const deltaTime = (now - LAST_FRAME_MS) / 1000;
+  LAST_FRAME_MS = now;
   // console.log(deltaTime * 1000);
 
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime);
-  device.queue.writeBuffer(
-    uniformBuffer,
+  DEVICE.queue.writeBuffer(
+    UNIFORM_BUFFER,
     0,
     modelViewProjection.buffer,
     modelViewProjection.byteOffset,
     modelViewProjection.byteLength
   );
-  (renderPassDescriptor.colorAttachments as GPURenderPassColorAttachment[])[0].view = context
+  (RENDER_PASS_DESCRIPTOR.colorAttachments as GPURenderPassColorAttachment[])[0].view = CONTEXT
     .getCurrentTexture()
     .createView();
 
-  const commandEncoder = device.createCommandEncoder();
-  const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
+  const commandEncoder = DEVICE.createCommandEncoder();
+  const passEncoder = commandEncoder.beginRenderPass(RENDER_PASS_DESCRIPTOR);
 
   const buffers = getBuffers();
   if (buffers !== undefined) {
     const [verticesBuffer, indexBuffer, nrIndices] = buffers;
 
-    passEncoder.setBindGroup(0, uniformBindGroupLines);
-    passEncoder.setPipeline(linePipeline);
+    passEncoder.setBindGroup(0, UNIFORM_BIND_GROUP);
+    passEncoder.setPipeline(LINE_DRAW_PIPELINE);
     passEncoder.setVertexBuffer(0, verticesBuffer);
     passEncoder.setIndexBuffer(indexBuffer, 'uint32');
     passEncoder.drawIndexed(nrIndices, 1, 0, 0, 0);
     passEncoder.end();
-    device.queue.submit([commandEncoder.finish()]);
+    DEVICE.queue.submit([commandEncoder.finish()]);
   }
 
   requestAnimationFrame(frame);
 }
 
-canvas.addEventListener(
+window.addEventListener('resize', (e) => {
+  console.log('Window resized');
+  updateProjectionMatrix();
+}, true);
+
+CANVAS.addEventListener(
   'click',
   (e) => {
-    const [eventX, eventY] = getCanvasCoordinates(e, canvas);
+    const [eventX, eventY] = getCanvasCoordinates(e, CANVAS);
 
     // Use orthonormal assumption of camera
-    const xScale = projectionMatrix[0];
-    const yScale = projectionMatrix[5];
-    const cameraDist = camera.position[2];
-    const desginCoordinates = 
-      [eventX / xScale * cameraDist * sinFieldOfView + camera.position[0],
-      -eventY / yScale * cameraDist * sinFieldOfView + camera.position[1]
+    const xScale = PROJECTION_MATRIX[0];
+    const yScale = PROJECTION_MATRIX[5];
+    const cameraDist = CAMERA.position[2];
+    const desginCoordinates = [
+      (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[0],
+      (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[1],
     ];
 
     console.log(desginCoordinates[0], desginCoordinates[1]);
@@ -200,5 +211,5 @@ canvas.addEventListener(
 );
 
 // Start app
-await wasmStarted;
+await WASAM_INIT;
 requestAnimationFrame(frame);
