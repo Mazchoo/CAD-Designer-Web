@@ -1,5 +1,3 @@
-
-
 pub fn hex_to_rgba(hex: &str) -> Result<(f32, f32, f32, f32), String> {
     if hex.len() != 9 || !hex.starts_with('#') {
         return Err("Hex color must be in the format #RRGGBBAA".into());

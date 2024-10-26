@@ -7,7 +7,7 @@ import {
   squareVertexArray,
 } from './meshes/square';
 import { WASDCamera } from './camera';
-import { createInputHandler } from './input';
+import { createInputHandler, getCanvasCoordinates } from './input';
 import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
@@ -132,6 +132,7 @@ const renderPassDescriptor = {
 
 const aspect = canvas.width / canvas.height;
 const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 0.1, 10000.0);
+const sinFieldOfView = Math.sin((2 * Math.PI) / 5); // Cached for efficiency
 const modelViewProjectionMatrix = mat4.create();
 
 function getModelViewProjectionMatrix(deltaTime: number) {
@@ -178,6 +179,25 @@ function frame() {
 
   requestAnimationFrame(frame);
 }
+
+canvas.addEventListener(
+  'click',
+  (e) => {
+    const [eventX, eventY] = getCanvasCoordinates(e, canvas);
+
+    // Use orthonormal assumption of camera
+    const xScale = projectionMatrix[0];
+    const yScale = projectionMatrix[5];
+    const cameraDist = camera.position[2];
+    const desginCoordinates = 
+      [eventX / xScale * cameraDist * sinFieldOfView + camera.position[0],
+      -eventY / yScale * cameraDist * sinFieldOfView + camera.position[1]
+    ];
+
+    console.log(desginCoordinates[0], desginCoordinates[1]);
+  },
+  { passive: false }
+);
 
 // Start app
 await wasmStarted;

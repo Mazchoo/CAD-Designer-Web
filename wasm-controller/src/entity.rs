@@ -2,6 +2,7 @@ use std::i32;
 
 use ndarray::Array2;
 
+use crate::user_settings;
 use crate::utils::bounding_box;
 
 #[derive(Debug)]
@@ -30,8 +31,8 @@ pub struct Entity {
     pub bounding_box: ((f32, f32), (f32, f32)),
 
     // Display settings
-    selected: bool,
-    hightlighted: bool,
+    pub selected: bool,
+    pub hightlighted: bool,
 }
 
 impl Entity {
@@ -127,7 +128,7 @@ impl Entity {
                 index_buffer.push(*last_index + 1 - (num_rows as u32));
             }
 
-            // i32::MAX denotes end of line
+            // u32::MAX denotes end of line
             index_buffer.push(u32::MAX);
         }
     }
@@ -135,6 +136,23 @@ impl Entity {
     pub fn reset_selection(&mut self) {
         self.selected = false;
         self.hightlighted = false;
+    }
+
+    pub fn get_color<'a>(
+        &self,
+        settings: &'a user_settings::Settings,
+        default_color: &'a (f32, f32, f32, f32),
+    ) -> &'a (f32, f32, f32, f32) {
+        let mut entity_color = default_color;
+
+        if self.selected {
+            entity_color = &settings.select_color;
+        } else if self.hightlighted {
+            entity_color = &settings.highlight_color;
+        } else if settings.layer_colors.contains_key(&self.layer) {
+            entity_color = &settings.layer_colors[&self.layer]
+        };
+        return entity_color;
     }
 
     pub fn get_closest_point_on_entity(&self) {}

@@ -75,5 +75,5 @@ export function intilizePattern(payload: string): [number[], number[]] | undefin
 }
 
 export function performAction(action: ACTION_TYPES, point: [number, number]) {
-  return;  // ToDo
+  return; // ToDo
 }

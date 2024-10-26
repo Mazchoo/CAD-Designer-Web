@@ -175,9 +175,7 @@ impl Pattern {
             let offset = self.get_offset_for_block(&block.name);
             block.get_draw_sequence(
                 &offset,
-                &settings.cross_size,
-                &settings.layer_colors,
-                &settings.default_color,
+                &settings,
                 &mut last_index,
                 &mut vertex_buffer,
                 &mut index_buffer,
@@ -200,9 +198,7 @@ impl Pattern {
             let offset = Array2::zeros((1, 2));
             block.get_draw_sequence(
                 &offset,
-                &settings.cross_size,
-                &settings.layer_colors,
-                &settings.default_color,
+                &settings,
                 &mut last_index,
                 &mut vertex_buffer,
                 &mut index_buffer,

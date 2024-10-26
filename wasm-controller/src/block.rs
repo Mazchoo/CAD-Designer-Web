@@ -4,6 +4,7 @@ use web_sys::console;
 
 use crate::entity;
 use crate::parse_pattern;
+use crate::user_settings;
 use crate::utils::bounding_box;
 
 #[derive(Debug)]
@@ -14,6 +15,10 @@ pub struct Block {
     entities: Vec<entity::Entity>,
     // Cached variables
     bounding_box: ((f32, f32), (f32, f32)),
+
+    // Display variables
+    selected: bool,
+    hightlighted: bool,
 }
 
 impl Block {
@@ -25,6 +30,8 @@ impl Block {
             name: name,
             centroid: array![[center.x, center.y]],
             bounding_box: bounding_box,
+            selected: false,
+            hightlighted: false,
         };
     }
 
@@ -145,28 +152,20 @@ impl Block {
     pub fn get_draw_sequence(
         &self,
         offset: &Array2<f32>,
-        cross_size: &f32,
-        layer_colors: &HashMap<i32, (f32, f32, f32, f32)>,
-        default_color: &(f32, f32, f32, f32),
+        settings: &user_settings::Settings,
         last_index: &mut u32,
         vertex_buffer: &mut Vec<f32>,
         index_buffer: &mut Vec<u32>,
     ) {
-        let block_color: &(f32, f32, f32, f32) = if layer_colors.contains_key(&self.layer) {
-            &layer_colors[&self.layer]
-        } else {
-            default_color
-        };
+        let block_color = self.get_color(settings);
+
         for entity in self.entities.iter() {
-            let entity_color: &(f32, f32, f32, f32) = if layer_colors.contains_key(&entity.layer) {
-                &layer_colors[&entity.layer]
-            } else {
-                block_color
-            };
+            let entity_color = entity.get_color(settings, block_color);
+
             entity.get_draw_sequence(
-                &entity_color,
+                entity_color,
                 offset,
-                cross_size,
+                &settings.cross_size,
                 last_index,
                 vertex_buffer,
                 index_buffer,
@@ -175,6 +174,8 @@ impl Block {
     }
 
     pub fn reset_selection(&mut self) {
+        self.selected = false;
+        self.hightlighted = false;
         for entity in self.entities.iter_mut() {
             entity.reset_selection();
         }
@@ -190,5 +191,17 @@ impl Block {
                 layers.push(entity.layer);
             }
         }
+    }
+
+    fn get_color<'a>(&self, settings: &'a user_settings::Settings) -> &'a (f32, f32, f32, f32) {
+        let mut block_color: &(f32, f32, f32, f32) = &settings.default_color;
+        if self.selected {
+            block_color = &settings.select_color;
+        } else if self.hightlighted {
+            block_color = &settings.highlight_color;
+        } else if settings.layer_colors.contains_key(&self.layer) {
+            block_color = &settings.layer_colors[&self.layer]
+        };
+        return block_color;
     }
 }

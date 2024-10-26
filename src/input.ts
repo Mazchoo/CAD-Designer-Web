@@ -23,6 +23,17 @@ export default interface Input {
 // InputHandler is a function that when called, returns the current Input state.
 export type InputHandler = () => Input;
 
+export function getCanvasCoordinates(e: MouseEvent, canvas: HTMLElement): [number, number] {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  const rect = canvas.getBoundingClientRect();
+  const centerX = (rect.left + rect.right) / 2;
+  const centerY = (rect.top + rect.bottom) / 2;
+  const eventX = ((mouseX - centerX) / (rect.right - rect.left)) * 2;
+  const eventY = ((mouseY - centerY) / (rect.bottom - rect.top)) * 2;
+  return [eventX, eventY];
+}
+
 // createInputHandler returns an InputHandler by attaching event handlers to the window and canvas.
 export function createInputHandler(window: Window, canvas: HTMLCanvasElement): InputHandler {
   const digital = {
@@ -79,13 +90,9 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
   });
   canvas.addEventListener('pointermove', (e) => {
     // Calculate relative position of mouse on canvas
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    const rect = canvas.getBoundingClientRect();
-    const centerX = (rect.left + rect.right) / 2;
-    const centerY = (rect.top + rect.bottom) / 2;
-    analog.mouseX = ((mouseX - centerX) / (rect.right - rect.left)) * 2;
-    analog.mouseY = ((mouseY - centerY) / (rect.bottom - rect.top)) * 2;
+    const [eventX, eventY] = getCanvasCoordinates(e, canvas);
+    analog.mouseX = eventX;
+    analog.mouseY = eventY;
 
     mouseDown = e.pointerType == 'mouse' ? (e.buttons & 1) !== 0 : true;
     if (mouseDown) {
