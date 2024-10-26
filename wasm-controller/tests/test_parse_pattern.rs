@@ -2,7 +2,6 @@ use std::fs;
 use std::path::Path;
 
 use cad_pattern_editor::parse_pattern;
-use cad_pattern_editor::parse_pattern::ParseDocument;
 use cad_pattern_editor::pattern;
 
 #[test]

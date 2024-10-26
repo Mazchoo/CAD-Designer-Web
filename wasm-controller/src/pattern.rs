@@ -261,4 +261,40 @@ impl Pattern {
 
         return output;
     }
+
+    pub(crate) fn find_blocks_with_point(
+        &self,
+        point: &(f32, f32),
+        settings: &user_settings::Settings,
+    ) -> Vec<String> {
+        let mut selected_block_keys: Vec<String> = vec![];
+
+        for block in self.blocks.iter() {
+            let offset = self.get_offset_for_block(&block.name);
+            let offset_point = (point.0 - offset[(0, 0)], point.1 - offset[(0, 1)]);
+
+            if block.point_in_bounding_box(&offset_point, settings.point_threshold) {
+                selected_block_keys.push(block.name.clone());
+            }
+        }
+
+        return selected_block_keys;
+    }
+
+    pub(crate) fn highlight_selection(&mut self, block_keys: &Vec<String>) {
+        self.reset_selection();
+        let mut selection_found = false;
+
+        for block in self.blocks.iter_mut() {
+            if block_keys.contains(&block.name) {
+                if selection_found {
+                    selection_found = true;
+                    block.select();
+                } else {
+                    block.highlight();
+                }
+            }
+        }
+
+    }
 }

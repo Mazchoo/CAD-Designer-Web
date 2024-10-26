@@ -1,6 +1,4 @@
 use ndarray::{array, Array2};
-use std::collections::HashMap;
-use web_sys::console;
 
 use crate::entity;
 use crate::parse_pattern;
@@ -203,5 +201,13 @@ impl Block {
             block_color = &settings.layer_colors[&self.layer]
         };
         return block_color;
+    }
+
+    pub fn highlight(&mut self) {
+        self.hightlighted = true;
+    }
+
+    pub fn select(&mut self) {
+        self.selected = true;
     }
 }

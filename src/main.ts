@@ -12,12 +12,14 @@ import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
 import { startUpWasm } from './patternHandle';
+import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, performAction } from './action';
 
 import { uploadJSON, readJsonToWasm } from './parseJson';
 
 // Assign these two functions to the global scope
 (window as any).uploadJSON = uploadJSON;
 (window as any).readJsonToWasm = readJsonToWasm;
+(window as any).selectBlock = setupSelectBlockAction;
 
 const WASAM_INIT = startUpWasm();
 
@@ -194,18 +196,19 @@ window.addEventListener('resize', (e) => {
 CANVAS.addEventListener(
   'click',
   (e) => {
+    if (CURRENT_ACTION === ACTION_TYPES.NONE) { return; }
     const [eventX, eventY] = getCanvasCoordinates(e, CANVAS);
 
     // Use orthonormal assumption of camera
     const xScale = PROJECTION_MATRIX[0];
     const yScale = PROJECTION_MATRIX[5];
     const cameraDist = CAMERA.position[2];
-    const desginCoordinates = [
+    const actionPoint: [number, number] = [
       (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[0],
       (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[1],
     ];
 
-    console.log(desginCoordinates[0], desginCoordinates[1]);
+    performAction(actionPoint);
   },
   { passive: false }
 );

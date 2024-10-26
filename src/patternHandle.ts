@@ -2,7 +2,7 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
-import { ACTION_TYPES } from './action_types';
+import { ACTION_TYPES } from './action.js';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
@@ -74,6 +74,8 @@ export function intilizePattern(payload: string): [number[], number[]] | undefin
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
 
-export function performAction(action: ACTION_TYPES, point: [number, number]) {
-  return; // ToDo
+export function selectBlock(point: [number, number]) {
+  if (PATTERN_WASM_HANDLE === undefined) return;
+  const selection = PATTERN_WASM_HANDLE.select_block(new Float32Array(point));
+  updateCanvasData(PATTERN_WASM_HANDLE);
 }

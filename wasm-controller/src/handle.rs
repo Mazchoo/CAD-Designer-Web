@@ -61,4 +61,15 @@ impl Handle {
             self.settings.layer_colors.insert(layer, col_array);
         }
     }
+
+    pub fn select_block(&mut self, point: Vec<f32>) -> JsValue {
+        let empty_output: Vec<String> = vec![];
+        if point.len() != 2 {
+            return to_value(&empty_output).unwrap();
+        }
+        let point_tuple = (point[0], point[1]);
+        let block_keys = self.pattern.find_blocks_with_point(&point_tuple, &self.settings);
+        self.pattern.highlight_selection(&block_keys);
+        return to_value(&block_keys).unwrap();
+    }
 }
