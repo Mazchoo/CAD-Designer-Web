@@ -21,7 +21,7 @@ impl Default for Settings {
             highlight_color: (0., 0., 1., 1.),
             select_color: (1., 0., 0., 1.),
             layer_colors: HashMap::new(),
-            point_threshold: 1.,
+            point_threshold: 4.,
             cross_size: 0.3,
             view: "Model".to_string(),
         }

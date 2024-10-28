@@ -288,10 +288,10 @@ impl Pattern {
         for block in self.blocks.iter_mut() {
             if block_keys.contains(&block.name) {
                 if selection_found {
+                    block.highlight();
+                } else {
                     selection_found = true;
                     block.select();
-                } else {
-                    block.highlight();
                 }
             }
         }

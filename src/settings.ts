@@ -3,7 +3,7 @@ let SETTINGS = {
   highlight_color: [0, 0, 1, 1],
   select_color: [1, 0, 0, 1],
   layer_colors: {},
-  point_threshold: 1,
+  point_threshold: 4,
   cross_size: 0.3,
   view: 'Model',
 };

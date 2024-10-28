@@ -13,10 +13,6 @@ pub struct Block {
     entities: Vec<entity::Entity>,
     // Cached variables
     bounding_box: ((f32, f32), (f32, f32)),
-
-    // Display variables
-    selected: bool,
-    hightlighted: bool,
 }
 
 impl Block {
@@ -28,8 +24,6 @@ impl Block {
             name: name,
             centroid: array![[center.x, center.y]],
             bounding_box: bounding_box,
-            selected: false,
-            hightlighted: false,
         };
     }
 
@@ -172,8 +166,6 @@ impl Block {
     }
 
     pub fn reset_selection(&mut self) {
-        self.selected = false;
-        self.hightlighted = false;
         for entity in self.entities.iter_mut() {
             entity.reset_selection();
         }
@@ -193,21 +185,21 @@ impl Block {
 
     fn get_color<'a>(&self, settings: &'a user_settings::Settings) -> &'a (f32, f32, f32, f32) {
         let mut block_color: &(f32, f32, f32, f32) = &settings.default_color;
-        if self.selected {
-            block_color = &settings.select_color;
-        } else if self.hightlighted {
-            block_color = &settings.highlight_color;
-        } else if settings.layer_colors.contains_key(&self.layer) {
+        if settings.layer_colors.contains_key(&self.layer) {
             block_color = &settings.layer_colors[&self.layer]
         };
         return block_color;
     }
 
     pub fn highlight(&mut self) {
-        self.hightlighted = true;
+        for entity in self.entities.iter_mut() {
+            entity.hightlighted = true;
+        }
     }
 
     pub fn select(&mut self) {
-        self.selected = true;
+        for entity in self.entities.iter_mut() {
+            entity.selected = true;
+        }
     }
 }
