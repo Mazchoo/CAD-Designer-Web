@@ -1,6 +1,7 @@
 use ndarray::{array, Array2};
 
 use crate::entity;
+use crate::entity::Entity;
 use crate::parse_pattern;
 use crate::user_settings;
 use crate::utils::bounding_box;
@@ -200,6 +201,13 @@ impl Block {
     pub fn select(&mut self) {
         for entity in self.entities.iter_mut() {
             entity.selected = true;
+        }
+    }
+
+    pub fn highlight_if_selected(&mut self) {
+        for entity in self.entities.iter_mut().filter(|e| e.selected).collect::<Vec<&mut entity::Entity>>() {
+            entity.hightlighted = true;
+            entity.selected = false;
         }
     }
 }

@@ -72,4 +72,9 @@ impl Handle {
         self.pattern.highlight_selection(&block_keys);
         return to_value(&block_keys).unwrap();
     }
+
+    pub fn change_block_selection(&mut self, block_key: String) {
+        self.pattern.highlight_if_selected();
+        self.pattern.select_block(&block_key);
+    }
 }

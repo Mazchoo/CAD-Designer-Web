@@ -1,8 +1,7 @@
 import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.js';
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
-import { updateAvailableLayers, updateAvailableBlocks } from './setupGUIOptions';
+import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
-import { ACTION_TYPES } from './action.js';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
@@ -14,14 +13,21 @@ export async function startUpWasm() {
   wasmStarted = true;
 }
 
-const updateCanvasData = (handle: Handle) => {
+const updateCanvasData = (handle: Handle | undefined) => {
+  if (handle === undefined) {
+    return;
+  }
   const drawArrays = handle.get_draw_sequence();
   mapBuffersToDevice(new Float32Array(drawArrays[0]), new Uint32Array(drawArrays[1]));
 };
 
-const addViewCallbacksToLayers = (handle: Handle) => {
+const addViewCallbacksToLayers = (handle: Handle | undefined) => {
+  if (handle === undefined) {
+    return;
+  }
   for (const layer of handle.get_all_layers()) {
-    const layerOption = document.getElementById(`LayerColor=>${layer}`) as HTMLInputElement;
+    const layerOption = document.getElementById(`LayerColor=>${layer}`) as HTMLInputElement | undefined;
+    if (layerOption === undefined) continue;
     // Take the first class which is a color in the color map
     layerOption.addEventListener('click', () => {
       const currentColor = Array.from(layerOption.classList).filter((c) => colorMap.has(c))[0];
@@ -37,24 +43,38 @@ const addViewCallbacksToLayers = (handle: Handle) => {
   }
 };
 
-const addViewCallbacksToViews = (handle: Handle) => {
-  const modelCheckOption = document.getElementById(`View=>Model`) as HTMLInputElement;
-  modelCheckOption.addEventListener('click', () => {
-    if (handle === undefined) {
-      return;
-    }
-    handle.set_view('Model');
-    updateCanvasData(handle);
-  });
+const addViewCallbacksToViews = (handle: Handle | undefined) => {
+  if (handle === undefined) {
+    return;
+  }
+  const modelCheckOption = document.getElementById(`View=>Model`) as HTMLInputElement | undefined;
+  if (modelCheckOption !== undefined) {
+    modelCheckOption.addEventListener('click', () => {
+      handle.set_view('Model');
+      updateCanvasData(handle);
+    });
+  }
 
   for (const name of handle.get_all_block_names()) {
-    const blockCheckOption = document.getElementById(`Block=>${name}`) as HTMLInputElement;
+    const blockCheckOption = document.getElementById(`Block=>${name}`) as HTMLInputElement | undefined;
+    if (blockCheckOption === undefined) continue;
     const viewName = `Block=>${name}`;
     blockCheckOption.addEventListener('click', () => {
-      if (handle === undefined) {
-        return;
-      }
       handle.set_view(viewName);
+      updateCanvasData(handle);
+    });
+  }
+};
+
+const addChangeSelectionCallbacks = (handle: Handle | undefined, keys: string[]) => {
+  if (handle === undefined) {
+    return;
+  }
+  for (const key of keys) {
+    const selectionCheck = document.getElementById(`Selection=>${key}`) as HTMLInputElement | undefined;
+    if (selectionCheck === undefined) continue;
+    selectionCheck.addEventListener('click', () => {
+      handle.change_block_selection(key);
       updateCanvasData(handle);
     });
   }
@@ -78,4 +98,7 @@ export function selectBlock(point: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
   const selection = PATTERN_WASM_HANDLE.select_block(new Float32Array(point));
   updateCanvasData(PATTERN_WASM_HANDLE);
+
+  updateSelection(selection);
+  addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }

@@ -62,3 +62,31 @@ export function updateAvailableBlocks(handle: Handle) {
 
   blockViewOptions.insertAdjacentHTML('beforeend', htmlString);
 }
+
+export function getSelectedItemEntry(name: string, checked: boolean): string {
+  return `
+    <tr>
+    <td>
+      <label>
+        <input id="Selection=>${name}" name="selection" type="radio" ${checked ? 'checked' : ''} />
+        <span>${name}</span>
+      </label>
+    </td>
+    <td></td>
+  </tr>
+  `;
+}
+
+export function updateSelection(keys: string[]) {
+  const blockViewOptions = document.getElementById('selection-view') as HTMLInputElement;
+  blockViewOptions.innerHTML = '';
+
+  let htmlString = '';
+  let checked = true;
+  for (const name of keys) {
+    htmlString += getSelectedItemEntry(name, checked);
+    checked = false;
+  }
+
+  blockViewOptions.insertAdjacentHTML('beforeend', htmlString);
+}
