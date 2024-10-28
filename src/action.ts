@@ -12,9 +12,15 @@ export function setupSelectBlockAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
   currentAction.value = 'Select Block';
   CURRENT_ACTION = ACTION_TYPES.SELECT_BLOCK;
-  console.log('Select block')
+  console.log('Select Block');
 }
 
+export function setupNoneAction() {
+  const currentAction = document.getElementById('current-action') as HTMLInputElement;
+  currentAction.value = 'None';
+  CURRENT_ACTION = ACTION_TYPES.NONE;
+  console.log('Action None');
+}
 
 export function performAction(point: [number, number]) {
   if (CURRENT_ACTION === ACTION_TYPES.NONE) {

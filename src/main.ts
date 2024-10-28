@@ -12,14 +12,15 @@ import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
 import { startUpWasm } from './patternHandle';
-import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, performAction } from './action';
+import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, setupNoneAction, performAction } from './action';
 
 import { uploadJSON, readJsonToWasm } from './parseJson';
 
 // Assign these two functions to the global scope
 (window as any).uploadJSON = uploadJSON;
 (window as any).readJsonToWasm = readJsonToWasm;
-(window as any).selectBlock = setupSelectBlockAction;
+(window as any).setupSelectBlockAction = setupSelectBlockAction;
+(window as any).setupNoneAction = setupNoneAction;
 
 const WASAM_INIT = startUpWasm();
 
@@ -165,9 +166,8 @@ function frame() {
     modelViewProjection.byteOffset,
     modelViewProjection.byteLength
   );
-  (RENDER_PASS_DESCRIPTOR.colorAttachments as GPURenderPassColorAttachment[])[0].view = CONTEXT
-    .getCurrentTexture()
-    .createView();
+  (RENDER_PASS_DESCRIPTOR.colorAttachments as GPURenderPassColorAttachment[])[0].view =
+    CONTEXT.getCurrentTexture().createView();
 
   const commandEncoder = DEVICE.createCommandEncoder();
   const passEncoder = commandEncoder.beginRenderPass(RENDER_PASS_DESCRIPTOR);
@@ -188,15 +188,21 @@ function frame() {
   requestAnimationFrame(frame);
 }
 
-window.addEventListener('resize', (e) => {
-  console.log('Window resized');
-  updateProjectionMatrix();
-}, true);
+window.addEventListener(
+  'resize',
+  (e) => {
+    console.log('Window resized');
+    updateProjectionMatrix();
+  },
+  true
+);
 
 CANVAS.addEventListener(
   'click',
   (e) => {
-    if (CURRENT_ACTION === ACTION_TYPES.NONE) { return; }
+    if (CURRENT_ACTION === ACTION_TYPES.NONE) {
+      return;
+    }
     const [eventX, eventY] = getCanvasCoordinates(e, CANVAS);
 
     // Use orthonormal assumption of camera
