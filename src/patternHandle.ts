@@ -26,20 +26,34 @@ const addViewCallbacksToLayers = (handle: Handle | undefined) => {
     return;
   }
   for (const layer of handle.get_all_layers()) {
-    const layerOption = document.getElementById(`LayerColor=>${layer}`) as HTMLInputElement | undefined;
-    if (layerOption === undefined) continue;
-    // Take the first class which is a color in the color map
-    layerOption.addEventListener('click', () => {
-      const currentColor = Array.from(layerOption.classList).filter((c) => colorMap.has(c))[0];
-      if (currentColor === undefined) {
-        return;
-      }
-      const [nextColor, nextHex] = getNextColor(currentColor);
-      layerOption.classList.remove(currentColor);
-      layerOption.classList.add(nextColor);
-      handle.set_layer_color(layer, nextHex);
-      updateCanvasData(handle);
-    });
+    const layerColor = document.getElementById(`LayerColor=>${layer}`) as HTMLInputElement | undefined;
+    if (layerColor) {
+      // Take the first class which is a color in the color map
+      layerColor.addEventListener('click', () => {
+        const currentColor = Array.from(layerColor.classList).filter((c) => colorMap.has(c))[0];
+        if (currentColor === undefined) {
+          return;
+        }
+        const [nextColor, nextHex] = getNextColor(currentColor);
+        layerColor.classList.remove(currentColor);
+        layerColor.classList.add(nextColor);
+        handle.set_layer_color(layer, nextHex);
+        updateCanvasData(handle);
+      });
+    }
+
+    const layerOption = document.getElementById(`Layer=>${layer}`) as HTMLInputElement | undefined;
+    if (layerOption) {
+      // Take the first class which is a color in the color map
+      layerOption.addEventListener('click', () => {
+        if (layerOption.checked) {
+          handle.enable_layer(layer);
+        } else {
+          handle.disable_layer(layer);
+        }
+        updateCanvasData(handle);
+      });
+    }
   }
 };
 

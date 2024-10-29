@@ -295,7 +295,6 @@ impl Pattern {
                 }
             }
         }
-
     }
 
     pub(crate) fn highlight_if_selected(&mut self) {

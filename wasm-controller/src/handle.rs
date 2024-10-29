@@ -68,7 +68,9 @@ impl Handle {
             return to_value(&empty_output).unwrap();
         }
         let point_tuple = (point[0], point[1]);
-        let block_keys = self.pattern.find_blocks_with_point(&point_tuple, &self.settings);
+        let block_keys = self
+            .pattern
+            .find_blocks_with_point(&point_tuple, &self.settings);
         self.pattern.highlight_selection(&block_keys);
         return to_value(&block_keys).unwrap();
     }
@@ -76,5 +78,15 @@ impl Handle {
     pub fn change_block_selection(&mut self, block_key: String) {
         self.pattern.highlight_if_selected();
         self.pattern.select_block(&block_key);
+    }
+
+    pub fn disable_layer(&mut self, layer: i32) {
+        if !self.settings.disabled_layers.contains(&layer) {
+            self.settings.disabled_layers.push(layer);
+        }
+    }
+
+    pub fn enable_layer(&mut self, layer: i32) {
+        self.settings.disabled_layers.retain(|&x| x != layer);
     }
 }

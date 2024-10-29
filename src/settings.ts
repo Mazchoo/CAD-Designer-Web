@@ -2,6 +2,7 @@ let SETTINGS = {
   default_color: [0, 0, 0, 1],
   highlight_color: [0, 0, 1, 1],
   select_color: [1, 0, 0, 1],
+  disabled_layers: [],
   layer_colors: {},
   point_threshold: 4,
   cross_size: 0.3,

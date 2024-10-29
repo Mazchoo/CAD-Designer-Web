@@ -153,6 +153,9 @@ impl Block {
         let block_color = self.get_color(settings);
 
         for entity in self.entities.iter() {
+            if settings.disabled_layers.contains(&entity.layer) {
+                continue;
+            };
             let entity_color = entity.get_color(settings, block_color);
 
             entity.get_draw_sequence(
@@ -205,7 +208,12 @@ impl Block {
     }
 
     pub fn highlight_if_selected(&mut self) {
-        for entity in self.entities.iter_mut().filter(|e| e.selected).collect::<Vec<&mut entity::Entity>>() {
+        for entity in self
+            .entities
+            .iter_mut()
+            .filter(|e| e.selected)
+            .collect::<Vec<&mut entity::Entity>>()
+        {
             entity.hightlighted = true;
             entity.selected = false;
         }
