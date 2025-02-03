@@ -97,16 +97,13 @@ export class WASDCamera extends CameraBase implements Camera {
   private readonly velocity_ = vec3.create();
 
   // Speed multiplier for camera movement
-  movementSpeed = 5;
-
-  // Speed multiplier for camera rotation
-  rotationSpeed = 1;
+  movementSpeed = 2;
 
   // Speed multiplier for scrolling
-  zoomSpeed = 1200;
+  zoomSpeed = 800;
 
   // Controls zoom
-  miniminalDistance = 0.1;
+  miniminalDistance = 1.0;
   maximumDistance = 10000.0;
 
   // Controls stopping panning on zoom if this ratio above min distance

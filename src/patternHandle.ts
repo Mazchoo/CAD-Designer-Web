@@ -113,6 +113,8 @@ export function selectBlock(point: [number, number]) {
   const selection = PATTERN_WASM_HANDLE.select_block(new Float32Array(point));
   updateCanvasData(PATTERN_WASM_HANDLE);
 
+  console.log(selection);
+
   updateSelection(selection);
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }

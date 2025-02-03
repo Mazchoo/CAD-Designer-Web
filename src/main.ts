@@ -13,6 +13,7 @@ import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
 import { startUpWasm } from './patternHandle';
 import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, setupNoneAction, performAction } from './action';
+import * as fabric from 'fabric';
 
 import { uploadJSON, readJsonToWasm } from './parseJson';
 
@@ -26,10 +27,31 @@ const WASAM_INIT = startUpWasm();
 
 // ToDo make a helper program that copies shaders into ts files
 
-const CANVAS = document.querySelector('canvas') as HTMLCanvasElement;
+const GPU_CANVAS = document.getElementById('wgpu-canvas') as HTMLCanvasElement;
+const EVENT_CANVAS = document.getElementById('canvas-container') as HTMLCanvasElement;
+
+const FABRIC_CANVAS_HANDLER = new fabric.Canvas('fabric-canvas');
+
+const rect = new fabric.Rect({
+  left: 100,
+  top: 50,
+  fill: 'transparent',
+  stroke: 'red',
+  strokeWidth: 1,
+  width: 80,
+  height: 60,
+  angle: 0,     
+  selectable: true,
+});
+
+FABRIC_CANVAS_HANDLER.setHeight(GPU_CANVAS.clientHeight)
+FABRIC_CANVAS_HANDLER.setWidth(GPU_CANVAS.clientWidth)
+FABRIC_CANVAS_HANDLER.add(rect);
+FABRIC_CANVAS_HANDLER.setActiveObject(rect);
+FABRIC_CANVAS_HANDLER.selection = false;
 
 // The input handler
-const INPUT_HANDLER = createInputHandler(window, CANVAS);
+const INPUT_HANDLER = createInputHandler(window, EVENT_CANVAS);
 
 // The camera types
 const INIT_CAMERA_POSITION = vec3.create(0, 0, 100);
@@ -38,7 +60,7 @@ const CAMERA = new WASDCamera({ position: INIT_CAMERA_POSITION });
 const ADAPTER = await navigator.gpu?.requestAdapter();
 const DEVICE = (await ADAPTER?.requestDevice()) as GPUDevice;
 quitIfWebGPUNotAvailable(ADAPTER, DEVICE);
-const CONTEXT = CANVAS.getContext('webgpu') as GPUCanvasContext;
+const CONTEXT = GPU_CANVAS.getContext('webgpu') as GPUCanvasContext;
 
 const PRESENTATION_FORMAT = navigator.gpu.getPreferredCanvasFormat();
 
@@ -132,13 +154,14 @@ const RENDER_PASS_DESCRIPTOR = {
 
 const FIELD_OF_VIEW_RAD = (2 * Math.PI) / 5;
 const SIN_FIELD_OF_VIEW = Math.sin(FIELD_OF_VIEW_RAD); // Cached for efficiency
+
 let PROJECTION_MATRIX = mat4.create();
 function updateProjectionMatrix() {
   const devicePixelRatio = window.devicePixelRatio;
-  CANVAS.width = CANVAS.clientWidth * devicePixelRatio;
-  CANVAS.height = CANVAS.clientHeight * devicePixelRatio;
-  const aspect = CANVAS.width / CANVAS.height;
-  PROJECTION_MATRIX = mat4.perspective(FIELD_OF_VIEW_RAD, aspect, 0.1, 10000.0);
+  GPU_CANVAS.width = GPU_CANVAS.clientWidth * devicePixelRatio;
+  GPU_CANVAS.height = GPU_CANVAS.clientHeight * devicePixelRatio;
+  const aspect = GPU_CANVAS.width / GPU_CANVAS.height;
+  PROJECTION_MATRIX = mat4.perspective(FIELD_OF_VIEW_RAD, aspect, 1.0, 10000.0);
   return PROJECTION_MATRIX;
 }
 updateProjectionMatrix();
@@ -197,22 +220,23 @@ window.addEventListener(
   true
 );
 
-CANVAS.addEventListener(
+EVENT_CANVAS.addEventListener(
   'click',
   (e) => {
     if (CURRENT_ACTION === ACTION_TYPES.NONE) {
       return;
     }
-    const [eventX, eventY] = getCanvasCoordinates(e, CANVAS);
+    const [eventX, eventY] = getCanvasCoordinates(e, EVENT_CANVAS);
 
     // Use orthonormal assumption of camera
-    const xScale = PROJECTION_MATRIX[0];
-    const yScale = PROJECTION_MATRIX[5];
+    const xScale = PROJECTION_MATRIX[0] * 0.95;
+    const yScale = PROJECTION_MATRIX[5] * 0.95;
     const cameraDist = CAMERA.position[2];
     const actionPoint: [number, number] = [
       (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[0],
       (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[1],
     ];
+    console.log(actionPoint);
 
     performAction(actionPoint);
   },

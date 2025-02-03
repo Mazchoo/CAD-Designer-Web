@@ -6,7 +6,6 @@ export enum ACTION_TYPES {
 }
 
 export let CURRENT_ACTION = ACTION_TYPES.NONE;
-let POINT_CACHE: number[] = []; // Stride 2
 
 export function setupSelectBlockAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
