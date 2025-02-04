@@ -30,7 +30,7 @@ const WASAM_INIT = startUpWasm();
 const GPU_CANVAS = document.getElementById('wgpu-canvas') as HTMLCanvasElement;
 const EVENT_CANVAS = document.getElementById('canvas-container') as HTMLCanvasElement;
 
-initialiseCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth)
+initialiseCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
 
 // The input handler
 const INPUT_HANDLER = createInputHandler(window, EVENT_CANVAS);

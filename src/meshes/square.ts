@@ -26,5 +26,5 @@ export const squareVertexArray = new Float32Array([
 ]);
 
 export const indexArray = new Uint32Array([
-  0, 1, 2, 3, 4, 0xffffffff, 5, 6, 7, 8, 9, 0xffffffff, 10, 11, 0xffffffff, 12, 13, 0xffffffff, 14, 15, 16, 17, 14
+  0, 1, 2, 3, 4, 0xffffffff, 5, 6, 7, 8, 9, 0xffffffff, 10, 11, 0xffffffff, 12, 13, 0xffffffff, 14, 15, 16, 17, 14,
 ]);

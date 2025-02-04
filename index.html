@@ -56,12 +56,17 @@
     </div>
 
     <div style="margin-left: 10vw">
-    
-      <div id="canvas-container" style="position: relative; height: 72vh; width: 55vw;">
-        <canvas style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;" id="wgpu-canvas"></canvas>
-        <canvas style="position: absolute; width: 100%; height: 100%; border: 1px solid black; top: 0; left: 0; z-index: 2;" id="fabric-canvas"></canvas>
+      <div id="canvas-container" style="position: relative; height: 72vh; width: 55vw">
+        <canvas
+          style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1"
+          id="wgpu-canvas"
+        ></canvas>
+        <canvas
+          style="position: absolute; width: 100%; height: 100%; border: 1px solid black; top: 0; left: 0; z-index: 2"
+          id="fabric-canvas"
+        ></canvas>
       </div>
-      
+
       <form style="height: 10vh">
         <div class="row">
           <div class="input-field col s1">
@@ -82,7 +87,7 @@
           </div>
           <div class="input-field col s1">
             <input placeholder="{x, y}" value="{x, y}" id="centroid-selected" type="text" class="validate" />
-            <label for="centroid-selected">center</label>
+            <label for="centroid-selected">anchor</label>
           </div>
           <div class="input-field col s2">
             <input placeholder="" value="" id="entity-text" type="text" class="validate" />
