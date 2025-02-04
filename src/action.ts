@@ -1,28 +1,31 @@
 import { selectBlock } from './patternHandle';
+import { enableSelection, disableSelection } from './fabricHandle';
 
 export enum ACTION_TYPES {
-  NONE,
+  PAN,
   SELECT_BLOCK,
 }
 
-export let CURRENT_ACTION = ACTION_TYPES.NONE;
+export let CURRENT_ACTION = ACTION_TYPES.PAN;
 
 export function setupSelectBlockAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
   currentAction.value = 'Select Block';
   CURRENT_ACTION = ACTION_TYPES.SELECT_BLOCK;
+  enableSelection();
   console.log('Select Block');
 }
 
-export function setupNoneAction() {
+export function setupPanAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
-  currentAction.value = 'None';
-  CURRENT_ACTION = ACTION_TYPES.NONE;
-  console.log('Action None');
+  currentAction.value = 'Pan';
+  CURRENT_ACTION = ACTION_TYPES.PAN;
+  disableSelection();
+  console.log('Action Pan');
 }
 
 export function performAction(point: [number, number]) {
-  if (CURRENT_ACTION === ACTION_TYPES.NONE) {
+  if (CURRENT_ACTION === ACTION_TYPES.PAN) {
     return;
   } else if (CURRENT_ACTION === ACTION_TYPES.SELECT_BLOCK) {
     selectBlock(point);

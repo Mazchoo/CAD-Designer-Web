@@ -151,7 +151,6 @@ export class WASDCamera extends CameraBase implements Camera {
     const sign = (positive: boolean, negative: boolean) => (positive ? 1 : 0) - (negative ? 1 : 0);
 
     // Save the current position, as we're about to rebuild the camera matrix.
-    const position = vec3.copy(this.position);
 
     // Calculate the new target velocity
     const digital = input.digital;
@@ -191,7 +190,7 @@ export class WASDCamera extends CameraBase implements Camera {
     this.velocity = lerp(targetVelocity, this.velocity, Math.pow(1 - this.frictionCoefficient, deltaTime));
 
     // Integrate velocity to calculate new position
-    this.position = vec3.addScaled(position, this.velocity, deltaTime);
+    this.position = vec3.addScaled(this.position, this.velocity, deltaTime);
     this.position[2] = Math.max(this.position[2], this.miniminalDistance);
 
     // Invert the camera matrix to build the view matrix

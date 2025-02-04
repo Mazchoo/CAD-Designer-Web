@@ -1,3 +1,5 @@
+import { CURRENT_ACTION, ACTION_TYPES } from './action';
+
 // Input holds as snapshot of input state
 export default interface Input {
   // Digital input (e.g keyboard state)
@@ -90,6 +92,8 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
   });
   canvas.addEventListener('pointermove', (e) => {
     // Calculate relative position of mouse on canvas
+    if (CURRENT_ACTION !== ACTION_TYPES.PAN) return;
+
     const [eventX, eventY] = getCanvasCoordinates(e, canvas);
     analog.mouseX = eventX;
     analog.mouseY = eventY;

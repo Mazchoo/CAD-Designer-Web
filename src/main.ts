@@ -12,8 +12,8 @@ import { quitIfWebGPUNotAvailable } from './util';
 import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
 import { startUpWasm } from './patternHandle';
-import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, setupNoneAction, performAction } from './action';
-import * as fabric from 'fabric';
+import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, setupPanAction, performAction } from './action';
+import { initialiseCanvas, updateCanvasHeightWidth } from './fabricHandle';
 
 import { uploadJSON, readJsonToWasm } from './parseJson';
 
@@ -21,7 +21,7 @@ import { uploadJSON, readJsonToWasm } from './parseJson';
 (window as any).uploadJSON = uploadJSON;
 (window as any).readJsonToWasm = readJsonToWasm;
 (window as any).setupSelectBlockAction = setupSelectBlockAction;
-(window as any).setupNoneAction = setupNoneAction;
+(window as any).setupPanAction = setupPanAction;
 
 const WASAM_INIT = startUpWasm();
 
@@ -30,25 +30,7 @@ const WASAM_INIT = startUpWasm();
 const GPU_CANVAS = document.getElementById('wgpu-canvas') as HTMLCanvasElement;
 const EVENT_CANVAS = document.getElementById('canvas-container') as HTMLCanvasElement;
 
-const FABRIC_CANVAS_HANDLER = new fabric.Canvas('fabric-canvas');
-
-const rect = new fabric.Rect({
-  left: 100,
-  top: 50,
-  fill: 'transparent',
-  stroke: 'red',
-  strokeWidth: 1,
-  width: 80,
-  height: 60,
-  angle: 0,     
-  selectable: true,
-});
-
-FABRIC_CANVAS_HANDLER.setHeight(GPU_CANVAS.clientHeight)
-FABRIC_CANVAS_HANDLER.setWidth(GPU_CANVAS.clientWidth)
-FABRIC_CANVAS_HANDLER.add(rect);
-FABRIC_CANVAS_HANDLER.setActiveObject(rect);
-FABRIC_CANVAS_HANDLER.selection = false;
+initialiseCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth)
 
 // The input handler
 const INPUT_HANDLER = createInputHandler(window, EVENT_CANVAS);
@@ -214,8 +196,7 @@ function frame() {
 window.addEventListener(
   'resize',
   (e) => {
-    FABRIC_CANVAS_HANDLER.setHeight(GPU_CANVAS.clientHeight)
-    FABRIC_CANVAS_HANDLER.setWidth(GPU_CANVAS.clientWidth)
+    updateCanvasHeightWidth(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
     updateProjectionMatrix();
   },
   true
@@ -224,7 +205,7 @@ window.addEventListener(
 EVENT_CANVAS.addEventListener(
   'click',
   (e) => {
-    if (CURRENT_ACTION === ACTION_TYPES.NONE) {
+    if (CURRENT_ACTION === ACTION_TYPES.PAN) {
       return;
     }
     const [eventX, eventY] = getCanvasCoordinates(e, EVENT_CANVAS);
