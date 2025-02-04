@@ -214,7 +214,8 @@ function frame() {
 window.addEventListener(
   'resize',
   (e) => {
-    console.log('Window resized');
+    FABRIC_CANVAS_HANDLER.setHeight(GPU_CANVAS.clientHeight)
+    FABRIC_CANVAS_HANDLER.setWidth(GPU_CANVAS.clientWidth)
     updateProjectionMatrix();
   },
   true
