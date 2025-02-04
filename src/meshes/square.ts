@@ -19,8 +19,12 @@ export const squareVertexArray = new Float32Array([
 -0.4, -0.4, 0.1, 0.1, 0.1, 1.,
 -0.4, -0.6, 0.05, 0.05, 0.05, 1.,
 -0.6, -0.4, 0.05, 0.05, 0.05, 1.,
+ 1500, -1500, 0., 0., 0., 1.,
+ 1500,  1500, 0., 0., 0., 1.,
+-1500,  1500, 0., 0., 0., 1.,
+-1500, -1500, 0., 0., 0., 1.,
 ]);
 
 export const indexArray = new Uint32Array([
-  0, 1, 2, 3, 4, 0xffffffff, 5, 6, 7, 8, 9, 0xffffffff, 10, 11, 0xffffffff, 12, 13,
+  0, 1, 2, 3, 4, 0xffffffff, 5, 6, 7, 8, 9, 0xffffffff, 10, 11, 0xffffffff, 12, 13, 0xffffffff, 14, 15, 16, 17, 14
 ]);
