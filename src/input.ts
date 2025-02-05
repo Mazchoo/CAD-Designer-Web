@@ -22,12 +22,7 @@ export default interface Input {
   };
 }
 
-// InputHandler is a function that when called, returns the current Input state.
-export type InputHandler = () => Input;
-
-export function getCanvasCoordinates(e: MouseEvent, canvas: HTMLElement): [number, number] {
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
+export function getCanvasCoordinates(mouseX: number, mouseY: number, canvas: HTMLElement): [number, number] {
   const rect = canvas.getBoundingClientRect();
   const centerX = (rect.left + rect.right) / 2;
   const centerY = (rect.top + rect.bottom) / 2;
@@ -37,7 +32,7 @@ export function getCanvasCoordinates(e: MouseEvent, canvas: HTMLElement): [numbe
 }
 
 // createInputHandler returns an InputHandler by attaching event handlers to the window and canvas.
-export function createInputHandler(window: Window, canvas: HTMLCanvasElement): InputHandler {
+export function createInputHandler(window: Window, canvas: HTMLElement): InputHandler {
   const digital = {
     forward: false,
     backward: false,
@@ -94,7 +89,7 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
     // Calculate relative position of mouse on canvas
     if (CURRENT_ACTION !== ACTION_TYPES.PAN) return;
 
-    const [eventX, eventY] = getCanvasCoordinates(e, canvas);
+    const [eventX, eventY] = getCanvasCoordinates(e.clientX, e.clientY, canvas);
     analog.mouseX = eventX;
     analog.mouseY = eventY;
 
@@ -136,3 +131,6 @@ export function createInputHandler(window: Window, canvas: HTMLCanvasElement): I
     return out;
   };
 }
+
+// InputHandler is a function that when called, returns the current Input state.
+export type InputHandler = () => Input;

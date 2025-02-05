@@ -13,7 +13,7 @@ import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
 import { startUpWasm } from './patternHandle';
 import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, setupPanAction, performAction } from './action';
-import { initialiseCanvas, updateCanvasHeightWidth } from './fabricHandle';
+import { FABRIC_CANVAS_HANDLER, clearFabricCanvas, initialiseFabricCanvas, updateFabricCanvasHeightWidth } from './fabricHandle';
 
 import { uploadJSON, readJsonToWasm } from './parseJson';
 
@@ -30,7 +30,7 @@ const WASAM_INIT = startUpWasm();
 const GPU_CANVAS = document.getElementById('wgpu-canvas') as HTMLCanvasElement;
 const EVENT_CANVAS = document.getElementById('canvas-container') as HTMLCanvasElement;
 
-initialiseCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
+initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
 
 // The input handler
 const INPUT_HANDLER = createInputHandler(window, EVENT_CANVAS);
@@ -134,6 +134,7 @@ const RENDER_PASS_DESCRIPTOR = {
   ],
 } as GPURenderPassDescriptor;
 
+const CANVAS_ADJUSTMENT = 0.95; // Not sure why but Web-GPU is not using the entire canvas range (-1, 1)
 const FIELD_OF_VIEW_RAD = (2 * Math.PI) / 5;
 const SIN_FIELD_OF_VIEW = Math.sin(FIELD_OF_VIEW_RAD); // Cached for efficiency
 
@@ -196,34 +197,43 @@ function frame() {
 window.addEventListener(
   'resize',
   (e) => {
-    updateCanvasHeightWidth(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
+    updateFabricCanvasHeightWidth(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
     updateProjectionMatrix();
   },
   true
 );
 
-EVENT_CANVAS.addEventListener(
-  'click',
-  (e) => {
-    if (CURRENT_ACTION === ACTION_TYPES.PAN) {
-      return;
-    }
-    const [eventX, eventY] = getCanvasCoordinates(e, EVENT_CANVAS);
+const getDxfWorldCoorindates = (mouseX: number, mouseY: number) => {
+  const [eventX, eventY] = getCanvasCoordinates(mouseX, mouseY, EVENT_CANVAS);
 
-    // Use orthonormal assumption of camera
-    const xScale = PROJECTION_MATRIX[0] * 0.95;
-    const yScale = PROJECTION_MATRIX[5] * 0.95;
-    const cameraDist = CAMERA.position[2];
-    const actionPoint: [number, number] = [
-      (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[0],
-      (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[1],
-    ];
-    console.log(actionPoint);
+  // Use orthonormal assumption of camera
+  const xScale = PROJECTION_MATRIX[0] * CANVAS_ADJUSTMENT;
+  const yScale = PROJECTION_MATRIX[5] * CANVAS_ADJUSTMENT;
+  const cameraDist = CAMERA.position[2];
+  const actionPoint: [number, number] = [
+    (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[0],
+    (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[1],
+  ];
+  return actionPoint;
+};
 
-    performAction(actionPoint);
-  },
-  { passive: false }
-);
+FABRIC_CANVAS_HANDLER.on('mouse:down', (e) => {
+  if (CURRENT_ACTION === ACTION_TYPES.PAN || e.target) {
+    return;
+  }
+  clearFabricCanvas();
+  const actionPoint = getDxfWorldCoorindates(e.scenePoint.x, e.scenePoint.y);
+  performAction(actionPoint, true);
+});
+
+FABRIC_CANVAS_HANDLER.on('mouse:up', (e) => {
+  if (CURRENT_ACTION === ACTION_TYPES.PAN || e.target) {
+    return;
+  }
+  const actionPoint = getDxfWorldCoorindates(e.scenePoint.x, e.scenePoint.y);
+  console.log(actionPoint);
+  performAction(actionPoint, false);
+});
 
 // Start app
 await WASAM_INIT;

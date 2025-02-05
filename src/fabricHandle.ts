@@ -26,6 +26,7 @@ export function inialiseRect(minX: number, minY: number, maxX: number, maxY: num
     hasControls: true,
     lockMovementX: true,
     lockMovementY: true,
+    strokeUniform: true,
   });
 
   FABRIC_CANVAS_HANDLER.add(HIGHLIGHT_RECT);
@@ -58,21 +59,21 @@ export function updateRect(minX: number, minY: number, maxX: number, maxY: numbe
   FABRIC_CANVAS_HANDLER.requestRenderAll();
 }
 
-export function clearCanvas() {
+export function clearFabricCanvas() {
   if (HIGHLIGHT_RECT === null) return;
   FABRIC_CANVAS_HANDLER.clear();
   HIGHLIGHT_RECT = null;
   HIGHLIGHT_MARKER = null;
 }
 
-export function initialiseCanvas(height: number, width: number) {
+export function initialiseFabricCanvas(height: number, width: number) {
   FABRIC_CANVAS_HANDLER.setDimensions({ height: height, width: width });
   inialiseRect(150, 150, 200, 200);
   initialiseAnchor(140, 140);
   FABRIC_CANVAS_HANDLER.selection = false;
 }
 
-export function updateCanvasHeightWidth(height: number, width: number) {
+export function updateFabricCanvasHeightWidth(height: number, width: number) {
   FABRIC_CANVAS_HANDLER.setDimensions({ height: height, width: width });
 }
 
@@ -84,14 +85,3 @@ export function disableSelection() {
   FABRIC_CANVAS_HANDLER.selection = false;
 }
 
-FABRIC_CANVAS_HANDLER.on('mouse:down', (e) => {
-  if (!FABRIC_CANVAS_HANDLER.selection) return;
-  if (e.target) return;
-  console.log('Start', e.scenePoint);
-});
-
-FABRIC_CANVAS_HANDLER.on('mouse:up', (e) => {
-  if (!FABRIC_CANVAS_HANDLER.selection) return;
-  if (e.target) return;
-  console.log('End', e.scenePoint);
-});

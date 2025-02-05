@@ -7,6 +7,7 @@ export enum ACTION_TYPES {
 }
 
 export let CURRENT_ACTION = ACTION_TYPES.PAN;
+let POINT_DOWN: [number, number] | null = null;
 
 export function setupSelectBlockAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
@@ -24,10 +25,15 @@ export function setupPanAction() {
   console.log('Action Pan');
 }
 
-export function performAction(point: [number, number]) {
+export function performAction(point: [number, number], mouseDown: boolean) {
   if (CURRENT_ACTION === ACTION_TYPES.PAN) {
     return;
   } else if (CURRENT_ACTION === ACTION_TYPES.SELECT_BLOCK) {
-    selectBlock(point);
+    if (mouseDown) {
+      POINT_DOWN = point;
+    } else {
+      selectBlock(point);
+      console.log(POINT_DOWN)
+    }
   }
 }
