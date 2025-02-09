@@ -110,7 +110,7 @@ export function intilizePattern(payload: string): [number[], number[]] | undefin
 
 export function selectBlock(point: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
-  const selection = PATTERN_WASM_HANDLE.select_block(new Float32Array(point));
+  const selection = PATTERN_WASM_HANDLE.select_block_with_point(new Float32Array(point));
   updateCanvasData(PATTERN_WASM_HANDLE);
 
   console.log(selection);

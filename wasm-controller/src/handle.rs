@@ -62,7 +62,7 @@ impl Handle {
         }
     }
 
-    pub fn select_block(&mut self, point: Vec<f32>) -> JsValue {
+    pub fn select_block_with_point(&mut self, point: Vec<f32>) -> JsValue {
         let empty_output: Vec<String> = vec![];
         if point.len() != 2 {
             return to_value(&empty_output).unwrap();

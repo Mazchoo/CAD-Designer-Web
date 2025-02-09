@@ -34,3 +34,12 @@ pub fn point_in_bounding_box(
         && p.1 >= min_y - padding
         && p.1 <= max_y + padding;
 }
+
+pub fn bound_boxes_intersect(
+    bbox1: &((f32, f32), (f32, f32)),
+    bbox2: &((f32, f32), (f32, f32)),
+) -> bool {
+    let ((min_x1, max_x1), (min_y1, max_y1)) = bbox1;
+    let ((min_x2, max_x2), (min_y2, max_y2)) = bbox2;
+    return min_x1 <= max_x2 && min_x2 <= max_x1 && min_y1 <= max_y2 && min_y2 <= max_y1;
+}
