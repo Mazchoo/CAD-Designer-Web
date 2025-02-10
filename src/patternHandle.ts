@@ -108,7 +108,7 @@ export function intilizePattern(payload: string): [number[], number[]] | undefin
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
 
-export function selectBlock(point: [number, number]) {
+export function selectBlockWithPoint(point: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
   const selection = PATTERN_WASM_HANDLE.select_block_with_point(new Float32Array(point));
   updateCanvasData(PATTERN_WASM_HANDLE);
@@ -118,3 +118,16 @@ export function selectBlock(point: [number, number]) {
   updateSelection(selection);
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }
+
+
+export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
+  if (PATTERN_WASM_HANDLE === undefined) return;
+  const selection = PATTERN_WASM_HANDLE.select_block_with_two_points(new Float32Array(p1), new Float32Array(p2));
+  updateCanvasData(PATTERN_WASM_HANDLE);
+
+  console.log(selection);
+
+  updateSelection(selection);
+  addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
+}
+

@@ -1,4 +1,4 @@
-import { selectBlock } from './patternHandle';
+import { selectBlockWithBBox } from './patternHandle';
 import { enableSelection, disableSelection } from './fabricHandle';
 
 export enum ACTION_TYPES {
@@ -31,9 +31,8 @@ export function performAction(point: [number, number], mouseDown: boolean) {
   } else if (CURRENT_ACTION === ACTION_TYPES.SELECT_BLOCK) {
     if (mouseDown) {
       POINT_DOWN = point;
-    } else {
-      selectBlock(point);
-      console.log(POINT_DOWN)
+    } else if (POINT_DOWN != null) {
+      selectBlockWithBBox(POINT_DOWN, point);
     }
   }
 }

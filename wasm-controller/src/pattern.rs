@@ -6,6 +6,7 @@ use crate::block;
 use crate::insert;
 use crate::parse_pattern;
 use crate::user_settings;
+use crate::utils::bounding_box;
 
 #[wasm_bindgen]
 #[derive(Debug)]
@@ -274,6 +275,24 @@ impl Pattern {
             let offset_point = (point.0 - offset[(0, 0)], point.1 - offset[(0, 1)]);
 
             if block.point_in_bounding_box(&offset_point, settings.point_threshold) {
+                selected_block_keys.push(block.name.clone());
+            }
+        }
+
+        return selected_block_keys;
+    }
+
+    pub(crate) fn find_blocks_with_bbox(&self, bbox: &((f32, f32), (f32, f32))) -> Vec<String> {
+        let mut selected_block_keys: Vec<String> = vec![];
+
+        for block in self.blocks.iter() {
+            let offset = self.get_offset_for_block(&block.name);
+            let offset_bbox = bounding_box::offset_bbox(bbox, &offset);
+            console::log_1(&format!("Offset {:?}", offset).into());
+            console::log_1(&format!("Offset bbox {:?}", offset_bbox).into());
+            console::log_1(&format!("Block bounding box {:?}", block.get_bounding_box()).into());
+
+            if block.bbox_intersects_block(&offset_bbox) {
                 selected_block_keys.push(block.name.clone());
             }
         }

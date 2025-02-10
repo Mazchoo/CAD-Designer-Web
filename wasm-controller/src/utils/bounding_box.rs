@@ -1,10 +1,10 @@
 use ndarray::Array2;
 
 pub fn calculate_bounding_box(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)) {
-    let mut min_x = f32::INFINITY;
-    let mut min_y = f32::INFINITY;
-    let mut max_x = f32::NEG_INFINITY;
-    let mut max_y = f32::NEG_INFINITY;
+    let mut min_x: f32 = f32::INFINITY;
+    let mut min_y: f32 = f32::INFINITY;
+    let mut max_x: f32 = f32::NEG_INFINITY;
+    let mut max_y: f32 = f32::NEG_INFINITY;
 
     for v in vertices.rows().into_iter() {
         min_x = min_x.min(v[0]);
@@ -35,6 +35,17 @@ pub fn point_in_bounding_box(
         && p.1 <= max_y + padding;
 }
 
+pub fn offset_bbox(
+    bbox: &((f32, f32), (f32, f32)),
+    offset: &Array2<f32>,
+) -> ((f32, f32), (f32, f32)) {
+    let ((min_x, max_x), (min_y, max_y)) = bbox;
+    return (
+        (min_x - offset[(0, 0)], max_x - offset[(0, 0)]),
+        (min_y - offset[(0, 1)], max_y - offset[(0, 1)]),
+    );
+}
+
 pub fn bound_boxes_intersect(
     bbox1: &((f32, f32), (f32, f32)),
     bbox2: &((f32, f32), (f32, f32)),
@@ -42,4 +53,15 @@ pub fn bound_boxes_intersect(
     let ((min_x1, max_x1), (min_y1, max_y1)) = bbox1;
     let ((min_x2, max_x2), (min_y2, max_y2)) = bbox2;
     return min_x1 <= max_x2 && min_x2 <= max_x1 && min_y1 <= max_y2 && min_y2 <= max_y1;
+}
+
+pub fn construct_bbox_from_vectors(v1: Vec<f32>, v2: Vec<f32>) -> Option<((f32, f32), (f32, f32))> {
+    if v1.len() != 2 || v2.len() != 2 {
+        return Option::None;
+    }
+    let min_x = v1[0].min(v2[0]);
+    let min_y = v1[1].min(v2[1]);
+    let max_x = v1[0].max(v2[0]);
+    let max_y = v1[1].max(v2[1]);
+    return Option::Some(((min_x, max_x), (min_y, max_y)));
 }

@@ -4,6 +4,7 @@ use web_sys::console;
 
 use crate::pattern;
 use crate::user_settings;
+use crate::utils::bounding_box;
 use crate::utils::color;
 
 #[wasm_bindgen]
@@ -65,6 +66,7 @@ impl Handle {
     pub fn select_block_with_point(&mut self, point: Vec<f32>) -> JsValue {
         let empty_output: Vec<String> = vec![];
         if point.len() != 2 {
+            self.pattern.highlight_selection(&empty_output);
             return to_value(&empty_output).unwrap();
         }
         let point_tuple = (point[0], point[1]);
@@ -73,6 +75,18 @@ impl Handle {
             .find_blocks_with_point(&point_tuple, &self.settings);
         self.pattern.highlight_selection(&block_keys);
         return to_value(&block_keys).unwrap();
+    }
+
+    pub fn select_block_with_two_points(&mut self, v1: Vec<f32>, v2: Vec<f32>) -> JsValue {
+        let empty_output: Vec<String> = vec![];
+        if let Some(bbox) = bounding_box::construct_bbox_from_vectors(v1, v2) {
+            let block_keys = self.pattern.find_blocks_with_bbox(&bbox);
+
+            self.pattern.highlight_selection(&block_keys);
+            return to_value(&block_keys).unwrap();
+        }
+        self.pattern.highlight_selection(&empty_output);
+        return to_value(&empty_output).unwrap();
     }
 
     pub fn change_block_selection(&mut self, block_key: String) {

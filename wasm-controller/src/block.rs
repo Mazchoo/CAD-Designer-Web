@@ -117,7 +117,7 @@ impl Block {
         let mut max_y = f32::NEG_INFINITY;
 
         for entity in self.entities.iter() {
-            let ((new_min_x, new_min_y), (new_max_x, new_max_y)) = entity.bounding_box;
+            let ((new_min_x, new_max_x), (new_min_y, new_max_y)) = entity.bounding_box;
             min_x = min_x.min(new_min_x);
             max_x = max_x.max(new_max_x);
             min_y = min_y.min(new_min_y);
@@ -134,12 +134,21 @@ impl Block {
         return ((min_x, max_x), (min_y, max_y));
     }
 
-    pub fn update_bounding_box(&mut self) {
+    pub fn update_bounding_box(&mut self) -> &((f32, f32), (f32, f32)) {
         self.bounding_box = self.calculate_bounding_box();
+        return &self.bounding_box;
+    }
+
+    pub fn get_bounding_box(&self) -> &((f32, f32), (f32, f32)) {
+        return &self.bounding_box;
     }
 
     pub fn point_in_bounding_box(&self, point: &(f32, f32), padding: f32) -> bool {
         return bounding_box::point_in_bounding_box(&self.bounding_box, point, padding);
+    }
+
+    pub fn bbox_intersects_block(&self, bbox: &((f32, f32), (f32, f32))) -> bool {
+        return bounding_box::bound_boxes_intersect(&self.bounding_box, bbox);
     }
 
     pub fn get_draw_sequence(
