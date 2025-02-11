@@ -24,8 +24,6 @@ export function inialiseRect(minX: number, minY: number, maxX: number, maxY: num
     cornerSize: 8,
     selectable: true,
     hasControls: true,
-    lockMovementX: true,
-    lockMovementY: true,
     strokeUniform: true,
   });
 

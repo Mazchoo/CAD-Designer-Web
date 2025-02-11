@@ -217,21 +217,24 @@ const getDxfWorldCoorindates = (mouseX: number, mouseY: number) => {
   return actionPoint;
 };
 
-FABRIC_CANVAS_HANDLER.on('mouse:down', (e) => {
-  if (CURRENT_ACTION === ACTION_TYPES.PAN || e.target) {
+FABRIC_CANVAS_HANDLER.on('mouse:down', (event) => {
+  if (CURRENT_ACTION === ACTION_TYPES.PAN || event.target) {
     return;
   }
   clearFabricCanvas();
-  const actionPoint = getDxfWorldCoorindates(e.scenePoint.x, e.scenePoint.y);
+  const e = event.e as MouseEvent;
+  const actionPoint = getDxfWorldCoorindates(e.clientX, e.clientY);
+  console.log('down', actionPoint);
   performAction(actionPoint, true);
 });
 
-FABRIC_CANVAS_HANDLER.on('mouse:up', (e) => {
-  if (CURRENT_ACTION === ACTION_TYPES.PAN || e.target) {
+FABRIC_CANVAS_HANDLER.on('mouse:up', (event) => {
+  if (CURRENT_ACTION === ACTION_TYPES.PAN || event.target) {
     return;
   }
-  const actionPoint = getDxfWorldCoorindates(e.scenePoint.x, e.scenePoint.y);
-  console.log(actionPoint);
+  const e = event.e as MouseEvent;
+  const actionPoint = getDxfWorldCoorindates(e.clientX, e.clientY);
+  console.log('up', actionPoint);
   performAction(actionPoint, false);
 });
 

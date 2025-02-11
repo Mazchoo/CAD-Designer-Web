@@ -288,9 +288,6 @@ impl Pattern {
         for block in self.blocks.iter() {
             let offset = self.get_offset_for_block(&block.name);
             let offset_bbox = bounding_box::offset_bbox(bbox, &offset);
-            console::log_1(&format!("Offset {:?}", offset).into());
-            console::log_1(&format!("Offset bbox {:?}", offset_bbox).into());
-            console::log_1(&format!("Block bounding box {:?}", block.get_bounding_box()).into());
 
             if block.bbox_intersects_block(&offset_bbox) {
                 selected_block_keys.push(block.name.clone());
