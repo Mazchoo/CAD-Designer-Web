@@ -144,11 +144,11 @@ impl Block {
     }
 
     pub fn point_in_bounding_box(&self, point: &(f32, f32), padding: f32) -> bool {
-        return bounding_box::point_in_bounding_box(&self.bounding_box, point, padding);
+        return bounding_box::contains_point(&self.bounding_box, point, padding);
     }
 
     pub fn bbox_intersects_block(&self, bbox: &((f32, f32), (f32, f32))) -> bool {
-        return bounding_box::bound_boxes_intersect(&self.bounding_box, bbox);
+        return bounding_box::intersect(&self.bounding_box, bbox);
     }
 
     pub fn get_draw_sequence(

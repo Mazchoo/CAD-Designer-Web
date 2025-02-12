@@ -45,7 +45,7 @@ impl Entity {
         entity_index: [u8; 32],
         text: String,
     ) -> Entity {
-        let bounding_box = bounding_box::calculate_bounding_box(&vertices);
+        let bounding_box = bounding_box::from_array(&vertices);
         return Entity {
             entity_type: entity_type,
             layer: layer,

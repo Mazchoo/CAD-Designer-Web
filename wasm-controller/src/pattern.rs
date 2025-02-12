@@ -282,19 +282,21 @@ impl Pattern {
         return selected_block_keys;
     }
 
-    pub(crate) fn find_blocks_with_bbox(&self, bbox: &((f32, f32), (f32, f32))) -> Vec<String> {
+    pub(crate) fn find_blocks_with_bbox(&self, bbox: &((f32, f32), (f32, f32))) -> (Vec<String>, Option<((f32, f32), (f32, f32))>) {
         let mut selected_block_keys: Vec<String> = vec![];
+        let mut union_box = Option::None;
 
         for block in self.blocks.iter() {
             let offset = self.get_offset_for_block(&block.name);
-            let offset_bbox = bounding_box::offset_bbox(bbox, &offset);
+            let offset_bbox = bounding_box::offset_bbox(block.get_bounding_box(), &offset);
+            union_box = Some(bounding_box::union(bbox, &offset_bbox));
 
             if block.bbox_intersects_block(&offset_bbox) {
                 selected_block_keys.push(block.name.clone());
             }
         }
 
-        return selected_block_keys;
+        return (selected_block_keys, union_box);
     }
 
     pub(crate) fn highlight_selection(&mut self, block_keys: &Vec<String>) {

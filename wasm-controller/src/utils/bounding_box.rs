@@ -1,6 +1,6 @@
 use ndarray::Array2;
 
-pub fn calculate_bounding_box(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)) {
+pub fn from_array(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)) {
     let mut min_x: f32 = f32::INFINITY;
     let mut min_y: f32 = f32::INFINITY;
     let mut max_x: f32 = f32::NEG_INFINITY;
@@ -23,7 +23,7 @@ pub fn calculate_bounding_box(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)
     return ((min_x, max_x), (min_y, max_y));
 }
 
-pub fn point_in_bounding_box(
+pub fn contains_point(
     bbox: &((f32, f32), (f32, f32)),
     p: &(f32, f32),
     padding: f32,
@@ -41,12 +41,12 @@ pub fn offset_bbox(
 ) -> ((f32, f32), (f32, f32)) {
     let ((min_x, max_x), (min_y, max_y)) = bbox;
     return (
-        (min_x - offset[(0, 0)], max_x - offset[(0, 0)]),
-        (min_y - offset[(0, 1)], max_y - offset[(0, 1)]),
+        (min_x + offset[(0, 0)], max_x + offset[(0, 0)]),
+        (min_y + offset[(0, 1)], max_y + offset[(0, 1)]),
     );
 }
 
-pub fn bound_boxes_intersect(
+pub fn intersect(
     bbox1: &((f32, f32), (f32, f32)),
     bbox2: &((f32, f32), (f32, f32)),
 ) -> bool {
@@ -55,7 +55,19 @@ pub fn bound_boxes_intersect(
     return min_x1 <= max_x2 && min_x2 <= max_x1 && min_y1 <= max_y2 && min_y2 <= max_y1;
 }
 
-pub fn construct_bbox_from_vectors(v1: Vec<f32>, v2: Vec<f32>) -> Option<((f32, f32), (f32, f32))> {
+pub fn union(
+    bbox1: &((f32, f32), (f32, f32)),
+    bbox2: &((f32, f32), (f32, f32)),
+) -> ((f32, f32), (f32, f32)) {
+    let ((min_x1, max_x1), (min_y1, max_y1)) = bbox1;
+    let ((min_x2, max_x2), (min_y2, max_y2)) = bbox2;
+    return (
+        (min_x1.min(*min_x2).clone(), max_x1.max(*max_x2).clone()),
+        (min_y1.min(*min_y2).clone(), max_y1.max(*max_y2).clone()),
+    );
+}
+
+pub fn construct_from_vectors(v1: Vec<f32>, v2: Vec<f32>) -> Option<((f32, f32), (f32, f32))> {
     if v1.len() != 2 || v2.len() != 2 {
         return Option::None;
     }

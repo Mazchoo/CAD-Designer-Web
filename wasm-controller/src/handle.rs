@@ -79,8 +79,8 @@ impl Handle {
 
     pub fn select_block_with_two_points(&mut self, v1: Vec<f32>, v2: Vec<f32>) -> JsValue {
         let empty_output: Vec<String> = vec![];
-        if let Some(bbox) = bounding_box::construct_bbox_from_vectors(v1, v2) {
-            let block_keys = self.pattern.find_blocks_with_bbox(&bbox);
+        if let Some(bbox) = bounding_box::construct_from_vectors(v1, v2) {
+            let (block_keys, union_bbox) = self.pattern.find_blocks_with_bbox(&bbox);
 
             self.pattern.highlight_selection(&block_keys);
             return to_value(&block_keys).unwrap();
