@@ -162,7 +162,6 @@ function frame() {
   const now = Date.now();
   const deltaTime = (now - LAST_FRAME_MS) / 1000;
   LAST_FRAME_MS = now;
-  // console.log(deltaTime * 1000);
 
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime);
   DEVICE.queue.writeBuffer(
@@ -180,6 +179,7 @@ function frame() {
 
   const buffers = getBuffers();
   if (buffers !== undefined) {
+    // ToDo - Add another set of annotation buffers
     const [verticesBuffer, indexBuffer, nrIndices] = buffers;
 
     passEncoder.setBindGroup(0, UNIFORM_BIND_GROUP);

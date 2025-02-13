@@ -4,6 +4,8 @@
 import { Mat4, Vec3, Vec4, mat4, vec3 } from 'wgpu-matrix';
 import Input from './input';
 
+// ToDo - trying removing copy functions
+
 // Common interface for camera implementations
 export default interface Camera {
   // update updates the camera using the user-input and returns the view matrix.
