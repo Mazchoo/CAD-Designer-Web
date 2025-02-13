@@ -289,10 +289,10 @@ impl Pattern {
         for block in self.blocks.iter() {
             let offset = self.get_offset_for_block(&block.name);
             let offset_bbox = bounding_box::offset_bbox(block.get_bounding_box(), &offset);
-            union_box = Some(bounding_box::union(bbox, &offset_bbox));
 
-            if block.bbox_intersects_block(&offset_bbox) {
+            if bounding_box::intersect(&offset_bbox, bbox) {
                 selected_block_keys.push(block.name.clone());
+                union_box = Some(bounding_box::union(bbox, &offset_bbox));
             }
         }
 

@@ -127,7 +127,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
 
   console.log(selection);
 
-  updateSelection(selection);
-  addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
+  updateSelection(selection[0]);
+  addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection[0]);
 }
 

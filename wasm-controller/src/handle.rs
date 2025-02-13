@@ -83,10 +83,10 @@ impl Handle {
             let (block_keys, union_bbox) = self.pattern.find_blocks_with_bbox(&bbox);
 
             self.pattern.highlight_selection(&block_keys);
-            return to_value(&block_keys).unwrap();
+            return to_value(&(block_keys, union_bbox)).unwrap();
         }
         self.pattern.highlight_selection(&empty_output);
-        return to_value(&empty_output).unwrap();
+        return to_value(&(empty_output, ())).unwrap();
     }
 
     pub fn change_block_selection(&mut self, block_key: String) {
