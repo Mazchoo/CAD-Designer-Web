@@ -2072,24 +2072,6 @@
               "y": 13.385968279220812
             },
             "entity_index": "eba18609-2cd4-4180-b965-fbf91305b4b2"
-          },
-          {
-            "entity_type": "POINT",
-            "layer": "0",
-            "position": {
-              "x": 55.88458959639054,
-              "y": 13.385968279220812
-            },
-            "entity_index": "53c5f52c-a399-4e51-a58b-593394a8de4f"
-          },
-          {
-            "entity_type": "POINT",
-            "layer": "0",
-            "position": {
-              "x": 89.85427103171938,
-              "y": 13.385968279220812
-            },
-            "entity_index": "56c432c5-2c10-4295-a40e-e7b6bbac8167"
           }
         ],
         "centroid": {
