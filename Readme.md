@@ -1,8 +1,12 @@
 ![image](https://github.com/user-attachments/assets/953a28d0-7d6e-44d3-95b3-62b93d5b23db)
 
-# About
+# Introduction
 
-This is a Proof of Concept for running cad software in the browser using Web GPU and Wasm in order to take advantage of numeric computations in the browser in lower level languages. Rendering of the dxf is done on the GPU and more customised object manipulation can be done with Rust Bindings.
+Creates basic cad editing functionality in the browser.
+- Can select and move multiple objects
+- Can snap objects to other objects
+- Can make edits on model level or on block level
+- Show basic statistics about the underlying shapes (e.g. surface area)
 
 # GPU Requirements
 
@@ -23,8 +27,3 @@ Then add the following entry to the settings
 "server"
 ],
 }
-
-### Rust General Usability notes
-
-- Creating tests is the best way to debug a feature in isolation. Tests compile separately to the release wasm.
-- Currently wasm binding classes have to have all private variables (this is good practice any way) as making them public will mean that wasm will expect those classes to be convertible to a js equivalent.
