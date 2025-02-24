@@ -4,84 +4,19 @@
 import { Mat4, Vec3, Vec4, mat4, vec3 } from 'wgpu-matrix';
 import Input from './input';
 
-// ToDo - trying removing copy functions
+// WASDCamera is a camera implementation that behaves similar to first-person-shooter PC games.
+export class WASDCamera {
 
-// Common interface for camera implementations
-export default interface Camera {
-  // update updates the camera using the user-input and returns the view matrix.
-  update(delta_time: number, input: Input): Mat4;
-
-  // The camera matrix.
-  // This is the inverse of the view matrix.
-  matrix: Mat4;
-  // Alias to column vector 0 of the camera matrix.
-  right: Vec4;
-  // Alias to column vector 1 of the camera matrix.
-  up: Vec4;
-  // Alias to column vector 2 of the camera matrix.
-  back: Vec4;
-  // Alias to column vector 3 of the camera matrix.
-  position: Vec4;
-}
-
-// The common functionality between camera implementations
-class CameraBase {
-  // The camera matrix
-  private matrix_ = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+  matrix = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
   // The calculated view matrix
-  private readonly view_ = mat4.create();
+  view = mat4.create();
 
   // Aliases to column vectors of the matrix
-  private right_ = new Float32Array(this.matrix_.buffer, 4 * 0, 4);
-  private up_ = new Float32Array(this.matrix_.buffer, 4 * 4, 4);
-  private back_ = new Float32Array(this.matrix_.buffer, 4 * 8, 4);
-  private position_ = new Float32Array(this.matrix_.buffer, 4 * 12, 4);
-
-  // Returns the camera matrix
-  get matrix() {
-    return this.matrix_;
-  }
-  // Assigns `mat` to the camera matrix
-  set matrix(mat: Mat4) {
-    mat4.copy(mat, this.matrix_);
-  }
-
-  // Returns the camera view matrix
-  get view() {
-    return this.view_;
-  }
-  // Assigns `mat` to the camera view
-  set view(mat: Mat4) {
-    mat4.copy(mat, this.view_);
-  }
-
-  // Returns column vector 0 of the camera matrix
-  get right() {
-    return this.right_;
-  }
-  // Assigns `vec` to the first 3 elements of column vector 0 of the camera matrix
-  set right(vec: Vec3) {
-    vec3.copy(vec, this.right_);
-  }
-
-  // Returns column vector 1 of the camera matrix
-  get up() {
-    return this.up_;
-  }
-  // Assigns `vec` to the first 3 elements of column vector 1 of the camera matrix
-  set up(vec: Vec3) {
-    vec3.copy(vec, this.up_);
-  }
-
-  // Returns column vector 2 of the camera matrix
-  get back() {
-    return this.back_;
-  }
-  // Assigns `vec` to the first 3 elements of column vector 2 of the camera matrix
-  set back(vec: Vec3) {
-    vec3.copy(vec, this.back_);
-  }
+  right = new Float32Array(this.matrix.buffer, 4 * 0, 4);
+  up = new Float32Array(this.matrix.buffer, 4 * 4, 4);
+  back = new Float32Array(this.matrix.buffer, 4 * 8, 4);
+  private position_ = new Float32Array(this.matrix.buffer, 4 * 12, 4);
 
   // Returns column vector 3 of the camera matrix
   get position() {
@@ -91,12 +26,9 @@ class CameraBase {
   set position(vec: Vec3) {
     vec3.copy(vec, this.position_);
   }
-}
 
-// WASDCamera is a camera implementation that behaves similar to first-person-shooter PC games.
-export class WASDCamera extends CameraBase implements Camera {
   // The movement veloicty
-  private readonly velocity_ = vec3.create();
+  velocity = vec3.create(0, 0, 0);
 
   // Speed multiplier for camera movement
   movementSpeed = 2;
@@ -116,37 +48,9 @@ export class WASDCamera extends CameraBase implements Camera {
   // 1: Instantly stops moving
   frictionCoefficient = 0.99;
 
-  // Returns velocity vector
-  get velocity() {
-    return this.velocity_;
-  }
-  // Assigns `vec` to the velocity vector
-  set velocity(vec: Vec3) {
-    vec3.copy(vec, this.velocity_);
-  }
-
   // Construtor
-  constructor(options?: {
-    // The initial position of the camera
-    position?: Vec3;
-    // The initial target of the camera
-    target?: Vec3;
-  }) {
-    super();
-    if (options && (options.position || options.target)) {
-      const position = options.position ?? vec3.create(0, 0, -5);
-      this.position = position;
-    }
-  }
-
-  // Returns the camera matrix
-  get matrix() {
-    return super.matrix;
-  }
-
-  // Assigns `mat` to the camera matrix, and recalcuates the camera angles
-  set matrix(mat: Mat4) {
-    super.matrix = mat;
+  constructor(position: Vec3) {
+    this.position = position;
   }
 
   update(deltaTime: number, input: Input): Mat4 {
@@ -156,11 +60,6 @@ export class WASDCamera extends CameraBase implements Camera {
 
     // Calculate the new target velocity
     const digital = input.digital;
-
-    const targetZoom = vec3.create();
-    if (input.analog.zoom !== 0) {
-      targetZoom[2] = input.analog.zoom * this.zoomSpeed;
-    }
 
     const deltaRight = sign(digital.right, digital.left);
     const deltaUp = sign(digital.up, digital.down);

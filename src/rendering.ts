@@ -21,7 +21,7 @@ initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
 // ToDo make a helper program that copies shaders into ts files
 
 const INIT_CAMERA_POSITION = vec3.create(0, 0, 100);
-export const CAMERA = new WASDCamera({ position: INIT_CAMERA_POSITION });
+export const CAMERA = new WASDCamera(INIT_CAMERA_POSITION);
 
 const ADAPTER = await navigator.gpu?.requestAdapter();
 export const DEVICE = (await ADAPTER?.requestDevice()) as GPUDevice;
