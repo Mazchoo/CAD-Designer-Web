@@ -1,3 +1,5 @@
+const WASAM_INIT = startUpWasm();
+
 import { mat4, vec3 } from 'wgpu-matrix';
 import {
   squareVertexSize,
@@ -13,7 +15,12 @@ import { program as linesWGSL } from './shaders/lines';
 import { setDevice, mapBuffersToDevice, getBuffers } from './buffers';
 import { startUpWasm } from './patternHandle';
 import { CURRENT_ACTION, ACTION_TYPES, setupSelectBlockAction, setupPanAction, performAction } from './action';
-import { FABRIC_CANVAS_HANDLER, clearFabricCanvas, initialiseFabricCanvas, updateFabricCanvasHeightWidth } from './fabricHandle';
+import {
+  FABRIC_CANVAS_HANDLER,
+  clearFabricCanvas,
+  initialiseFabricCanvas,
+  updateFabricCanvasHeightWidth,
+} from './fabricHandle';
 
 import { uploadJSON, readJsonToWasm } from './parseJson';
 
@@ -22,8 +29,6 @@ import { uploadJSON, readJsonToWasm } from './parseJson';
 (window as any).readJsonToWasm = readJsonToWasm;
 (window as any).setupSelectBlockAction = setupSelectBlockAction;
 (window as any).setupPanAction = setupPanAction;
-
-const WASAM_INIT = startUpWasm();
 
 // ToDo make a helper program that copies shaders into ts files
 

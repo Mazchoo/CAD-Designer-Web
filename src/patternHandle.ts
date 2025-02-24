@@ -119,7 +119,6 @@ export function selectBlockWithPoint(point: [number, number]) {
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }
 
-
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
   const selection = PATTERN_WASM_HANDLE.select_block_with_two_points(new Float32Array(p1), new Float32Array(p2));
@@ -130,4 +129,3 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
   updateSelection(selection[0]);
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection[0]);
 }
-

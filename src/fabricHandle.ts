@@ -82,4 +82,3 @@ export function enableSelection() {
 export function disableSelection() {
   FABRIC_CANVAS_HANDLER.selection = false;
 }
-
