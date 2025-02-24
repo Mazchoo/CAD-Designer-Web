@@ -94,7 +94,7 @@ export class WASDCamera {
     this.position = vec3.addScaled(this.position, this.velocity, deltaTime);
     this.position[2] = Math.max(this.position[2], this.miniminalDistance);
 
-    // Invert the camera matrix to build the view matrix
+    // ToDo - inversion here just reverses the sign of the position
     this.view = mat4.invert(this.matrix);
     return this.view;
   }

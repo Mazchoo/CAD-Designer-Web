@@ -2,6 +2,7 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
+import { getScreenCoordinates } from './rendering';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
@@ -113,19 +114,20 @@ export function selectBlockWithPoint(point: [number, number]) {
   const selection = PATTERN_WASM_HANDLE.select_block_with_point(new Float32Array(point));
   updateCanvasData(PATTERN_WASM_HANDLE);
 
-  console.log(selection);
-
   updateSelection(selection);
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
-  const selection = PATTERN_WASM_HANDLE.select_block_with_two_points(new Float32Array(p1), new Float32Array(p2));
+  const [blockKeys, bbox] = PATTERN_WASM_HANDLE.select_block_with_two_points(new Float32Array(p1), new Float32Array(p2));
   updateCanvasData(PATTERN_WASM_HANDLE);
 
-  console.log(selection);
+  if (bbox) {
+    console.log(getScreenCoordinates(bbox[0][0], bbox[1][0]));
+  }
 
-  updateSelection(selection[0]);
-  addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection[0]);
+
+  updateSelection(blockKeys);
+  addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, blockKeys);
 }

@@ -1,5 +1,5 @@
 // Define GPU rendering context
-import { mat4, vec3 } from 'wgpu-matrix';
+import { mat4, vec3, vec4 } from 'wgpu-matrix';
 import { quitIfWebGPUNotAvailable } from './util';
 
 import { program as linesWGSL } from './shaders/lines';
@@ -153,3 +153,15 @@ export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
   ];
   return actionPoint;
 }
+
+
+let SCREEN_VECTOR = vec4.create();
+export function getScreenCoordinates(worldX: number, worldY: number) {
+    console.log(CAMERA.matrix, CAMERA.view);
+    const worldVec = vec4.create(worldX - CAMERA.position[0], worldY - CAMERA.position[1], -CAMERA.position[2], 1);
+    mat4.multiply(PROJECTION_MATRIX, worldVec, SCREEN_VECTOR);
+    const screenX = SCREEN_VECTOR[0] / SCREEN_VECTOR[3];
+    const screenY = SCREEN_VECTOR[1] / SCREEN_VECTOR[3];
+    return [screenX, screenY];
+  }
+  
