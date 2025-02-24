@@ -11,7 +11,9 @@ import {
   LINE_DRAW_PIPELINE,
   getModelViewProjectionMatrix,
 } from './rendering';
+import { addCallbacks } from './events';
 
+addCallbacks();
 let LAST_FRAME_MS = Date.now();
 
 function frame() {
