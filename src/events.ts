@@ -1,6 +1,7 @@
 // Process user events on canvas
 import { GPU_CANVAS } from './globals';
-import { CURRENT_ACTION, ACTION_TYPES, performAction } from './action';
+import { CURRENT_ACTION, ACTION_TYPES } from './actionTypes';
+import { performAction } from './action';
 import { FABRIC_CANVAS_HANDLER, clearFabricCanvas, updateFabricCanvasHeightWidth } from './fabricHandle';
 import { getDxfWorldCoorindates, updateProjectionMatrix } from './rendering';
 
@@ -20,7 +21,6 @@ export function addCallbacks() {
     }
     clearFabricCanvas();
     const e = event.e as MouseEvent;
-    console.log(e.clientX, e.clientY);
     const actionPoint = getDxfWorldCoorindates(e.clientX, e.clientY);
     console.log('down', actionPoint);
     performAction(actionPoint, true);
@@ -31,7 +31,6 @@ export function addCallbacks() {
       return;
     }
     const e = event.e as MouseEvent;
-    console.log(e.clientX, e.clientY);
     const actionPoint = getDxfWorldCoorindates(e.clientX, e.clientY);
     console.log('up', actionPoint);
     performAction(actionPoint, false);

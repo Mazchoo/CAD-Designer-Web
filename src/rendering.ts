@@ -12,7 +12,7 @@ import {
 } from './meshes/square';
 import { WASDCamera } from './camera';
 import { setDevice, mapBuffersToDevice } from './buffers';
-import { getCanvasCoordinates } from './input';
+import { getNormalisedCanvasCoordinates } from './coordinates';
 import { GPU_CANVAS, EVENT_CANVAS, INPUT_HANDLER } from './globals';
 import { initialiseFabricCanvas } from './fabricHandle';
 
@@ -141,7 +141,7 @@ export function getModelViewProjectionMatrix(deltaTime: number) {
 }
 
 export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
-  const [eventX, eventY] = getCanvasCoordinates(mouseX, mouseY, EVENT_CANVAS);
+  const [eventX, eventY] = getNormalisedCanvasCoordinates(mouseX, mouseY, EVENT_CANVAS);
 
   // Use orthonormal assumption of camera
   const xScale = PROJECTION_MATRIX[0] * CANVAS_ADJUSTMENT;
@@ -151,7 +151,6 @@ export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
     (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW - CAMERA.position[0],
     (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW - CAMERA.position[1],
   ];
-  console.log('World coordinate:', actionPoint);
   return actionPoint;
 }
 

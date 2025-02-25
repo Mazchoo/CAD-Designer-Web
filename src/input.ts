@@ -1,4 +1,5 @@
-import { CURRENT_ACTION, ACTION_TYPES } from './action';
+import { CURRENT_ACTION, ACTION_TYPES } from './actionTypes';
+import { getNormalisedCanvasCoordinates } from './coordinates';
 
 // Input holds as snapshot of input state
 export default interface Input {
@@ -20,16 +21,6 @@ export default interface Input {
     readonly zoom: number;
     readonly touching: boolean;
   };
-}
-
-export function getCanvasCoordinates(mouseX: number, mouseY: number, canvas: HTMLElement): [number, number] {
-  const rect = canvas.getBoundingClientRect();
-  // ToDo - try caching this and updating on resize
-  const centerX = (rect.left + rect.right) / 2;
-  const centerY = (rect.top + rect.bottom) / 2;
-  const eventX = ((mouseX - centerX) / (rect.right - rect.left)) * 2;
-  const eventY = ((mouseY - centerY) / (rect.bottom - rect.top)) * 2;
-  return [eventX, eventY];
 }
 
 // createInputHandler returns an InputHandler by attaching event handlers to the window and canvas.
@@ -90,7 +81,7 @@ export function createInputHandler(window: Window, canvas: HTMLElement): InputHa
     // Calculate relative position of mouse on canvas
     if (CURRENT_ACTION !== ACTION_TYPES.PAN) return;
 
-    const [eventX, eventY] = getCanvasCoordinates(e.clientX, e.clientY, canvas);
+    const [eventX, eventY] = getNormalisedCanvasCoordinates(e.clientX, e.clientY, canvas);
     analog.mouseX = eventX;
     analog.mouseY = eventY;
 

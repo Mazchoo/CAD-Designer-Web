@@ -12,8 +12,11 @@ import {
   getModelViewProjectionMatrix,
 } from './rendering';
 import { addCallbacks } from './events';
+import { setupMenuCallbacks } from './menuEvents';
 
+setupMenuCallbacks();
 addCallbacks();
+
 let LAST_FRAME_MS = Date.now();
 
 function frame() {

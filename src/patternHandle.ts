@@ -127,7 +127,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
   updateCanvasData(PATTERN_WASM_HANDLE);
 
   if (bbox) {
-    console.log('Screen coordinates', getScreenCoordinates(bbox[0][0], bbox[1][0]));
+    console.log('screen', getScreenCoordinates(bbox[0][0], bbox[1][0]));
   }
 
   updateSelection(blockKeys);
