@@ -20,7 +20,7 @@ initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
 
 // ToDo make a helper program that copies shaders into ts files
 
-const INIT_CAMERA_POSITION = vec3.create(0, 0, 100);
+const INIT_CAMERA_POSITION = vec3.create(0, 0, -100);
 export const CAMERA = new WASDCamera(INIT_CAMERA_POSITION);
 
 const ADAPTER = await navigator.gpu?.requestAdapter();
@@ -157,7 +157,7 @@ export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
 
 let SCREEN_VECTOR = vec4.create();
 export function getScreenCoordinates(worldX: number, worldY: number) {
-    console.log(CAMERA.matrix, CAMERA.view);
+    console.log(CAMERA.matrix);
     const worldVec = vec4.create(worldX - CAMERA.position[0], worldY - CAMERA.position[1], -CAMERA.position[2], 1);
     mat4.multiply(PROJECTION_MATRIX, worldVec, SCREEN_VECTOR);
     const screenX = SCREEN_VECTOR[0] / SCREEN_VECTOR[3];

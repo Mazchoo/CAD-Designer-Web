@@ -37,8 +37,8 @@ export class WASDCamera {
   zoomSpeed = 800;
 
   // Controls zoom
-  miniminalDistance = 1.0;
-  maximumDistance = 10000.0;
+  minDistance = -1.0;
+  maxDistance = -10000.0;
 
   // Controls stopping panning on zoom if this ratio above min distance
   minPanRatio = 4;
@@ -74,8 +74,8 @@ export class WASDCamera {
     // Add specific behaviour when zooming
     if (
       input.analog.zoom !== 0 &&
-      this.position[2] > this.miniminalDistance * this.minPanRatio &&
-      this.position[2] < this.maximumDistance
+      this.position[2] < this.minDistance * this.minPanRatio &&
+      this.position[2] > this.maxDistance
     ) {
       const multiplier = -Math.sign(input.analog.zoom);
       vec3.addScaled(targetVelocity, this.right, multiplier * input.analog.mouseX, targetVelocity);
@@ -84,19 +84,17 @@ export class WASDCamera {
 
     vec3.normalize(targetVelocity, targetVelocity);
     // If zooming, use constant else use zoom to determine speed
-    const targetSpeed = input.analog.zoom !== 0 ? this.zoomSpeed : this.movementSpeed * this.position[2];
+    const targetSpeed = input.analog.zoom !== 0 ? this.zoomSpeed : this.movementSpeed * -this.position[2];
     vec3.mulScalar(targetVelocity, targetSpeed, targetVelocity);
 
     // Mix new target velocity
     this.velocity = lerp(targetVelocity, this.velocity, Math.pow(1 - this.frictionCoefficient, deltaTime));
 
     // Integrate velocity to calculate new position
-    this.position = vec3.addScaled(this.position, this.velocity, deltaTime);
-    this.position[2] = Math.max(this.position[2], this.miniminalDistance);
+    this.position = vec3.addScaled(this.position, this.velocity, -deltaTime);
+    this.position[2] = Math.min(this.position[2], this.minDistance);
 
-    // ToDo - inversion here just reverses the sign of the position
-    this.view = mat4.invert(this.matrix);
-    return this.view;
+    return this.matrix;
   }
 }
 
