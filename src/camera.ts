@@ -1,7 +1,7 @@
 // Note: The code in this file does not use the 'dst' output parameter of functions in the
 // 'wgpu-matrix' library, so produces many temporary vectors and matrices.
 // This is intentional, as this sample prefers readability over performance.
-import { Mat4, Vec3, Vec4, mat4, vec3 } from 'wgpu-matrix';
+import { Mat4, Vec3, mat4, vec3 } from 'wgpu-matrix';
 import Input from './input';
 
 // WASDCamera is a camera implementation that behaves similar to first-person-shooter PC games.

@@ -146,11 +146,12 @@ export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
   // Use orthonormal assumption of camera
   const xScale = PROJECTION_MATRIX[0] * CANVAS_ADJUSTMENT;
   const yScale = PROJECTION_MATRIX[5] * CANVAS_ADJUSTMENT;
-  const cameraDist = CAMERA.position[2];
+  const cameraDist = -CAMERA.position[2];
   const actionPoint: [number, number] = [
-    (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[0],
-    (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW + CAMERA.position[1],
+    (eventX / xScale) * cameraDist * SIN_FIELD_OF_VIEW - CAMERA.position[0],
+    (-eventY / yScale) * cameraDist * SIN_FIELD_OF_VIEW - CAMERA.position[1],
   ];
+  console.log(actionPoint);
   return actionPoint;
 }
 
@@ -158,7 +159,7 @@ export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
 let SCREEN_VECTOR = vec4.create();
 export function getScreenCoordinates(worldX: number, worldY: number) {
     console.log(CAMERA.matrix);
-    const worldVec = vec4.create(worldX - CAMERA.position[0], worldY - CAMERA.position[1], -CAMERA.position[2], 1);
+    const worldVec = vec4.create(worldX + CAMERA.position[0], worldY + CAMERA.position[1], CAMERA.position[2], 1);
     mat4.multiply(PROJECTION_MATRIX, worldVec, SCREEN_VECTOR);
     const screenX = SCREEN_VECTOR[0] / SCREEN_VECTOR[3];
     const screenY = SCREEN_VECTOR[1] / SCREEN_VECTOR[3];
