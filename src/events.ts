@@ -20,7 +20,7 @@ export function addCallbacks() {
     }
     clearFabricCanvas();
     const e = event.e as MouseEvent;
-    console.log(e.clientX, e.clientY)
+    console.log(e.clientX, e.clientY);
     const actionPoint = getDxfWorldCoorindates(e.clientX, e.clientY);
     console.log('down', actionPoint);
     performAction(actionPoint, true);
@@ -31,7 +31,7 @@ export function addCallbacks() {
       return;
     }
     const e = event.e as MouseEvent;
-    console.log(e.clientX, e.clientY)
+    console.log(e.clientX, e.clientY);
     const actionPoint = getDxfWorldCoorindates(e.clientX, e.clientY);
     console.log('up', actionPoint);
     performAction(actionPoint, false);

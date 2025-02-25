@@ -120,13 +120,15 @@ export function selectBlockWithPoint(point: [number, number]) {
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
-  const [blockKeys, bbox] = PATTERN_WASM_HANDLE.select_block_with_two_points(new Float32Array(p1), new Float32Array(p2));
+  const [blockKeys, bbox] = PATTERN_WASM_HANDLE.select_block_with_two_points(
+    new Float32Array(p1),
+    new Float32Array(p2)
+  );
   updateCanvasData(PATTERN_WASM_HANDLE);
 
   if (bbox) {
-    console.log(getScreenCoordinates(bbox[0][0], bbox[1][0]));
+    console.log('Screen coordinates', getScreenCoordinates(bbox[0][0], bbox[1][0]));
   }
-
 
   updateSelection(blockKeys);
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, blockKeys);
