@@ -4,6 +4,7 @@ import { CURRENT_ACTION, ACTION_TYPES } from './actionTypes';
 import { performAction } from './action';
 import { FABRIC_CANVAS_HANDLER, clearFabricCanvas, updateFabricCanvasHeightWidth } from './fabricHandle';
 import { getDxfWorldCoorindates, updateProjectionMatrix } from './rendering';
+import { updateCenterWidthHeight } from './coordinates';
 
 export function addCallbacks() {
   window.addEventListener(
@@ -11,6 +12,7 @@ export function addCallbacks() {
     (e) => {
       updateFabricCanvasHeightWidth(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
       updateProjectionMatrix();
+      updateCenterWidthHeight(GPU_CANVAS);
     },
     true
   );

@@ -1,5 +1,5 @@
 import { CURRENT_ACTION, ACTION_TYPES } from './actionTypes';
-import { getNormalisedCanvasCoordinates } from './coordinates';
+import { getNormalisedCanvasCoordinates, updateCenterWidthHeight } from './coordinates';
 
 // Input holds as snapshot of input state
 export default interface Input {
@@ -25,6 +25,8 @@ export default interface Input {
 
 // createInputHandler returns an InputHandler by attaching event handlers to the window and canvas.
 export function createInputHandler(window: Window, canvas: HTMLElement): InputHandler {
+  updateCenterWidthHeight(canvas);
+
   const digital = {
     forward: false,
     backward: false,
@@ -81,7 +83,7 @@ export function createInputHandler(window: Window, canvas: HTMLElement): InputHa
     // Calculate relative position of mouse on canvas
     if (CURRENT_ACTION !== ACTION_TYPES.PAN) return;
 
-    const [eventX, eventY] = getNormalisedCanvasCoordinates(e.clientX, e.clientY, canvas);
+    const [eventX, eventY] = getNormalisedCanvasCoordinates(e.clientX, e.clientY);
     analog.mouseX = eventX;
     analog.mouseY = eventY;
 

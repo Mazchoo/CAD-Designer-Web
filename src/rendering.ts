@@ -13,7 +13,7 @@ import {
 import { WASDCamera } from './camera';
 import { setDevice, mapBuffersToDevice } from './buffers';
 import { getNormalisedCanvasCoordinates } from './coordinates';
-import { GPU_CANVAS, EVENT_CANVAS, INPUT_HANDLER } from './globals';
+import { GPU_CANVAS, INPUT_HANDLER } from './globals';
 import { initialiseFabricCanvas } from './fabricHandle';
 
 initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
@@ -141,7 +141,7 @@ export function getModelViewProjectionMatrix(deltaTime: number) {
 }
 
 export function getDxfWorldCoorindates(mouseX: number, mouseY: number) {
-  const [eventX, eventY] = getNormalisedCanvasCoordinates(mouseX, mouseY, EVENT_CANVAS);
+  const [eventX, eventY] = getNormalisedCanvasCoordinates(mouseX, mouseY);
 
   // Use orthonormal assumption of camera
   const xScale = PROJECTION_MATRIX[0] * CANVAS_ADJUSTMENT;
