@@ -131,7 +131,7 @@ impl Entity {
         }
     }
 
-    pub fn reset_hightlight(&mut self) {
+    pub fn remove_highlight(&mut self) {
         self.hightlighted = false;
     }
 

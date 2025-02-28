@@ -98,4 +98,8 @@ impl Handle {
     pub fn enable_layer(&mut self, layer: i32) {
         self.settings.disabled_layers.retain(|&x| x != layer);
     }
+
+    pub fn highlight_block(&mut self, block_key: String, status: bool) -> bool {
+        return self.pattern.set_highlight(&block_key, status);
+    }
 }

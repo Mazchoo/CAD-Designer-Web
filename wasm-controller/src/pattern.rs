@@ -237,7 +237,7 @@ impl Pattern {
 
     pub fn reset_selection(&mut self) {
         for block in self.blocks.iter_mut() {
-            block.reset_selection();
+            block.remove_highlight();
         }
     }
 
@@ -314,5 +314,21 @@ impl Pattern {
                 block.highlight();
             }
         }
+    }
+
+    pub(crate) fn set_highlight(&mut self, block_key: &String, status: bool) -> bool {
+        let mut block_exists = false;
+        for block in self.blocks.iter_mut() {
+            if block_key == &block.name {
+                block_exists = true;
+                if status {
+                    block.highlight();
+                } else {
+                    block.remove_highlight();
+                }
+                break;
+            }
+        }
+        return block_exists;
     }
 }

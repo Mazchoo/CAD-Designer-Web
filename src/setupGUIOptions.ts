@@ -63,12 +63,12 @@ export function updateAvailableBlocks(handle: Handle) {
   blockViewOptions.insertAdjacentHTML('beforeend', htmlString);
 }
 
-export function getSelectedItemEntry(name: string, checked: boolean): string {
+export function getSelectedItemEntry(name: string): string {
   return `
     <tr>
     <td>
       <label>
-        <input id="Selection=>${name}" name="selection" type="radio" ${checked ? 'checked' : ''} />
+        <input id="Selection=>${name}" name="selection" type="checkbox" checked="checked"} />
         <span>${name}</span>
       </label>
     </td>
@@ -82,10 +82,8 @@ export function updateSelection(keys: string[]) {
   blockViewOptions.innerHTML = '';
 
   let htmlString = '';
-  let checked = true;
   for (const name of keys) {
-    htmlString += getSelectedItemEntry(name, checked);
-    checked = false;
+    htmlString += getSelectedItemEntry(name);
   }
 
   blockViewOptions.insertAdjacentHTML('beforeend', htmlString);

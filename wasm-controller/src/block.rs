@@ -177,12 +177,6 @@ impl Block {
         }
     }
 
-    pub fn reset_selection(&mut self) {
-        for entity in self.entities.iter_mut() {
-            entity.reset_hightlight();
-        }
-    }
-
     pub fn get_all_layers(&self, layers: &mut Vec<i32>) {
         if !layers.contains(&self.layer) {
             layers.push(self.layer);
@@ -206,6 +200,12 @@ impl Block {
     pub fn highlight(&mut self) {
         for entity in self.entities.iter_mut() {
             entity.hightlighted = true;
+        }
+    }
+
+    pub fn remove_highlight(&mut self) {
+        for entity in self.entities.iter_mut() {
+            entity.remove_highlight();
         }
     }
 }

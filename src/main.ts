@@ -10,7 +10,7 @@ import {
   UNIFORM_BIND_GROUP,
   LINE_DRAW_PIPELINE,
   getModelViewProjectionMatrix,
-  addHighlightBbox
+  addHighlightBbox,
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';

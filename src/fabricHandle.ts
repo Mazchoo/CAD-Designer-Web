@@ -65,7 +65,7 @@ export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY:
 }
 
 export function clearFabricCanvas() {
-  console.log("Clear fabric canvas");
+  console.log('Clear fabric canvas');
   if (HIGHLIGHT_RECT === null) return;
   FABRIC_CANVAS_HANDLER.clear();
   HIGHLIGHT_RECT = null;
