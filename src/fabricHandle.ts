@@ -76,8 +76,6 @@ export function clearFabricCanvas() {
 
 export function initialiseFabricCanvas(height: number, width: number) {
   FABRIC_CANVAS_HANDLER.setDimensions({ height: height, width: width });
-  inialiseRect(150, 150, 200, 200);
-  initialiseAnchor(140, 140);
   FABRIC_CANVAS_HANDLER.selection = false;
 }
 
