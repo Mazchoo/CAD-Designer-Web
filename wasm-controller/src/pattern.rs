@@ -282,7 +282,10 @@ impl Pattern {
         return selected_block_keys;
     }
 
-    pub(crate) fn find_blocks_with_bbox(&self, bbox: &((f32, f32), (f32, f32))) -> (Vec<String>, Option<((f32, f32), (f32, f32))>) {
+    pub(crate) fn find_blocks_with_bbox(
+        &self,
+        bbox: &((f32, f32), (f32, f32)),
+    ) -> (Vec<String>, Option<((f32, f32), (f32, f32))>) {
         let mut selected_block_keys: Vec<String> = vec![];
         let mut union_box = Option::None;
 
@@ -292,7 +295,11 @@ impl Pattern {
 
             if bounding_box::intersect(&offset_bbox, bbox) {
                 selected_block_keys.push(block.name.clone());
-                union_box = Some(bounding_box::union(bbox, &offset_bbox));
+                if let Some(current_union) = union_box {
+                    union_box = Some(bounding_box::union(&current_union, &offset_bbox));
+                } else {
+                    union_box = Some(offset_bbox);
+                }
             }
         }
 

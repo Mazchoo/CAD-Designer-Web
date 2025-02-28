@@ -15,8 +15,6 @@ export function getNormalisedCanvasCoordinates(mouseX: number, mouseY: number): 
   return [(mouseX - CENTER[0]) / WIDTH_HEIGHT_HALF[0], (mouseY - CENTER[1]) / WIDTH_HEIGHT_HALF[1]];
 }
 
-export function getPixelCoorindates(cameraX: number, cameraY: number): [number, number] {
-  const clampedX = Math.min(Math.max(cameraX, -1), 1);
-  const clampedY = Math.min(Math.max(cameraY, -1), 1);
-  return [clampedX * WIDTH_HEIGHT_HALF[0] + CENTER[0], clampedY * WIDTH_HEIGHT_HALF[1] + CENTER[1]];
+export function getPixelCoorindates(cameraPoint: [number, number]): [number, number] {
+  return [(cameraPoint[0] + 1) * WIDTH_HEIGHT_HALF[0], (cameraPoint[1] + 1) * WIDTH_HEIGHT_HALF[1]];
 }

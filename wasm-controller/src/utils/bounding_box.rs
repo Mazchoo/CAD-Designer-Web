@@ -23,11 +23,7 @@ pub fn from_array(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)) {
     return ((min_x, max_x), (min_y, max_y));
 }
 
-pub fn contains_point(
-    bbox: &((f32, f32), (f32, f32)),
-    p: &(f32, f32),
-    padding: f32,
-) -> bool {
+pub fn contains_point(bbox: &((f32, f32), (f32, f32)), p: &(f32, f32), padding: f32) -> bool {
     let ((min_x, max_x), (min_y, max_y)) = bbox;
     return p.0 >= min_x - padding
         && p.0 <= max_x + padding
@@ -46,10 +42,7 @@ pub fn offset_bbox(
     );
 }
 
-pub fn intersect(
-    bbox1: &((f32, f32), (f32, f32)),
-    bbox2: &((f32, f32), (f32, f32)),
-) -> bool {
+pub fn intersect(bbox1: &((f32, f32), (f32, f32)), bbox2: &((f32, f32), (f32, f32))) -> bool {
     let ((min_x1, max_x1), (min_y1, max_y1)) = bbox1;
     let ((min_x2, max_x2), (min_y2, max_y2)) = bbox2;
     return min_x1 <= max_x2 && min_x2 <= max_x1 && min_y1 <= max_y2 && min_y2 <= max_y1;

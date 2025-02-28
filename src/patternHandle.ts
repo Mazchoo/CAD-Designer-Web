@@ -2,7 +2,8 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
-import { getScreenCoordinates } from './rendering';
+import { addHighlightBbox } from './rendering';
+import { setRectWorldCoords } from './fabricHandle';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
@@ -127,7 +128,8 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
   updateCanvasData(PATTERN_WASM_HANDLE);
 
   if (bbox) {
-    console.log('screen', getScreenCoordinates(bbox[0][0], bbox[1][0]));
+    setRectWorldCoords(bbox);
+    addHighlightBbox(bbox);
   }
 
   updateSelection(blockKeys);

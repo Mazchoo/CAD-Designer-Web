@@ -7,14 +7,14 @@ export const FABRIC_CANVAS_HANDLER = new fabric.Canvas('fabric-canvas', {
 const CROSS_SVG = 'M -5 0 L 5 0 M 0 -5 L 0 5';
 
 let HIGHLIGHT_RECT: fabric.Rect | null = null;
+export let RECT_WORLD_COORDS: [[number, number], [number, number]] | null = null;
 let HIGHLIGHT_MARKER: fabric.Path | null = null;
+export let MARKER_WORLD_COORDS: [number, number] | null = null;
 
-export function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
-  if (HIGHLIGHT_RECT !== null) return;
-
+function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
   HIGHLIGHT_RECT = new fabric.Rect({
-    left: minX,
     top: minY,
+    left: minX,
     fill: 'transparent',
     stroke: 'blue',
     strokeWidth: 0.5,
@@ -50,11 +50,18 @@ export function initialiseAnchor(x: number, y: number) {
   FABRIC_CANVAS_HANDLER.requestRenderAll();
 }
 
-export function updateRect(minX: number, minY: number, maxX: number, maxY: number) {
-  if (HIGHLIGHT_RECT === null) return;
-  HIGHLIGHT_RECT.set({ left: minX, top: minY, width: maxX - minX, height: maxY - minY });
-  HIGHLIGHT_RECT.setCoords();
+function updateRect(rect: fabric.Rect, minX: number, minY: number, maxX: number, maxY: number) {
+  rect.set({ bottom: minX, right: minY, width: maxX - minX, height: maxY - minY });
+  rect.setCoords();
   FABRIC_CANVAS_HANDLER.requestRenderAll();
+}
+
+export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY: number) {
+  if (HIGHLIGHT_RECT) {
+    updateRect(HIGHLIGHT_RECT, minX, minY, maxX, maxY);
+  } else {
+    inialiseRect(minX, minY, maxX, maxY);
+  }
 }
 
 export function clearFabricCanvas() {
@@ -62,6 +69,8 @@ export function clearFabricCanvas() {
   FABRIC_CANVAS_HANDLER.clear();
   HIGHLIGHT_RECT = null;
   HIGHLIGHT_MARKER = null;
+  RECT_WORLD_COORDS = null;
+  MARKER_WORLD_COORDS = null;
 }
 
 export function initialiseFabricCanvas(height: number, width: number) {
@@ -81,4 +90,12 @@ export function enableSelection() {
 
 export function disableSelection() {
   FABRIC_CANVAS_HANDLER.selection = false;
+}
+
+export function setRectWorldCoords(coords: [[number, number], [number, number]]) {
+  RECT_WORLD_COORDS = coords;
+}
+
+export function setMarkerWorldCoords(coords: [number, number]) {
+  MARKER_WORLD_COORDS = coords;
 }
