@@ -308,30 +308,10 @@ impl Pattern {
 
     pub(crate) fn highlight_selection(&mut self, block_keys: &Vec<String>) {
         self.reset_selection();
-        let mut selection_found = false;
 
         for block in self.blocks.iter_mut() {
             if block_keys.contains(&block.name) {
-                if selection_found {
-                    block.highlight();
-                } else {
-                    selection_found = true;
-                    block.select();
-                }
-            }
-        }
-    }
-
-    pub(crate) fn highlight_if_selected(&mut self) {
-        for block in self.blocks.iter_mut() {
-            block.highlight_if_selected();
-        }
-    }
-
-    pub(crate) fn select_block(&mut self, block_key: &String) {
-        for block in self.blocks.iter_mut() {
-            if &block.name == block_key {
-                block.select();
+                block.highlight();
             }
         }
     }

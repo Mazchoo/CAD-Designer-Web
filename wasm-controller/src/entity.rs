@@ -31,7 +31,6 @@ pub struct Entity {
     pub bounding_box: ((f32, f32), (f32, f32)),
 
     // Display settings
-    pub selected: bool,
     pub hightlighted: bool,
 }
 
@@ -55,7 +54,6 @@ impl Entity {
             entity_index: entity_index,
             text: text,
             bounding_box: bounding_box,
-            selected: false,
             hightlighted: false,
         };
     }
@@ -133,8 +131,7 @@ impl Entity {
         }
     }
 
-    pub fn reset_selection(&mut self) {
-        self.selected = false;
+    pub fn reset_hightlight(&mut self) {
         self.hightlighted = false;
     }
 
@@ -145,9 +142,7 @@ impl Entity {
     ) -> &'a (f32, f32, f32, f32) {
         let mut entity_color = default_color;
 
-        if self.selected {
-            entity_color = &settings.select_color;
-        } else if self.hightlighted {
+        if self.hightlighted {
             entity_color = &settings.highlight_color;
         } else if settings.layer_colors.contains_key(&self.layer) {
             entity_color = &settings.layer_colors[&self.layer]

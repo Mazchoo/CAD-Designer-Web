@@ -89,11 +89,6 @@ impl Handle {
         return to_value(&(empty_output, ())).unwrap();
     }
 
-    pub fn change_block_selection(&mut self, block_key: String) {
-        self.pattern.highlight_if_selected();
-        self.pattern.select_block(&block_key);
-    }
-
     pub fn disable_layer(&mut self, layer: i32) {
         if !self.settings.disabled_layers.contains(&layer) {
             self.settings.disabled_layers.push(layer);

@@ -7,7 +7,6 @@ use serde_json::Result;
 pub struct Settings {
     pub default_color: (f32, f32, f32, f32),
     pub highlight_color: (f32, f32, f32, f32),
-    pub select_color: (f32, f32, f32, f32),
     pub layer_colors: HashMap<i32, (f32, f32, f32, f32)>,
     pub disabled_layers: Vec<i32>,
     pub point_threshold: f32,
@@ -20,7 +19,6 @@ impl Default for Settings {
         Settings {
             default_color: (0., 0., 0., 1.),
             highlight_color: (0., 0., 1., 1.),
-            select_color: (1., 0., 0., 1.),
             layer_colors: HashMap::new(),
             disabled_layers: vec![],
             point_threshold: 4.,

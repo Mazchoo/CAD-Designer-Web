@@ -90,7 +90,6 @@ const addChangeSelectionCallbacks = (handle: Handle | undefined, keys: string[])
     const selectionCheck = document.getElementById(`Selection=>${key}`) as HTMLInputElement | undefined;
     if (selectionCheck === undefined) continue;
     selectionCheck.addEventListener('click', () => {
-      handle.change_block_selection(key);
       updateCanvasData(handle);
     });
   }
