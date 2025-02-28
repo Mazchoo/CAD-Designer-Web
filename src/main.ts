@@ -10,9 +10,11 @@ import {
   UNIFORM_BIND_GROUP,
   LINE_DRAW_PIPELINE,
   getModelViewProjectionMatrix,
+  addHighlightBbox
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
+import { RECT_WORLD_COORDS } from './fabricHandle';
 
 setupMenuCallbacks();
 addCallbacks();
@@ -50,6 +52,10 @@ function frame() {
     passEncoder.drawIndexed(nrIndices, 1, 0, 0, 0);
     passEncoder.end();
     DEVICE.queue.submit([commandEncoder.finish()]);
+  }
+
+  if (RECT_WORLD_COORDS) {
+    addHighlightBbox(RECT_WORLD_COORDS);
   }
 
   requestAnimationFrame(frame);

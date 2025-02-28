@@ -51,13 +51,13 @@ export function initialiseAnchor(x: number, y: number) {
 }
 
 function updateRect(rect: fabric.Rect, minX: number, minY: number, maxX: number, maxY: number) {
-  rect.set({ bottom: minX, right: minY, width: maxX - minX, height: maxY - minY });
+  rect.set({ top: minY, left: minX, width: maxX - minX, height: maxY - minY });
   rect.setCoords();
   FABRIC_CANVAS_HANDLER.requestRenderAll();
 }
 
 export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY: number) {
-  if (HIGHLIGHT_RECT) {
+  if (HIGHLIGHT_RECT !== null) {
     updateRect(HIGHLIGHT_RECT, minX, minY, maxX, maxY);
   } else {
     inialiseRect(minX, minY, maxX, maxY);
@@ -65,6 +65,7 @@ export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY:
 }
 
 export function clearFabricCanvas() {
+  console.log("Clear fabric canvas");
   if (HIGHLIGHT_RECT === null) return;
   FABRIC_CANVAS_HANDLER.clear();
   HIGHLIGHT_RECT = null;

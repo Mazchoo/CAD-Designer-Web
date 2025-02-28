@@ -168,14 +168,11 @@ export function getScreenCoordinates(worldX: number, worldY: number): [number, n
 export function clipPointsToScreenRange(
   p1: [number, number],
   p2: [number, number]
-): [[number, number], [number, number]] | null {
+): [[number, number], [number, number]] {
   p1[0] = Math.max(Math.min(p1[0], 1), -1);
   p1[1] = Math.max(Math.min(p1[1], 1), -1);
   p2[0] = Math.max(Math.min(p2[0], 1), -1);
   p2[1] = Math.max(Math.min(p2[1], 1), -1);
-  if (p1[0] === p2[0] && p1[1] == p2[1]) {
-    return null;
-  }
   return [p1, p2];
 }
 
@@ -183,11 +180,6 @@ export function addHighlightBbox(bbox: [[number, number], [number, number]]) {
   const w1 = getScreenCoordinates(bbox[0][0], bbox[1][0]);
   const w2 = getScreenCoordinates(bbox[0][1], bbox[1][1]);
   const clipOutput = clipPointsToScreenRange(w1, w2);
-
-  if (clipOutput == null) {
-    clearFabricCanvas();
-    return;
-  }
 
   let [s1, s2] = clipOutput;
   s1 = getPixelCoorindates(s1);
