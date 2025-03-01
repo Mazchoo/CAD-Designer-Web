@@ -98,3 +98,8 @@ export function setRectWorldCoords(coords: [[number, number], [number, number]])
 export function setMarkerWorldCoords(coords: [number, number]) {
   MARKER_WORLD_COORDS = coords;
 }
+
+export function highlightRectIsMoving(): boolean {
+  if (HIGHLIGHT_RECT == null) return false;
+  return HIGHLIGHT_RECT.isMoving || HIGHLIGHT_RECT.__corner === 'mtr';
+}

@@ -14,7 +14,7 @@ import {
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import { RECT_WORLD_COORDS } from './fabricHandle';
+import { RECT_WORLD_COORDS, highlightRectIsMoving } from './fabricHandle';
 
 setupMenuCallbacks();
 addCallbacks();
@@ -54,7 +54,7 @@ function frame() {
     DEVICE.queue.submit([commandEncoder.finish()]);
   }
 
-  if (RECT_WORLD_COORDS) {
+  if (RECT_WORLD_COORDS && !highlightRectIsMoving()) {
     addHighlightBbox(RECT_WORLD_COORDS);
   }
 
