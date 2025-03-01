@@ -3,6 +3,7 @@
 // This is intentional, as this sample prefers readability over performance.
 import { Mat4, Vec3, mat4, vec3 } from 'wgpu-matrix';
 import Input from './input';
+import { EPS } from './globals';
 
 // WASDCamera is a camera implementation that behaves similar to first-person-shooter PC games.
 export class WASDCamera {
@@ -95,6 +96,10 @@ export class WASDCamera {
     this.position[2] = Math.min(this.position[2], this.minDistance);
 
     return this.matrix;
+  }
+
+  isMoving(): boolean {
+    return Math.abs(this.velocity[0]) > EPS || Math.abs(this.velocity[1]) > EPS || Math.abs(this.velocity[2]) > EPS;
   }
 }
 

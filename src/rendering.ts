@@ -13,7 +13,7 @@ import {
 import { WASDCamera } from './camera';
 import { setDevice, mapBuffersToDevice } from './buffers';
 import { getNormalisedCanvasCoordinates, getPixelCoorindates } from './coordinates';
-import { GPU_CANVAS, INPUT_HANDLER } from './globals';
+import { GPU_CANVAS } from './globals';
 import {
   initialiseFabricCanvas,
   createOrMoveAnchor,
@@ -21,6 +21,7 @@ import {
   highlightRectIsMoving,
   highlightMarkerIsMoving,
 } from './fabricHandle';
+import Input, { inputMovingWithDigital } from './input';
 
 initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
 
@@ -140,9 +141,9 @@ export function updateProjectionMatrix() {
 updateProjectionMatrix();
 
 const MODEL_VIEW_PROJECTION_MATRIX = mat4.create();
-export function getModelViewProjectionMatrix(deltaTime: number) {
+export function getModelViewProjectionMatrix(deltaTime: number, input: Input) {
   const ignoreZoom = highlightRectIsMoving() || highlightMarkerIsMoving();
-  const viewMatrix = CAMERA.update(deltaTime, INPUT_HANDLER(), ignoreZoom);
+  const viewMatrix = CAMERA.update(deltaTime, input, ignoreZoom);
   mat4.multiply(PROJECTION_MATRIX, viewMatrix, MODEL_VIEW_PROJECTION_MATRIX);
   return MODEL_VIEW_PROJECTION_MATRIX;
 }

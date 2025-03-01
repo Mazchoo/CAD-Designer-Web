@@ -1,7 +1,7 @@
 const WASAM_INIT = startUpWasm();
 
 import { getBuffers } from './buffers';
-import { startUpWasm } from './patternHandle';
+import { startUpWasm, updateHighlightPosition } from './patternHandle';
 import {
   DEVICE,
   UNIFORM_BUFFER,
@@ -12,10 +12,19 @@ import {
   getModelViewProjectionMatrix,
   addHighlightBbox,
   addAnchor,
+  CAMERA,
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import { RECT_WORLD_COORDS, MARKER_WORLD_COORDS, highlightRectIsMoving, highlightMarkerIsMoving } from './fabricHandle';
+import {
+  RECT_WORLD_COORDS,
+  MARKER_WORLD_COORDS,
+  HIGHLIGHT_RECT,
+  highlightRectIsMoving,
+  highlightMarkerIsMoving,
+} from './fabricHandle';
+import { INPUT_HANDLER } from './globals';
+import { inputMovingWithDigital } from './input';
 
 setupMenuCallbacks();
 addCallbacks();
@@ -27,7 +36,8 @@ function frame() {
   const deltaTime = (now - LAST_FRAME_MS) / 1000;
   LAST_FRAME_MS = now;
 
-  const modelViewProjection = getModelViewProjectionMatrix(deltaTime);
+  const input = INPUT_HANDLER();
+  const modelViewProjection = getModelViewProjectionMatrix(deltaTime, input);
 
   if (RECT_WORLD_COORDS && !highlightRectIsMoving()) {
     addHighlightBbox(RECT_WORLD_COORDS);
@@ -35,6 +45,11 @@ function frame() {
 
   if (MARKER_WORLD_COORDS && !highlightMarkerIsMoving()) {
     addAnchor(MARKER_WORLD_COORDS);
+  }
+
+  if (highlightRectIsMoving() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
+    console.log('Mouse move triggered');
+    updateHighlightPosition(HIGHLIGHT_RECT);
   }
 
   DEVICE.queue.writeBuffer(

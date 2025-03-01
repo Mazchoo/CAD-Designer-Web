@@ -126,16 +126,16 @@ export function selectBlockWithPoint(point: [number, number]) {
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }
 
-const updateHighlightPosition = (e: fabric.BasicTransformEvent) => {
-  if (HIGHLIGHT_RECT_OFFSET == null || PATTERN_WASM_HANDLE == undefined || e.transform === undefined) return;
-  const newCoordinate = getDxfWorldCoorindates(e.transform.target.left, e.transform.target.top);
+export function updateHighlightPosition(rect: fabric.Rect) {
+  if (HIGHLIGHT_RECT_OFFSET == null || PATTERN_WASM_HANDLE == undefined) return;
+  const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
   const update = new Float32Array([
     newCoordinate[0] - HIGHLIGHT_RECT_OFFSET[0],
     newCoordinate[1] - HIGHLIGHT_RECT_OFFSET[1],
   ]);
   PATTERN_WASM_HANDLE.set_highlight_offset(update);
   updateCanvasData(PATTERN_WASM_HANDLE);
-};
+}
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
@@ -151,7 +151,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
     if (HIGHLIGHT_RECT) {
       setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
       HIGHLIGHT_RECT.on('moving', function (e) {
-        updateHighlightPosition(e);
+        if (e.transform) updateHighlightPosition(e.transform.target as fabric.Rect);
       });
     }
   }

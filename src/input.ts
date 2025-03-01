@@ -126,5 +126,9 @@ export function createInputHandler(window: Window, canvas: HTMLElement): InputHa
   };
 }
 
+export function inputMovingWithDigital(input: Input): boolean {
+  return input.digital.down || input.digital.up || input.digital.left || input.digital.right;
+}
+
 // InputHandler is a function that when called, returns the current Input state.
 export type InputHandler = () => Input;
