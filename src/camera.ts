@@ -45,14 +45,14 @@ export class WASDCamera {
   // Movement velocity drag coeffient [0 .. 1]
   // 0: Continues forever
   // 1: Instantly stops moving
-  frictionCoefficient = 0.999;
+  frictionCoefficient = 0.995;
 
   // Construtor
   constructor(position: Vec3) {
     this.position = position;
   }
 
-  update(deltaTime: number, input: Input): Mat4 {
+  update(deltaTime: number, input: Input, ignoreZoom: boolean): Mat4 {
     const sign = (positive: boolean, negative: boolean) => (positive ? 1 : 0) - (negative ? 1 : 0);
 
     // Save the current position, as we're about to rebuild the camera matrix.
@@ -63,7 +63,7 @@ export class WASDCamera {
     const deltaRight = sign(digital.right, digital.left);
     const deltaUp = sign(digital.up, digital.down);
     const targetVelocity = vec3.create();
-    const deltaBack = input.analog.zoom;
+    const deltaBack = ignoreZoom ? 0 : input.analog.zoom;
     vec3.addScaled(targetVelocity, this.right, deltaRight, targetVelocity);
     vec3.addScaled(targetVelocity, this.up, deltaUp, targetVelocity);
     vec3.addScaled(targetVelocity, this.back, deltaBack, targetVelocity);
@@ -72,6 +72,7 @@ export class WASDCamera {
 
     // Add specific behaviour when zooming
     if (
+      !ignoreZoom &&
       input.analog.zoom !== 0 &&
       this.position[2] < this.minDistance * this.minPanRatio &&
       this.position[2] > this.maxDistance
