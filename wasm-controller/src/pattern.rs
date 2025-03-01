@@ -217,7 +217,6 @@ impl Pattern {
         if settings.view.split("=>").next() == Some("Block") {
             if let Some(ind) = settings.view.find("=>") {
                 let key = settings.view[(ind + "=>".len())..].to_string();
-                console::log_1(&format!("Switching view to {}", key).into());
                 return self.get_draw_sequence_block(settings, &key);
             }
         }

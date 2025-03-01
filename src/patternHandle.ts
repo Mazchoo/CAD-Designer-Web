@@ -2,8 +2,15 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
-import { addHighlightBbox, addAnchor } from './rendering';
-import { setRectWorldCoords, setMarkerWorldCoords } from './fabricHandle';
+import { addHighlightBbox, addAnchor, getDxfWorldCoorindates } from './rendering';
+import {
+  setRectWorldCoords,
+  setMarkerWorldCoords,
+  setRectOriginalWoordCoord,
+  HIGHLIGHT_RECT,
+  HIGHLIGHT_RECT_OFFSET,
+} from './fabricHandle';
+import * as fabric from 'fabric';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
@@ -119,6 +126,17 @@ export function selectBlockWithPoint(point: [number, number]) {
   addChangeSelectionCallbacks(PATTERN_WASM_HANDLE, selection);
 }
 
+const updateHighlightPosition = (e: fabric.BasicTransformEvent) => {
+  if (HIGHLIGHT_RECT_OFFSET == null || PATTERN_WASM_HANDLE == undefined || e.transform === undefined) return;
+  const newCoordinate = getDxfWorldCoorindates(e.transform.target.left, e.transform.target.top);
+  const update = new Float32Array([
+    newCoordinate[0] - HIGHLIGHT_RECT_OFFSET[0],
+    newCoordinate[1] - HIGHLIGHT_RECT_OFFSET[1],
+  ]);
+  PATTERN_WASM_HANDLE.set_highlight_offset(update);
+  updateCanvasData(PATTERN_WASM_HANDLE);
+};
+
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
   const [blockKeys, bbox, anchor] = PATTERN_WASM_HANDLE.select_block_with_two_points(
@@ -130,6 +148,12 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
   if (bbox) {
     setRectWorldCoords(bbox);
     addHighlightBbox(bbox);
+    if (HIGHLIGHT_RECT) {
+      setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
+      HIGHLIGHT_RECT.on('moving', function (e) {
+        updateHighlightPosition(e);
+      });
+    }
   }
 
   if (anchor) {

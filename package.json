@@ -48,6 +48,7 @@
     "@types/stats.js": "^0.17.3",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@webgpu/types": "^0.1.44",
+    "@types/fabric": "5.3.10",
     "glob": "^11.0.0",
     "prettier": "^3.3.3",
     "rollup": "^4.18.0",

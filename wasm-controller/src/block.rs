@@ -158,17 +158,19 @@ impl Block {
         vertex_buffer: &mut Vec<f32>,
         index_buffer: &mut Vec<u32>,
     ) {
-        let block_color = self.get_color(settings);
+        let block_color: &(f32, f32, f32, f32) = self.get_color(settings);
+        let total_offset = self.get_highlight_offset(settings) + offset;
 
         for entity in self.entities.iter() {
             if settings.disabled_layers.contains(&entity.layer) {
                 continue;
             };
             let entity_color = entity.get_color(settings, block_color);
+            let entity_offset = if entity.hightlighted { &total_offset }  else { offset };
 
             entity.get_draw_sequence(
                 entity_color,
-                offset,
+                entity_offset,
                 &settings.cross_size,
                 last_index,
                 vertex_buffer,
@@ -196,6 +198,12 @@ impl Block {
         };
         return block_color;
     }
+
+    fn get_highlight_offset(&self, settings: &user_settings::Settings) -> ndarray::Array2<f32> {
+        let (x, y) = settings.highlight_offset;
+        return array![[x, y]];
+    }
+
 
     pub fn highlight(&mut self) {
         for entity in self.entities.iter_mut() {

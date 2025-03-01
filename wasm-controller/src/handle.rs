@@ -106,4 +106,12 @@ impl Handle {
     pub fn highlight_block(&mut self, block_key: String, status: bool) -> bool {
         return self.pattern.set_highlight(&block_key, status);
     }
+
+    pub fn set_highlight_offset(&mut self, v: Vec<f32>) -> bool {
+        if v.len() != 2 {
+            return false;
+        }
+        self.settings.highlight_offset = (v[0], v[1]);
+        return true;
+    }
 }

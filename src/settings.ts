@@ -6,6 +6,7 @@ let SETTINGS = {
   point_threshold: 4,
   cross_size: 0.3,
   view: 'Model',
+  highlight_offset: [0, 0],
 };
 
 export const LAYER_TO_NAME: { [layer: number]: string } = {
