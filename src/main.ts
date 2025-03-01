@@ -11,10 +11,11 @@ import {
   LINE_DRAW_PIPELINE,
   getModelViewProjectionMatrix,
   addHighlightBbox,
+  addAnchor,
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import { RECT_WORLD_COORDS, highlightRectIsMoving } from './fabricHandle';
+import { RECT_WORLD_COORDS, MARKER_WORLD_COORDS, highlightRectIsMoving, highlightMarkerIsMoving } from './fabricHandle';
 
 setupMenuCallbacks();
 addCallbacks();
@@ -27,6 +28,15 @@ function frame() {
   LAST_FRAME_MS = now;
 
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime);
+
+  if (RECT_WORLD_COORDS && !highlightRectIsMoving()) {
+    addHighlightBbox(RECT_WORLD_COORDS);
+  }
+
+  if (MARKER_WORLD_COORDS && !highlightMarkerIsMoving()) {
+    addAnchor(MARKER_WORLD_COORDS);
+  }
+
   DEVICE.queue.writeBuffer(
     UNIFORM_BUFFER,
     0,
@@ -52,10 +62,6 @@ function frame() {
     passEncoder.drawIndexed(nrIndices, 1, 0, 0, 0);
     passEncoder.end();
     DEVICE.queue.submit([commandEncoder.finish()]);
-  }
-
-  if (RECT_WORLD_COORDS && !highlightRectIsMoving()) {
-    addHighlightBbox(RECT_WORLD_COORDS);
   }
 
   requestAnimationFrame(frame);

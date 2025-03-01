@@ -10,6 +10,7 @@ let HIGHLIGHT_RECT: fabric.Rect | null = null;
 export let RECT_WORLD_COORDS: [[number, number], [number, number]] | null = null;
 let HIGHLIGHT_MARKER: fabric.Path | null = null;
 export let MARKER_WORLD_COORDS: [number, number] | null = null;
+let MARKER_MOVED = false;
 
 function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
   HIGHLIGHT_RECT = new fabric.Rect({
@@ -35,8 +36,8 @@ export function initialiseAnchor(x: number, y: number) {
   if (HIGHLIGHT_MARKER) return;
 
   HIGHLIGHT_MARKER = new fabric.Path(CROSS_SVG, {
-    left: x,
-    top: y,
+    left: x - 5,
+    top: y - 5,
     stroke: 'black',
     strokeWidth: 1,
     originX: 'center',
@@ -64,6 +65,20 @@ export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY:
   }
 }
 
+function updateAnchor(anchor: fabric.Path, x: number, y: number) {
+  anchor.set({ top: y - 5, left: x - 5 });
+  anchor.setCoords();
+  FABRIC_CANVAS_HANDLER.requestRenderAll();
+}
+
+export function createOrMoveAnchor(x: number, y: number) {
+  if (HIGHLIGHT_MARKER !== null) {
+    updateAnchor(HIGHLIGHT_MARKER, x, y);
+  } else {
+    initialiseAnchor(x, y);
+  }
+}
+
 export function clearFabricCanvas() {
   console.log('Clear fabric canvas');
   if (HIGHLIGHT_RECT === null) return;
@@ -72,6 +87,7 @@ export function clearFabricCanvas() {
   HIGHLIGHT_MARKER = null;
   RECT_WORLD_COORDS = null;
   MARKER_WORLD_COORDS = null;
+  MARKER_MOVED = false;
 }
 
 export function initialiseFabricCanvas(height: number, width: number) {
@@ -85,10 +101,14 @@ export function updateFabricCanvasHeightWidth(height: number, width: number) {
 
 export function enableSelection() {
   FABRIC_CANVAS_HANDLER.selection = true;
+  if (HIGHLIGHT_RECT) HIGHLIGHT_RECT.set({ selectable: true });
+  if (HIGHLIGHT_MARKER) HIGHLIGHT_MARKER.set({ selectable: true });
 }
 
 export function disableSelection() {
   FABRIC_CANVAS_HANDLER.selection = false;
+  if (HIGHLIGHT_RECT) HIGHLIGHT_RECT.set({ selectable: false });
+  if (HIGHLIGHT_MARKER) HIGHLIGHT_MARKER.set({ selectable: false });
 }
 
 export function setRectWorldCoords(coords: [[number, number], [number, number]]) {
@@ -102,4 +122,9 @@ export function setMarkerWorldCoords(coords: [number, number]) {
 export function highlightRectIsMoving(): boolean {
   if (HIGHLIGHT_RECT == null) return false;
   return HIGHLIGHT_RECT.isMoving || HIGHLIGHT_RECT.__corner === 'mtr';
+}
+
+export function highlightMarkerIsMoving(): boolean {
+  if (HIGHLIGHT_MARKER == null) return false;
+  return Boolean(HIGHLIGHT_MARKER.isMoving);
 }

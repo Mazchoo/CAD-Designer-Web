@@ -14,7 +14,7 @@ import { WASDCamera } from './camera';
 import { setDevice, mapBuffersToDevice } from './buffers';
 import { getNormalisedCanvasCoordinates, getPixelCoorindates } from './coordinates';
 import { GPU_CANVAS, INPUT_HANDLER } from './globals';
-import { initialiseFabricCanvas, clearFabricCanvas, createOrMoveRect } from './fabricHandle';
+import { initialiseFabricCanvas, createOrMoveAnchor, createOrMoveRect } from './fabricHandle';
 
 initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
 
@@ -165,25 +165,25 @@ export function getScreenCoordinates(worldX: number, worldY: number): [number, n
   return screenPoint;
 }
 
-export function clipPointsToScreenRange(
-  p1: [number, number],
-  p2: [number, number]
-): [[number, number], [number, number]] {
-  p1[0] = Math.max(Math.min(p1[0], 1), -1);
-  p1[1] = Math.max(Math.min(p1[1], 1), -1);
-  p2[0] = Math.max(Math.min(p2[0], 1), -1);
-  p2[1] = Math.max(Math.min(p2[1], 1), -1);
-  return [p1, p2];
+export function clipPointToScreenRange(p: [number, number]): [number, number] {
+  p[0] = Math.max(Math.min(p[0], 1), -1);
+  p[1] = Math.max(Math.min(p[1], 1), -1);
+  return p;
 }
 
 export function addHighlightBbox(bbox: [[number, number], [number, number]]) {
   const w1 = getScreenCoordinates(bbox[0][0], bbox[1][0]);
   const w2 = getScreenCoordinates(bbox[0][1], bbox[1][1]);
-  const clipOutput = clipPointsToScreenRange(w1, w2);
 
-  let [s1, s2] = clipOutput;
-  s1 = getPixelCoorindates(s1);
-  s2 = getPixelCoorindates(s2);
+  const s1 = getPixelCoorindates(clipPointToScreenRange(w1));
+  const s2 = getPixelCoorindates(clipPointToScreenRange(w2));
 
   createOrMoveRect(Math.min(s1[0], s2[0]), Math.min(s1[1], s2[1]), Math.max(s1[0], s2[0]), Math.max(s1[1], s2[1]));
+}
+
+export function addAnchor(anchor: [number, number]) {
+  const w = getScreenCoordinates(anchor[0], anchor[1]);
+  const s = getPixelCoorindates(clipPointToScreenRange(w));
+
+  createOrMoveAnchor(s[0], s[1]);
 }

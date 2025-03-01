@@ -2,8 +2,8 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
-import { addHighlightBbox } from './rendering';
-import { setRectWorldCoords } from './fabricHandle';
+import { addHighlightBbox, addAnchor } from './rendering';
+import { setRectWorldCoords, setMarkerWorldCoords } from './fabricHandle';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
 let wasmStarted: boolean = false;
@@ -121,7 +121,7 @@ export function selectBlockWithPoint(point: [number, number]) {
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
-  const [blockKeys, bbox] = PATTERN_WASM_HANDLE.select_block_with_two_points(
+  const [blockKeys, bbox, anchor] = PATTERN_WASM_HANDLE.select_block_with_two_points(
     new Float32Array(p1),
     new Float32Array(p2)
   );
@@ -130,6 +130,11 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
   if (bbox) {
     setRectWorldCoords(bbox);
     addHighlightBbox(bbox);
+  }
+
+  if (anchor) {
+    setMarkerWorldCoords(anchor);
+    addAnchor(anchor);
   }
 
   updateSelection(blockKeys);

@@ -45,7 +45,7 @@ export class WASDCamera {
   // Movement velocity drag coeffient [0 .. 1]
   // 0: Continues forever
   // 1: Instantly stops moving
-  frictionCoefficient = 0.99;
+  frictionCoefficient = 0.999;
 
   // Construtor
   constructor(position: Vec3) {

@@ -60,6 +60,11 @@ pub fn union(
     );
 }
 
+pub fn center(bbox: &((f32, f32), (f32, f32))) -> (f32, f32) {
+    let ((min_x, max_x), (min_y, max_y)) = bbox;
+    return ((min_x + max_x) / 2., (min_y + max_y) / 2.);
+}
+
 pub fn construct_from_vectors(v1: Vec<f32>, v2: Vec<f32>) -> Option<((f32, f32), (f32, f32))> {
     if v1.len() != 2 || v2.len() != 2 {
         return Option::None;
