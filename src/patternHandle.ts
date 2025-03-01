@@ -2,13 +2,13 @@ import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.j
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
-import { addHighlightBbox, addAnchor, getDxfWorldCoorindates } from './rendering';
+import { addHighlightBbox, getDxfWorldCoorindates } from './rendering';
 import {
   setRectWorldCoords,
-  setMarkerWorldCoords,
   setRectOriginalWoordCoord,
   HIGHLIGHT_RECT,
-  HIGHLIGHT_RECT_OFFSET,
+  HIGHLIGHT_RECT_ORIGINAL_WORLD,
+  RECT_WORLD_COORDS,
 } from './fabricHandle';
 import * as fabric from 'fabric';
 
@@ -127,19 +127,39 @@ export function selectBlockWithPoint(point: [number, number]) {
 }
 
 export function updateHighlightPosition(rect: fabric.Rect) {
-  if (HIGHLIGHT_RECT_OFFSET == null || PATTERN_WASM_HANDLE == undefined) return;
+  if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || PATTERN_WASM_HANDLE == undefined) return;
   const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
-  const update = new Float32Array([
-    newCoordinate[0] - HIGHLIGHT_RECT_OFFSET[0],
-    newCoordinate[1] - HIGHLIGHT_RECT_OFFSET[1],
+  const worldUpdate = new Float32Array([
+    newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
+    newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
   ]);
-  PATTERN_WASM_HANDLE.set_highlight_offset(update);
+  PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate);
   updateCanvasData(PATTERN_WASM_HANDLE);
+}
+
+export function setNewHighlightPosition(rect: fabric.Rect) {
+  if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) return;
+  const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
+  const worldUpdate = new Float32Array([
+    newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
+    newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
+  ]);
+  setRectOriginalWoordCoord(newCoordinate);
+  PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate);
+  PATTERN_WASM_HANDLE.offset_highlights();
+  updateCanvasData(PATTERN_WASM_HANDLE);
+
+  const newBBox = [
+    [RECT_WORLD_COORDS[0][0] + worldUpdate[0], RECT_WORLD_COORDS[0][1] + worldUpdate[0]],
+    [RECT_WORLD_COORDS[1][0] + worldUpdate[1], RECT_WORLD_COORDS[1][1] + worldUpdate[1]],
+  ] as [[number, number], [number, number]];
+  setRectWorldCoords(newBBox);
+  addHighlightBbox(newBBox);
 }
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
   if (PATTERN_WASM_HANDLE === undefined) return;
-  const [blockKeys, bbox, anchor] = PATTERN_WASM_HANDLE.select_block_with_two_points(
+  const [blockKeys, bbox] = PATTERN_WASM_HANDLE.select_block_with_two_points(
     new Float32Array(p1),
     new Float32Array(p2)
   );
@@ -148,17 +168,16 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
   if (bbox) {
     setRectWorldCoords(bbox);
     addHighlightBbox(bbox);
+
     if (HIGHLIGHT_RECT) {
       setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
       HIGHLIGHT_RECT.on('moving', function (e) {
         if (e.transform) updateHighlightPosition(e.transform.target as fabric.Rect);
       });
+      HIGHLIGHT_RECT.on('modified', function (e) {
+        if (e.transform) setNewHighlightPosition(e.transform.target as fabric.Rect);
+      });
     }
-  }
-
-  if (anchor) {
-    setMarkerWorldCoords(anchor);
-    addAnchor(anchor);
   }
 
   updateSelection(blockKeys);

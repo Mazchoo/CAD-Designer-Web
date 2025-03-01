@@ -1,5 +1,5 @@
 // Define GPU rendering context
-import { mat4, vec3, vec4 } from 'wgpu-matrix';
+import { mat4, vec3 } from 'wgpu-matrix';
 import { quitIfWebGPUNotAvailable } from './util';
 
 import { program as linesWGSL } from './shaders/lines';
@@ -14,13 +14,7 @@ import { WASDCamera } from './camera';
 import { setDevice, mapBuffersToDevice } from './buffers';
 import { getNormalisedCanvasCoordinates, getPixelCoorindates } from './coordinates';
 import { GPU_CANVAS } from './globals';
-import {
-  initialiseFabricCanvas,
-  createOrMoveAnchor,
-  createOrMoveRect,
-  highlightRectIsMoving,
-  highlightMarkerIsMoving,
-} from './fabricHandle';
+import { initialiseFabricCanvas, createOrMoveRect, highlightRectIsMoving } from './fabricHandle';
 import Input, { inputMovingWithDigital } from './input';
 
 initialiseFabricCanvas(GPU_CANVAS.clientHeight, GPU_CANVAS.clientWidth);
@@ -142,7 +136,7 @@ updateProjectionMatrix();
 
 const MODEL_VIEW_PROJECTION_MATRIX = mat4.create();
 export function getModelViewProjectionMatrix(deltaTime: number, input: Input) {
-  const ignoreZoom = highlightRectIsMoving() || highlightMarkerIsMoving();
+  const ignoreZoom = highlightRectIsMoving();
   const viewMatrix = CAMERA.update(deltaTime, input, ignoreZoom);
   mat4.multiply(PROJECTION_MATRIX, viewMatrix, MODEL_VIEW_PROJECTION_MATRIX);
   return MODEL_VIEW_PROJECTION_MATRIX;
@@ -187,11 +181,4 @@ export function addHighlightBbox(bbox: [[number, number], [number, number]]) {
   const s2 = getPixelCoorindates(clipPointToScreenRange(w2));
 
   createOrMoveRect(Math.min(s1[0], s2[0]), Math.min(s1[1], s2[1]), Math.max(s1[0], s2[0]), Math.max(s1[1], s2[1]));
-}
-
-export function addAnchor(anchor: [number, number]) {
-  const w = getScreenCoordinates(anchor[0], anchor[1]);
-  const s = getPixelCoorindates(clipPointToScreenRange(w));
-
-  createOrMoveAnchor(s[0], s[1]);
 }

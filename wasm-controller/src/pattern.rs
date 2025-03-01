@@ -1,4 +1,4 @@
-use ndarray::Array2;
+use ndarray::{Array2, array};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
@@ -329,5 +329,21 @@ impl Pattern {
             }
         }
         return block_exists;
+    }
+
+    pub(crate) fn offset_highlighted_objects(&mut self, offset: (f32, f32)) {
+        let (x, y) = offset;
+        let arr_offset: Array2<f32> = array![[x, y]];
+
+        for block in self.blocks.iter() {
+            if block.is_highlighted() {
+                for insert in self.entities.iter_mut() {
+                    if insert.name == block.name {
+                        insert.position += &arr_offset;
+                    }
+                }
+            }
+            // ToDo - else check individual entities
+        }
     }
 }

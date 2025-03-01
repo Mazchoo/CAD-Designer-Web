@@ -13,6 +13,8 @@ pub struct Block {
     entities: Vec<entity::Entity>,
     // Cached variables
     bounding_box: ((f32, f32), (f32, f32)),
+    // display variables
+    highlighted: bool,
 }
 
 impl Block {
@@ -24,6 +26,7 @@ impl Block {
             name: name,
             centroid: array![[center.x, center.y]],
             bounding_box: bounding_box,
+            highlighted: false
         };
     }
 
@@ -166,7 +169,11 @@ impl Block {
                 continue;
             };
             let entity_color = entity.get_color(settings, block_color);
-            let entity_offset = if entity.hightlighted { &total_offset }  else { offset };
+            let entity_offset = if entity.hightlighted {
+                &total_offset
+            } else {
+                offset
+            };
 
             entity.get_draw_sequence(
                 entity_color,
@@ -204,14 +211,19 @@ impl Block {
         return array![[x, y]];
     }
 
+    pub fn is_highlighted(&self) -> bool {
+        return self.highlighted;
+    }
 
     pub fn highlight(&mut self) {
+        self.highlighted = true;
         for entity in self.entities.iter_mut() {
             entity.hightlighted = true;
         }
     }
 
     pub fn remove_highlight(&mut self) {
+        self.highlighted = false;
         for entity in self.entities.iter_mut() {
             entity.remove_highlight();
         }

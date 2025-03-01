@@ -11,20 +11,12 @@ import {
   LINE_DRAW_PIPELINE,
   getModelViewProjectionMatrix,
   addHighlightBbox,
-  addAnchor,
   CAMERA,
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import {
-  RECT_WORLD_COORDS,
-  MARKER_WORLD_COORDS,
-  HIGHLIGHT_RECT,
-  highlightRectIsMoving,
-  highlightMarkerIsMoving,
-} from './fabricHandle';
+import { RECT_WORLD_COORDS, MARKER_WORLD_COORDS, HIGHLIGHT_RECT, highlightRectIsMoving } from './fabricHandle';
 import { INPUT_HANDLER } from './globals';
-import { inputMovingWithDigital } from './input';
 
 setupMenuCallbacks();
 addCallbacks();
@@ -41,10 +33,6 @@ function frame() {
 
   if (RECT_WORLD_COORDS && !highlightRectIsMoving()) {
     addHighlightBbox(RECT_WORLD_COORDS);
-  }
-
-  if (MARKER_WORLD_COORDS && !highlightMarkerIsMoving()) {
-    addAnchor(MARKER_WORLD_COORDS);
   }
 
   if (highlightRectIsMoving() && CAMERA.isMoving() && HIGHLIGHT_RECT) {

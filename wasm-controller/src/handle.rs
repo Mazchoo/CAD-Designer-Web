@@ -81,16 +81,12 @@ impl Handle {
         let empty_output: Vec<String> = vec![];
         if let Some(bbox) = bounding_box::construct_from_vectors(v1, v2) {
             let (block_keys, union_bbox) = self.pattern.find_blocks_with_bbox(&bbox);
-            let mut center: Option<(f32, f32)> = Option::None;
-            if let Some(output_bbox) = union_bbox {
-                center = Some(bounding_box::center(&output_bbox));
-            }
 
             self.pattern.highlight_selection(&block_keys);
-            return to_value(&(block_keys, union_bbox, center)).unwrap();
+            return to_value(&(block_keys, union_bbox)).unwrap();
         }
         self.pattern.highlight_selection(&empty_output);
-        return to_value(&(empty_output, (), ())).unwrap();
+        return to_value(&(empty_output, ())).unwrap();
     }
 
     pub fn disable_layer(&mut self, layer: i32) {
@@ -113,5 +109,10 @@ impl Handle {
         }
         self.settings.highlight_offset = (v[0], v[1]);
         return true;
+    }
+
+    pub fn offset_highlights(&mut self) {
+        self.pattern.offset_highlighted_objects(self.settings.highlight_offset);
+        self.settings.highlight_offset = (0., 0.);
     }
 }

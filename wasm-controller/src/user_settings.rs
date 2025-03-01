@@ -12,7 +12,7 @@ pub struct Settings {
     pub point_threshold: f32,
     pub cross_size: f32,
     pub view: String,
-    pub highlight_offset: (f32, f32)
+    pub highlight_offset: (f32, f32),
 }
 
 impl Default for Settings {
@@ -25,7 +25,7 @@ impl Default for Settings {
             point_threshold: 4.,
             cross_size: 0.3,
             view: "Model".to_string(),
-            highlight_offset: (0., 0.)
+            highlight_offset: (0., 0.),
         }
     }
 }
