@@ -1,5 +1,4 @@
 import { selectBlockWithBBox } from './patternHandle';
-import { enableSelection, disableSelection } from './fabricHandle';
 import { ACTION_TYPES, CURRENT_ACTION, setCurrentAction } from './actionTypes';
 
 let POINT_DOWN: [number, number] | null = null;
@@ -8,7 +7,6 @@ export function setupSelectBlockAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
   currentAction.value = 'Select Block';
   setCurrentAction(ACTION_TYPES.SELECT_BLOCK);
-  enableSelection();
   console.log('Select Block');
 }
 
@@ -16,7 +14,6 @@ export function setupPanAction() {
   const currentAction = document.getElementById('current-action') as HTMLInputElement;
   currentAction.value = 'Pan';
   setCurrentAction(ACTION_TYPES.PAN);
-  disableSelection();
   console.log('Action Pan');
 }
 
