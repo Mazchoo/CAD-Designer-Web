@@ -83,6 +83,14 @@ export function updateFabricCanvasHeightWidth(height: number, width: number) {
   FABRIC_CANVAS_HANDLER.setDimensions({ height: height, width: width });
 }
 
+export function enableSelection() {
+  FABRIC_CANVAS_HANDLER.selection = true;
+}
+
+export function disableSelection() {
+  FABRIC_CANVAS_HANDLER.selection = false;
+}
+
 export function setRectWorldCoords(coords: [[number, number], [number, number]]) {
   RECT_WORLD_COORDS = coords;
 }
