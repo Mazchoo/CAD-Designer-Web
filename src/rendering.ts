@@ -177,8 +177,8 @@ export function addHighlightBbox(bbox: [[number, number], [number, number]]) {
   const w1 = getScreenCoordinates(bbox[0][0], bbox[1][0]);
   const w2 = getScreenCoordinates(bbox[0][1], bbox[1][1]);
 
-  const s1 = getPixelCoorindates(clipPointToScreenRange(w1));
-  const s2 = getPixelCoorindates(clipPointToScreenRange(w2));
+  const s1 = getPixelCoorindates(w1);
+  const s2 = getPixelCoorindates(w2);
 
   createOrMoveRect(Math.min(s1[0], s2[0]), Math.min(s1[1], s2[1]), Math.max(s1[0], s2[0]), Math.max(s1[1], s2[1]));
 }

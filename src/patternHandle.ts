@@ -9,7 +9,6 @@ import {
   HIGHLIGHT_RECT,
   HIGHLIGHT_RECT_ORIGINAL_WORLD,
   RECT_WORLD_COORDS,
-  getAbsoluteTopLeft,
 } from './fabricHandle';
 import * as fabric from 'fabric';
 
@@ -171,10 +170,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
     addHighlightBbox(bbox);
 
     if (HIGHLIGHT_RECT) {
-      console.log('top-left', getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
       setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
-      const [x, y] = getAbsoluteTopLeft(HIGHLIGHT_RECT);
-      console.log('absolute top left', getDxfWorldCoorindates(x, y));
       HIGHLIGHT_RECT.on('moving', function (e) {
         if (e.transform) updateHighlightPosition(e.transform.target as fabric.Rect);
       });
