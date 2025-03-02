@@ -36,7 +36,6 @@ function frame() {
   }
 
   if (highlightRectIsMoving() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
-    console.log('Mouse move triggered');
     updateHighlightPosition(HIGHLIGHT_RECT);
   }
 
