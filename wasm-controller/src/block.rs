@@ -26,7 +26,7 @@ impl Block {
             name: name,
             centroid: array![[center.x, center.y]],
             bounding_box: bounding_box,
-            highlighted: false
+            highlighted: false,
         };
     }
 

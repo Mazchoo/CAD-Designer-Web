@@ -63,6 +63,10 @@ impl Handle {
         }
     }
 
+    pub fn reset_selection(&mut self) {
+        self.pattern.reset_selection();
+    }
+
     pub fn select_block_with_point(&mut self, point: Vec<f32>) -> JsValue {
         let empty_output: Vec<String> = vec![];
         if point.len() != 2 {
@@ -112,7 +116,8 @@ impl Handle {
     }
 
     pub fn offset_highlights(&mut self) {
-        self.pattern.offset_highlighted_objects(self.settings.highlight_offset);
+        self.pattern
+            .offset_highlighted_objects(self.settings.highlight_offset);
         self.settings.highlight_offset = (0., 0.);
     }
 }

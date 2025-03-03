@@ -4,6 +4,7 @@ import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from '.
 import { mapBuffersToDevice } from './buffers';
 import { addHighlightBbox, getDxfWorldCoorindates } from './rendering';
 import {
+  clearFabricCanvas,
   setRectWorldCoords,
   setRectOriginalWoordCoord,
   HIGHLIGHT_RECT,
@@ -20,6 +21,14 @@ export async function startUpWasm() {
   console.log('Started wasm');
   greet('User');
   wasmStarted = true;
+}
+
+export function deselectAll() {
+  clearFabricCanvas();
+  if (PATTERN_WASM_HANDLE) {
+    PATTERN_WASM_HANDLE.reset_selection();
+    updateCanvasData(PATTERN_WASM_HANDLE);
+  }
 }
 
 const updateCanvasData = (handle: Handle | undefined) => {
@@ -74,7 +83,7 @@ const addViewCallbacksToViews = (handle: Handle | undefined) => {
   if (modelCheckOption !== undefined) {
     modelCheckOption.addEventListener('click', () => {
       handle.set_view('Model');
-      updateCanvasData(handle);
+      deselectAll();
     });
   }
 
@@ -84,7 +93,7 @@ const addViewCallbacksToViews = (handle: Handle | undefined) => {
     const viewName = `Block=>${name}`;
     blockCheckOption.addEventListener('click', () => {
       handle.set_view(viewName);
-      updateCanvasData(handle);
+      deselectAll();
     });
   }
 };

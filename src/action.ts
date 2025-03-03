@@ -1,4 +1,4 @@
-import { selectBlockWithBBox } from './patternHandle';
+import { selectBlockWithBBox, deselectAll } from './patternHandle';
 import { enableSelection, disableSelection } from './fabricHandle';
 import { ACTION_TYPES, CURRENT_ACTION, setCurrentAction } from './actionTypes';
 
@@ -26,6 +26,7 @@ export function performAction(point: [number, number], mouseDown: boolean) {
   } else if (CURRENT_ACTION === ACTION_TYPES.SELECT_BLOCK) {
     if (mouseDown) {
       POINT_DOWN = point;
+      deselectAll();
     } else if (POINT_DOWN != null) {
       selectBlockWithBBox(POINT_DOWN, point);
     }

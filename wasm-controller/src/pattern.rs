@@ -1,4 +1,4 @@
-use ndarray::{Array2, array};
+use ndarray::{array, Array2};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
