@@ -8,6 +8,7 @@ export let HIGHLIGHT_RECT: fabric.Rect | null = null;
 export let HIGHLIGHT_RECT_ORIGINAL_WORLD: [number, number] | null = null;
 export let RECT_WORLD_COORDS: [[number, number], [number, number]] | null = null;
 export let MARKER_WORLD_COORDS: [number, number] | null = null;
+export let RECT_IS_SCALING: boolean = false;
 
 function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
   HIGHLIGHT_RECT = new fabric.Rect({
@@ -51,6 +52,7 @@ export function clearFabricCanvas() {
   RECT_WORLD_COORDS = null;
   MARKER_WORLD_COORDS = null;
   HIGHLIGHT_RECT_ORIGINAL_WORLD = null;
+  RECT_IS_SCALING = false;
 }
 
 export function initialiseFabricCanvas(height: number, width: number) {
@@ -78,9 +80,13 @@ export function setRectWorldCoords(coords: [[number, number], [number, number]])
 
 export function highlightRectIsMoving(): boolean {
   if (HIGHLIGHT_RECT == null) return false;
-  return HIGHLIGHT_RECT.isMoving || HIGHLIGHT_RECT.__corner === 'mtr';
+  return HIGHLIGHT_RECT.isMoving || RECT_IS_SCALING || HIGHLIGHT_RECT.__corner === 'mtr';
 }
 
 export function setRectOriginalWoordCoord(coord: [number, number]) {
   HIGHLIGHT_RECT_ORIGINAL_WORLD = coord;
+}
+
+export function setRectIsScaling(scaling: boolean) {
+  RECT_IS_SCALING = scaling;
 }

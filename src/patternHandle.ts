@@ -7,6 +7,7 @@ import {
   clearFabricCanvas,
   setRectWorldCoords,
   setRectOriginalWoordCoord,
+  setRectIsScaling,
   HIGHLIGHT_RECT,
   HIGHLIGHT_RECT_ORIGINAL_WORLD,
   RECT_WORLD_COORDS,
@@ -147,6 +148,8 @@ export function updateHighlightPosition(rect: fabric.Rect) {
 }
 
 export function setNewHighlightPosition(rect: fabric.Rect) {
+  setRectIsScaling(false);
+
   if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) return;
   const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
   const worldUpdate = new Float32Array([
@@ -182,6 +185,9 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
       setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
       HIGHLIGHT_RECT.on('moving', function (e) {
         if (e.transform) updateHighlightPosition(e.transform.target as fabric.Rect);
+      });
+      HIGHLIGHT_RECT.on('scaling', function (e) {
+        setRectIsScaling(true);
       });
       HIGHLIGHT_RECT.on('modified', function (e) {
         if (e.transform) setNewHighlightPosition(e.transform.target as fabric.Rect);
