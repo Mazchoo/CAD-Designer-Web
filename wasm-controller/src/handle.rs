@@ -84,7 +84,9 @@ impl Handle {
     pub fn select_block_with_two_points(&mut self, v1: Vec<f32>, v2: Vec<f32>) -> JsValue {
         let empty_output: Vec<String> = vec![];
         if let Some(bbox) = bounding_box::construct_from_vectors(v1, v2) {
-            let (block_keys, union_bbox) = self.pattern.find_blocks_with_bbox(&bbox);
+            let (block_keys, union_bbox) = self
+                .pattern
+                .find_blocks_with_bbox(&bbox, &self.settings.view);
 
             self.pattern.highlight_selection(&block_keys);
             return to_value(&(block_keys, union_bbox)).unwrap();
@@ -117,7 +119,7 @@ impl Handle {
 
     pub fn offset_highlights(&mut self) {
         self.pattern
-            .offset_highlighted_objects(self.settings.highlight_offset);
+            .offset_highlighted_objects(self.settings.highlight_offset, &self.settings.view);
         self.settings.highlight_offset = (0., 0.);
     }
 }

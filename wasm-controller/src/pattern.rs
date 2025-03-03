@@ -7,6 +7,7 @@ use crate::insert;
 use crate::parse_pattern;
 use crate::user_settings;
 use crate::utils::bounding_box;
+use crate::utils::parse;
 
 #[wasm_bindgen]
 #[derive(Debug)]
@@ -214,11 +215,8 @@ impl Pattern {
         settings: &user_settings::Settings,
     ) -> (Vec<f32>, Vec<u32>) {
         // View with name Block=>L-1 will attempt to draw L-1
-        if settings.view.split("=>").next() == Some("Block") {
-            if let Some(ind) = settings.view.find("=>") {
-                let key = settings.view[(ind + "=>".len())..].to_string();
-                return self.get_draw_sequence_block(settings, &key);
-            }
+        if let Some(block_key) = parse::view_as_block_key(&settings.view) {
+            return self.get_draw_sequence_block(settings, &block_key);
         }
 
         return self.get_draw_sequence_model(settings);
@@ -284,12 +282,23 @@ impl Pattern {
     pub(crate) fn find_blocks_with_bbox(
         &self,
         bbox: &((f32, f32), (f32, f32)),
+        view: &String,
     ) -> (Vec<String>, Option<((f32, f32), (f32, f32))>) {
         let mut selected_block_keys: Vec<String> = vec![];
         let mut union_box = Option::None;
+        let view_single_block_key = parse::view_as_block_key(view); // Will be block name if viewing one block
 
         for block in self.blocks.iter() {
-            let offset = self.get_offset_for_block(&block.name);
+            let offset: Array2<f32>;
+            if let Some(key) = &view_single_block_key {
+                if &block.name != key {
+                    continue; // Skip current block is viewing only one block with a different name to this
+                }
+                offset = array![[0., 0.]];
+            } else {
+                offset = self.get_offset_for_block(&block.name);
+            }
+
             let offset_bbox = bounding_box::offset_bbox(block.get_bounding_box(), &offset);
 
             if bounding_box::intersect(&offset_bbox, bbox) {
@@ -331,12 +340,18 @@ impl Pattern {
         return block_exists;
     }
 
-    pub(crate) fn offset_highlighted_objects(&mut self, offset: (f32, f32)) {
+    pub(crate) fn offset_highlighted_objects(&mut self, offset: (f32, f32), view: &String) {
         let (x, y) = offset;
         let arr_offset: Array2<f32> = array![[x, y]];
+        let view_single_block_key = parse::view_as_block_key(view);
 
-        for block in self.blocks.iter() {
+        for block in self.blocks.iter_mut() {
             if block.is_highlighted() {
+                if view_single_block_key != Option::None {
+                    // If looking at single block, offset entities in block
+                    block.offset_entities(&arr_offset);
+                    break;
+                }
                 for insert in self.entities.iter_mut() {
                     if insert.name == block.name {
                         insert.position += &arr_offset;

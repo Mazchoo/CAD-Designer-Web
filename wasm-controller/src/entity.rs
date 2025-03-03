@@ -150,6 +150,11 @@ impl Entity {
         return entity_color;
     }
 
+    pub fn offset_vertices(&mut self, offset: &Array2<f32>) {
+        self.vertices += offset;
+        self.bounding_box = bounding_box::offset_bbox(&self.bounding_box, offset);
+    }
+
     pub fn get_closest_point_on_entity(&self) {}
 
     pub fn has_point_within_threshold(&self, threshold: f32) {}

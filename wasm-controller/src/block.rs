@@ -228,4 +228,11 @@ impl Block {
             entity.remove_highlight();
         }
     }
+
+    pub fn offset_entities(&mut self, offset: &Array2<f32>) {
+        for entity in self.entities.iter_mut() {
+            entity.offset_vertices(offset);
+        }
+        self.bounding_box = bounding_box::offset_bbox(&self.bounding_box, offset);
+    }
 }
