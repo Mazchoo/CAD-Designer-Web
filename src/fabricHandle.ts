@@ -7,7 +7,6 @@ export const FABRIC_CANVAS_HANDLER = new fabric.Canvas('fabric-canvas', {
 export let HIGHLIGHT_RECT: fabric.Rect | null = null;
 export let HIGHLIGHT_RECT_ORIGINAL_WORLD: [number, number] | null = null;
 export let RECT_WORLD_COORDS: [[number, number], [number, number]] | null = null;
-export let MARKER_WORLD_COORDS: [number, number] | null = null;
 export let RECT_IS_SCALING: boolean = false;
 
 function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
@@ -50,7 +49,6 @@ export function clearFabricCanvas() {
   FABRIC_CANVAS_HANDLER.clear();
   HIGHLIGHT_RECT = null;
   RECT_WORLD_COORDS = null;
-  MARKER_WORLD_COORDS = null;
   HIGHLIGHT_RECT_ORIGINAL_WORLD = null;
   RECT_IS_SCALING = false;
 }
@@ -89,4 +87,45 @@ export function setRectOriginalWoordCoord(coord: [number, number]) {
 
 export function setRectIsScaling(scaling: boolean) {
   RECT_IS_SCALING = scaling;
+}
+
+export function getScalingAnchor(rect: fabric.Rect, corner: string): [number, number] {
+  const { left, top, width, height, scaleX, scaleY } = rect;
+
+  const scaledWidth = width * scaleX;
+  const scaledHeight = height * scaleY;
+
+  let anchorX = left;
+  let anchorY = top;
+
+  switch (corner) {
+    case 'tl': // Top-left is moving → anchor at bottom-right
+      anchorX += scaledWidth;
+      anchorY += scaledHeight;
+      break;
+    case 'tr': // Top-right is moving → anchor at bottom-left
+      anchorY += scaledHeight;
+      break;
+    case 'bl': // Bottom-left is moving → anchor at top-right
+      anchorX += scaledWidth;
+      break;
+    case 'br': // Bottom-right is moving → anchor at top-left
+      break;
+    case 'ml': // Middle-left is moving → anchor at middle-right
+      anchorX += scaledWidth;
+      anchorY += scaledHeight / 2;
+      break;
+    case 'mr': // Middle-right is moving → anchor at middle-left
+      anchorY += scaledHeight / 2;
+      break;
+    case 'mt': // Middle-top is moving → anchor at middle-bottom
+      anchorX += scaledWidth / 2;
+      anchorY += scaledHeight;
+      break;
+    case 'mb': // Middle-bottom is moving → anchor at middle-top
+      anchorX += scaledWidth / 2;
+      break;
+  }
+
+  return [anchorX, anchorY];
 }

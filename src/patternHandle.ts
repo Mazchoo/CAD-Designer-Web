@@ -8,9 +8,11 @@ import {
   setRectWorldCoords,
   setRectOriginalWoordCoord,
   setRectIsScaling,
+  getScalingAnchor,
   HIGHLIGHT_RECT,
   HIGHLIGHT_RECT_ORIGINAL_WORLD,
   RECT_WORLD_COORDS,
+  RECT_IS_SCALING,
 } from './fabricHandle';
 import * as fabric from 'fabric';
 
@@ -148,25 +150,40 @@ export function updateHighlightPosition(rect: fabric.Rect) {
 }
 
 export function setNewHighlightPosition(rect: fabric.Rect) {
-  setRectIsScaling(false);
+  if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) {
+    setRectIsScaling(false);
+    return;
+  }
 
-  if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) return;
-  const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
-  const worldUpdate = new Float32Array([
-    newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
-    newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
-  ]);
-  setRectOriginalWoordCoord(newCoordinate);
-  PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate);
-  PATTERN_WASM_HANDLE.offset_highlights();
-  updateCanvasData(PATTERN_WASM_HANDLE);
+  if (RECT_IS_SCALING) {
+    setRectIsScaling(false);
+  } else {
+    const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
+    const worldUpdate = new Float32Array([
+      newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
+      newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
+    ]);
+    setRectOriginalWoordCoord(newCoordinate);
+    PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate);
+    PATTERN_WASM_HANDLE.offset_highlights();
+    updateCanvasData(PATTERN_WASM_HANDLE);
+  
+    const newBBox = [
+      [RECT_WORLD_COORDS[0][0] + worldUpdate[0], RECT_WORLD_COORDS[0][1] + worldUpdate[0]],
+      [RECT_WORLD_COORDS[1][0] + worldUpdate[1], RECT_WORLD_COORDS[1][1] + worldUpdate[1]],
+    ] as [[number, number], [number, number]];
+    setRectWorldCoords(newBBox);
+    addHighlightBbox(newBBox);
+  }
+}
 
-  const newBBox = [
-    [RECT_WORLD_COORDS[0][0] + worldUpdate[0], RECT_WORLD_COORDS[0][1] + worldUpdate[0]],
-    [RECT_WORLD_COORDS[1][0] + worldUpdate[1], RECT_WORLD_COORDS[1][1] + worldUpdate[1]],
-  ] as [[number, number], [number, number]];
-  setRectWorldCoords(newBBox);
-  addHighlightBbox(newBBox);
+export function updateScalingPosition(rect: fabric.Rect, corner: string) {
+  setRectIsScaling(true);
+  if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || PATTERN_WASM_HANDLE == undefined) return;
+  const anchorScreen = getScalingAnchor(rect, corner);
+  const anchorWorld = getDxfWorldCoorindates(anchorScreen[0], anchorScreen[1]);
+  console.log("Scaling", anchorWorld, rect.scaleX, rect.scaleY, rect.flipX, rect.flipY);
+  // PATTERN_WASM_HANDLE.set_highlight_scale(corner[0], corner[1], rect.scaleX, rect.scaleY, rect.flipX, rect.flipY);
 }
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
@@ -187,7 +204,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
         if (e.transform) updateHighlightPosition(e.transform.target as fabric.Rect);
       });
       HIGHLIGHT_RECT.on('scaling', function (e) {
-        setRectIsScaling(true);
+        if (e.transform) updateScalingPosition(e.transform.target as fabric.Rect, e.transform.corner);
       });
       HIGHLIGHT_RECT.on('modified', function (e) {
         if (e.transform) setNewHighlightPosition(e.transform.target as fabric.Rect);
