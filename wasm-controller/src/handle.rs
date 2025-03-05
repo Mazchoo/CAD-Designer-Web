@@ -109,11 +109,8 @@ impl Handle {
         return self.pattern.set_highlight(&block_key, status);
     }
 
-    pub fn set_highlight_offset(&mut self, v: Vec<f32>) -> bool {
-        if v.len() != 2 {
-            return false;
-        }
-        self.settings.highlight_offset = (v[0], v[1]);
+    pub fn set_highlight_offset(&mut self, offset_x: f32, offset_y: f32) -> bool {
+        self.settings.highlight_offset = (offset_x, offset_y);
         return true;
     }
 
@@ -121,5 +118,26 @@ impl Handle {
         self.pattern
             .offset_highlighted_objects(self.settings.highlight_offset, &self.settings.view);
         self.settings.highlight_offset = (0., 0.);
+    }
+
+    pub fn set_highlight_scale(&mut self, scale_x: f32, scale_y: f32) -> bool {
+        self.settings.highlight_scale = (scale_x, scale_y);
+        return true;
+    }
+
+    pub fn set_highlight_flip(&mut self, flip_x: bool, flip_y: bool) -> bool {
+        self.settings.highlight_flip = (flip_x, flip_y);
+        return true;
+    }
+
+    pub fn set_highlight_anchor(&mut self, anchor_x: f32, anchor_y: f32) -> bool {
+        self.settings.highlight_anchor = (anchor_x, anchor_y);
+        return true;
+    }
+
+    pub fn scale_offsets(&mut self) {
+        self.settings.highlight_scale = (1., 1.);
+        self.settings.highlight_flip = (false, false);
+        self.settings.highlight_anchor = (0., 0.);
     }
 }

@@ -1,6 +1,7 @@
 use std::i32;
 
 use ndarray::Array2;
+use web_sys::console;
 
 use crate::user_settings;
 use crate::utils::bounding_box;
@@ -31,7 +32,7 @@ pub struct Entity {
     pub bounding_box: ((f32, f32), (f32, f32)),
 
     // Display settings
-    pub hightlighted: bool,
+    pub highlighted: bool,
 }
 
 impl Entity {
@@ -54,7 +55,7 @@ impl Entity {
             entity_index: entity_index,
             text: text,
             bounding_box: bounding_box,
-            hightlighted: false,
+            highlighted: false,
         };
     }
 
@@ -62,6 +63,8 @@ impl Entity {
         &self,
         color: &(f32, f32, f32, f32),
         offset: &Array2<f32>,
+        scale: &Array2<f32>,
+        anchor: &Array2<f32>,
         cross_size: &f32,
         last_index: &mut u32,
         vertex_buffer: &mut Vec<f32>,
@@ -71,7 +74,12 @@ impl Entity {
             return;
         }
 
-        let offset_vertices = self.vertices.clone() + offset;
+        let mut offset_vertices = &self.vertices + offset;
+
+        if self.highlighted && (scale[(0, 0)] != 1. || scale[(0, 1)] != 1.) {
+            self.scale_vertices(&mut offset_vertices, scale, anchor);
+        }
+
         let num_rows = self.vertices.shape()[0];
         if num_rows == 1 {
             let x = offset_vertices[(0, 0)];
@@ -132,7 +140,7 @@ impl Entity {
     }
 
     pub fn remove_highlight(&mut self) {
-        self.hightlighted = false;
+        self.highlighted = false;
     }
 
     pub fn get_color<'a>(
@@ -142,7 +150,7 @@ impl Entity {
     ) -> &'a (f32, f32, f32, f32) {
         let mut entity_color = default_color;
 
-        if self.hightlighted {
+        if self.highlighted {
             entity_color = &settings.highlight_color;
         } else if settings.layer_colors.contains_key(&self.layer) {
             entity_color = &settings.layer_colors[&self.layer]
@@ -153,6 +161,17 @@ impl Entity {
     pub fn offset_vertices(&mut self, offset: &Array2<f32>) {
         self.vertices += offset;
         self.bounding_box = bounding_box::offset_bbox(&self.bounding_box, offset);
+    }
+
+    fn scale_vertices(
+        &self,
+        vertices: &mut Array2<f32>,
+        scale: &Array2<f32>,
+        anchor: &Array2<f32>,
+    ) {
+        *vertices -= anchor;
+        *vertices *= scale;
+        *vertices += anchor;
     }
 
     pub fn get_closest_point_on_entity(&self) {}

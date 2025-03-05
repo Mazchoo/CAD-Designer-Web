@@ -7,6 +7,9 @@ let SETTINGS = {
   cross_size: 0.3,
   view: 'Model',
   highlight_offset: [0, 0],
+  highlight_scale: [1, 1],
+  highlight_flip: [false, false],
+  highlight_anchor: [0, 0],
 };
 
 export const LAYER_TO_NAME: { [layer: number]: string } = {

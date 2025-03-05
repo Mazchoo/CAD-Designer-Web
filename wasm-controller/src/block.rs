@@ -163,13 +163,15 @@ impl Block {
     ) {
         let block_color: &(f32, f32, f32, f32) = self.get_color(settings);
         let total_offset = self.get_highlight_offset(settings) + offset;
+        let highlight_scale = self.get_highlight_scale(settings);
+        let highlight_anchor = self.get_highlight_anchor(settings);
 
         for entity in self.entities.iter() {
             if settings.disabled_layers.contains(&entity.layer) {
                 continue;
             };
             let entity_color = entity.get_color(settings, block_color);
-            let entity_offset = if entity.hightlighted {
+            let entity_offset = if entity.highlighted {
                 &total_offset
             } else {
                 offset
@@ -178,6 +180,8 @@ impl Block {
             entity.get_draw_sequence(
                 entity_color,
                 entity_offset,
+                &highlight_scale,
+                &highlight_anchor,
                 &settings.cross_size,
                 last_index,
                 vertex_buffer,
@@ -211,6 +215,17 @@ impl Block {
         return array![[x, y]];
     }
 
+    fn get_highlight_scale(&self, settings: &user_settings::Settings) -> ndarray::Array2<f32> {
+        let (x, y) = settings.highlight_scale;
+        let (flip_x, flip_y) = settings.highlight_flip;
+        return array![[if flip_x { -x } else { x }, if flip_y { -y } else { y }]];
+    }
+
+    fn get_highlight_anchor(&self, settings: &user_settings::Settings) -> ndarray::Array2<f32> {
+        let (x, y) = settings.highlight_anchor;
+        return array![[x, y]];
+    }
+
     pub fn is_highlighted(&self) -> bool {
         return self.highlighted;
     }
@@ -218,7 +233,7 @@ impl Block {
     pub fn highlight(&mut self) {
         self.highlighted = true;
         for entity in self.entities.iter_mut() {
-            entity.hightlighted = true;
+            entity.highlighted = true;
         }
     }
 

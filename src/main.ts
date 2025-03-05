@@ -15,7 +15,7 @@ import {
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import { RECT_WORLD_COORDS, MARKER_WORLD_COORDS, HIGHLIGHT_RECT, highlightRectIsMoving } from './fabricHandle';
+import { RECT_WORLD_COORDS, HIGHLIGHT_RECT, highlightRectIsMoving } from './fabricHandle';
 import { INPUT_HANDLER } from './globals';
 
 setupMenuCallbacks();

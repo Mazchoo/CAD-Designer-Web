@@ -145,7 +145,7 @@ export function updateHighlightPosition(rect: fabric.Rect) {
     newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
     newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
   ]);
-  PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate);
+  PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate[0], worldUpdate[1]);
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
 
@@ -164,10 +164,10 @@ export function setNewHighlightPosition(rect: fabric.Rect) {
       newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
     ]);
     setRectOriginalWoordCoord(newCoordinate);
-    PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate);
+    PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate[0], worldUpdate[1]);
     PATTERN_WASM_HANDLE.offset_highlights();
     updateCanvasData(PATTERN_WASM_HANDLE);
-  
+
     const newBBox = [
       [RECT_WORLD_COORDS[0][0] + worldUpdate[0], RECT_WORLD_COORDS[0][1] + worldUpdate[0]],
       [RECT_WORLD_COORDS[1][0] + worldUpdate[1], RECT_WORLD_COORDS[1][1] + worldUpdate[1]],
@@ -179,11 +179,15 @@ export function setNewHighlightPosition(rect: fabric.Rect) {
 
 export function updateScalingPosition(rect: fabric.Rect, corner: string) {
   setRectIsScaling(true);
-  if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || PATTERN_WASM_HANDLE == undefined) return;
-  const anchorScreen = getScalingAnchor(rect, corner);
-  const anchorWorld = getDxfWorldCoorindates(anchorScreen[0], anchorScreen[1]);
-  console.log("Scaling", anchorWorld, rect.scaleX, rect.scaleY, rect.flipX, rect.flipY);
-  // PATTERN_WASM_HANDLE.set_highlight_scale(corner[0], corner[1], rect.scaleX, rect.scaleY, rect.flipX, rect.flipY);
+  if (RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) return;
+  const [anchorX, anchorY] = getScalingAnchor(corner);
+
+  PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
+  PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
+  PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
+
+  updateCanvasData(PATTERN_WASM_HANDLE);
+  // PATTERN_WASM_HANDLE.scale_highlights();
 }
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
