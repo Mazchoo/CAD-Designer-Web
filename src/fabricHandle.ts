@@ -89,6 +89,58 @@ export function setRectIsScaling(scaling: boolean) {
   RECT_IS_SCALING = scaling;
 }
 
+export function offsetHighlightRect(offset: [number, number]): [[number, number], [number, number]] {
+  if (RECT_WORLD_COORDS === null) {
+    return [
+      [0, 0],
+      [0, 0],
+    ];
+  }
+  RECT_WORLD_COORDS = [
+    [RECT_WORLD_COORDS[0][0] + offset[0], RECT_WORLD_COORDS[0][1] + offset[0]],
+    [RECT_WORLD_COORDS[1][0] + offset[1], RECT_WORLD_COORDS[1][1] + offset[1]],
+  ] as [[number, number], [number, number]];
+  return RECT_WORLD_COORDS;
+}
+
+export function scaleHighlightRect(
+  scale: [number, number],
+  flip: [boolean, boolean],
+  anchor: [number, number]
+): [[number, number], [number, number]] {
+  if (RECT_WORLD_COORDS === null) {
+    return [
+      [0, 0],
+      [0, 0],
+    ];
+  }
+  RECT_WORLD_COORDS[0][0] -= anchor[0];
+  RECT_WORLD_COORDS[0][1] -= anchor[0];
+  RECT_WORLD_COORDS[1][0] -= anchor[1];
+  RECT_WORLD_COORDS[1][1] -= anchor[1];
+
+  RECT_WORLD_COORDS[0][0] *= scale[0];
+  RECT_WORLD_COORDS[0][1] *= scale[0];
+  RECT_WORLD_COORDS[1][0] *= scale[1];
+  RECT_WORLD_COORDS[1][1] *= scale[1];
+
+  if (flip[0]) {
+    RECT_WORLD_COORDS[0][0] *= -1;
+    RECT_WORLD_COORDS[0][1] *= -1;
+  }
+  if (flip[1]) {
+    RECT_WORLD_COORDS[1][0] *= -1;
+    RECT_WORLD_COORDS[1][1] *= -1;
+  }
+
+  RECT_WORLD_COORDS[0][0] += anchor[0];
+  RECT_WORLD_COORDS[0][1] += anchor[0];
+  RECT_WORLD_COORDS[1][0] += anchor[1];
+  RECT_WORLD_COORDS[1][1] += anchor[1];
+
+  return RECT_WORLD_COORDS;
+}
+
 export function getScalingAnchor(corner: string): [number, number] {
   if (RECT_WORLD_COORDS === null) return [0, 0];
 

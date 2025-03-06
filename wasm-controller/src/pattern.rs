@@ -361,4 +361,8 @@ impl Pattern {
             // ToDo - else check individual entities
         }
     }
+
+    pub(crate) fn scale_highlighted_objects(&mut self, scale: (f32, f32), flip: (bool, bool), anchor: (f32, f32), view: &String) {
+        
+    }
 }

@@ -9,6 +9,7 @@ import {
   setRectOriginalWoordCoord,
   setRectIsScaling,
   getScalingAnchor,
+  offsetHighlightRect,
   HIGHLIGHT_RECT,
   HIGHLIGHT_RECT_ORIGINAL_WORLD,
   RECT_WORLD_COORDS,
@@ -149,7 +150,7 @@ export function updateHighlightPosition(rect: fabric.Rect) {
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
 
-export function setNewHighlightPosition(rect: fabric.Rect) {
+export function setNewHighlightPosition(rect: fabric.Rect, transform: fabric.Transform) {
   if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) {
     setRectIsScaling(false);
     return;
@@ -157,23 +158,26 @@ export function setNewHighlightPosition(rect: fabric.Rect) {
 
   if (RECT_IS_SCALING) {
     setRectIsScaling(false);
+    const corner = transform.corner;
+    const [anchorX, anchorY] = getScalingAnchor(corner);
+
+    PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
+    PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
+    PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
+
+    updateCanvasData(PATTERN_WASM_HANDLE);
   } else {
     const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
-    const worldUpdate = new Float32Array([
+    const worldUpdate = [
       newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
       newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
-    ]);
+    ] as [number, number];
     setRectOriginalWoordCoord(newCoordinate);
     PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate[0], worldUpdate[1]);
     PATTERN_WASM_HANDLE.offset_highlights();
     updateCanvasData(PATTERN_WASM_HANDLE);
 
-    const newBBox = [
-      [RECT_WORLD_COORDS[0][0] + worldUpdate[0], RECT_WORLD_COORDS[0][1] + worldUpdate[0]],
-      [RECT_WORLD_COORDS[1][0] + worldUpdate[1], RECT_WORLD_COORDS[1][1] + worldUpdate[1]],
-    ] as [[number, number], [number, number]];
-    setRectWorldCoords(newBBox);
-    addHighlightBbox(newBBox);
+    addHighlightBbox(offsetHighlightRect(worldUpdate));
   }
 }
 
@@ -187,7 +191,6 @@ export function updateScalingPosition(rect: fabric.Rect, corner: string) {
   PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
 
   updateCanvasData(PATTERN_WASM_HANDLE);
-  // PATTERN_WASM_HANDLE.scale_highlights();
 }
 
 export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) {
@@ -211,7 +214,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
         if (e.transform) updateScalingPosition(e.transform.target as fabric.Rect, e.transform.corner);
       });
       HIGHLIGHT_RECT.on('modified', function (e) {
-        if (e.transform) setNewHighlightPosition(e.transform.target as fabric.Rect);
+        if (e.transform) setNewHighlightPosition(e.transform.target as fabric.Rect, e.transform);
       });
     }
   }

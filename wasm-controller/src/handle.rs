@@ -135,7 +135,7 @@ impl Handle {
         return true;
     }
 
-    pub fn scale_offsets(&mut self) {
+    pub fn scale_highlights(&mut self) {
         self.settings.highlight_scale = (1., 1.);
         self.settings.highlight_flip = (false, false);
         self.settings.highlight_anchor = (0., 0.);
