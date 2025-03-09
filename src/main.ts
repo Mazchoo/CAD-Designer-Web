@@ -11,11 +11,17 @@ import {
   LINE_DRAW_PIPELINE,
   getModelViewProjectionMatrix,
   addHighlightBbox,
+  getDxfWorldCoorindates,
   CAMERA,
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import { RECT_WORLD_COORDS, HIGHLIGHT_RECT, highlightRectIsBeingEdited } from './fabricHandle';
+import {
+  RECT_WORLD_COORDS,
+  HIGHLIGHT_RECT,
+  highlightRectIsBeingEdited,
+  setRectOriginalWoordCoord,
+} from './fabricHandle';
 import { INPUT_HANDLER } from './globals';
 
 setupMenuCallbacks();
@@ -31,8 +37,9 @@ function frame() {
   const input = INPUT_HANDLER();
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime, input);
 
-  if (RECT_WORLD_COORDS && !highlightRectIsBeingEdited()) {
+  if (RECT_WORLD_COORDS && !highlightRectIsBeingEdited() && HIGHLIGHT_RECT) {
     addHighlightBbox(RECT_WORLD_COORDS);
+    setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
   }
 
   if (highlightRectIsBeingEdited() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
