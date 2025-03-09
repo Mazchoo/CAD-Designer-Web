@@ -10,6 +10,8 @@ import {
   setRectIsScaling,
   getScalingAnchor,
   offsetHighlightRect,
+  scaleHighlightRect,
+  resetScaleRect,
   HIGHLIGHT_RECT,
   HIGHLIGHT_RECT_ORIGINAL_WORLD,
   RECT_WORLD_COORDS,
@@ -146,6 +148,7 @@ export function updateHighlightPosition(rect: fabric.Rect) {
     newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
     newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
   ]);
+
   PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate[0], worldUpdate[1]);
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
@@ -162,22 +165,26 @@ export function setNewHighlightPosition(rect: fabric.Rect, transform: fabric.Tra
     const [anchorX, anchorY] = getScalingAnchor(corner);
 
     PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
-    PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
     PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
+    PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
 
     updateCanvasData(PATTERN_WASM_HANDLE);
+
+    resetScaleRect(); // Apply transform to visual rect
+    scaleHighlightRect([rect.scaleX, rect.scaleY], [rect.flipX, rect.flipY], [anchorX, anchorY]); // Update JS side rect world coordinates
   } else {
     const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
     const worldUpdate = [
       newCoordinate[0] - HIGHLIGHT_RECT_ORIGINAL_WORLD[0],
       newCoordinate[1] - HIGHLIGHT_RECT_ORIGINAL_WORLD[1],
     ] as [number, number];
-    setRectOriginalWoordCoord(newCoordinate);
+
     PATTERN_WASM_HANDLE.set_highlight_offset(worldUpdate[0], worldUpdate[1]);
-    PATTERN_WASM_HANDLE.offset_highlights();
+    PATTERN_WASM_HANDLE.offset_highlights(); // Update coordinates in pattern and reset
     updateCanvasData(PATTERN_WASM_HANDLE);
 
-    addHighlightBbox(offsetHighlightRect(worldUpdate));
+    addHighlightBbox(offsetHighlightRect(worldUpdate)); // Apply transform to visual rect
+    setRectOriginalWoordCoord(getDxfWorldCoorindates(rect.left, rect.top)); // Reset record of current top left
   }
 }
 
@@ -187,8 +194,8 @@ export function updateScalingPosition(rect: fabric.Rect, corner: string) {
   const [anchorX, anchorY] = getScalingAnchor(corner);
 
   PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
-  PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
   PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
+  PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
 
   updateCanvasData(PATTERN_WASM_HANDLE);
 }

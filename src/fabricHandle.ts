@@ -141,6 +141,24 @@ export function scaleHighlightRect(
   return RECT_WORLD_COORDS;
 }
 
+export function resetScaleRect() {
+  if (HIGHLIGHT_RECT == null) {
+    return;
+  }
+
+  HIGHLIGHT_RECT.set({
+    width: HIGHLIGHT_RECT.width * HIGHLIGHT_RECT.scaleX,
+    height: HIGHLIGHT_RECT.height * HIGHLIGHT_RECT.scaleY,
+    scaleX: 1,
+    scaleY: 1,
+    flipX: false,
+    flipY: false,
+  });
+
+  HIGHLIGHT_RECT.setCoords();
+  FABRIC_CANVAS_HANDLER.requestRenderAll();
+}
+
 export function getScalingAnchor(corner: string): [number, number] {
   if (RECT_WORLD_COORDS === null) return [0, 0];
 
