@@ -247,4 +247,11 @@ impl Block {
         }
         self.bounding_box = bounding_box::scale_bbox(&self.bounding_box, scale, anchor);
     }
+
+    pub fn rotate_entities(&mut self, rot_matrix: &Array2<f32>, rot_center: &Array2<f32>) {
+        for entity in self.entities.iter_mut() {
+            entity.rotate_vertices(rot_matrix, rot_center);
+        }
+        self.bounding_box = bounding_box::rotate_bbox(&self.bounding_box, rot_matrix, rot_center);
+    }
 }

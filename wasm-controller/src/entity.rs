@@ -179,6 +179,12 @@ impl Entity {
         *vertices += anchor;
     }
 
+    pub fn scale_vertices(&mut self, scale: &Array2<f32>, anchor: &Array2<f32>) {
+        self.vertices -= anchor;
+        self.vertices *= scale;
+        self.vertices += anchor;
+    }
+
     fn calculate_rotated_vertices(
         &self,
         vertices: &mut Array2<f32>,
@@ -189,10 +195,8 @@ impl Entity {
         *vertices = rot_center + vertices.dot(rot_matrix);
     }
 
-    pub fn scale_vertices(&mut self, scale: &Array2<f32>, anchor: &Array2<f32>) {
-        self.vertices -= anchor;
-        self.vertices *= scale;
-        self.vertices += anchor;
+    pub fn rotate_vertices(&mut self, rot_matrix: &Array2<f32>, rot_center: &Array2<f32>) {
+        self.vertices = rot_center + self.vertices.dot(rot_matrix);
     }
 
     pub fn get_closest_point_on_entity(&self) {}

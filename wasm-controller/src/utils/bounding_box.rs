@@ -1,4 +1,4 @@
-use ndarray::Array2;
+use ndarray::{array, Array2};
 
 pub fn from_array(vertices: &Array2<f32>) -> ((f32, f32), (f32, f32)) {
     let mut min_x: f32 = f32::INFINITY;
@@ -58,6 +58,40 @@ pub fn scale_bbox(
             (max_y - anchor[(0, 1)]) * scale[(0, 1)] + anchor[(0, 1)],
         ),
     );
+}
+
+pub fn rotate_bbox(
+    bbox: &((f32, f32), (f32, f32)),
+    rot_matrix: &Array2<f32>,
+    center: &Array2<f32>,
+) -> ((f32, f32), (f32, f32)) {
+    let offset_center = center + center.dot(rot_matrix);
+    let ((min_x, max_x), (min_y, max_y)) = bbox;
+    let bottom_right: Array2<f32> =
+        array![[min_x.clone(), min_y.clone()]].dot(rot_matrix) + &offset_center;
+    let bottom_left: Array2<f32> =
+        array![[max_x.clone(), min_y.clone()]].dot(rot_matrix) + &offset_center;
+    let top_right: Array2<f32> =
+        array![[min_x.clone(), max_y.clone()]].dot(rot_matrix) + &offset_center;
+    let top_left: Array2<f32> =
+        array![[max_x.clone(), max_y.clone()]].dot(rot_matrix) + &offset_center;
+    let xs: [f32; 4] = [
+        bottom_right[(0, 0)],
+        bottom_left[(0, 0)],
+        top_right[(0, 0)],
+        top_left[(0, 0)],
+    ];
+    let ys: [f32; 4] = [
+        bottom_right[(0, 1)],
+        bottom_left[(0, 1)],
+        top_right[(0, 1)],
+        top_left[(0, 1)],
+    ];
+    let min_x: f32 = xs.into_iter().fold(f32::INFINITY, f32::min);
+    let max_x: f32 = xs.into_iter().fold(f32::INFINITY, f32::max);
+    let min_y: f32 = ys.into_iter().fold(f32::INFINITY, f32::min);
+    let max_y: f32 = ys.into_iter().fold(f32::INFINITY, f32::max);
+    return ((min_x, max_x), (min_y, max_y));
 }
 
 pub fn intersect(bbox1: &((f32, f32), (f32, f32)), bbox2: &((f32, f32), (f32, f32))) -> bool {

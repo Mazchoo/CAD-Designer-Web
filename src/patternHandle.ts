@@ -195,6 +195,13 @@ export function setNewHighlightRect(rect: fabric.Rect) {
     scaleHighlightRect([rect.scaleX, rect.scaleY], [rect.flipX, rect.flipY], [anchorX, anchorY]); // Update JS side rect world coordinates
     resetScaleRect(); // Apply transform to visual rect
     setRectOriginalWoordCoord(getDxfWorldCoorindates(rect.left, rect.top));
+  } else if (rect.angle != 0) {
+    const [rotCenterX, rotCenterY] = getRotationCenter();
+
+    PATTERN_WASM_HANDLE.set_highlight_rotation_center(rotCenterX, rotCenterY);
+    PATTERN_WASM_HANDLE.set_highlight_rotation_angle(rect.angle * (Math.PI / 180));
+    PATTERN_WASM_HANDLE.rotate_highlights();
+    updateCanvasData(PATTERN_WASM_HANDLE);
   } else {
     const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
     const worldUpdate = [

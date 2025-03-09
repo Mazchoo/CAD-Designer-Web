@@ -42,6 +42,7 @@ function frame() {
     setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
   }
 
+  // Special case to allow panning when editing offset position
   if (highlightRectIsBeingEdited() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
     updateOffsetDisplay(HIGHLIGHT_RECT);
   }

@@ -394,4 +394,34 @@ impl Pattern {
             // ToDo - else check individual entities
         }
     }
+
+    pub(crate) fn rotate_highlights(
+        &mut self,
+        rot_matrix: &ndarray::Array2<f32>,
+        rot_center: &ndarray::Array2<f32>,
+        view: &String,
+    ) {
+        let view_single_block_key = parse::view_as_block_key(view);
+
+        for block in self.blocks.iter_mut() {
+            if !block.is_highlighted() {
+                continue;
+            }
+            if view_single_block_key != Option::None {
+                // If looking at single block, offset entities in block
+                block.rotate_entities(rot_matrix, rot_center);
+                break;
+            }
+
+            let mut offset: Array2<f32> = array![[0., 0.]];
+            for insert in self.entities.iter() {
+                if insert.name == block.name {
+                    offset = insert.position.clone();
+                }
+            }
+            let offset_rot_center = rot_center - offset;
+            block.rotate_entities(rot_center, &offset_rot_center);
+            // ToDo - else check individual entities
+        }
+    }
 }
