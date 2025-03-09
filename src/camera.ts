@@ -53,7 +53,7 @@ export class WASDCamera {
     this.position = position;
   }
 
-  update(deltaTime: number, input: Input, ignoreZoom: boolean): Mat4 {
+  update(deltaTime: number, input: Input, ignoreZoom: boolean, ignoreMoving: boolean): Mat4 {
     const sign = (positive: boolean, negative: boolean) => (positive ? 1 : 0) - (negative ? 1 : 0);
 
     // Save the current position, as we're about to rebuild the camera matrix.
@@ -61,15 +61,18 @@ export class WASDCamera {
     // Calculate the new target velocity
     const digital = input.digital;
 
-    const deltaRight = sign(digital.right, digital.left);
-    const deltaUp = sign(digital.up, digital.down);
-    const targetVelocity = vec3.create();
+    const targetVelocity = vec3.create(0, 0, 0);
     const deltaBack = ignoreZoom ? 0 : input.analog.zoom;
-    vec3.addScaled(targetVelocity, this.right, deltaRight, targetVelocity);
-    vec3.addScaled(targetVelocity, this.up, deltaUp, targetVelocity);
     vec3.addScaled(targetVelocity, this.back, deltaBack, targetVelocity);
-    vec3.addScaled(targetVelocity, this.right, input.analog.x, targetVelocity);
-    vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
+
+    if (!ignoreMoving) {
+      const deltaRight = sign(digital.right, digital.left);
+      const deltaUp = sign(digital.up, digital.down);
+      vec3.addScaled(targetVelocity, this.right, deltaRight, targetVelocity);
+      vec3.addScaled(targetVelocity, this.right, input.analog.x, targetVelocity);
+      vec3.addScaled(targetVelocity, this.up, -input.analog.y, targetVelocity);
+      vec3.addScaled(targetVelocity, this.up, deltaUp, targetVelocity);
+    }
 
     // Add specific behaviour when zooming
     if (
@@ -91,6 +94,15 @@ export class WASDCamera {
     // Mix new target velocity
     this.velocity = lerp(targetVelocity, this.velocity, Math.pow(1 - this.frictionCoefficient, deltaTime));
 
+    if (ignoreMoving) {
+      this.velocity[0] = 0;
+      this.velocity[1] = 0;
+    }
+
+    if (ignoreZoom) {
+      this.velocity[2] = 0;
+    }
+
     // Integrate velocity to calculate new position
     this.position = vec3.addScaled(this.position, this.velocity, -deltaTime);
     this.position[2] = Math.min(this.position[2], this.minDistance);
@@ -100,6 +112,10 @@ export class WASDCamera {
 
   isMoving(): boolean {
     return Math.abs(this.velocity[0]) > EPS || Math.abs(this.velocity[1]) > EPS || Math.abs(this.velocity[2]) > EPS;
+  }
+
+  isZooming(): boolean {
+    return Math.abs(this.velocity[2]) > EPS;
   }
 }
 

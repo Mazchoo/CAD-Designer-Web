@@ -8,7 +8,7 @@ import {
   setRectWorldCoords,
   setRectOriginalWoordCoord,
   setRectIsScaling,
-  getScalingAnchor,
+  updateScalingAnchor,
   getRotationCenter,
   offsetHighlightRect,
   scaleHighlightRect,
@@ -17,6 +17,7 @@ import {
   HIGHLIGHT_RECT_ORIGINAL_WORLD,
   RECT_WORLD_COORDS,
   RECT_IS_SCALING,
+  SCALING_ANCHOR,
 } from './fabricHandle';
 import * as fabric from 'fabric';
 
@@ -154,11 +155,10 @@ export function updateOffsetDisplay(rect: fabric.Rect) {
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
 
-export function updateScalingDisplay(rect: fabric.Rect, corner: string) {
-  setRectIsScaling(true);
-  if (RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) return;
-  const [anchorX, anchorY] = getScalingAnchor(corner);
+export function updateScalingDisplay(rect: fabric.Rect) {
+  if (RECT_WORLD_COORDS == null || SCALING_ANCHOR == null || PATTERN_WASM_HANDLE == undefined) return;
 
+  const [anchorX, anchorY] = SCALING_ANCHOR;
   PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
   PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
   PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
@@ -176,16 +176,15 @@ export function updateRotatingDisplay(rect: fabric.Rect) {
   updateCanvasData(PATTERN_WASM_HANDLE);
 }
 
-export function setNewHighlightRect(rect: fabric.Rect, transform: fabric.Transform) {
+export function setNewHighlightRect(rect: fabric.Rect) {
   if (HIGHLIGHT_RECT_ORIGINAL_WORLD == null || RECT_WORLD_COORDS == null || PATTERN_WASM_HANDLE == undefined) {
     setRectIsScaling(false);
     return;
   }
 
-  if (RECT_IS_SCALING) {
+  if (RECT_IS_SCALING && SCALING_ANCHOR !== null) {
     setRectIsScaling(false);
-    const corner = transform.corner;
-    const [anchorX, anchorY] = getScalingAnchor(corner);
+    const [anchorX, anchorY] = SCALING_ANCHOR;
 
     PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
     PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
@@ -195,6 +194,7 @@ export function setNewHighlightRect(rect: fabric.Rect, transform: fabric.Transfo
 
     scaleHighlightRect([rect.scaleX, rect.scaleY], [rect.flipX, rect.flipY], [anchorX, anchorY]); // Update JS side rect world coordinates
     resetScaleRect(); // Apply transform to visual rect
+    setRectOriginalWoordCoord(getDxfWorldCoorindates(rect.left, rect.top));
   } else {
     const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
     const worldUpdate = [
@@ -225,17 +225,22 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
 
     if (HIGHLIGHT_RECT) {
       setRectOriginalWoordCoord(getDxfWorldCoorindates(HIGHLIGHT_RECT.left, HIGHLIGHT_RECT.top));
+
       HIGHLIGHT_RECT.on('moving', function (e) {
         if (e.transform) updateOffsetDisplay(e.transform.target as fabric.Rect);
       });
       HIGHLIGHT_RECT.on('scaling', function (e) {
-        if (e.transform) updateScalingDisplay(e.transform.target as fabric.Rect, e.transform.corner);
+        if (e.transform) {
+          setRectIsScaling(true);
+          updateScalingAnchor(e.transform.corner);
+          updateScalingDisplay(e.transform.target as fabric.Rect);
+        }
       });
       HIGHLIGHT_RECT.on('rotating', function (e) {
         if (e.transform) updateRotatingDisplay(e.transform.target as fabric.Rect);
       });
       HIGHLIGHT_RECT.on('modified', function (e) {
-        if (e.transform) setNewHighlightRect(e.transform.target as fabric.Rect, e.transform);
+        if (e.transform) setNewHighlightRect(e.transform.target as fabric.Rect);
       });
     }
   }

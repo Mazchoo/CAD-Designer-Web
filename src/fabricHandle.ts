@@ -8,6 +8,7 @@ export let HIGHLIGHT_RECT: fabric.Rect | null = null;
 export let HIGHLIGHT_RECT_ORIGINAL_WORLD: [number, number] | null = null;
 export let RECT_WORLD_COORDS: [[number, number], [number, number]] | null = null;
 export let RECT_IS_SCALING: boolean = false;
+export let SCALING_ANCHOR: [number, number] | null = null;
 
 function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
   HIGHLIGHT_RECT = new fabric.Rect({
@@ -75,7 +76,7 @@ export function setRectWorldCoords(coords: [[number, number], [number, number]])
   RECT_WORLD_COORDS = coords;
 }
 
-export function highlightRectIsMoving(): boolean {
+export function highlightRectIsBeingEdited(): boolean {
   if (HIGHLIGHT_RECT == null) return false;
   return HIGHLIGHT_RECT.isMoving || RECT_IS_SCALING || HIGHLIGHT_RECT.__corner === 'mtr';
 }
@@ -154,11 +155,12 @@ export function resetScaleRect() {
     flipY: false,
   });
 
+  SCALING_ANCHOR = null;
   HIGHLIGHT_RECT.setCoords();
   FABRIC_CANVAS_HANDLER.requestRenderAll();
 }
 
-export function getScalingAnchor(corner: string): [number, number] {
+function getScalingAnchor(corner: string): [number, number] {
   if (RECT_WORLD_COORDS === null) return [0, 0];
 
   let anchorX = RECT_WORLD_COORDS[0][0];
@@ -200,6 +202,12 @@ export function getScalingAnchor(corner: string): [number, number] {
   }
 
   return [anchorX, anchorY];
+}
+
+export function updateScalingAnchor(corner: string): [number, number] {
+  if (SCALING_ANCHOR != null) return SCALING_ANCHOR;
+  SCALING_ANCHOR = getScalingAnchor(corner);
+  return SCALING_ANCHOR;
 }
 
 export function getRotationCenter(): [number, number] {

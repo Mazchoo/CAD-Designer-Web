@@ -15,7 +15,7 @@ import {
 } from './rendering';
 import { addCallbacks } from './events';
 import { setupMenuCallbacks } from './menuEvents';
-import { RECT_WORLD_COORDS, HIGHLIGHT_RECT, highlightRectIsMoving } from './fabricHandle';
+import { RECT_WORLD_COORDS, HIGHLIGHT_RECT, highlightRectIsBeingEdited } from './fabricHandle';
 import { INPUT_HANDLER } from './globals';
 
 setupMenuCallbacks();
@@ -31,11 +31,11 @@ function frame() {
   const input = INPUT_HANDLER();
   const modelViewProjection = getModelViewProjectionMatrix(deltaTime, input);
 
-  if (RECT_WORLD_COORDS && !highlightRectIsMoving()) {
+  if (RECT_WORLD_COORDS && !highlightRectIsBeingEdited()) {
     addHighlightBbox(RECT_WORLD_COORDS);
   }
 
-  if (highlightRectIsMoving() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
+  if (highlightRectIsBeingEdited() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
     updateOffsetDisplay(HIGHLIGHT_RECT);
   }
 
