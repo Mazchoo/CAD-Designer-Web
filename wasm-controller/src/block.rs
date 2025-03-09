@@ -252,6 +252,6 @@ impl Block {
         for entity in self.entities.iter_mut() {
             entity.rotate_vertices(rot_matrix, rot_center);
         }
-        self.bounding_box = bounding_box::rotate_bbox(&self.bounding_box, rot_matrix, rot_center);
+        self.bounding_box = self.calculate_bounding_box();
     }
 }

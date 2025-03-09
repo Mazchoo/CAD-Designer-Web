@@ -75,7 +75,7 @@ impl Entity {
             return;
         }
 
-        let mut offset_vertices = &self.vertices + offset;
+        let mut offset_vertices: Array2<f32> = &self.vertices + offset;
 
         if self.highlighted {
             if scale[(0, 0)] != 1. || scale[(0, 1)] != 1. {
@@ -85,7 +85,7 @@ impl Entity {
             }
         }
 
-        let num_rows = self.vertices.shape()[0];
+        let num_rows: usize = self.vertices.shape()[0];
         if num_rows == 1 {
             let x = offset_vertices[(0, 0)];
             let y = offset_vertices[(0, 1)];
@@ -183,6 +183,7 @@ impl Entity {
         self.vertices -= anchor;
         self.vertices *= scale;
         self.vertices += anchor;
+        self.bounding_box = bounding_box::scale_bbox(&self.bounding_box, scale, anchor);
     }
 
     fn calculate_rotated_vertices(
@@ -197,6 +198,7 @@ impl Entity {
 
     pub fn rotate_vertices(&mut self, rot_matrix: &Array2<f32>, rot_center: &Array2<f32>) {
         self.vertices = rot_center + self.vertices.dot(rot_matrix);
+        self.bounding_box = bounding_box::from_array(&self.vertices);
     }
 
     pub fn get_closest_point_on_entity(&self) {}

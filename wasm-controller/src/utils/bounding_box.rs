@@ -65,7 +65,7 @@ pub fn rotate_bbox(
     rot_matrix: &Array2<f32>,
     center: &Array2<f32>,
 ) -> ((f32, f32), (f32, f32)) {
-    let offset_center = center + center.dot(rot_matrix);
+    let offset_center = center - center.dot(rot_matrix);
     let ((min_x, max_x), (min_y, max_y)) = bbox;
     let bottom_right: Array2<f32> =
         array![[min_x.clone(), min_y.clone()]].dot(rot_matrix) + &offset_center;
@@ -88,9 +88,9 @@ pub fn rotate_bbox(
         top_left[(0, 1)],
     ];
     let min_x: f32 = xs.into_iter().fold(f32::INFINITY, f32::min);
-    let max_x: f32 = xs.into_iter().fold(f32::INFINITY, f32::max);
+    let max_x: f32 = xs.into_iter().fold(-f32::INFINITY, f32::max);
     let min_y: f32 = ys.into_iter().fold(f32::INFINITY, f32::min);
-    let max_y: f32 = ys.into_iter().fold(f32::INFINITY, f32::max);
+    let max_y: f32 = ys.into_iter().fold(-f32::INFINITY, f32::max);
     return ((min_x, max_x), (min_y, max_y));
 }
 

@@ -387,6 +387,7 @@ impl Pattern {
             for insert in self.entities.iter() {
                 if insert.name == block.name {
                     offset = insert.position.clone();
+                    break;
                 }
             }
             let offset_anchor = anchor - offset;
@@ -417,11 +418,48 @@ impl Pattern {
             for insert in self.entities.iter() {
                 if insert.name == block.name {
                     offset = insert.position.clone();
+                    break;
                 }
             }
-            let offset_rot_center = rot_center - offset;
-            block.rotate_entities(rot_center, &offset_rot_center);
+            let offset_rot_center: Array2<f32> = rot_center - offset;
+            block.rotate_entities(rot_matrix, &offset_rot_center);
             // ToDo - else check individual entities
         }
+    }
+
+    pub(crate) fn get_highlighted_bounding_box(
+        &mut self,
+        view: &String,
+    ) -> Option<((f32, f32), (f32, f32))> {
+        let view_single_block_key = parse::view_as_block_key(view);
+        let mut output: Option<((f32, f32), (f32, f32))> = Option::None;
+
+        for block in self.blocks.iter_mut() {
+            if !block.is_highlighted() {
+                continue;
+            }
+            if view_single_block_key != Option::None {
+                // If looking at single block, offset entities in block
+                return Some(block.get_bounding_box().clone());
+            }
+
+            let mut offset: Array2<f32> = array![[0., 0.]];
+            for insert in self.entities.iter() {
+                if insert.name == block.name {
+                    offset = insert.position.clone();
+                    break;
+                }
+            }
+            let bbox = block.get_bounding_box();
+            let offset_bbox = bounding_box::offset_bbox(bbox, &offset);
+
+            if let Some(union_bbox) = output {
+                output = Some(bounding_box::union(&offset_bbox, &union_bbox));
+            } else {
+                output = Some(offset_bbox);
+            }
+            // ToDo - else check individual entities
+        }
+        return output;
     }
 }

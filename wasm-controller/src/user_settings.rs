@@ -71,6 +71,8 @@ impl Settings {
 
     pub fn highlight_rot_matrix(&self) -> ndarray::Array2<f32> {
         let angle = self.highlight_rotation_angle;
-        return array![[angle.cos(), -angle.sin()], [angle.sin(), angle.cos()]];
+        let sin_angle = angle.sin();
+        let cos_angle = angle.cos();
+        return array![[cos_angle, -sin_angle], [sin_angle, cos_angle]];
     }
 }

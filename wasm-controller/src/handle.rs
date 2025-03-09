@@ -157,14 +157,24 @@ impl Handle {
         self.settings.highlight_anchor = (0., 0.);
     }
 
-    pub fn rotate_highlights(&mut self) {
-        self.pattern.rotate_highlights(
-            &self.settings.highlight_rot_matrix(),
-            &self.settings.highlight_rot_center_array(),
-            &self.settings.view,
-        );
+    pub fn rotate_highlights(&mut self) -> JsValue {
+        let rot_matrix = &self.settings.highlight_rot_matrix();
+        let center = &self.settings.highlight_rot_center_array();
+
+        self.pattern
+            .rotate_highlights(&rot_matrix, &center, &self.settings.view);
+
+        let rotated_bbox = self
+            .pattern
+            .get_highlighted_bounding_box(&self.settings.view);
 
         self.settings.highlight_rotation_angle = 0.;
         self.settings.highlight_rotation_center = (0., 0.);
+
+        if rotated_bbox == Option::None {
+            return to_value(&()).unwrap();
+        } else {
+            return to_value(&rotated_bbox).unwrap();
+        }
     }
 }

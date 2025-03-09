@@ -31,7 +31,7 @@ function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
 }
 
 function updateRect(rect: fabric.Rect, minX: number, minY: number, maxX: number, maxY: number) {
-  rect.set({ top: minY, left: minX, width: maxX - minX, height: maxY - minY });
+  rect.set({ top: minY, left: minX, width: maxX - minX, height: maxY - minY, angle: 0 });
   rect.setCoords();
   FABRIC_CANVAS_HANDLER.requestRenderAll();
 }

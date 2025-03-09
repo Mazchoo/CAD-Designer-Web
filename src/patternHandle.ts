@@ -200,8 +200,13 @@ export function setNewHighlightRect(rect: fabric.Rect) {
 
     PATTERN_WASM_HANDLE.set_highlight_rotation_center(rotCenterX, rotCenterY);
     PATTERN_WASM_HANDLE.set_highlight_rotation_angle(rect.angle * (Math.PI / 180));
-    PATTERN_WASM_HANDLE.rotate_highlights();
+    const bbox = PATTERN_WASM_HANDLE.rotate_highlights();
+    console.log(bbox)
     updateCanvasData(PATTERN_WASM_HANDLE);
+
+    setRectWorldCoords(bbox);
+    addHighlightBbox(bbox);
+    setRectOriginalWoordCoord(getDxfWorldCoorindates(rect.left, rect.top));
   } else {
     const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
     const worldUpdate = [
@@ -225,6 +230,7 @@ export function selectBlockWithBBox(p1: [number, number], p2: [number, number]) 
     new Float32Array(p2)
   );
   updateCanvasData(PATTERN_WASM_HANDLE);
+  console.log(bbox);
 
   if (bbox) {
     setRectWorldCoords(bbox);
