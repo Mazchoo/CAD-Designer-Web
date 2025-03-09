@@ -1,7 +1,7 @@
 const WASAM_INIT = startUpWasm();
 
 import { getBuffers } from './buffers';
-import { startUpWasm, updateHighlightPosition } from './patternHandle';
+import { startUpWasm, updateOffsetDisplay } from './patternHandle';
 import {
   DEVICE,
   UNIFORM_BUFFER,
@@ -36,7 +36,7 @@ function frame() {
   }
 
   if (highlightRectIsMoving() && CAMERA.isMoving() && HIGHLIGHT_RECT) {
-    updateHighlightPosition(HIGHLIGHT_RECT);
+    updateOffsetDisplay(HIGHLIGHT_RECT);
   }
 
   DEVICE.queue.writeBuffer(

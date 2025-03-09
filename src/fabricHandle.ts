@@ -201,3 +201,11 @@ export function getScalingAnchor(corner: string): [number, number] {
 
   return [anchorX, anchorY];
 }
+
+export function getRotationCenter(): [number, number] {
+  if (RECT_WORLD_COORDS === null) return [0, 0];
+  return [
+    (RECT_WORLD_COORDS[0][0] + RECT_WORLD_COORDS[0][1]) / 2,
+    (RECT_WORLD_COORDS[1][0] + RECT_WORLD_COORDS[1][1]) / 2,
+  ];
+}

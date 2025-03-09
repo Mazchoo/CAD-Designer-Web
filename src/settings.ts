@@ -10,6 +10,8 @@ let SETTINGS = {
   highlight_scale: [1, 1],
   highlight_flip: [false, false],
   highlight_anchor: [0, 0],
+  highlight_rotation_center: [0, 0],
+  highlight_rotation_angle: 0, // In radians
 };
 
 export const LAYER_TO_NAME: { [layer: number]: string } = {

@@ -161,10 +161,14 @@ impl Block {
         vertex_buffer: &mut Vec<f32>,
         index_buffer: &mut Vec<u32>,
     ) {
+        // ToDo - consider calculating scales, anchors and matrices at the top level
         let block_color: &(f32, f32, f32, f32) = self.get_color(settings);
         let total_offset = settings.highlight_offset_array() + offset;
         let highlight_scale = settings.highlight_scale_array();
         let highlight_anchor = settings.highlight_anchor_array();
+        let highlight_rot_matrix = settings.highlight_rot_matrix();
+        let rot_center = settings.highlight_rot_center_array();
+        let highlight_rot_offset = &rot_center - &rot_center.dot(&highlight_rot_matrix);
 
         for entity in self.entities.iter() {
             if settings.disabled_layers.contains(&entity.layer) {
@@ -182,6 +186,8 @@ impl Block {
                 entity_offset,
                 &highlight_scale,
                 &highlight_anchor,
+                &highlight_rot_offset,
+                &highlight_rot_matrix,
                 &settings.cross_size,
                 last_index,
                 vertex_buffer,

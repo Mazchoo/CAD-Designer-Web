@@ -1,7 +1,6 @@
 use std::i32;
 
 use ndarray::Array2;
-use web_sys::console;
 
 use crate::user_settings;
 use crate::utils::bounding_box;
@@ -65,6 +64,8 @@ impl Entity {
         offset: &Array2<f32>,
         scale: &Array2<f32>,
         anchor: &Array2<f32>,
+        rot_offset: &Array2<f32>,
+        rot_matrix: &Array2<f32>,
         cross_size: &f32,
         last_index: &mut u32,
         vertex_buffer: &mut Vec<f32>,
@@ -76,8 +77,12 @@ impl Entity {
 
         let mut offset_vertices = &self.vertices + offset;
 
-        if self.highlighted && (scale[(0, 0)] != 1. || scale[(0, 1)] != 1.) {
-            self.calculate_scaled_vertices(&mut offset_vertices, scale, anchor);
+        if self.highlighted {
+            if scale[(0, 0)] != 1. || scale[(0, 1)] != 1. {
+                self.calculate_scaled_vertices(&mut offset_vertices, scale, anchor);
+            } else if rot_matrix[(0, 0)] != 1. {
+                self.calculate_rotated_vertices(&mut offset_vertices, rot_matrix, rot_offset);
+            }
         }
 
         let num_rows = self.vertices.shape()[0];
@@ -172,6 +177,16 @@ impl Entity {
         *vertices -= anchor;
         *vertices *= scale;
         *vertices += anchor;
+    }
+
+    fn calculate_rotated_vertices(
+        &self,
+        vertices: &mut Array2<f32>,
+        rot_matrix: &Array2<f32>,
+        rot_center: &Array2<f32>,
+    ) {
+        // *vertices = vertices.dot(rot_matrix);
+        *vertices = rot_center + vertices.dot(rot_matrix);
     }
 
     pub fn scale_vertices(&mut self, scale: &Array2<f32>, anchor: &Array2<f32>) {

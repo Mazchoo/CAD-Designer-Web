@@ -18,6 +18,8 @@ pub struct Settings {
     pub highlight_scale: (f32, f32),
     pub highlight_flip: (bool, bool),
     pub highlight_anchor: (f32, f32),
+    pub highlight_rotation_center: (f32, f32),
+    pub highlight_rotation_angle: f32, // In radians
 }
 
 impl Default for Settings {
@@ -34,6 +36,8 @@ impl Default for Settings {
             highlight_scale: (1., 1.),
             highlight_flip: (false, false),
             highlight_anchor: (0., 0.),
+            highlight_rotation_center: (0., 0.),
+            highlight_rotation_angle: 0.,
         }
     }
 }
@@ -58,5 +62,15 @@ impl Settings {
     pub fn highlight_anchor_array(&self) -> ndarray::Array2<f32> {
         let (x, y) = self.highlight_anchor;
         return array![[x, y]];
+    }
+
+    pub fn highlight_rot_center_array(&self) -> ndarray::Array2<f32> {
+        let (x, y) = self.highlight_rotation_center;
+        return array![[x, y]];
+    }
+
+    pub fn highlight_rot_matrix(&self) -> ndarray::Array2<f32> {
+        let angle = self.highlight_rotation_angle;
+        return array![[angle.cos(), -angle.sin()], [angle.sin(), angle.cos()]];
     }
 }

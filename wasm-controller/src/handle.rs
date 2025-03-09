@@ -130,6 +130,16 @@ impl Handle {
         return true;
     }
 
+    pub fn set_highlight_rotation_center(&mut self, rot_center_x: f32, rot_center_y: f32) -> bool {
+        self.settings.highlight_rotation_center = (rot_center_x, rot_center_y);
+        return true;
+    }
+
+    pub fn set_highlight_rotation_angle(&mut self, angle_rad: f32) -> bool {
+        self.settings.highlight_rotation_angle = angle_rad;
+        return true;
+    }
+
     pub fn set_highlight_anchor(&mut self, anchor_x: f32, anchor_y: f32) -> bool {
         self.settings.highlight_anchor = (anchor_x, anchor_y);
         return true;
