@@ -28,19 +28,21 @@ function inialiseRect(minX: number, minY: number, maxX: number, maxY: number) {
 
   FABRIC_CANVAS_HANDLER.add(HIGHLIGHT_RECT);
   FABRIC_CANVAS_HANDLER.setActiveObject(HIGHLIGHT_RECT);
+  return HIGHLIGHT_RECT;
 }
 
 function updateRect(rect: fabric.Rect, minX: number, minY: number, maxX: number, maxY: number) {
   rect.set({ top: minY, left: minX, width: maxX - minX, height: maxY - minY, angle: 0 });
   rect.setCoords();
   FABRIC_CANVAS_HANDLER.requestRenderAll();
+  return rect;
 }
 
-export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY: number) {
+export function createOrMoveRect(minX: number, minY: number, maxX: number, maxY: number): fabric.Rect {
   if (HIGHLIGHT_RECT !== null) {
-    updateRect(HIGHLIGHT_RECT, minX, minY, maxX, maxY);
+    return updateRect(HIGHLIGHT_RECT, minX, minY, maxX, maxY);
   } else {
-    inialiseRect(minX, minY, maxX, maxY);
+    return inialiseRect(minX, minY, maxX, maxY);
   }
 }
 
@@ -50,6 +52,7 @@ export function clearFabricCanvas() {
   HIGHLIGHT_RECT = null;
   RECT_WORLD_COORDS = null;
   HIGHLIGHT_RECT_ORIGINAL_WORLD = null;
+  SCALING_ANCHOR = null;
   RECT_IS_SCALING = false;
 }
 
@@ -79,6 +82,11 @@ export function setRectWorldCoords(coords: [[number, number], [number, number]])
 export function highlightRectIsBeingEdited(): boolean {
   if (HIGHLIGHT_RECT == null) return false;
   return HIGHLIGHT_RECT.isMoving || RECT_IS_SCALING || HIGHLIGHT_RECT.__corner === 'mtr';
+}
+
+export function rectIsRotating(): boolean {
+  if (HIGHLIGHT_RECT == null) return false;
+  return HIGHLIGHT_RECT.__corner === 'mtr';
 }
 
 export function setRectOriginalWoordCoord(coord: [number, number]) {

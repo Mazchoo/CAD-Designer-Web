@@ -383,10 +383,10 @@ impl Pattern {
             }
             // ToDo, Since block does not own its offset, can't safely use a function here
             // Add a cached offset to a block
-            let mut offset: Array2<f32> = array![[0., 0.]];
+            let mut offset: &Array2<f32> = &array![[0., 0.]];
             for insert in self.entities.iter() {
                 if insert.name == block.name {
-                    offset = insert.position.clone();
+                    offset = &insert.position;
                     break;
                 }
             }
@@ -399,7 +399,7 @@ impl Pattern {
     pub(crate) fn rotate_highlights(
         &mut self,
         rot_matrix: &ndarray::Array2<f32>,
-        rot_center: &ndarray::Array2<f32>,
+        rot_offset: &ndarray::Array2<f32>,
         view: &String,
     ) {
         let view_single_block_key = parse::view_as_block_key(view);
@@ -410,18 +410,18 @@ impl Pattern {
             }
             if view_single_block_key != Option::None {
                 // If looking at single block, offset entities in block
-                block.rotate_entities(rot_matrix, rot_center);
+                block.rotate_entities(rot_matrix, rot_offset);
                 break;
             }
 
-            let mut offset: Array2<f32> = array![[0., 0.]];
+            let mut offset: &Array2<f32> = &array![[0., 0.]];
             for insert in self.entities.iter() {
                 if insert.name == block.name {
-                    offset = insert.position.clone();
+                    offset = &insert.position;
                     break;
                 }
             }
-            let offset_rot_center: Array2<f32> = rot_center - offset;
+            let offset_rot_center: Array2<f32> = rot_offset - offset + offset.dot(rot_matrix);
             block.rotate_entities(rot_matrix, &offset_rot_center);
             // ToDo - else check individual entities
         }

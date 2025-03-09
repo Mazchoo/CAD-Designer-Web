@@ -160,16 +160,16 @@ impl Handle {
     pub fn rotate_highlights(&mut self) -> JsValue {
         let rot_matrix = &self.settings.highlight_rot_matrix();
         let center = &self.settings.highlight_rot_center_array();
+        let rotate_offset = center - center.dot(rot_matrix);
 
         self.pattern
-            .rotate_highlights(&rot_matrix, &center, &self.settings.view);
+            .rotate_highlights(&rot_matrix, &rotate_offset, &self.settings.view);
 
         let rotated_bbox = self
             .pattern
             .get_highlighted_bounding_box(&self.settings.view);
 
         self.settings.highlight_rotation_angle = 0.;
-        self.settings.highlight_rotation_center = (0., 0.);
 
         if rotated_bbox == Option::None {
             return to_value(&()).unwrap();
