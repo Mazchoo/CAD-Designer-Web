@@ -1,3 +1,4 @@
+use ndarray::{array, Array2};
 use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
@@ -37,7 +38,25 @@ impl Default for Settings {
     }
 }
 
-pub fn parse_settings(json_str: &str) -> Result<Settings> {
-    let parsed_settings: Settings = serde_json::from_str(json_str)?;
-    Ok(parsed_settings)
+impl Settings {
+    pub fn parse_settings(json_str: &str) -> Result<Settings> {
+        let parsed_settings: Settings = serde_json::from_str(json_str)?;
+        Ok(parsed_settings)
+    }
+
+    pub fn highlight_offset_array(&self) -> ndarray::Array2<f32> {
+        let (x, y) = self.highlight_offset;
+        return array![[x, y]];
+    }
+
+    pub fn highlight_scale_array(&self) -> ndarray::Array2<f32> {
+        let (x, y) = self.highlight_scale;
+        let (flip_x, flip_y) = self.highlight_flip;
+        return array![[if flip_x { -x } else { x }, if flip_y { -y } else { y }]];
+    }
+
+    pub fn highlight_anchor_array(&self) -> ndarray::Array2<f32> {
+        let (x, y) = self.highlight_anchor;
+        return array![[x, y]];
+    }
 }

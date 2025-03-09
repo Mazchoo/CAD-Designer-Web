@@ -21,7 +21,7 @@ impl Handle {
         let pattern = pattern::Pattern::new(pattern_payload);
         let mut settings = user_settings::Settings::default();
 
-        if let Ok(parsed_settings) = user_settings::parse_settings(&settings_payload) {
+        if let Ok(parsed_settings) = user_settings::Settings::parse_settings(&settings_payload) {
             settings = parsed_settings;
         } else {
             console::log_1(&"Settings in incorrect format".into());
@@ -136,6 +136,12 @@ impl Handle {
     }
 
     pub fn scale_highlights(&mut self) {
+        self.pattern.scale_highlighted_objects(
+            &self.settings.highlight_scale_array(),
+            &self.settings.highlight_anchor_array(),
+            &self.settings.view,
+        );
+
         self.settings.highlight_scale = (1., 1.);
         self.settings.highlight_flip = (false, false);
         self.settings.highlight_anchor = (0., 0.);

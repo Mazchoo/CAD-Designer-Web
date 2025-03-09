@@ -42,6 +42,24 @@ pub fn offset_bbox(
     );
 }
 
+pub fn scale_bbox(
+    bbox: &((f32, f32), (f32, f32)),
+    scale: &Array2<f32>,
+    anchor: &Array2<f32>,
+) -> ((f32, f32), (f32, f32)) {
+    let ((min_x, max_x), (min_y, max_y)) = bbox;
+    return (
+        (
+            (min_x - anchor[(0, 0)]) * scale[(0, 0)] + anchor[(0, 0)],
+            (max_x - anchor[(0, 0)]) * scale[(0, 0)] + anchor[(0, 0)],
+        ),
+        (
+            (min_y - anchor[(0, 1)]) * scale[(0, 1)] + anchor[(0, 1)],
+            (max_y - anchor[(0, 1)]) * scale[(0, 1)] + anchor[(0, 1)],
+        ),
+    );
+}
+
 pub fn intersect(bbox1: &((f32, f32), (f32, f32)), bbox2: &((f32, f32), (f32, f32))) -> bool {
     let ((min_x1, max_x1), (min_y1, max_y1)) = bbox1;
     let ((min_x2, max_x2), (min_y2, max_y2)) = bbox2;

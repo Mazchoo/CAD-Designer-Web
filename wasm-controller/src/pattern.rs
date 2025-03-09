@@ -1,6 +1,7 @@
 use ndarray::{array, Array2};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
+use web_sys::js_sys::Array;
 
 use crate::block;
 use crate::insert;
@@ -346,23 +347,51 @@ impl Pattern {
         let view_single_block_key = parse::view_as_block_key(view);
 
         for block in self.blocks.iter_mut() {
-            if block.is_highlighted() {
-                if view_single_block_key != Option::None {
-                    // If looking at single block, offset entities in block
-                    block.offset_entities(&arr_offset);
-                    break;
-                }
-                for insert in self.entities.iter_mut() {
-                    if insert.name == block.name {
-                        insert.position += &arr_offset;
-                    }
+            if !block.is_highlighted() {
+                continue;
+            }
+            if view_single_block_key != Option::None {
+                // If looking at single block, offset entities in block
+                block.offset_entities(&arr_offset);
+                break;
+            }
+            for insert in self.entities.iter_mut() {
+                if insert.name == block.name {
+                    insert.position += &arr_offset;
                 }
             }
             // ToDo - else check individual entities
         }
     }
 
-    pub(crate) fn scale_highlighted_objects(&mut self, scale: (f32, f32), flip: (bool, bool), anchor: (f32, f32), view: &String) {
-        
+    pub(crate) fn scale_highlighted_objects(
+        &mut self,
+        scale: &ndarray::Array2<f32>,
+        anchor: &ndarray::Array2<f32>,
+        view: &String,
+    ) {
+        let view_single_block_key = parse::view_as_block_key(view);
+
+        for block in self.blocks.iter_mut() {
+            if !block.is_highlighted() {
+                continue;
+            }
+            if view_single_block_key != Option::None {
+                // If looking at single block, offset entities in block
+                block.scale_entities(scale, anchor);
+                break;
+            }
+            // ToDo, Since block does not own its offset, can't safely use a function here
+            // Add a cached offset to a block
+            let mut offset: Array2<f32> = array![[0., 0.]];
+            for insert in self.entities.iter() {
+                if insert.name == block.name {
+                    offset = insert.position.clone();
+                }
+            }
+            let offset_anchor = anchor - offset;
+            block.scale_entities(scale, &offset_anchor);
+            // ToDo - else check individual entities
+        }
     }
 }

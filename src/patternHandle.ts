@@ -167,11 +167,11 @@ export function setNewHighlightPosition(rect: fabric.Rect, transform: fabric.Tra
     PATTERN_WASM_HANDLE.set_highlight_scale(rect.scaleX, rect.scaleY);
     PATTERN_WASM_HANDLE.set_highlight_flip(rect.flipX, rect.flipY);
     PATTERN_WASM_HANDLE.set_highlight_anchor(anchorX, anchorY);
-
+    PATTERN_WASM_HANDLE.scale_highlights();
     updateCanvasData(PATTERN_WASM_HANDLE);
 
-    resetScaleRect(); // Apply transform to visual rect
     scaleHighlightRect([rect.scaleX, rect.scaleY], [rect.flipX, rect.flipY], [anchorX, anchorY]); // Update JS side rect world coordinates
+    resetScaleRect(); // Apply transform to visual rect
   } else {
     const newCoordinate = getDxfWorldCoorindates(rect.left, rect.top);
     const worldUpdate = [

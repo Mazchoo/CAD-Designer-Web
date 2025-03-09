@@ -77,7 +77,7 @@ impl Entity {
         let mut offset_vertices = &self.vertices + offset;
 
         if self.highlighted && (scale[(0, 0)] != 1. || scale[(0, 1)] != 1.) {
-            self.scale_vertices(&mut offset_vertices, scale, anchor);
+            self.calculate_scaled_vertices(&mut offset_vertices, scale, anchor);
         }
 
         let num_rows = self.vertices.shape()[0];
@@ -163,7 +163,7 @@ impl Entity {
         self.bounding_box = bounding_box::offset_bbox(&self.bounding_box, offset);
     }
 
-    fn scale_vertices(
+    fn calculate_scaled_vertices(
         &self,
         vertices: &mut Array2<f32>,
         scale: &Array2<f32>,
@@ -172,6 +172,12 @@ impl Entity {
         *vertices -= anchor;
         *vertices *= scale;
         *vertices += anchor;
+    }
+
+    pub fn scale_vertices(&mut self, scale: &Array2<f32>, anchor: &Array2<f32>) {
+        self.vertices -= anchor;
+        self.vertices *= scale;
+        self.vertices += anchor;
     }
 
     pub fn get_closest_point_on_entity(&self) {}

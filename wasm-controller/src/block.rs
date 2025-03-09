@@ -162,9 +162,9 @@ impl Block {
         index_buffer: &mut Vec<u32>,
     ) {
         let block_color: &(f32, f32, f32, f32) = self.get_color(settings);
-        let total_offset = self.get_highlight_offset(settings) + offset;
-        let highlight_scale = self.get_highlight_scale(settings);
-        let highlight_anchor = self.get_highlight_anchor(settings);
+        let total_offset = settings.highlight_offset_array() + offset;
+        let highlight_scale = settings.highlight_scale_array();
+        let highlight_anchor = settings.highlight_anchor_array();
 
         for entity in self.entities.iter() {
             if settings.disabled_layers.contains(&entity.layer) {
@@ -210,22 +210,6 @@ impl Block {
         return block_color;
     }
 
-    fn get_highlight_offset(&self, settings: &user_settings::Settings) -> ndarray::Array2<f32> {
-        let (x, y) = settings.highlight_offset;
-        return array![[x, y]];
-    }
-
-    fn get_highlight_scale(&self, settings: &user_settings::Settings) -> ndarray::Array2<f32> {
-        let (x, y) = settings.highlight_scale;
-        let (flip_x, flip_y) = settings.highlight_flip;
-        return array![[if flip_x { -x } else { x }, if flip_y { -y } else { y }]];
-    }
-
-    fn get_highlight_anchor(&self, settings: &user_settings::Settings) -> ndarray::Array2<f32> {
-        let (x, y) = settings.highlight_anchor;
-        return array![[x, y]];
-    }
-
     pub fn is_highlighted(&self) -> bool {
         return self.highlighted;
     }
@@ -249,5 +233,12 @@ impl Block {
             entity.offset_vertices(offset);
         }
         self.bounding_box = bounding_box::offset_bbox(&self.bounding_box, offset);
+    }
+
+    pub fn scale_entities(&mut self, scale: &Array2<f32>, anchor: &Array2<f32>) {
+        for entity in self.entities.iter_mut() {
+            entity.scale_vertices(scale, anchor);
+        }
+        self.bounding_box = bounding_box::scale_bbox(&self.bounding_box, scale, anchor);
     }
 }
