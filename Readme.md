@@ -2,7 +2,7 @@
 
 # Introduction
 
-Creates basic cad editing functionality in the browser.
+Basic 2D cad editing functionality fully in a web browser.
 
 Currently supports:
 
@@ -25,6 +25,7 @@ Needs npm for other packages - https://docs.npmjs.com/downloading-and-installing
 Run
 ```
 npm install
+cargo install wasm-pack
 npm run build-rust
 npm run server-release
 ```
