@@ -174,11 +174,23 @@ impl Pattern {
         let mut index_buffer: Vec<u32> = vec![];
         let mut last_index: u32 = 0;
 
+        let highlight_offset = settings.highlight_offset_array();
+        let highlight_scale = settings.highlight_scale_array();
+        let highlight_anchor = settings.highlight_anchor_array();
+        let highlight_rot_matrix = settings.highlight_rot_matrix();
+        let rot_center = settings.highlight_rot_center_array();
+        let highlight_rot_offset = &rot_center - &rot_center.dot(&highlight_rot_matrix);
+
         for block in self.blocks.iter() {
             let offset = self.get_offset_for_block(&block.name);
             block.get_draw_sequence(
                 &offset,
                 &settings,
+                &highlight_offset,
+                &highlight_scale,
+                &highlight_anchor,
+                &highlight_rot_matrix,
+                &highlight_rot_offset,
                 &mut last_index,
                 &mut vertex_buffer,
                 &mut index_buffer,
@@ -199,9 +211,22 @@ impl Pattern {
 
         if let Some(block) = self.block_in_pattern(&block_name) {
             let offset = Array2::zeros((1, 2));
+
+            let highlight_offset = settings.highlight_offset_array();
+            let highlight_scale = settings.highlight_scale_array();
+            let highlight_anchor = settings.highlight_anchor_array();
+            let highlight_rot_matrix = settings.highlight_rot_matrix();
+            let rot_center = settings.highlight_rot_center_array();
+            let highlight_rot_offset = &rot_center - &rot_center.dot(&highlight_rot_matrix);
+
             block.get_draw_sequence(
                 &offset,
                 &settings,
+                &highlight_offset,
+                &highlight_scale,
+                &highlight_anchor,
+                &highlight_rot_matrix,
+                &highlight_rot_offset,
                 &mut last_index,
                 &mut vertex_buffer,
                 &mut index_buffer,
