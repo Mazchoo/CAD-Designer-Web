@@ -17,6 +17,12 @@ Currently does not support:
 - Snap-point functionality
 - Precise movement by given amounts e.g. moving up by 1cm exactly
 
+# How to edit objects
+
+Click select and then block to enable to select tool to select blocks. The arrow keys can be used to move around. Selecting pan (the default command) will panning by clicking on the mouse.
+
+Once an object is selected it can be roated by selecting the square at the top of the bounding box, dragging and dropping the box moves the object around and dragging the edges of the box changes the scale.
+
 # Set-up for local hosting
 
 Needs the rust compiler to build wasm - https://www.rust-lang.org/tools/install
