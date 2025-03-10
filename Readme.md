@@ -36,6 +36,4 @@ The browser must support web-gpu else an error pop-up will be displayed. All chr
 
 # Development Information
 
-Use `npm run build-rust` to update the wasm package. This does not happen automatically when rollup runs, rollup can only copy the wasm file into the distribution. There is typescript generated for the wasm which can infer types.
-
 Use `npm run server-debug` to run the server on local host with un-mininified javascript.
