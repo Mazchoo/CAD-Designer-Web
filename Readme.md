@@ -25,8 +25,8 @@ Once an object is selected it can be roated by selecting the square at the top o
 
 # Set-up for local hosting
 
-Needs the rust compiler to build wasm - https://www.rust-lang.org/tools/install
-Needs npm for other packages - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+- Needs the rust compiler to build wasm - https://www.rust-lang.org/tools/install
+- Needs npm for other packages - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 Run
 ```
