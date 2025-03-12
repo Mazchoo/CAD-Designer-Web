@@ -2,29 +2,44 @@
 
 # Introduction
 
-Creates basic cad editing functionality in the browser.
+Basic 2D cad editing functionality fully in a web browser.
 
-- Can select and move multiple objects
-- Can snap objects to other objects
+Currently supports:
+
+- Can select multiple objects
+- Can rotate, flip, scale and offset blocks
 - Can make edits on model level or on block level
-- Show basic statistics about the underlying shapes (e.g. surface area)
 
-# GPU Requirements
+Currently does not support:
 
-The browser must support usage of the GPU for the display to work.
+- Dragging and grouping entities for editing
+- Undoing and redoing operations
+- Snap-point functionality
+- Precise movement by given amounts e.g. moving up by 1cm exactly
+
+# How to edit objects
+
+Click select and then block to enable to select tool to select blocks. The arrow keys can be used to move around. Selecting pan (the default command) will panning by clicking on the mouse.
+
+Once an object is selected it can be roated by selecting the square at the top of the bounding box, dragging and dropping the box moves the object around and dragging the edges of the box changes the scale.
+
+# Set-up for local hosting
+
+- Needs the rust compiler to build wasm - https://www.rust-lang.org/tools/install
+- Needs npm for other packages - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+Run
+```
+npm install
+cargo install wasm-pack
+npm run build-rust
+npm run server-release
+```
+
+# Web Gpu Requirements
+
+The browser must support web-gpu else an error pop-up will be displayed. All chromium browsers should support web-gpu https://en.wikipedia.org/wiki/WebGPU#:~:text=Both%20Google%20Chrome%20and%20Firefox,of%20both%20WebGPU%20and%20WGSL. and in each case it should use native hardware for rendering.
 
 # Development Information
 
-Use `npm run build-rust` to update the wasm package. This does not happen automatically when rollup runs, rollup can only copy the wasm file into the distribution. There is typescript generated for the wasm which can infer types.
-
-Use `npm run server-debug` to run the server on local host.
-
-Search user settings in the command pallette with Ctrl + Shift + P
-Then add the following entry to the settings
-"rust-analyzer.procMacro.ignored": {
-"leptos_macro": [
-// optional:
-// "component",
-"server"
-],
-}
+Use `npm run server-debug` to run the server on local host with un-mininified javascript.
