@@ -1,4 +1,5 @@
 use serde_wasm_bindgen::to_value;
+use ndarray::Array2;
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
@@ -42,6 +43,7 @@ impl Handle {
     }
 
     pub fn get_draw_sequence(&self) -> JsValue {
+        // ToDo - declare the arrays ahead of time and return only integer here
         return to_value(&self.pattern.get_draw_sequence(&self.settings)).unwrap();
     }
 
@@ -105,13 +107,12 @@ impl Handle {
         self.settings.disabled_layers.retain(|&x| x != layer);
     }
 
-    pub fn highlight_block(&mut self, block_key: String, status: bool) -> bool {
-        return self.pattern.set_highlight(&block_key, status);
+    pub fn highlight_block(&mut self, block_key: String, status: bool) {
+        self.pattern.set_highlight(&block_key, status);
     }
 
-    pub fn set_highlight_offset(&mut self, offset_x: f32, offset_y: f32) -> bool {
+    pub fn set_highlight_offset(&mut self, offset_x: f32, offset_y: f32) {
         self.settings.highlight_offset = (offset_x, offset_y);
-        return true;
     }
 
     pub fn offset_highlights(&mut self) {
@@ -120,29 +121,24 @@ impl Handle {
         self.settings.highlight_offset = (0., 0.);
     }
 
-    pub fn set_highlight_scale(&mut self, scale_x: f32, scale_y: f32) -> bool {
+    pub fn set_highlight_scale(&mut self, scale_x: f32, scale_y: f32) {
         self.settings.highlight_scale = (scale_x, scale_y);
-        return true;
     }
 
-    pub fn set_highlight_flip(&mut self, flip_x: bool, flip_y: bool) -> bool {
+    pub fn set_highlight_flip(&mut self, flip_x: bool, flip_y: bool) {
         self.settings.highlight_flip = (flip_x, flip_y);
-        return true;
     }
 
-    pub fn set_highlight_rotation_center(&mut self, rot_center_x: f32, rot_center_y: f32) -> bool {
+    pub fn set_highlight_rotation_center(&mut self, rot_center_x: f32, rot_center_y: f32) {
         self.settings.highlight_rotation_center = (rot_center_x, rot_center_y);
-        return true;
     }
 
-    pub fn set_highlight_rotation_angle(&mut self, angle_rad: f32) -> bool {
+    pub fn set_highlight_rotation_angle(&mut self, angle_rad: f32) {
         self.settings.highlight_rotation_angle = angle_rad;
-        return true;
     }
 
-    pub fn set_highlight_anchor(&mut self, anchor_x: f32, anchor_y: f32) -> bool {
+    pub fn set_highlight_anchor(&mut self, anchor_x: f32, anchor_y: f32) {
         self.settings.highlight_anchor = (anchor_x, anchor_y);
-        return true;
     }
 
     pub fn scale_highlights(&mut self) {
@@ -158,12 +154,12 @@ impl Handle {
     }
 
     pub fn rotate_highlights(&mut self) -> JsValue {
-        let rot_matrix = &self.settings.highlight_rot_matrix();
-        let center = &self.settings.highlight_rot_center_array();
-        let rotate_offset = center - center.dot(rot_matrix);
+        let rot_matrix: &Array2<f32> = &self.settings.highlight_rot_matrix();
+        let center: &Array2<f32> = &self.settings.highlight_rot_center_array();
+        let rotate_offset: &Array2<f32> = &(center - center.dot(rot_matrix));
 
         self.pattern
-            .rotate_highlights(&rot_matrix, &rotate_offset, &self.settings.view);
+            .rotate_highlights(rot_matrix, rotate_offset, &self.settings.view);
 
         let rotated_bbox = self
             .pattern
