@@ -23,14 +23,23 @@ import {
   setRectOriginalWoordCoord,
 } from './fabricHandle';
 import { INPUT_HANDLER } from './globals';
+import Stats from 'stats.js';
 
 setupMenuCallbacks();
 addCallbacks();
 
-let LAST_FRAME_MS = Date.now();
+let LAST_FRAME_MS = performance.now();
+let PROFILE = false;
+
+if (PROFILE) {
+  var stats = new Stats();
+  stats.showPanel(0);
+  document.body.appendChild(stats.dom);
+}
 
 function frame() {
-  const now = Date.now();
+  if (PROFILE) stats.begin();
+  const now = performance.now();
   const deltaTime = (now - LAST_FRAME_MS) / 1000;
   LAST_FRAME_MS = now;
 
@@ -74,6 +83,7 @@ function frame() {
     DEVICE.queue.submit([commandEncoder.finish()]);
   }
 
+  if (PROFILE) stats.end();
   requestAnimationFrame(frame);
 }
 
