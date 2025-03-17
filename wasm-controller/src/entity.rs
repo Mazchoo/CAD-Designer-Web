@@ -4,6 +4,7 @@ use ndarray::Array2;
 
 use crate::user_settings;
 use crate::utils::bounding_box;
+use crate::utils::memory::{IndexBuffer, VertexBuffer};
 
 #[derive(Debug)]
 pub enum EntityTypes {
@@ -68,8 +69,8 @@ impl Entity {
         rot_matrix: &Array2<f32>,
         cross_size: &f32,
         last_index: &mut u32,
-        vertex_buffer: &mut Vec<f32>,
-        index_buffer: &mut Vec<u32>,
+        vertex_buffer: &mut VertexBuffer,
+        index_buffer: &mut IndexBuffer,
     ) {
         if self.vertices.len() == 0 {
             return;
@@ -90,7 +91,7 @@ impl Entity {
             let x = offset_vertices[(0, 0)];
             let y = offset_vertices[(0, 1)];
             // draw a cross using vertex data format x, y, r, g, b, a
-            vertex_buffer.extend([
+            vertex_buffer.buffer.extend([
                 x - cross_size,
                 y - cross_size,
                 color.0 - 0.05,
@@ -117,7 +118,7 @@ impl Entity {
                 color.3,
             ]);
 
-            index_buffer.extend([
+            index_buffer.buffer.extend([
                 *last_index,
                 *last_index + 1,
                 u32::MAX,
@@ -129,18 +130,22 @@ impl Entity {
             *last_index += 4;
         } else {
             for v in offset_vertices.rows().into_iter() {
-                vertex_buffer.extend([v[0], v[1], color.0, color.1, color.2, color.3]);
-                index_buffer.push(*last_index);
+                vertex_buffer
+                    .buffer
+                    .extend([v[0], v[1], color.0, color.1, color.2, color.3]);
+                index_buffer.buffer.push(*last_index);
                 *last_index += 1;
             }
 
             // Close loop for display if closed
             if self.shape {
-                index_buffer.push(*last_index + 1 - (num_rows as u32));
+                index_buffer
+                    .buffer
+                    .push(*last_index + 1 - (num_rows as u32));
             }
 
             // u32::MAX denotes end of line
-            index_buffer.push(u32::MAX);
+            index_buffer.buffer.push(u32::MAX);
         }
     }
 

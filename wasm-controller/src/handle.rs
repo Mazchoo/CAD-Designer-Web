@@ -1,5 +1,5 @@
-use serde_wasm_bindgen::to_value;
 use ndarray::Array2;
+use serde_wasm_bindgen::to_value;
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
@@ -7,11 +7,14 @@ use crate::pattern;
 use crate::user_settings;
 use crate::utils::bounding_box;
 use crate::utils::color;
+use crate::utils::memory::{IndexBuffer, VertexBuffer};
 
 #[wasm_bindgen]
 pub struct Handle {
     pattern: pattern::Pattern,
     settings: user_settings::Settings,
+    vertex_buffer: VertexBuffer,
+    index_buffer: IndexBuffer,
 }
 
 #[wasm_bindgen]
@@ -28,9 +31,14 @@ impl Handle {
             console::log_1(&"Settings in incorrect format".into());
         }
 
+        let vertex_buffer = VertexBuffer::new();
+        let index_buffer = IndexBuffer::new();
+
         return Handle {
             pattern: pattern,
             settings: settings,
+            vertex_buffer: vertex_buffer,
+            index_buffer: index_buffer,
         };
     }
 
@@ -42,9 +50,14 @@ impl Handle {
         return to_value(&self.settings).unwrap();
     }
 
-    pub fn get_draw_sequence(&self) -> JsValue {
-        // ToDo - declare the arrays ahead of time and return only integer here
-        return to_value(&self.pattern.get_draw_sequence(&self.settings)).unwrap();
+    pub fn get_draw_sequence(&mut self) {
+        &self.vertex_buffer.buffer.clear();
+        &self.index_buffer.buffer.clear();
+        self.pattern.get_draw_sequence(
+            &self.settings,
+            &mut self.vertex_buffer,
+            &mut self.index_buffer,
+        );
     }
 
     pub fn get_all_layers(&self) -> Vec<i32> {
@@ -53,6 +66,22 @@ impl Handle {
 
     pub fn get_all_block_names(&self) -> Vec<String> {
         return self.pattern.get_all_block_names();
+    }
+
+    pub fn get_vertex_buffer_ptr(&self) -> *const f32 {
+        return self.vertex_buffer.get_ptr();
+    }
+
+    pub fn get_vertex_buffer_len(&self) -> usize {
+        return self.vertex_buffer.get_len();
+    }
+
+    pub fn get_index_buffer_ptr(&self) -> *const u32 {
+        return self.index_buffer.get_ptr();
+    }
+
+    pub fn get_index_buffer_len(&self) -> usize {
+        return self.index_buffer.get_len();
     }
 
     pub fn set_view(&mut self, name: String) {

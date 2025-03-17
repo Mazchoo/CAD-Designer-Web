@@ -4,6 +4,7 @@ use crate::entity;
 use crate::parse_pattern;
 use crate::user_settings;
 use crate::utils::bounding_box;
+use crate::utils::memory;
 
 #[derive(Debug)]
 pub struct Block {
@@ -163,8 +164,8 @@ impl Block {
         highlight_rot_matrix: &Array2<f32>,
         highlight_rot_offset: &Array2<f32>,
         last_index: &mut u32,
-        vertex_buffer: &mut Vec<f32>,
-        index_buffer: &mut Vec<u32>,
+        vertex_buffer: &mut memory::VertexBuffer,
+        index_buffer: &mut memory::IndexBuffer,
     ) {
         let block_color: &(f32, f32, f32, f32) = self.get_color(settings);
         let total_highlight_offset = highlight_offset + offset;

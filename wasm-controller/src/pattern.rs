@@ -8,6 +8,7 @@ use crate::insert;
 use crate::parse_pattern;
 use crate::user_settings;
 use crate::utils::bounding_box;
+use crate::utils::memory::{IndexBuffer, VertexBuffer};
 use crate::utils::parse;
 
 #[wasm_bindgen]
@@ -169,9 +170,12 @@ impl Pattern {
         return Array2::zeros((1, 2));
     }
 
-    fn get_draw_sequence_model(&self, settings: &user_settings::Settings) -> (Vec<f32>, Vec<u32>) {
-        let mut vertex_buffer: Vec<f32> = vec![];
-        let mut index_buffer: Vec<u32> = vec![];
+    fn get_draw_sequence_model(
+        &self,
+        settings: &user_settings::Settings,
+        vertex_buffer: &mut VertexBuffer,
+        index_buffer: &mut IndexBuffer,
+    ) {
         let mut last_index: u32 = 0;
 
         let highlight_offset: Array2<f32> = settings.highlight_offset_array();
@@ -179,7 +183,8 @@ impl Pattern {
         let highlight_anchor: Array2<f32> = settings.highlight_anchor_array();
         let highlight_rot_matrix: Array2<f32> = settings.highlight_rot_matrix();
         let rot_center: Array2<f32> = settings.highlight_rot_center_array();
-        let highlight_rot_offset: Array2<f32> = &rot_center - &rot_center.dot(&highlight_rot_matrix);
+        let highlight_rot_offset: Array2<f32> =
+            &rot_center - &rot_center.dot(&highlight_rot_matrix);
 
         for block in self.blocks.iter() {
             let offset: Array2<f32> = self.get_offset_for_block(&block.name);
@@ -192,21 +197,19 @@ impl Pattern {
                 &highlight_rot_matrix,
                 &highlight_rot_offset,
                 &mut last_index,
-                &mut vertex_buffer,
-                &mut index_buffer,
+                vertex_buffer,
+                index_buffer,
             )
         }
-
-        return (vertex_buffer, index_buffer);
     }
 
     fn get_draw_sequence_block(
         &self,
         settings: &user_settings::Settings,
         block_name: &String,
-    ) -> (Vec<f32>, Vec<u32>) {
-        let mut vertex_buffer: Vec<f32> = vec![];
-        let mut index_buffer: Vec<u32> = vec![];
+        vertex_buffer: &mut VertexBuffer,
+        index_buffer: &mut IndexBuffer,
+    ) {
         let mut last_index: u32 = 0;
 
         if let Some(block) = self.block_in_pattern(&block_name) {
@@ -217,7 +220,8 @@ impl Pattern {
             let highlight_anchor: Array2<f32> = settings.highlight_anchor_array();
             let highlight_rot_matrix: Array2<f32> = settings.highlight_rot_matrix();
             let rot_center: Array2<f32> = settings.highlight_rot_center_array();
-            let highlight_rot_offset: Array2<f32> = &rot_center - &rot_center.dot(&highlight_rot_matrix);
+            let highlight_rot_offset: Array2<f32> =
+                &rot_center - &rot_center.dot(&highlight_rot_matrix);
 
             block.get_draw_sequence(
                 &offset,
@@ -228,24 +232,24 @@ impl Pattern {
                 &highlight_rot_matrix,
                 &highlight_rot_offset,
                 &mut last_index,
-                &mut vertex_buffer,
-                &mut index_buffer,
-            )
+                vertex_buffer,
+                index_buffer,
+            );
         }
-
-        return (vertex_buffer, index_buffer);
     }
 
     pub(crate) fn get_draw_sequence(
         &self,
         settings: &user_settings::Settings,
-    ) -> (Vec<f32>, Vec<u32>) {
+        vertex_buffer: &mut VertexBuffer,
+        index_buffer: &mut IndexBuffer,
+    ) {
         // View with name Block=>L-1 will attempt to draw L-1
         if let Some(block_key) = parse::view_as_block_key(&settings.view) {
-            return self.get_draw_sequence_block(settings, &block_key);
+            self.get_draw_sequence_block(settings, &block_key, vertex_buffer, index_buffer);
+        } else {
+            self.get_draw_sequence_model(settings, vertex_buffer, index_buffer);
         }
-
-        return self.get_draw_sequence_model(settings);
     }
 
     pub(crate) fn block_in_pattern(&self, block_name: &String) -> Option<&block::Block> {
