@@ -154,7 +154,7 @@ impl Block {
         return bounding_box::intersect(&self.bounding_box, bbox);
     }
 
-    pub fn get_draw_sequence(
+    pub fn update_draw_sequence(
         &self,
         offset: &Array2<f32>,
         settings: &user_settings::Settings,
@@ -181,7 +181,7 @@ impl Block {
                 offset
             };
 
-            entity.get_draw_sequence(
+            entity.update_draw_sequence(
                 entity_color,
                 entity_offset,
                 &highlight_scale,

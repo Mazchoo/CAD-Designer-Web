@@ -170,7 +170,7 @@ impl Pattern {
         return Array2::zeros((1, 2));
     }
 
-    fn get_draw_sequence_model(
+    fn update_draw_sequence_model(
         &self,
         settings: &user_settings::Settings,
         vertex_buffer: &mut VertexBuffer,
@@ -188,7 +188,7 @@ impl Pattern {
 
         for block in self.blocks.iter() {
             let offset: Array2<f32> = self.get_offset_for_block(&block.name);
-            block.get_draw_sequence(
+            block.update_draw_sequence(
                 &offset,
                 &settings,
                 &highlight_offset,
@@ -203,7 +203,7 @@ impl Pattern {
         }
     }
 
-    fn get_draw_sequence_block(
+    fn update_draw_sequence_block(
         &self,
         settings: &user_settings::Settings,
         block_name: &String,
@@ -223,7 +223,7 @@ impl Pattern {
             let highlight_rot_offset: Array2<f32> =
                 &rot_center - &rot_center.dot(&highlight_rot_matrix);
 
-            block.get_draw_sequence(
+            block.update_draw_sequence(
                 &offset,
                 &settings,
                 &highlight_offset,
@@ -238,7 +238,7 @@ impl Pattern {
         }
     }
 
-    pub(crate) fn get_draw_sequence(
+    pub(crate) fn update_draw_sequence(
         &self,
         settings: &user_settings::Settings,
         vertex_buffer: &mut VertexBuffer,
@@ -246,9 +246,9 @@ impl Pattern {
     ) {
         // View with name Block=>L-1 will attempt to draw L-1
         if let Some(block_key) = parse::view_as_block_key(&settings.view) {
-            self.get_draw_sequence_block(settings, &block_key, vertex_buffer, index_buffer);
+            self.update_draw_sequence_block(settings, &block_key, vertex_buffer, index_buffer);
         } else {
-            self.get_draw_sequence_model(settings, vertex_buffer, index_buffer);
+            self.update_draw_sequence_model(settings, vertex_buffer, index_buffer);
         }
     }
 

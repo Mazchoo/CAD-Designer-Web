@@ -59,7 +59,7 @@ impl Entity {
         };
     }
 
-    pub fn get_draw_sequence(
+    pub fn update_draw_sequence(
         &self,
         color: &(f32, f32, f32, f32),
         offset: &Array2<f32>,

@@ -29,6 +29,7 @@ Once an object is selected it can be roated by selecting the square at the top o
 - Needs npm for other packages - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 Run
+
 ```
 npm install
 cargo install wasm-pack

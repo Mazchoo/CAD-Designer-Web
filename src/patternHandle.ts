@@ -1,4 +1,4 @@
-import init, { greet, Handle } from '../wasm-controller/pkg/cad_pattern_editor.js';
+import init, { greet, Handle, InitOutput } from '../wasm-controller/pkg/cad_pattern_editor.js';
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
@@ -22,13 +22,14 @@ import {
 import * as fabric from 'fabric';
 
 let PATTERN_WASM_HANDLE: Handle | undefined = undefined;
-let wasmStarted: boolean = false;
+let WASM_STARTED: boolean = false;
+let WASM_MODULE: InitOutput | undefined = undefined;
 
 export async function startUpWasm() {
-  await init();
+  WASM_MODULE = await init();
   console.log('Started wasm');
   greet('User');
-  wasmStarted = true;
+  WASM_STARTED = true;
 }
 
 export function deselectAll() {
@@ -40,11 +41,21 @@ export function deselectAll() {
 }
 
 const updateCanvasData = (handle: Handle | undefined) => {
-  if (handle === undefined) {
+  if (handle === undefined || WASM_MODULE === undefined) {
     return;
   }
-  const drawArrays = handle.get_draw_sequence();
-  mapBuffersToDevice(new Float32Array(drawArrays[0]), new Uint32Array(drawArrays[1]));
+  handle.update_draw_sequence();
+  const vertexView = new Float32Array(
+    WASM_MODULE.memory.buffer,
+    handle.get_vertex_buffer_ptr(),
+    handle.get_vertex_buffer_len()
+  );
+  const indexView = new Uint32Array(
+    WASM_MODULE.memory.buffer,
+    handle.get_index_buffer_ptr(),
+    handle.get_index_buffer_len()
+  );
+  mapBuffersToDevice(vertexView, indexView);
 };
 
 const addViewCallbacksToLayers = (handle: Handle | undefined) => {
@@ -121,7 +132,7 @@ const addChangeSelectionCallbacks = (handle: Handle | undefined, keys: string[])
 };
 
 export function intilizePattern(payload: string): [number[], number[]] | undefined {
-  if (!wasmStarted) return;
+  if (!WASM_STARTED) return;
 
   PATTERN_WASM_HANDLE = new Handle(payload, getSettingsPayload());
   console.log(PATTERN_WASM_HANDLE.get_number_entities(), 'entities have been parsed');

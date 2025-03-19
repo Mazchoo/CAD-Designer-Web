@@ -50,10 +50,10 @@ impl Handle {
         return to_value(&self.settings).unwrap();
     }
 
-    pub fn get_draw_sequence(&mut self) {
-        &self.vertex_buffer.buffer.clear();
-        &self.index_buffer.buffer.clear();
-        self.pattern.get_draw_sequence(
+    pub fn update_draw_sequence(&mut self) {
+        let _ = &self.vertex_buffer.buffer.clear();
+        let _ = &self.index_buffer.buffer.clear();
+        self.pattern.update_draw_sequence(
             &self.settings,
             &mut self.vertex_buffer,
             &mut self.index_buffer,

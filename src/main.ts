@@ -29,7 +29,7 @@ setupMenuCallbacks();
 addCallbacks();
 
 let LAST_FRAME_MS = performance.now();
-let PROFILE = false;
+let PROFILE = true;
 
 if (PROFILE) {
   var stats = new Stats();
