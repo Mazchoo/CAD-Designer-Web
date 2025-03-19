@@ -4,9 +4,9 @@ import { quitIfWebGPUNotAvailable } from './util';
 
 import { program as linesWGSL } from './shaders/lines';
 import {
-  squareVertexSize,
-  squarePositionOffset,
-  squareColorOffset,
+  LINES_VERTEX_SIZE,
+  LINES_POSITION_OFFSET,
+  LINES_COLOR_OFFSET,
   indexArray,
   squareVertexArray,
 } from './meshes/square';
@@ -20,7 +20,6 @@ import {
   highlightRectIsBeingEdited,
   rectIsRotating,
   RECT_IS_SCALING,
-  HIGHLIGHT_RECT,
 } from './fabricHandle';
 import Input from './input';
 
@@ -65,17 +64,17 @@ export const LINE_DRAW_PIPELINE = DEVICE.createRenderPipeline({
     module: LINES_COMPILED_SHADER,
     buffers: [
       {
-        arrayStride: squareVertexSize,
+        arrayStride: LINES_VERTEX_SIZE,
         attributes: [
           {
             shaderLocation: 0,
-            offset: squarePositionOffset,
+            offset: LINES_POSITION_OFFSET,
             format: 'float32x2',
           },
           {
             shaderLocation: 1,
-            offset: squareColorOffset,
-            format: 'float32x4',
+            offset: LINES_COLOR_OFFSET,
+            format: 'float32',
           },
         ],
       },
