@@ -4,6 +4,7 @@ use crate::entity;
 use crate::parse_pattern;
 use crate::user_settings;
 use crate::utils::bounding_box;
+use crate::utils::color;
 use crate::utils::memory;
 
 #[derive(Debug)]
@@ -167,14 +168,14 @@ impl Block {
         vertex_buffer: &mut memory::VertexBuffer,
         index_buffer: &mut memory::IndexBuffer,
     ) {
-        let block_color: &(f32, f32, f32, f32) = self.get_color(settings);
+        let block_color = color::rbga_to_float(self.get_color(settings));
         let total_highlight_offset = highlight_offset + offset;
 
         for entity in self.entities.iter() {
             if settings.disabled_layers.contains(&entity.layer) {
                 continue;
             };
-            let entity_color = entity.get_color(settings, block_color);
+            let entity_color = entity.get_color(settings, &block_color);
             let entity_offset = if entity.highlighted {
                 &total_highlight_offset
             } else {
@@ -208,8 +209,8 @@ impl Block {
         }
     }
 
-    fn get_color<'a>(&self, settings: &'a user_settings::Settings) -> &'a (f32, f32, f32, f32) {
-        let mut block_color: &(f32, f32, f32, f32) = &settings.default_color;
+    fn get_color<'a>(&self, settings: &'a user_settings::Settings) -> &'a (u8, u8, u8, u8) {
+        let mut block_color: &(u8, u8, u8, u8) = &settings.default_color;
         if settings.layer_colors.contains_key(&self.layer) {
             block_color = &settings.layer_colors[&self.layer]
         };

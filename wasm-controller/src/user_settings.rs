@@ -1,4 +1,4 @@
-use ndarray::{array, Array2};
+use ndarray::array;
 use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
@@ -6,9 +6,9 @@ use serde_json::Result;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Settings {
-    pub default_color: (f32, f32, f32, f32),
-    pub highlight_color: (f32, f32, f32, f32),
-    pub layer_colors: HashMap<i32, (f32, f32, f32, f32)>,
+    pub default_color: (u8, u8, u8, u8),
+    pub highlight_color: (u8, u8, u8, u8),
+    pub layer_colors: HashMap<i32, (u8, u8, u8, u8)>,
     pub disabled_layers: Vec<i32>,
     pub point_threshold: f32,
     pub cross_size: f32,
@@ -25,8 +25,8 @@ pub struct Settings {
 impl Default for Settings {
     fn default() -> Self {
         Settings {
-            default_color: (0., 0., 0., 1.),
-            highlight_color: (0., 0., 1., 1.),
+            default_color: (0, 0, 0, 255),
+            highlight_color: (0, 0, 255, 255),
             layer_colors: HashMap::new(),
             disabled_layers: vec![],
             point_threshold: 4.,

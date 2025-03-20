@@ -1,6 +1,6 @@
 let SETTINGS = {
-  default_color: [0, 0, 0, 1],
-  highlight_color: [0, 0, 1, 1],
+  default_color: [0, 0, 0, 255],
+  highlight_color: [0, 0, 255, 255],
   disabled_layers: [],
   layer_colors: {},
   point_threshold: 4,

@@ -4,6 +4,7 @@ use ndarray::Array2;
 
 use crate::user_settings;
 use crate::utils::bounding_box;
+use crate::utils::color;
 use crate::utils::memory::{IndexBuffer, VertexBuffer};
 
 #[derive(Debug)]
@@ -61,7 +62,7 @@ impl Entity {
 
     pub fn update_draw_sequence(
         &self,
-        color: &(f32, f32, f32, f32),
+        color: f32,
         offset: &Array2<f32>,
         scale: &Array2<f32>,
         anchor: &Array2<f32>,
@@ -94,28 +95,16 @@ impl Entity {
             vertex_buffer.buffer.extend([
                 x - cross_size,
                 y - cross_size,
-                color.0 - 0.05,
-                color.1 - 0.05,
-                color.2 - 0.05,
-                color.3,
+                color,
                 x + cross_size,
                 y + cross_size,
-                color.0 + 0.05,
-                color.1 + 0.05,
-                color.2 + 0.05,
-                color.3,
+                color,
                 x + cross_size,
                 y - cross_size,
-                color.0,
-                color.1,
-                color.2,
-                color.3,
+                color,
                 x - cross_size,
                 y + cross_size,
-                color.0,
-                color.1,
-                color.2,
-                color.3,
+                color,
             ]);
 
             index_buffer.buffer.extend([
@@ -130,9 +119,7 @@ impl Entity {
             *last_index += 4;
         } else {
             for v in offset_vertices.rows().into_iter() {
-                vertex_buffer
-                    .buffer
-                    .extend([v[0], v[1], color.0, color.1, color.2, color.3]);
+                vertex_buffer.buffer.extend([v[0], v[1], color]);
                 index_buffer.buffer.push(*last_index);
                 *last_index += 1;
             }
@@ -153,17 +140,13 @@ impl Entity {
         self.highlighted = false;
     }
 
-    pub fn get_color<'a>(
-        &self,
-        settings: &'a user_settings::Settings,
-        default_color: &'a (f32, f32, f32, f32),
-    ) -> &'a (f32, f32, f32, f32) {
-        let mut entity_color = default_color;
+    pub fn get_color(&self, settings: &user_settings::Settings, default_color: &f32) -> f32 {
+        let mut entity_color = default_color.clone();
 
         if self.highlighted {
-            entity_color = &settings.highlight_color;
+            entity_color = color::rbga_to_float(&settings.highlight_color);
         } else if settings.layer_colors.contains_key(&self.layer) {
-            entity_color = &settings.layer_colors[&self.layer]
+            entity_color = color::rbga_to_float(&settings.layer_colors[&self.layer]);
         };
         return entity_color;
     }
