@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/953a28d0-7d6e-44d3-95b3-62b93d5b23db)
+![Uploading Recording 2025-05-25 154926.gif…]()
 
 # Introduction
 
@@ -13,6 +13,8 @@ Currently supports:
 Could be extended to support 3D visualisation.
 
 # How to edit objects
+
+![image](https://github.com/user-attachments/assets/953a28d0-7d6e-44d3-95b3-62b93d5b23db)
 
 Click select and then block to enable to select tool to select blocks. The arrow keys can be used to move around. Selecting pan (the default command) will panning by clicking on the mouse.
 
