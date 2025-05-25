@@ -10,13 +10,6 @@ Currently supports:
 - Can rotate, flip, scale and offset blocks
 - Can make edits on model level or on block level
 
-Currently does not support:
-
-- Dragging and grouping entities for editing
-- Undoing and redoing operations
-- Snap-point functionality
-- Precise movement by given amounts e.g. moving up by 1cm exactly
-
 # How to edit objects
 
 Click select and then block to enable to select tool to select blocks. The arrow keys can be used to move around. Selecting pan (the default command) will panning by clicking on the mouse.
@@ -26,7 +19,7 @@ Once an object is selected it can be roated by selecting the square at the top o
 # Set-up for local hosting
 
 - Needs the rust compiler to build wasm - https://www.rust-lang.org/tools/install
-- Needs npm for other packages - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+- Needs npm - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 Run
 
