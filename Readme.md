@@ -1,6 +1,6 @@
 ![Recording 2025-05-25 154926](https://github.com/user-attachments/assets/00636b25-4d2e-4320-a065-78e54c0be5e7)
 
-# Introduction
+# Description
 
 Basic 2D cad editing functionality fully in a web browser with high performance. Uses rust web assembly for underlying data manipulation and web-gpu for visualisation.
 
@@ -10,9 +10,9 @@ Currently supports:
 - Can rotate, flip, scale and offset blocks
 - Can make edits on model level or on block level
 
-Could be extended to support 3D visualisation.
+Could be extended to support 3D visualisation or to accept dxf files. An example dxf in json form is given.
 
-# How to edit objects
+# Basic Usage
 
 ![image](https://github.com/user-attachments/assets/953a28d0-7d6e-44d3-95b3-62b93d5b23db)
 
