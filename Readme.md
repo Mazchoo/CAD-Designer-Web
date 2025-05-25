@@ -2,13 +2,15 @@
 
 # Introduction
 
-Basic 2D cad editing functionality fully in a web browser.
+Basic 2D cad editing functionality fully in a web browser with high performance. Uses rust web assembly for underlying data manipulation and web-gpu for visualisation.
 
 Currently supports:
 
 - Can select multiple objects
 - Can rotate, flip, scale and offset blocks
 - Can make edits on model level or on block level
+
+Could be extended to support 3D visualisation.
 
 # How to edit objects
 
