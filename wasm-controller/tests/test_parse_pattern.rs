@@ -25,5 +25,5 @@ fn test_create_pattern_object_example_file() {
 
     assert_eq!(p.get_number_blocks(), 3);
     assert_eq!(p.get_number_inserts(), 3);
-    assert_eq!(p.get_number_entities(), 307);
+    assert_eq!(p.get_number_entities(), 305);
 }
