@@ -31,8 +31,8 @@ impl Handle {
             console::log_1(&"Settings in incorrect format".into());
         }
 
-        let vertex_buffer = VertexBuffer::new();
-        let index_buffer = IndexBuffer::new();
+        let vertex_buffer: VertexBuffer = VertexBuffer::new();
+        let index_buffer: IndexBuffer = IndexBuffer::new();
 
         return Handle {
             pattern: pattern,

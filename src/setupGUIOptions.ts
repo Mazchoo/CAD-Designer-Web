@@ -1,4 +1,4 @@
-import { Handle } from '../wasm-controller/pkg/cad_pattern_editor.js';
+import { Handle } from '../wasm-model/pkg/cad_pattern_editor.js';
 import { LAYER_TO_NAME } from './settings.js';
 
 export function getLayerOptionEntry(name: string, layerKey: number): string {

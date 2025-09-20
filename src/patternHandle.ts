@@ -1,4 +1,4 @@
-import init, { greet, Handle, InitOutput } from '../wasm-controller/pkg/cad_pattern_editor.js';
+import init, { greet, Handle, InitOutput } from '../wasm-model/pkg/cad_pattern_editor.js';
 import { getSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';

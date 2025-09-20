@@ -25,7 +25,7 @@ export default [
           commonjs(),
           wasm(),
           copy({
-            targets: [{ src: 'wasm-controller/pkg/cad_pattern_editor_bg.wasm', dest: 'dist' }],
+            targets: [{ src: 'wasm-model/pkg/cad_pattern_editor_bg.wasm', dest: 'dist' }],
           }),
           typescript({ tsconfig: './tsconfig.json' }),
         ]
@@ -34,7 +34,7 @@ export default [
           commonjs(),
           wasm(),
           copy({
-            targets: [{ src: 'wasm-controller/pkg/cad_pattern_editor_bg.wasm', dest: 'dist' }],
+            targets: [{ src: 'wasm-model/pkg/cad_pattern_editor_bg.wasm', dest: 'dist' }],
           }),
           typescript({ tsconfig: './tsconfig.json' }),
           terser(),

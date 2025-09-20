@@ -11,9 +11,9 @@
     "prettier-write": "prettier . --config ./.prettierrc.json --write",
     "server-release": "rollup -c && servez --port=23592 .",
     "server-debug": "rollup -c -n debug && servez --port=23592 .",
-    "build-rust": "cd ./wasm-controller && wasm-pack build --target web",
-    "format-rust": "cd ./wasm-controller && cargo fmt -v",
-    "test-rust": "cd ./wasm-controller && cargo test"
+    "build-rust": "cd ./wasm-model && wasm-pack build --target web",
+    "format-rust": "cd ./wasm-model && cargo fmt -v",
+    "test-rust": "cd ./wasm-model && cargo test"
   },
   "repository": {
     "type": "git",
