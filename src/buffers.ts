@@ -13,21 +13,26 @@ export function mapBuffersToDevice(vertexArray: Float32Array, indexArray: Uint32
     return;
   }
 
+  if (verticesBuffer) verticesBuffer.destroy();
+  if (indexBuffer) indexBuffer.destroy();
+
   verticesBuffer = currentDevice.createBuffer({
     size: vertexArray.byteLength,
-    usage: GPUBufferUsage.VERTEX,
-    mappedAtCreation: true,
+    usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
   });
-  new Float32Array(verticesBuffer.getMappedRange()).set(vertexArray);
-  verticesBuffer.unmap();
+  currentDevice.queue.writeBuffer(
+    verticesBuffer,
+    0,
+    vertexArray.buffer,
+    vertexArray.byteOffset,
+    vertexArray.byteLength
+  );
 
   indexBuffer = currentDevice.createBuffer({
     size: indexArray.byteLength,
-    usage: GPUBufferUsage.INDEX,
-    mappedAtCreation: true,
+    usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST,
   });
-  new Uint32Array(indexBuffer.getMappedRange()).set(indexArray);
-  indexBuffer.unmap();
+  currentDevice.queue.writeBuffer(indexBuffer, 0, indexArray.buffer, indexArray.byteOffset, indexArray.byteLength);
 
   nrIndices = indexArray.length;
 }
