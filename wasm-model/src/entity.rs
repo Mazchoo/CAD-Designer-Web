@@ -2,6 +2,8 @@ use std::i32;
 
 use ndarray::Array2;
 
+use crate::drawing_parameters;
+use crate::drawing_parameters::IDrawingParameters;
 use crate::user_settings;
 use crate::utils::bounding_box;
 use crate::utils::color;
@@ -64,10 +66,7 @@ impl Entity {
         &self,
         color: f32,
         offset: &Array2<f32>,
-        scale: &Array2<f32>,
-        anchor: &Array2<f32>,
-        rot_offset: &Array2<f32>,
-        rot_matrix: &Array2<f32>,
+        draw_params: &IDrawingParameters,
         cross_size: &f32,
         last_index: &mut u32,
         nr_entities: &mut u32,
@@ -81,10 +80,20 @@ impl Entity {
         let mut offset_vertices: Array2<f32> = &self.vertices + offset;
 
         if self.highlighted {
-            if scale[(0, 0)] != 1. || scale[(0, 1)] != 1. {
-                self.calculate_scaled_vertices(&mut offset_vertices, scale, anchor);
-            } else if rot_matrix[(0, 0)] != 1. {
-                self.calculate_rotated_vertices(&mut offset_vertices, rot_matrix, rot_offset);
+            if draw_params.highlight_scale[(0, 0)] != 1.
+                || draw_params.highlight_scale[(0, 1)] != 1.
+            {
+                self.calculate_scaled_vertices(
+                    &mut offset_vertices,
+                    &draw_params.highlight_scale,
+                    &draw_params.highlight_anchor,
+                );
+            } else if draw_params.highlight_rot_matrix[(0, 0)] != 1. {
+                self.calculate_rotated_vertices(
+                    &mut offset_vertices,
+                    &draw_params.highlight_rot_matrix,
+                    &draw_params.highlight_rot_offset,
+                );
             }
             *nr_entities += 1;
         }

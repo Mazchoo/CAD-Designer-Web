@@ -1,8 +1,11 @@
 use ndarray::array;
 use std::collections::HashMap;
 
+use ndarray::Array2;
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
+
+use crate::drawing_parameters::IDrawingParameters;
 
 // This could do with more structure
 #[derive(Serialize, Deserialize, Debug)]
@@ -77,5 +80,18 @@ impl ISettings {
         let sin_angle = angle.sin();
         let cos_angle = angle.cos();
         return array![[cos_angle, -sin_angle], [sin_angle, cos_angle]];
+    }
+
+    pub fn get_drawing_pass_parameters(&self) -> IDrawingParameters {
+        let rot_center: Array2<f32> = self.highlight_rot_center_array();
+        let highlight_rot_matrix: Array2<f32> = self.highlight_rot_matrix();
+        return IDrawingParameters {
+            highlight_offset: self.highlight_offset_array(),
+            highlight_scale: self.highlight_scale_array(),
+            highlight_anchor: self.highlight_anchor_array(),
+            highlight_rot_offset: &rot_center - &rot_center.dot(&highlight_rot_matrix),
+            highlight_rot_matrix: highlight_rot_matrix,
+            rot_center: rot_center,
+        };
     }
 }

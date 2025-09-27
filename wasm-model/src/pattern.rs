@@ -1,9 +1,9 @@
 use ndarray::{array, Array2};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
-use web_sys::js_sys::Array;
 
 use crate::block;
+use crate::drawing_parameters::IDrawingParameters;
 use crate::insert;
 use crate::parse_pattern;
 use crate::user_settings;
@@ -179,24 +179,14 @@ impl Pattern {
         let mut last_index: u32 = 0;
         let mut nr_entities: u32 = 0;
 
-        let highlight_offset: Array2<f32> = settings.highlight_offset_array();
-        let highlight_scale: Array2<f32> = settings.highlight_scale_array();
-        let highlight_anchor: Array2<f32> = settings.highlight_anchor_array();
-        let highlight_rot_matrix: Array2<f32> = settings.highlight_rot_matrix();
-        let rot_center: Array2<f32> = settings.highlight_rot_center_array();
-        let highlight_rot_offset: Array2<f32> =
-            &rot_center - &rot_center.dot(&highlight_rot_matrix);
+        let drawing_parameters: IDrawingParameters = settings.get_drawing_pass_parameters();
 
         for block in self.blocks.iter() {
             let offset: Array2<f32> = self.get_offset_for_block(&block.name);
             block.update_draw_sequence(
                 &offset,
                 &settings,
-                &highlight_offset,
-                &highlight_scale,
-                &highlight_anchor,
-                &highlight_rot_matrix,
-                &highlight_rot_offset,
+                &drawing_parameters,
                 &mut last_index,
                 &mut nr_entities,
                 vertex_buffer,
@@ -220,22 +210,12 @@ impl Pattern {
         if let Some(block) = self.block_in_pattern(&block_name) {
             let offset = Array2::zeros((1, 2));
 
-            let highlight_offset: Array2<f32> = settings.highlight_offset_array();
-            let highlight_scale: Array2<f32> = settings.highlight_scale_array();
-            let highlight_anchor: Array2<f32> = settings.highlight_anchor_array();
-            let highlight_rot_matrix: Array2<f32> = settings.highlight_rot_matrix();
-            let rot_center: Array2<f32> = settings.highlight_rot_center_array();
-            let highlight_rot_offset: Array2<f32> =
-                &rot_center - &rot_center.dot(&highlight_rot_matrix);
+            let drawing_parameters: IDrawingParameters = settings.get_drawing_pass_parameters();
 
             block.update_draw_sequence(
                 &offset,
                 &settings,
-                &highlight_offset,
-                &highlight_scale,
-                &highlight_anchor,
-                &highlight_rot_matrix,
-                &highlight_rot_offset,
+                &drawing_parameters,
                 &mut last_index,
                 &mut nr_entities,
                 vertex_buffer,
