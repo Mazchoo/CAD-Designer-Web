@@ -4,6 +4,8 @@ import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 import wasm from '@rollup/plugin-wasm';
 import copy from 'rollup-plugin-copy';
+import postcss from 'rollup-plugin-postcss';
+import csso from 'postcss-csso';
 
 const ARGS = process.argv.slice(2);
 const DEBUG_MODE = ARGS.includes('-n') && ARGS[ARGS.indexOf('-n') + 1] === 'debug';
@@ -39,6 +41,22 @@ export default [
           typescript({ tsconfig: './tsconfig.json' }),
           terser(),
         ],
+    watch: {
+      clearScreen: false,
+    },
+  },
+  {
+    input: 'css/main.css',
+    output: {
+      file: 'css/main.min.css',
+    },
+    plugins: [
+      postcss({
+        extract: true,
+        minimize: !DEBUG_MODE,
+        plugins: DEBUG_MODE ? [] : [csso()],
+      }),
+    ],
     watch: {
       clearScreen: false,
     },

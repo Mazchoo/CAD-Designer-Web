@@ -77,3 +77,12 @@ input[type='checkbox']:checked + span:not(.lever)::before {
 .input-field .prefix.active {
   color: black !important; /* Change prefix icon color to black on focus */
 }
+
+/* Smaller font size for input fields */
+.input-field input[type='text'] {
+  font-size: 13px !important; /* Smaller font size for input text */
+}
+
+.input-field label {
+  font-size: 12px !important; /* Smaller font size for input labels */
+}
