@@ -3,8 +3,8 @@ use wasm_bindgen::prelude::*;
 use web_sys::console;
 
 pub mod block;
-pub mod drawing_parameters;
 pub mod drawing_output;
+pub mod drawing_parameters;
 pub mod entity;
 pub mod handle;
 pub mod insert;

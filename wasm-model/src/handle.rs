@@ -180,6 +180,7 @@ impl Handle {
         self.settings.highlight_scale = (1., 1.);
         self.settings.highlight_flip = (false, false);
         self.settings.highlight_anchor = (0., 0.);
+        self.settings.highlight_width_height = (0., 0.);
     }
 
     pub fn rotate_highlights(&mut self) -> JsValue {

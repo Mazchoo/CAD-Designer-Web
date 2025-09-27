@@ -3,11 +3,11 @@ use wasm_bindgen::prelude::*;
 use web_sys::console;
 
 use crate::block;
+use crate::drawing_output::IDrawingOutput;
+use crate::drawing_parameters::IDrawingParameters;
 use crate::insert;
 use crate::parse_pattern;
 use crate::user_settings;
-use crate::drawing_parameters::IDrawingParameters;
-use crate::drawing_output::IDrawingOutput;
 use crate::utils::bounding_box;
 use crate::utils::memory::{IndexBuffer, VertexBuffer};
 use crate::utils::parse;
@@ -182,12 +182,7 @@ impl Pattern {
 
         for block in self.blocks.iter() {
             let offset: Array2<f32> = self.get_offset_for_block(&block.name);
-            block.update_draw_sequence(
-                &offset,
-                &settings,
-                &drawing_parameters,
-                &mut drawing_output
-            )
+            block.update_draw_sequence(&offset, &settings, &drawing_parameters, &mut drawing_output)
         }
 
         settings.highlight_nr_selected_entities = drawing_output.nr_entities;
@@ -212,7 +207,7 @@ impl Pattern {
                 &offset,
                 &settings,
                 &drawing_parameters,
-                &mut drawing_output
+                &mut drawing_output,
             );
         }
 

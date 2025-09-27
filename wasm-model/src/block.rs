@@ -1,10 +1,9 @@
 use ndarray::{array, Array2};
 
-
+use crate::drawing_output::IDrawingOutput;
+use crate::drawing_parameters::IDrawingParameters;
 use crate::entity;
 use crate::parse_pattern;
-use crate::drawing_parameters::IDrawingParameters;
-use crate::drawing_output::IDrawingOutput;
 use crate::user_settings;
 use crate::utils::bounding_box;
 use crate::utils::color;
@@ -183,7 +182,7 @@ impl Block {
                 entity_offset,
                 &draw_params,
                 &settings.cross_size,
-                draw_output
+                draw_output,
             );
         }
     }

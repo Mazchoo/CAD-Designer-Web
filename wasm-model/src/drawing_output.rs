@@ -1,3 +1,5 @@
+use core::f32;
+
 // Struct to hold output information of a drawing pass
 use crate::utils::memory::{IndexBuffer, VertexBuffer};
 
@@ -9,7 +11,7 @@ pub struct IDrawingOutput<'a> {
     pub min_x: f32,
     pub min_y: f32,
     pub max_x: f32,
-    pub max_y: f32
+    pub max_y: f32,
 }
 
 impl<'a> IDrawingOutput<'a> {
@@ -19,10 +21,10 @@ impl<'a> IDrawingOutput<'a> {
             index_buffer: index_buffer,
             last_index: 0,
             nr_entities: 0,
-            min_x: 0.,
-            min_y: 0.,
-            max_x: 0.,
-            max_y: 0.
+            min_x: f32::INFINITY,
+            min_y: f32::INFINITY,
+            max_x: -f32::INFINITY,
+            max_y: -f32::INFINITY,
         };
     }
 
@@ -34,6 +36,16 @@ impl<'a> IDrawingOutput<'a> {
     }
 
     pub fn get_width_height(&self) -> (f32, f32) {
-        return (&self.max_x - &self.min_x, &self.max_y - &self.min_y);
+        let d_x = if self.min_x.is_finite() && self.max_x.is_finite() {
+            self.max_x - self.min_x
+        } else {
+            0.
+        };
+        let d_y = if self.min_y.is_finite() && self.max_y.is_finite() {
+            self.max_y - self.min_y
+        } else {
+            0.
+        };
+        return (d_x, d_y);
     }
 }
