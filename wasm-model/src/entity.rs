@@ -2,12 +2,11 @@ use std::i32;
 
 use ndarray::Array2;
 
-use crate::drawing_parameters;
+use crate::drawing_output::IDrawingOutput;
 use crate::drawing_parameters::IDrawingParameters;
 use crate::user_settings;
 use crate::utils::bounding_box;
 use crate::utils::color;
-use crate::utils::memory::{IndexBuffer, VertexBuffer};
 
 #[derive(Debug)]
 pub enum EntityTypes {
@@ -68,10 +67,7 @@ impl Entity {
         offset: &Array2<f32>,
         draw_params: &IDrawingParameters,
         cross_size: &f32,
-        last_index: &mut u32,
-        nr_entities: &mut u32,
-        vertex_buffer: &mut VertexBuffer,
-        index_buffer: &mut IndexBuffer,
+        draw_output: &mut IDrawingOutput,
     ) {
         if self.vertices.len() == 0 {
             return;
@@ -95,7 +91,7 @@ impl Entity {
                     &draw_params.highlight_rot_offset,
                 );
             }
-            *nr_entities += 1;
+            draw_output.nr_entities += 1;
         }
 
         let num_rows: usize = self.vertices.shape()[0];
@@ -103,7 +99,7 @@ impl Entity {
             let x = offset_vertices[(0, 0)];
             let y = offset_vertices[(0, 1)];
             // draw a cross using vertex data format x, y, r, g, b, a
-            vertex_buffer.buffer.extend([
+            draw_output.vertex_buffer.buffer.extend([
                 x - cross_size,
                 y - cross_size,
                 color,
@@ -118,32 +114,32 @@ impl Entity {
                 color,
             ]);
 
-            index_buffer.buffer.extend([
-                *last_index,
-                *last_index + 1,
+            draw_output.index_buffer.buffer.extend([
+                draw_output.last_index,
+                draw_output.last_index + 1,
                 u32::MAX,
-                *last_index + 2,
-                *last_index + 3,
+                draw_output.last_index + 2,
+                draw_output.last_index + 3,
                 u32::MAX,
             ]);
 
-            *last_index += 4;
+            draw_output.last_index += 4;
         } else {
             for v in offset_vertices.rows().into_iter() {
-                vertex_buffer.buffer.extend([v[0], v[1], color]);
-                index_buffer.buffer.push(*last_index);
-                *last_index += 1;
+                draw_output.vertex_buffer.buffer.extend([v[0], v[1], color]);
+                draw_output.index_buffer.buffer.push(draw_output.last_index);
+                draw_output.last_index += 1;
             }
 
             // Close loop for display if closed
             if self.shape {
-                index_buffer
+                draw_output.index_buffer
                     .buffer
-                    .push(*last_index + 1 - (num_rows as u32));
+                    .push(draw_output.last_index + 1 - (num_rows as u32));
             }
 
             // u32::MAX denotes end of line
-            index_buffer.buffer.push(u32::MAX);
+            draw_output.index_buffer.buffer.push(u32::MAX);
         }
     }
 

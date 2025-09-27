@@ -3,10 +3,11 @@ use wasm_bindgen::prelude::*;
 use web_sys::console;
 
 use crate::block;
-use crate::drawing_parameters::IDrawingParameters;
 use crate::insert;
 use crate::parse_pattern;
 use crate::user_settings;
+use crate::drawing_parameters::IDrawingParameters;
+use crate::drawing_output::IDrawingOutput;
 use crate::utils::bounding_box;
 use crate::utils::memory::{IndexBuffer, VertexBuffer};
 use crate::utils::parse;
@@ -176,10 +177,8 @@ impl Pattern {
         vertex_buffer: &mut VertexBuffer,
         index_buffer: &mut IndexBuffer,
     ) {
-        let mut last_index: u32 = 0;
-        let mut nr_entities: u32 = 0;
-
         let drawing_parameters: IDrawingParameters = settings.get_drawing_pass_parameters();
+        let mut drawing_output: IDrawingOutput = IDrawingOutput::new(vertex_buffer, index_buffer);
 
         for block in self.blocks.iter() {
             let offset: Array2<f32> = self.get_offset_for_block(&block.name);
@@ -187,14 +186,11 @@ impl Pattern {
                 &offset,
                 &settings,
                 &drawing_parameters,
-                &mut last_index,
-                &mut nr_entities,
-                vertex_buffer,
-                index_buffer,
+                &mut drawing_output
             )
         }
 
-        settings.highlight_nr_selected_entities = nr_entities;
+        settings.highlight_nr_selected_entities = drawing_output.nr_entities;
     }
 
     fn update_draw_sequence_block(
@@ -204,8 +200,7 @@ impl Pattern {
         vertex_buffer: &mut VertexBuffer,
         index_buffer: &mut IndexBuffer,
     ) {
-        let mut last_index: u32 = 0;
-        let mut nr_entities: u32 = 0;
+        let mut drawing_output: IDrawingOutput = IDrawingOutput::new(vertex_buffer, index_buffer);
 
         if let Some(block) = self.block_in_pattern(&block_name) {
             let offset = Array2::zeros((1, 2));
@@ -216,14 +211,11 @@ impl Pattern {
                 &offset,
                 &settings,
                 &drawing_parameters,
-                &mut last_index,
-                &mut nr_entities,
-                vertex_buffer,
-                index_buffer,
+                &mut drawing_output
             );
         }
 
-        settings.highlight_nr_selected_entities = nr_entities;
+        settings.highlight_nr_selected_entities = drawing_output.nr_entities;
     }
 
     pub(crate) fn update_draw_sequence(

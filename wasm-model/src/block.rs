@@ -1,13 +1,13 @@
 use ndarray::{array, Array2};
 
-use crate::drawing_parameters;
-use crate::drawing_parameters::IDrawingParameters;
+
 use crate::entity;
 use crate::parse_pattern;
+use crate::drawing_parameters::IDrawingParameters;
+use crate::drawing_output::IDrawingOutput;
 use crate::user_settings;
 use crate::utils::bounding_box;
 use crate::utils::color;
-use crate::utils::memory;
 
 #[derive(Debug)]
 pub struct Block {
@@ -161,14 +161,11 @@ impl Block {
         &self,
         offset: &Array2<f32>,
         settings: &user_settings::ISettings,
-        drawing_parameters: &IDrawingParameters,
-        last_index: &mut u32,
-        nr_entities: &mut u32,
-        vertex_buffer: &mut memory::VertexBuffer,
-        index_buffer: &mut memory::IndexBuffer,
+        draw_params: &IDrawingParameters,
+        draw_output: &mut IDrawingOutput,
     ) {
         let block_color = color::rbga_to_float(self.get_color(settings));
-        let total_highlight_offset = &drawing_parameters.highlight_offset + offset;
+        let total_highlight_offset = &draw_params.highlight_offset + offset;
 
         for entity in self.entities.iter() {
             if settings.disabled_layers.contains(&entity.layer) {
@@ -184,12 +181,9 @@ impl Block {
             entity.update_draw_sequence(
                 entity_color,
                 entity_offset,
-                &drawing_parameters,
+                &draw_params,
                 &settings.cross_size,
-                last_index,
-                nr_entities,
-                vertex_buffer,
-                index_buffer,
+                draw_output
             );
         }
     }

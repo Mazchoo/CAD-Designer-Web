@@ -4,6 +4,7 @@ use web_sys::console;
 
 pub mod block;
 pub mod drawing_parameters;
+pub mod drawing_output;
 pub mod entity;
 pub mod handle;
 pub mod insert;
