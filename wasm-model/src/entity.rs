@@ -98,6 +98,8 @@ impl Entity {
         if num_rows == 1 {
             let x = offset_vertices[(0, 0)];
             let y = offset_vertices[(0, 1)];
+            draw_output.update_min_max(&x, &y);
+
             // draw a cross using vertex data format x, y, r, g, b, a
             draw_output.vertex_buffer.buffer.extend([
                 x - cross_size,
@@ -126,6 +128,7 @@ impl Entity {
             draw_output.last_index += 4;
         } else {
             for v in offset_vertices.rows().into_iter() {
+                draw_output.update_min_max(&v[0], &v[1]);
                 draw_output.vertex_buffer.buffer.extend([v[0], v[1], color]);
                 draw_output.index_buffer.buffer.push(draw_output.last_index);
                 draw_output.last_index += 1;

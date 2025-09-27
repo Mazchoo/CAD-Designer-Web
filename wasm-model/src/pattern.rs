@@ -191,6 +191,7 @@ impl Pattern {
         }
 
         settings.highlight_nr_selected_entities = drawing_output.nr_entities;
+        settings.highlight_width_height = drawing_output.get_width_height();
     }
 
     fn update_draw_sequence_block(

@@ -15,4 +15,5 @@ export interface ISettings {
   highlight_rotation_center: [0, 0]; // origin to perform rotation
   highlight_rotation_angle: 0; // Rotation angle in radians
   highlight_nr_selected_entities: 0; // Number of objects selected in highlight
+  highlight_width_height: [number, number]; // Current height and width of bounding box
 }

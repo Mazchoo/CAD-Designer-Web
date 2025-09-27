@@ -25,6 +25,7 @@ pub struct ISettings {
     pub highlight_rotation_center: (f32, f32),
     pub highlight_rotation_angle: f32, // In radians
     pub highlight_nr_selected_entities: u32,
+    pub highlight_width_height: (f32, f32),
 }
 
 impl Default for ISettings {
@@ -44,6 +45,7 @@ impl Default for ISettings {
             highlight_rotation_center: (0., 0.),
             highlight_rotation_angle: 0.,
             highlight_nr_selected_entities: 0,
+            highlight_width_height: (0., 0.),
         }
     }
 }

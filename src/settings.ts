@@ -16,6 +16,7 @@ let INITIAL_SETTINGS: ISettings = {
   highlight_rotation_center: [0, 0],
   highlight_rotation_angle: 0, // In radians
   highlight_nr_selected_entities: 0,
+  highlight_width_height: [0, 0],
 };
 
 export const LAYER_TO_NAME: { [layer: number]: string } = {
