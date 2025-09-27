@@ -1,8 +1,10 @@
 import init, { greet, Handle, InitOutput } from '../wasm-model/pkg/cad_pattern_editor.js';
-import { getSettingsPayload, colorMap, getNextColor } from './settings';
+import { getInitialSettingsPayload, colorMap, getNextColor } from './settings';
 import { updateAvailableLayers, updateAvailableBlocks, updateSelection } from './setupGUIOptions';
 import { mapBuffersToDevice } from './buffers';
 import { addHighlightBbox, getDxfWorldCoorindates } from './rendering';
+import { updateBottomBarDisplay } from './displaySelection';
+
 import {
   clearFabricCanvas,
   setRectWorldCoords,
@@ -56,6 +58,7 @@ const updateCanvasData = (handle: Handle | undefined) => {
     handle.get_index_buffer_len()
   );
   mapBuffersToDevice(vertexView, indexView);
+  updateBottomBarDisplay(handle.get_settings());
 };
 
 const addViewCallbacksToLayers = (handle: Handle | undefined) => {
@@ -134,7 +137,7 @@ const addChangeSelectionCallbacks = (handle: Handle | undefined, keys: string[])
 export function intilizePattern(payload: string): [number[], number[]] | undefined {
   if (!WASM_STARTED) return;
 
-  PATTERN_WASM_HANDLE = new Handle(payload, getSettingsPayload());
+  PATTERN_WASM_HANDLE = new Handle(payload, getInitialSettingsPayload());
   console.log(PATTERN_WASM_HANDLE.get_number_entities(), 'entities have been parsed');
 
   updateAvailableLayers(PATTERN_WASM_HANDLE);

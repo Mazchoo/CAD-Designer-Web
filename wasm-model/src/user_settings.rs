@@ -4,8 +4,9 @@ use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
 
+// This could do with more structure
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Settings {
+pub struct ISettings {
     pub default_color: (u8, u8, u8, u8),
     pub highlight_color: (u8, u8, u8, u8),
     pub layer_colors: HashMap<i32, (u8, u8, u8, u8)>,
@@ -13,18 +14,19 @@ pub struct Settings {
     pub point_threshold: f32,
     pub cross_size: f32,
     pub view: String,
-    // fabric rectangle
+    // selection rectangle
     pub highlight_offset: (f32, f32),
     pub highlight_scale: (f32, f32),
     pub highlight_flip: (bool, bool),
     pub highlight_anchor: (f32, f32),
     pub highlight_rotation_center: (f32, f32),
     pub highlight_rotation_angle: f32, // In radians
+    pub highlight_nr_selected_entities: u32,
 }
 
-impl Default for Settings {
+impl Default for ISettings {
     fn default() -> Self {
-        Settings {
+        ISettings {
             default_color: (0, 0, 0, 255),
             highlight_color: (0, 0, 255, 255),
             layer_colors: HashMap::new(),
@@ -38,13 +40,14 @@ impl Default for Settings {
             highlight_anchor: (0., 0.),
             highlight_rotation_center: (0., 0.),
             highlight_rotation_angle: 0.,
+            highlight_nr_selected_entities: 0,
         }
     }
 }
 
-impl Settings {
-    pub fn parse_settings(json_str: &str) -> Result<Settings> {
-        let parsed_settings: Settings = serde_json::from_str(json_str)?;
+impl ISettings {
+    pub fn parse_settings(json_str: &str) -> Result<ISettings> {
+        let parsed_settings: ISettings = serde_json::from_str(json_str)?;
         Ok(parsed_settings)
     }
 

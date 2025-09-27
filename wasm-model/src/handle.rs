@@ -12,7 +12,7 @@ use crate::utils::memory::{IndexBuffer, VertexBuffer};
 #[wasm_bindgen]
 pub struct Handle {
     pattern: pattern::Pattern,
-    settings: user_settings::Settings,
+    settings: user_settings::ISettings,
     vertex_buffer: VertexBuffer,
     index_buffer: IndexBuffer,
 }
@@ -23,9 +23,9 @@ impl Handle {
     #[wasm_bindgen(constructor)]
     pub fn new(pattern_payload: String, settings_payload: String) -> Handle {
         let pattern = pattern::Pattern::new(pattern_payload);
-        let mut settings = user_settings::Settings::default();
+        let mut settings = user_settings::ISettings::default();
 
-        if let Ok(parsed_settings) = user_settings::Settings::parse_settings(&settings_payload) {
+        if let Ok(parsed_settings) = user_settings::ISettings::parse_settings(&settings_payload) {
             settings = parsed_settings;
         } else {
             console::log_1(&"Settings in incorrect format".into());
@@ -54,7 +54,7 @@ impl Handle {
         let _ = &self.vertex_buffer.buffer.clear();
         let _ = &self.index_buffer.buffer.clear();
         self.pattern.update_draw_sequence(
-            &self.settings,
+            &mut self.settings,
             &mut self.vertex_buffer,
             &mut self.index_buffer,
         );

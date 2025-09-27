@@ -70,6 +70,7 @@ impl Entity {
         rot_matrix: &Array2<f32>,
         cross_size: &f32,
         last_index: &mut u32,
+        nr_entities: &mut u32,
         vertex_buffer: &mut VertexBuffer,
         index_buffer: &mut IndexBuffer,
     ) {
@@ -85,6 +86,7 @@ impl Entity {
             } else if rot_matrix[(0, 0)] != 1. {
                 self.calculate_rotated_vertices(&mut offset_vertices, rot_matrix, rot_offset);
             }
+            *nr_entities += 1;
         }
 
         let num_rows: usize = self.vertices.shape()[0];
@@ -140,7 +142,7 @@ impl Entity {
         self.highlighted = false;
     }
 
-    pub fn get_color(&self, settings: &user_settings::Settings, default_color: &f32) -> f32 {
+    pub fn get_color(&self, settings: &user_settings::ISettings, default_color: &f32) -> f32 {
         let mut entity_color = default_color.clone();
 
         if self.highlighted {

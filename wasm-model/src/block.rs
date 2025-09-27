@@ -158,13 +158,14 @@ impl Block {
     pub fn update_draw_sequence(
         &self,
         offset: &Array2<f32>,
-        settings: &user_settings::Settings,
+        settings: &user_settings::ISettings,
         highlight_offset: &Array2<f32>,
         highlight_scale: &Array2<f32>,
         highlight_anchor: &Array2<f32>,
         highlight_rot_matrix: &Array2<f32>,
         highlight_rot_offset: &Array2<f32>,
         last_index: &mut u32,
+        nr_entities: &mut u32,
         vertex_buffer: &mut memory::VertexBuffer,
         index_buffer: &mut memory::IndexBuffer,
     ) {
@@ -191,6 +192,7 @@ impl Block {
                 &highlight_rot_matrix,
                 &settings.cross_size,
                 last_index,
+                nr_entities,
                 vertex_buffer,
                 index_buffer,
             );
@@ -209,7 +211,7 @@ impl Block {
         }
     }
 
-    fn get_color<'a>(&self, settings: &'a user_settings::Settings) -> &'a (u8, u8, u8, u8) {
+    fn get_color<'a>(&self, settings: &'a user_settings::ISettings) -> &'a (u8, u8, u8, u8) {
         let mut block_color: &(u8, u8, u8, u8) = &settings.default_color;
         if settings.layer_colors.contains_key(&self.layer) {
             block_color = &settings.layer_colors[&self.layer]

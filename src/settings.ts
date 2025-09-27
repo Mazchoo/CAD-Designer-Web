@@ -1,4 +1,7 @@
-let SETTINGS = {
+// Configuration related to initial GUI settings
+import { ISettings } from './interfaces/settings';
+
+let INITIAL_SETTINGS: ISettings = {
   default_color: [0, 0, 0, 255],
   highlight_color: [0, 0, 255, 255],
   disabled_layers: [],
@@ -12,6 +15,7 @@ let SETTINGS = {
   highlight_anchor: [0, 0],
   highlight_rotation_center: [0, 0],
   highlight_rotation_angle: 0, // In radians
+  highlight_nr_selected_entities: 0,
 };
 
 export const LAYER_TO_NAME: { [layer: number]: string } = {
@@ -55,6 +59,6 @@ export function getNextColor(colorName: string): [string, string] {
   return [nextKey, colorMap.get(nextKey) as string];
 }
 
-export function getSettingsPayload(): string {
-  return JSON.stringify(SETTINGS);
+export function getInitialSettingsPayload(): string {
+  return JSON.stringify(INITIAL_SETTINGS);
 }

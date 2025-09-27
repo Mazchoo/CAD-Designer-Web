@@ -172,11 +172,12 @@ impl Pattern {
 
     fn update_draw_sequence_model(
         &self,
-        settings: &user_settings::Settings,
+        settings: &mut user_settings::ISettings,
         vertex_buffer: &mut VertexBuffer,
         index_buffer: &mut IndexBuffer,
     ) {
         let mut last_index: u32 = 0;
+        let mut nr_entities: u32 = 0;
 
         let highlight_offset: Array2<f32> = settings.highlight_offset_array();
         let highlight_scale: Array2<f32> = settings.highlight_scale_array();
@@ -197,20 +198,24 @@ impl Pattern {
                 &highlight_rot_matrix,
                 &highlight_rot_offset,
                 &mut last_index,
+                &mut nr_entities,
                 vertex_buffer,
                 index_buffer,
             )
         }
+
+        settings.highlight_nr_selected_entities = nr_entities;
     }
 
     fn update_draw_sequence_block(
         &self,
-        settings: &user_settings::Settings,
+        settings: &mut user_settings::ISettings,
         block_name: &String,
         vertex_buffer: &mut VertexBuffer,
         index_buffer: &mut IndexBuffer,
     ) {
         let mut last_index: u32 = 0;
+        let mut nr_entities: u32 = 0;
 
         if let Some(block) = self.block_in_pattern(&block_name) {
             let offset = Array2::zeros((1, 2));
@@ -232,15 +237,18 @@ impl Pattern {
                 &highlight_rot_matrix,
                 &highlight_rot_offset,
                 &mut last_index,
+                &mut nr_entities,
                 vertex_buffer,
                 index_buffer,
             );
         }
+
+        settings.highlight_nr_selected_entities = nr_entities;
     }
 
     pub(crate) fn update_draw_sequence(
         &self,
-        settings: &user_settings::Settings,
+        settings: &mut user_settings::ISettings,
         vertex_buffer: &mut VertexBuffer,
         index_buffer: &mut IndexBuffer,
     ) {
@@ -293,7 +301,7 @@ impl Pattern {
     pub(crate) fn find_blocks_with_point(
         &self,
         point: &(f32, f32),
-        settings: &user_settings::Settings,
+        settings: &user_settings::ISettings,
     ) -> Vec<String> {
         let mut selected_block_keys: Vec<String> = vec![];
 
