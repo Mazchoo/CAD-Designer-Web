@@ -6,6 +6,7 @@ const NR_OBJECTS_SELECTED = document.getElementById('nr-objects-selected') as HT
 const OFFSET_SELECTED = document.getElementById('offset-selected') as HTMLInputElement;
 const WIDTH_HEIGHT_SELECTED = document.getElementById('width-height-selected') as HTMLInputElement;
 const ROTATION_SELECTED = document.getElementById('rotation-selected') as HTMLInputElement;
+const ROTATION_ANCHOR_SELECTED = document.getElementById('centroid-selected') as HTMLInputElement;
 
 function formatted2dPoint(point: [number, number]): string {
   return `${point[0].toFixed(2)}, ${point[1].toFixed(2)}`;
@@ -21,4 +22,5 @@ export function updateBottomBarDisplay(settings: ISettings) {
   OFFSET_SELECTED.value = formatted2dPoint(settings.highlight_offset);
   WIDTH_HEIGHT_SELECTED.value = formatted2dPoint(settings.highlight_width_height);
   ROTATION_SELECTED.value = radToDegFormatted(settings.highlight_rotation_angle);
+  ROTATION_ANCHOR_SELECTED.value = formatted2dPoint(settings.highlight_rotation_center);
 }

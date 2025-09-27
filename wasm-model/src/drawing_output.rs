@@ -48,4 +48,18 @@ impl<'a> IDrawingOutput<'a> {
         };
         return (d_x, d_y);
     }
+
+    pub fn get_center_bbox(&self) -> (f32, f32) {
+        if self.min_x.is_finite()
+            && self.max_x.is_finite()
+            && self.min_y.is_finite()
+            && self.max_y.is_finite()
+        {
+            let c_x = self.max_x / 2. + self.min_x / 2.;
+            let c_y = self.max_y / 2. + self.min_y / 2.;
+            return (c_x, c_y);
+        } else {
+            return (0., 0.);
+        }
+    }
 }
